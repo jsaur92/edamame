@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxnoguk0aa3tc"]
+
+[ext_resource type="Texture2D" uid="uid://cr8wpip27g573" path="res://scenes/assets/circle.png" id="1_bsh74"]
+[ext_resource type="Script" uid="uid://xgceow0818q0" path="res://scenes/ui/logic_view/command_blocks/circle.gd" id="2_m6h6y"]
+
+[node name="CommandHook" type="TextureRect" unique_id=1270527180 node_paths=PackedStringArray("line")]
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("1_bsh74")
+expand_mode = 1
+script = ExtResource("2_m6h6y")
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=751700278]
+points = PackedVector2Array(12, 12, 12, 12)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

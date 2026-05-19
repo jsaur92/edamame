@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://ddx2lhsbmnskt"]
+
+[ext_resource type="Script" uid="uid://bvnmvsivjlyme" path="res://scenes/ui/logic_view/command_blocks/item_block.gd" id="1_05el4"]
+[ext_resource type="PackedScene" uid="uid://bxnoguk0aa3tc" path="res://scenes/ui/logic_view/command_blocks/command_hook.tscn" id="2_s6miy"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://scenes/assets/icon.svg" id="3_7l4nn"]
+
+[node name="SayCommand" type="Control" unique_id=1592696003]
+layout_mode = 3
+anchor_top = 0.023148147
+anchor_right = 0.14500001
+anchor_bottom = 0.148
+offset_right = -0.040008545
+offset_bottom = 0.09600067
+grow_vertical = 2
+script = ExtResource("1_05el4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448904342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1784832106]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 14.333334
+offset_right = 98.0
+offset_bottom = 41.66667
+mouse_filter = 2
+text = "Ask for:"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=658977665]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_top = 71.0
+offset_right = 1.0
+offset_bottom = 97.0
+grow_horizontal = 0
+mouse_filter = 2
+text = "ItemName"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=989326899]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.5
+offset_top = 24.0
+offset_right = -42.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+text = "fail"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=234978024]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 55.5
+offset_top = 24.0
+offset_right = 128.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+text = "succeed"
+
+[node name="Circle" parent="." unique_id=1270527180 instance=ExtResource("2_s6miy")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = 22.0
+offset_right = -16.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Circle3" parent="." unique_id=2007173133 instance=ExtResource("2_s6miy")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 23.5
+offset_top = 22.0
+offset_right = 47.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Circle2" parent="." unique_id=1922553221 instance=ExtResource("2_s6miy")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = -37.0
+offset_right = 12.0
+offset_bottom = -13.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1849840272]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_right = -18.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("3_7l4nn")
+expand_mode = 1
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

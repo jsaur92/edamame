@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ds08wf5b2tjw6"]
+
+[ext_resource type="Script" uid="uid://dhsxv8qoduvhg" path="res://scenes/ui/logic_view/command_blocks/say_block.gd" id="1_iwo6x"]
+[ext_resource type="PackedScene" uid="uid://bxnoguk0aa3tc" path="res://scenes/ui/logic_view/command_blocks/command_hook.tscn" id="2_s7teu"]
+
+[node name="SayCommand" type="Control" unique_id=1592696003 node_paths=PackedStringArray("textedit")]
+layout_mode = 3
+anchor_top = 0.023148147
+anchor_right = 0.25
+anchor_bottom = 0.14197531
+offset_bottom = -35.0
+grow_vertical = 2
+script = ExtResource("1_iwo6x")
+textedit = NodePath("TextEdit")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448904342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1784832106]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 36.0
+mouse_filter = 2
+text = "Say: "
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1948914964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+text = "hello world"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="Circle" parent="." unique_id=1270527180 instance=ExtResource("2_s7teu")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = 22.0
+offset_right = 12.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Circle2" parent="." unique_id=1922553221 instance=ExtResource("2_s7teu")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = -37.0
+offset_right = 12.0
+offset_bottom = -13.0
+grow_horizontal = 2
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="resized" from="TextEdit" to="." method="_on_text_edit_resized"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]

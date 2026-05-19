@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bu3mlmysvl7fu"]
+
+[ext_resource type="Script" uid="uid://b6rrx1po7mbr1" path="res://scenes/ui/main.gd" id="1_0ay0p"]
+
+[node name="Main" type="Control" unique_id=1064078789]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0ay0p")
+
+[node name="PlayButton" type="Button" parent="." unique_id=355057021]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 145.0
+offset_right = 348.0
+offset_bottom = 202.0
+disabled = true
+text = "Play"
+
+[node name="EditButton" type="Button" parent="." unique_id=549390919]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 242.0
+offset_right = 348.0
+offset_bottom = 299.0
+text = "Edit"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1726458334]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 535.0
+offset_right = 348.0
+offset_bottom = 592.0
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=607928652]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 38.0
+offset_right = 456.0
+offset_bottom = 92.0
+text = "Edu-Game Prototype"
+
+[connection signal="pressed" from="EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

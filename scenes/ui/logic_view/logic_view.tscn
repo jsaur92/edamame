@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://crpxcd81qks1w"]
+
+[ext_resource type="PackedScene" uid="uid://ds08wf5b2tjw6" path="res://scenes/ui/logic_view/command_blocks/say_command.tscn" id="1_e1x6l"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://scenes/assets/icon.svg" id="1_lirw4"]
+[ext_resource type="PackedScene" uid="uid://2bm4lc13kw6t" path="res://scenes/ui/logic_view/command_blocks/give_command.tscn" id="2_lj78r"]
+[ext_resource type="PackedScene" uid="uid://ddx2lhsbmnskt" path="res://scenes/ui/logic_view/command_blocks/take_command.tscn" id="3_donus"]
+
+[node name="LogicView" type="Control" unique_id=1523814643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1544582458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1786565773]
+size = Vector2i(1280, 720)
+
+[node name="CommandDock" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1346238076]
+z_index = 1000
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -360.0
+offset_bottom = 360.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[node name="SayCommand" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=1592696003 instance=ExtResource("1_e1x6l")]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 34.0
+offset_right = 166.5
+offset_bottom = -15.222229
+duplicator = true
+
+[node name="GiveCommand" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=551155467 instance=ExtResource("2_lj78r")]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 166.33333
+offset_right = 167.91
+offset_bottom = 139.77333
+duplicator = true
+
+[node name="SayCommand2" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=1211452 instance=ExtResource("3_donus")]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 328.33334
+offset_right = 165.91
+offset_bottom = 312.44
+duplicator = true
+
+[node name="IconPanel" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=403349680]
+z_index = 1000
+anchors_preset = -1
+offset_right = 106.0
+offset_bottom = 128.0
+grow_vertical = 2
+color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/IconPanel" unique_id=1554948208]
+position = Vector2(53.000004, 49.000004)
+scale = Vector2(0.57421875, 0.57421875)
+texture = ExtResource("1_lirw4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/IconPanel" unique_id=2095472870]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 90.0
+offset_right = 108.0
+offset_bottom = 113.0
+bbcode_enabled = true
+text = "[center]MyObject"
