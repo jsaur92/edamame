@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2bm4lc13kw6t" path="res://scenes/ui/logic_view/command_blocks/give_command.tscn" id="2_lj78r"]
 [ext_resource type="PackedScene" uid="uid://ddx2lhsbmnskt" path="res://scenes/ui/logic_view/command_blocks/take_command.tscn" id="3_donus"]
 [ext_resource type="Script" uid="uid://bdu7m283q2hgy" path="res://scenes/ui/logic_view/click_handler.gd" id="6_gw1ir"]
+[ext_resource type="PackedScene" uid="uid://cv6mndt7rnx12" path="res://scenes/ui/logic_view/command_blocks/activity_command.tscn" id="6_oy65y"]
 [ext_resource type="PackedScene" uid="uid://bds0o658xtpum" path="res://scenes/ui/logic_view/command_blocks/start_command.tscn" id="7_4gj2p"]
 
 [node name="LogicView" type="Control" unique_id=1523814643]
@@ -99,6 +100,14 @@ offset_right = -41.0
 offset_bottom = 418.0
 grow_horizontal = 0
 grow_vertical = 1
+duplicator = true
+
+[node name="GiveCommand2" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=46744614 instance=ExtResource("6_oy65y")]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 511.33334
+offset_right = 186.522
+offset_bottom = 519.07996
 duplicator = true
 
 [node name="IconPanel" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=403349680]

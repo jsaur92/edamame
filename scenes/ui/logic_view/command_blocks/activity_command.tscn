@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://cv6mndt7rnx12"]
+
+[ext_resource type="Script" uid="uid://bcrqq13dpclqb" path="res://scenes/ui/logic_view/command_blocks/command_block_base.gd" id="1_1sxil"]
+[ext_resource type="PackedScene" uid="uid://bxnoguk0aa3tc" path="res://scenes/ui/logic_view/command_blocks/command_hook.tscn" id="2_1qipw"]
+
+[node name="GiveCommand" type="Control" unique_id=1592696003]
+layout_mode = 3
+anchor_top = 0.023148147
+anchor_right = 0.15900001
+anchor_bottom = 0.16100001
+offset_right = 0.47998047
+offset_bottom = 0.07998657
+grow_vertical = 2
+script = ExtResource("1_1sxil")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448904342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1784832106]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -3.666666
+offset_right = 83.0
+offset_bottom = 22.333334
+mouse_filter = 2
+text = "Activity:"
+
+[node name="Circle2" parent="." unique_id=1922553221 instance=ExtResource("2_1qipw")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = -37.0
+offset_right = 12.0
+offset_bottom = -13.0
+grow_horizontal = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1197231536]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 20.333334
+offset_right = -25.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect2" unique_id=1606500024]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.5
+offset_right = 58.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "<preview>"
+
+[node name="Circle" parent="." unique_id=1270527180 instance=ExtResource("2_1qipw")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = 22.0
+offset_right = -16.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Circle3" parent="." unique_id=836760034 instance=ExtResource("2_1qipw")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 23.5
+offset_top = 22.0
+offset_right = 47.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1241830555]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.5
+offset_top = 24.0
+offset_right = -42.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+text = "fail"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=336679774]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 55.5
+offset_top = 24.0
+offset_right = 128.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+text = "succeed"
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
