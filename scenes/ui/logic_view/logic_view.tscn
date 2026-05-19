@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://crpxcd81qks1w"]
 
+[ext_resource type="Script" uid="uid://30ht51ur07uy" path="res://scenes/ui/logic_view/command_dock.gd" id="1_7r2y6"]
 [ext_resource type="PackedScene" uid="uid://ds08wf5b2tjw6" path="res://scenes/ui/logic_view/command_blocks/say_command.tscn" id="1_e1x6l"]
 [ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://scenes/assets/icon.svg" id="1_lirw4"]
 [ext_resource type="PackedScene" uid="uid://2bm4lc13kw6t" path="res://scenes/ui/logic_view/command_blocks/give_command.tscn" id="2_lj78r"]
 [ext_resource type="PackedScene" uid="uid://ddx2lhsbmnskt" path="res://scenes/ui/logic_view/command_blocks/take_command.tscn" id="3_donus"]
+[ext_resource type="Script" uid="uid://bdu7m283q2hgy" path="res://scenes/ui/logic_view/click_handler.gd" id="6_gw1ir"]
+[ext_resource type="PackedScene" uid="uid://bds0o658xtpum" path="res://scenes/ui/logic_view/command_blocks/start_command.tscn" id="7_4gj2p"]
 
 [node name="LogicView" type="Control" unique_id=1523814643]
 layout_mode = 3
@@ -23,9 +26,21 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1786565773]
+handle_input_locally = false
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 
-[node name="CommandDock" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1346238076]
+[node name="ClickHandler" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1175831554 node_paths=PackedStringArray("movable_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_gw1ir")
+movable_node = NodePath("../CommandField")
+
+[node name="CommandDock" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1346238076 node_paths=PackedStringArray("command_field")]
 z_index = 1000
 anchors_preset = 6
 anchor_left = 1.0
@@ -38,29 +53,52 @@ offset_bottom = 360.0
 grow_horizontal = 0
 grow_vertical = 2
 color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+script = ExtResource("1_7r2y6")
+command_field = NodePath("../CommandField")
 
 [node name="SayCommand" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=1592696003 instance=ExtResource("1_e1x6l")]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 34.0
-offset_right = 166.5
-offset_bottom = -15.222229
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -225.99998
+offset_top = 54.0
+offset_right = -9.0
+offset_bottom = 90.333336
+grow_horizontal = 0
+grow_vertical = 1
 duplicator = true
 
 [node name="GiveCommand" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=551155467 instance=ExtResource("2_lj78r")]
 layout_mode = 1
-offset_left = 40.0
-offset_top = 166.33333
-offset_right = 167.91
-offset_bottom = 139.77333
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -200.0
+offset_top = 184.0
+offset_right = -37.0
+offset_bottom = 247.33333
+grow_horizontal = 0
+grow_vertical = 1
 duplicator = true
 
 [node name="SayCommand2" parent="SubViewportContainer/SubViewport/CommandDock" unique_id=1211452 instance=ExtResource("3_donus")]
 layout_mode = 1
-offset_left = 40.0
-offset_top = 328.33334
-offset_right = 165.91
-offset_bottom = 312.44
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -202.0
+offset_top = 344.0
+offset_right = -41.0
+offset_bottom = 418.0
+grow_horizontal = 0
+grow_vertical = 1
 duplicator = true
 
 [node name="IconPanel" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=403349680]
@@ -84,3 +122,17 @@ offset_right = 108.0
 offset_bottom = 113.0
 bbcode_enabled = true
 text = "[center]MyObject"
+
+[node name="CommandField" type="Control" parent="SubViewportContainer/SubViewport" unique_id=359630994]
+z_index = 950
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GiveCommand" parent="SubViewportContainer/SubViewport/CommandField" unique_id=1005674713 instance=ExtResource("7_4gj2p")]
+layout_mode = 1
+offset_left = 176.0
+offset_top = 54.0
+offset_right = 354.0
+offset_bottom = 86.0
+
+[connection signal="gui_input" from="SubViewportContainer/SubViewport/ClickHandler" to="SubViewportContainer/SubViewport/ClickHandler" method="_on_gui_input"]

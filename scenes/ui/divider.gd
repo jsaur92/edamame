@@ -6,9 +6,6 @@ extends ColorRect
 ## x=minimum, y=maximum
 @export var boundaries : Vector2 
 
-func _process(delta: float) -> void:
-	print(position.x)
-
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.is_action_pressed("click"):
 		var adjust = event.relative.x

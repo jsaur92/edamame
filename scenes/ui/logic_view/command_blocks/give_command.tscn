@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2bm4lc13kw6t"]
 
-[ext_resource type="Script" uid="uid://bvnmvsivjlyme" path="res://scenes/ui/logic_view/command_blocks/item_block.gd" id="1_dos8t"]
+[ext_resource type="Script" uid="uid://bcrqq13dpclqb" path="res://scenes/ui/logic_view/command_blocks/command_block_base.gd" id="1_o1b7p"]
 [ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://scenes/assets/icon.svg" id="2_dos8t"]
 [ext_resource type="PackedScene" uid="uid://bxnoguk0aa3tc" path="res://scenes/ui/logic_view/command_blocks/command_hook.tscn" id="2_s7teu"]
 
@@ -12,7 +12,7 @@ anchor_bottom = 0.148
 offset_right = -0.040008545
 offset_bottom = 0.09600067
 grow_vertical = 2
-script = ExtResource("1_dos8t")
+script = ExtResource("1_o1b7p")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1448904342]
 layout_mode = 1

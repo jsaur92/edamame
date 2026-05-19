@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bds0o658xtpum"]
+
+[ext_resource type="PackedScene" uid="uid://bxnoguk0aa3tc" path="res://scenes/ui/logic_view/command_blocks/command_hook.tscn" id="2_2lulq"]
+[ext_resource type="Script" uid="uid://bcrqq13dpclqb" path="res://scenes/ui/logic_view/command_blocks/command_block_base.gd" id="2_xfyu2"]
+
+[sub_resource type="GDScript" id="GDScript_noe2b"]
+script/source = "extends CommandBlock
+"
+
+[node name="GiveCommand" type="Control" unique_id=1592696003]
+layout_mode = 3
+anchor_top = 0.023148147
+anchor_right = 0.14500001
+anchor_bottom = 0.083000004
+offset_right = -0.040008545
+offset_bottom = 0.23999786
+grow_vertical = 2
+script = SubResource("GDScript_noe2b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1448904342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1784832106]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.78
+offset_top = -7.333334
+offset_right = 66.22
+offset_bottom = 18.666672
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "On Interact"
+script = ExtResource("2_xfyu2")
+
+[node name="Circle" parent="." unique_id=1270527180 instance=ExtResource("2_2lulq")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = 22.0
+offset_right = 12.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
