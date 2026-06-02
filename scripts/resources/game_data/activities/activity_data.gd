@@ -1,6 +1,7 @@
+@abstract
 class_name ActivityData
 extends Resource
-## Data for a single Activity of a Game.
+## Abstract base class for the Data of a single Activity of a Game.
 
 ## The name of the Activity.
 @export var name : String

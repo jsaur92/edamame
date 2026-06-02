@@ -8,8 +8,8 @@ extends Resource
 @export var uid : String
 ## Name of the Object.
 @export var name : String
-## Image of the Object.
-@export var image : Image
+## Texture of the Object. The image file used for its sprite.
+@export var texture : Texture
 ## Object Modifiers. If an Object is an Item, Collidable, or Interactable, the data
 ## for each modifier will be stored here.
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]

@@ -1,3 +1,4 @@
+@abstract
 class_name ObjectMod
 extends Resource
-## Base class for Object Modifiers.
+## Abstract base class for Object Modifiers.
