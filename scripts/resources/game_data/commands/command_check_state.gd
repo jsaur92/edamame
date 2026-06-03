@@ -8,5 +8,8 @@ extends Command
 ## The state to check for.
 @export var state : String
 
+func _init(_state:String="") -> void:
+	state = _state
+
 func _execute() -> int:
 	return -1

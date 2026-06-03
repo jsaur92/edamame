@@ -10,3 +10,7 @@ extends Resource
 @export var terrain : TerrainData
 ## Array of all instanced Object data used in the Game.
 @export var objects : Array[ObjectInstanceData]
+
+func _init(_terrain:TerrainData, _objects:Array[ObjectInstanceData]=[]) -> void:
+	terrain = _terrain
+	objects = _objects

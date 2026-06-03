@@ -7,5 +7,9 @@ extends Command
 ## The answer options the Player can choose from.
 @export var choices : Array[String]
 
+func _init(_dialogue:String="", _choices:Array[String]=["yes", "no"]) -> void:
+	dialogue = _dialogue
+	choices = _choices
+
 func _execute() -> int:
 	return -1

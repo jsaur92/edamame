@@ -9,5 +9,13 @@ extends Command
 ## the Item modifier (ModItem).
 @export var item : ObjectData
 
+func _init(_item:ObjectData=null) -> void:
+	if item.mods.has(Enums.ObjectModType.ITEM):
+		item = _item
+	else:
+		item = null
+		push_error("Attempted to make a Take Command taking " + _item.name+ ", which does not have the Item modifier.")
+
+
 func _execute() -> int:
 	return -1

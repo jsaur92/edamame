@@ -5,5 +5,8 @@ extends Command
 ## The Activity to start.
 @export var activity : ActivityData
 
+func _init(_activity:ActivityData=null) -> void:
+	activity = _activity
+
 func _execute() -> int:
 	return -1

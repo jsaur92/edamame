@@ -3,21 +3,66 @@
 [ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment.gd" id="1_1ivwu"]
 [ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_g03ti"]
 [ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="2_jnu4i"]
+[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_jrwop"]
 [ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="2_uauhc"]
+[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_iibug"]
 [ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="4_vi61h"]
+[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_vknec"]
+[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="5_3yh2q"]
+[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_iibug"]
 [ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain.gd" id="5_tp5cr"]
+[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="6_7lwst"]
 [ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="6_je7t3"]
 [ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="6_qmwx8"]
 [ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="7_jnu4i"]
 [ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="7_pf7tr"]
 [ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="7_qmwx8"]
 
+[sub_resource type="Resource" id="Resource_03g2o"]
+script = ExtResource("2_jrwop")
+correct = true
+metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
+
+[sub_resource type="Resource" id="Resource_gxs6v"]
+script = ExtResource("2_jrwop")
+metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
+
+[sub_resource type="Resource" id="Resource_dic47"]
+script = ExtResource("2_jrwop")
+metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
+
+[sub_resource type="Resource" id="Resource_kn10n"]
+script = ExtResource("2_jrwop")
+metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
+
+[sub_resource type="Resource" id="Resource_hgfrx"]
+script = ExtResource("4_vknec")
+metadata/_custom_type_script = "uid://bq5gwuq8mk1ht"
+
+[sub_resource type="Resource" id="Resource_jkf3q"]
+script = ExtResource("5_iibug")
+metadata/_custom_type_script = "uid://da8wcwdigblny"
+
+[sub_resource type="Resource" id="Resource_k5egv"]
+script = ExtResource("5_3yh2q")
+content = Array[ExtResource("3_iibug")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
+metadata/_custom_type_script = "uid://dewv8c5uj2ihu"
+
+[sub_resource type="Resource" id="Resource_5gjb6"]
+script = ExtResource("6_7lwst")
+answer_choices = Array[ExtResource("2_jrwop")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
+multiple_selection = true
+canvas = SubResource("Resource_k5egv")
+metadata/_custom_type_script = "uid://5vu06rcfmh5e"
+
 [sub_resource type="Resource" id="Resource_pf7tr"]
 script = ExtResource("2_jnu4i")
+activities = Dictionary[String, ExtResource("1_g03ti")]({
+"": SubResource("Resource_5gjb6")
+})
 metadata/_custom_type_script = "uid://rcg0vsvbptup"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tp5cr"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="Image" id="Image_iibug"]
 
 [sub_resource type="Resource" id="Resource_jrwop"]
 script = ExtResource("7_pf7tr")
@@ -25,9 +70,9 @@ metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
 [sub_resource type="Resource" id="Resource_vi61h"]
 script = ExtResource("6_je7t3")
-uid = "test"
+uid = 6848191156802777011
 name = "this is a test and so is this"
-image = SubResource("CompressedTexture2D_tp5cr")
+image = SubResource("Image_iibug")
 mods = Dictionary[int, ExtResource("7_jnu4i")]({
 2: SubResource("Resource_jrwop")
 })
@@ -56,9 +101,6 @@ metadata/_custom_type_script = "uid://yn4vu5ct3xdg"
 
 [sub_resource type="Resource" id="Resource_7lwst"]
 script = ExtResource("7_qmwx8")
-objects = Dictionary[String, ExtResource("6_je7t3")]({
-"test": SubResource("Resource_vi61h")
-})
 metadata/_custom_type_script = "uid://5xk0bnggh24o"
 
 [resource]
