@@ -13,7 +13,8 @@ extends Resource
 ## The default state of an instanced object.
 @export var default_state : String
 
-func _init(_object_data:ObjectData, _position:Vector2=Vector2.ZERO, _default_state:String="") -> void:
+
+func setup(_object_data:ObjectData, _position:Vector2=Vector2.ZERO, _default_state:String="") -> void:
 	object_data = _object_data
 	position = _position
 	default_state = _default_state

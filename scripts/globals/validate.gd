@@ -10,9 +10,26 @@ static func uid(id:int) -> int:
 	ResourceUID.add_id(id, ResourceUID.id_to_text(id))
 	return id
 
+
 ## Ensures that an Image is non-null. Returns a new empty 0x0 image
 ## if inputted null, returns input otherwise.
 static func image(img:Image) -> Image:
 	if img == null:
 		img = Image.create_empty(0, 0, false, Image.FORMAT_RGBAF)
 	return img
+
+
+## Ensures that an ObjectData has the Item modifier. Returns null otherwise.
+static func item(obj:ObjectData):
+	if not obj.is_item():
+		push_error(obj.name+ " does not have the Item modifier.")
+		obj = null
+	return obj
+
+
+## Ensures that an ObjectDataInstance has the Item modifier. Returns null otherwise.
+static func item_instance(obj:ObjectInstanceData):
+	if not obj.object_data.is_item():
+		push_error(obj.name+ " does not have the Item modifier.")
+		obj = null
+	return obj

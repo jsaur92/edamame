@@ -7,6 +7,6 @@ extends Resource
 ## The tiles of the TileMap.
 @export var tilemap : TileMapPattern
 
-func _init(_tileset:TileSet, _tilemap:TileMapPattern=TileMapPattern.new()) -> void:
+func setup(_tileset:TileSet, _tilemap:TileMapPattern=TileMapPattern.new()) -> void:
 	tileset = _tileset
 	tilemap = _tilemap

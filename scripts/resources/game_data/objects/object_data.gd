@@ -14,8 +14,23 @@ extends Resource
 ## for each modifier will be stored here.
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]
 
-func _init(_name:String="", _image:Image=null, _mods:Dictionary[Enums.ObjectModType, ObjectMod]={}, _uid:int=-1) -> void:
+func setup(_name:String="", _image:Image=null, _mods:Dictionary[Enums.ObjectModType, ObjectMod]={}, _uid:int=-1) -> void:
 	name = _name
 	image = Validate.image(_image)
 	uid = Validate.uid(_uid)
 	mods = _mods
+
+
+## Returns true if this ObjectData is an Item, false otherwise.
+func is_item() -> bool:
+	return mods.has(Enums.ObjectModType.ITEM)
+
+
+## Returns true if this ObjectData is Collidable, false otherwise.
+func is_collidable() -> bool:
+	return mods.has(Enums.ObjectModType.COLLIDABLE)
+
+
+## Returns true if this ObjectData is Interactable, false otherwise.
+func is_interactable() -> bool:
+	return mods.has(Enums.ObjectModType.INTERACTABLE)

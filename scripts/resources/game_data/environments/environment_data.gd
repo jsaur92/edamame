@@ -11,6 +11,18 @@ extends Resource
 ## Array of all instanced Object data used in the Game.
 @export var objects : Array[ObjectInstanceData]
 
-func _init(_terrain:TerrainData, _objects:Array[ObjectInstanceData]=[]) -> void:
+func setup(_terrain:TerrainData, _objects:Array[ObjectInstanceData]=[]) -> void:
 	terrain = _terrain
 	objects = _objects
+
+
+func get_tileset() -> TileSet:
+	return terrain.tileset
+
+
+func get_tilemap_pattern() -> TileMapPattern:
+	return terrain.tilemap
+
+
+func get_objects() -> Array[ObjectInstanceData]:
+	return objects

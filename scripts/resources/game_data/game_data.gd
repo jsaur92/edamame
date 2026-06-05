@@ -16,3 +16,8 @@ extends Resource
 @export var object_library : ObjectLibrary
 ## Library of all data for Activities in the Game (including unused content).
 @export var activity_library : ActivityLibrary
+
+
+## Returns the game's environment of a given index. No parameters gives default Environment.
+func get_environment(index:int=0) -> EnvironmentData:
+	return environments[index]
