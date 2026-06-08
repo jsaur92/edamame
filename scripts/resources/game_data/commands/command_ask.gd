@@ -10,6 +10,3 @@ extends Command
 func _init(_dialogue:String="", _choices:Array[String]=["yes", "no"]) -> void:
 	dialogue = _dialogue
 	choices = _choices
-
-func _execute() -> int:
-	return -1

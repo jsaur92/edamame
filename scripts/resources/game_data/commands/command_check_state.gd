@@ -10,6 +10,3 @@ extends Command
 
 func _init(_state:String="") -> void:
 	state = _state
-
-func _execute() -> int:
-	return -1

@@ -7,6 +7,3 @@ extends Command
 
 func _init(_activity:ActivityData=null) -> void:
 	activity = _activity
-
-func _execute() -> int:
-	return -1

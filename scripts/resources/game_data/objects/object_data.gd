@@ -1,3 +1,4 @@
+@tool
 class_name ObjectData
 extends Resource
 ## Data for an Object in the Object library of a game.

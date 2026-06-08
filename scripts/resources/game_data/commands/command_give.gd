@@ -8,6 +8,3 @@ extends Command
 
 func _init(_item:ObjectData=null) -> void:
 	item = Validate.item(_item)
-
-func _execute() -> int:
-	return -1

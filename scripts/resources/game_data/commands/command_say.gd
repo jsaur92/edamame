@@ -7,6 +7,3 @@ extends Command
 
 func _init(_dialogue:String="") -> void:
 	dialogue=_dialogue
-
-func _execute() -> int:
-	return -1
