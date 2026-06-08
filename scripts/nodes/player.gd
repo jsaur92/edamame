@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 ## Controller for the Player.
 
@@ -23,8 +24,8 @@ func _physics_process(delta: float) -> void:
 
 
 func on_interact():
-	print("Interact pressed!")
+	pass
 
 
 func on_inventory():
-	print("Inventory pressed!")
+	pass

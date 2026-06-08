@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://2b1q5ufi674q" path="res://scripts/nodes/object.gd" id="1_mjy2w"]
 [ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="2_y3305"]
 
-[node name="Object" type="Node2D" unique_id=629950659]
+[node name="Object" type="StaticBody2D" unique_id=2062534159 node_paths=PackedStringArray("collision_shape")]
 script = ExtResource("1_mjy2w")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1397433628]
 modulate = Color(0.49803922, 0.49803922, 0.49803922, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_y3305")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=582444984]
+disabled = true

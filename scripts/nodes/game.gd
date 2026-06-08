@@ -3,9 +3,11 @@ extends Node2D
 @export var game_data : GameData
 var environment : GameEnvironment
 
-const ENVIRONMENT_SCENE = preload("uid://c4h1sc5o7rilv")
+## Sets game_data. Call after instantiation and before adding as child of scene.
+func setup(_game_data:GameData):
+	game_data = _game_data
 
 func _ready() -> void:
-	environment = ENVIRONMENT_SCENE.instantiate()
+	environment = ConstScenes.ENVIRONMENT.instantiate()
 	add_child(environment)
 	environment.setup(game_data.get_environment())

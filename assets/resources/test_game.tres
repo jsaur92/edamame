@@ -1,75 +1,94 @@
 [gd_resource type="Resource" script_class="GameData" format=3 uid="uid://vpyocnf3c76h"]
 
-[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="1_1ivwu"]
-[ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_g03ti"]
-[ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="2_jnu4i"]
-[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_jrwop"]
-[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="2_uauhc"]
-[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_iibug"]
-[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="4_vi61h"]
-[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_vknec"]
-[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="5_3yh2q"]
-[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_iibug"]
-[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="5_tp5cr"]
-[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="6_7lwst"]
-[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="6_je7t3"]
-[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="7_jnu4i"]
-[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="7_qmwx8"]
+[ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_m00u0"]
+[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_dn8nu"]
+[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_tanaa"]
+[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_2txln"]
+[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_kiowj"]
+[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_3kame"]
+[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_h6h8x"]
+[ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_v1wsp"]
+[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_fl2ef"]
+[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_nq8pd"]
+[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="11_xpfb6"]
+[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="12_4fm7p"]
+[ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="12_dn8nu"]
+[ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="13_2txln"]
+[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="13_15jn7"]
+[ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="14_kiowj"]
+[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="14_tidjm"]
+[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="15_p2p4l"]
 
 [sub_resource type="Resource" id="Resource_03g2o"]
-script = ExtResource("2_jrwop")
+script = ExtResource("2_dn8nu")
 correct = true
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_gxs6v"]
-script = ExtResource("2_jrwop")
+script = ExtResource("2_dn8nu")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_dic47"]
-script = ExtResource("2_jrwop")
+script = ExtResource("2_dn8nu")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_kn10n"]
-script = ExtResource("2_jrwop")
+script = ExtResource("2_dn8nu")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_hgfrx"]
-script = ExtResource("4_vknec")
+script = ExtResource("4_2txln")
 metadata/_custom_type_script = "uid://bq5gwuq8mk1ht"
 
 [sub_resource type="Resource" id="Resource_jkf3q"]
-script = ExtResource("5_iibug")
+script = ExtResource("5_kiowj")
 metadata/_custom_type_script = "uid://da8wcwdigblny"
 
 [sub_resource type="Resource" id="Resource_k5egv"]
-script = ExtResource("5_3yh2q")
-content = Array[ExtResource("3_iibug")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
+script = ExtResource("6_3kame")
+content = Array[ExtResource("3_tanaa")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
 metadata/_custom_type_script = "uid://dewv8c5uj2ihu"
 
 [sub_resource type="Resource" id="Resource_5gjb6"]
-script = ExtResource("6_7lwst")
-answer_choices = Array[ExtResource("2_jrwop")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
+script = ExtResource("7_h6h8x")
+answer_choices = Array[ExtResource("2_dn8nu")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
 multiple_selection = true
 canvas = SubResource("Resource_k5egv")
 metadata/_custom_type_script = "uid://5vu06rcfmh5e"
 
 [sub_resource type="Resource" id="Resource_pf7tr"]
-script = ExtResource("2_jnu4i")
-activities = Dictionary[String, ExtResource("1_g03ti")]({
+script = ExtResource("8_v1wsp")
+activities = Dictionary[String, ExtResource("1_m00u0")]({
 "": SubResource("Resource_5gjb6")
 })
 metadata/_custom_type_script = "uid://rcg0vsvbptup"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn8nu"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_tanaa"]
+script = ExtResource("12_dn8nu")
+shape = SubResource("RectangleShape2D_dn8nu")
+metadata/_custom_type_script = "uid://bm5ki8hon2jai"
+
+[sub_resource type="Resource" id="Resource_3kame"]
+script = ExtResource("14_kiowj")
+metadata/_custom_type_script = "uid://b8umwh4qgb70w"
+
 [sub_resource type="Resource" id="Resource_mldwq"]
-script = ExtResource("6_je7t3")
+script = ExtResource("12_4fm7p")
 uid = 235432
 name = "test_object"
+mods = Dictionary[int, ExtResource("11_xpfb6")]({
+1: SubResource("Resource_tanaa"),
+2: SubResource("Resource_3kame")
+})
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_fftk8"]
-script = ExtResource("4_vi61h")
+script = ExtResource("10_nq8pd")
 object_data = SubResource("Resource_mldwq")
-position = Vector2(200, 600)
+position = Vector2(200, 300)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_fftk8"]
@@ -77,30 +96,30 @@ metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 [sub_resource type="TileSet" id="TileSet_qcs58"]
 
 [sub_resource type="Resource" id="Resource_v2xvp"]
-script = ExtResource("5_tp5cr")
+script = ExtResource("13_15jn7")
 tileset = SubResource("TileSet_qcs58")
 tilemap = SubResource("TileMapPattern_fftk8")
 metadata/_custom_type_script = "uid://bfbx5oowc5ae5"
 
 [sub_resource type="Resource" id="Resource_37w0a"]
-script = ExtResource("1_1ivwu")
+script = ExtResource("9_fl2ef")
 terrain = SubResource("Resource_v2xvp")
-objects = Array[ExtResource("4_vi61h")]([SubResource("Resource_fftk8")])
+objects = Array[ExtResource("10_nq8pd")]([SubResource("Resource_fftk8")])
 metadata/_custom_type_script = "uid://yn4vu5ct3xdg"
 
 [sub_resource type="Resource" id="Resource_7lwst"]
-script = ExtResource("7_qmwx8")
-objects = Dictionary[int, ExtResource("6_je7t3")]({
+script = ExtResource("14_tidjm")
+objects = Dictionary[int, ExtResource("12_4fm7p")]({
 235432: SubResource("Resource_mldwq")
 })
 metadata/_custom_type_script = "uid://5xk0bnggh24o"
 
 [resource]
-script = ExtResource("2_uauhc")
+script = ExtResource("15_p2p4l")
 title = "Test Game"
 subject = "Software Testing"
 author = "Joe"
-environments = Array[ExtResource("1_1ivwu")]([SubResource("Resource_37w0a")])
+environments = Array[ExtResource("9_fl2ef")]([SubResource("Resource_37w0a")])
 object_library = SubResource("Resource_7lwst")
 activity_library = SubResource("Resource_pf7tr")
 metadata/_custom_type_script = "uid://b1ir2t21ostou"

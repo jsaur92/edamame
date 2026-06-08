@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Edu Game Maker"
-run/main_scene="uid://1q8s36b2tttc"
+run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [input]

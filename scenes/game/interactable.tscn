@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dfj6lxi3an2pu"]
+
+[ext_resource type="Shader" uid="uid://lar7uf85upcu" path="res://assets/shaders/interactable_notif.gdshader" id="1_ayrmb"]
+[ext_resource type="Script" uid="uid://dpb4t37e0pobc" path="res://scripts/nodes/interactable.gd" id="1_d1qck"]
+[ext_resource type="Texture2D" uid="uid://camukwtom7q2g" path="res://assets/textures/exclamation.png" id="2_r76b7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_deyk2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1qck"]
+radius = 96.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayrmb"]
+shader = ExtResource("1_ayrmb")
+shader_parameter/speed = 5.0
+shader_parameter/range = 5.0
+
+[node name="Interactable" type="Node2D" unique_id=382809221 node_paths=PackedStringArray("notif_sprite")]
+material = SubResource("ShaderMaterial_deyk2")
+script = ExtResource("1_d1qck")
+notif_sprite = NodePath("Notif")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=151157265]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1714173365]
+shape = SubResource("CircleShape2D_d1qck")
+
+[node name="Notif" type="Sprite2D" parent="." unique_id=1425498185]
+visible = false
+material = SubResource("ShaderMaterial_ayrmb")
+position = Vector2(0, -60)
+texture = ExtResource("2_r76b7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

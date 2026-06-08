@@ -34,3 +34,8 @@ func is_collidable() -> bool:
 ## Returns true if this ObjectData is Interactable, false otherwise.
 func is_interactable() -> bool:
 	return mods.has(Enums.ObjectModType.INTERACTABLE)
+
+
+## Returns a given ObjectMod. Returns null if nonexistent.
+func get_mod(mod_type:Enums.ObjectModType):
+	return mods.get(mod_type)

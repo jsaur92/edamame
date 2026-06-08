@@ -6,4 +6,7 @@ extends ObjectMod
 ## for multiple shapes with different positioning.
 
 ## The shape of the collision of the Object.
-@export var shape : Shape2D
+@export var shape : Shape2D = RectangleShape2D.new()
+
+func get_shape() -> Shape2D:
+	return shape
