@@ -1,4 +1,3 @@
-@tool
 class_name ObjectData
 extends Resource
 ## Data for an Object in the Object library of a game.
@@ -11,6 +10,8 @@ extends Resource
 @export var name : String
 ## Image file used for the object's sprite.
 @export var image : Image
+## Scale vector for the texture made from Image.
+@export var image_scale : Vector2 = Vector2(1,1)
 ## Object Modifiers. If an Object is an Item, Collidable, or Interactable, the data
 ## for each modifier will be stored here.
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]
@@ -40,3 +41,8 @@ func is_interactable() -> bool:
 ## Returns a given ObjectMod. Returns null if nonexistent.
 func get_mod(mod_type:Enums.ObjectModType):
 	return mods.get(mod_type)
+
+
+## Returns true if this Object has an Image, false otherwise.
+func has_image() -> bool:
+	return image != null

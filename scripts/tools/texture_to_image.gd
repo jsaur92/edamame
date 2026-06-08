@@ -25,3 +25,4 @@ func save():
 	var result = ResourceSaver.save(image, path)
 	save_output_error = result
 	notify_property_list_changed()
+	image = null #get this out of here to save storage when saving the scene.

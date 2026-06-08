@@ -3,6 +3,7 @@ extends Node2D
 
 @export var object_data : ObjectData
 @export var instance_data : ObjectInstanceData
+@export var sprite : Sprite2D
 @export var collision_shape : CollisionShape2D
 
 func _ready() -> void:
@@ -23,6 +24,9 @@ func load_data(obj_inst : ObjectInstanceData) -> void:
 		var i : Interactable = ConstScenes.INTERACTABLE.instantiate()
 		i.setup(self)
 		add_child(i)
+	if object_data.has_image():
+		sprite.texture = ImageTexture.create_from_image(object_data.image)
+		sprite.scale = object_data.image_scale
 
 
 func get_interactable() -> Interactable:
