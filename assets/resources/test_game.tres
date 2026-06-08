@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="12_dn8nu"]
 [ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="13_2txln"]
 [ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="13_15jn7"]
+[ext_resource type="Script" uid="uid://by3vegmjhgnnt" path="res://scripts/resources/game_data/commands/command_say.gd" id="14_3kame"]
 [ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="14_kiowj"]
 [ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="14_tidjm"]
 [ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="15_p2p4l"]
@@ -71,8 +72,21 @@ script = ExtResource("12_dn8nu")
 shape = SubResource("RectangleShape2D_dn8nu")
 metadata/_custom_type_script = "uid://bm5ki8hon2jai"
 
+[sub_resource type="Resource" id="Resource_h6h8x"]
+script = ExtResource("14_3kame")
+dialogue = "Hello!"
+metadata/_custom_type_script = "uid://by3vegmjhgnnt"
+
+[sub_resource type="Resource" id="Resource_v1wsp"]
+script = ExtResource("13_2txln")
+command = SubResource("Resource_h6h8x")
+metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
+
 [sub_resource type="Resource" id="Resource_3kame"]
 script = ExtResource("14_kiowj")
+command_heads = Dictionary[String, ExtResource("13_2txln")]({
+"default": SubResource("Resource_v1wsp")
+})
 metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
 [sub_resource type="Resource" id="Resource_mldwq"]

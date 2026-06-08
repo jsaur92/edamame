@@ -9,11 +9,7 @@ extends Resource
 ## called in this array.
 @export var next : Array[CommandNode]
 
-## Perform this CommandNode's Command, then execute the next command based on the
-## result of this Command's call.
-## Returns the result of the last call.
-func execute() -> int:
-	var result = command._execute()
-	if result >= 0 and result < next.size():
-		next[result].execute()
-	return result
+
+## Returns true if this Node has a "next" node at a certain index.
+func has_next(index:int=0) -> bool:
+	return next != null and index >= 0 and index < next.size()

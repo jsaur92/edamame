@@ -9,6 +9,10 @@ var game_object : GameObject
 
 signal interacted
 
+
+func _ready() -> void:
+	connect("interacted", CommandManager.interact_with)
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = true
