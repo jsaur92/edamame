@@ -17,9 +17,18 @@ func setup_terrain():
 
 
 func setup_objects():
-	for child in objects_root.get_children():
+	for child in get_objects():
 		child.queue_free()
 	for object in environment_data.get_objects():
 		var new_obj : GameObject = ConstScenes.OBJECT.instantiate()
 		new_obj.load_data(object)
 		objects_root.add_child(new_obj)
+
+
+## Returns the child GameObjects stored in the objects_root node. Uses a work
+## around to force get_children into a typed array without using a loop.
+func get_objects() -> Array[GameObject]:
+	var children = objects_root.get_children()
+	var objects : Array[GameObject] = []
+	objects.append_array(children)
+	return objects
