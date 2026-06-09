@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [autoload]
 
 CommandManager="*uid://ba6hhxb84ur15"
+InteractManager="*uid://btk78frqhw5g1"
 
 [input]
 

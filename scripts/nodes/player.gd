@@ -6,7 +6,7 @@ const SPEED = 300.0
 var direction : Vector2
 
 func _ready() -> void:
-	GameGlobals.set_player(self)
+	InteractManager.set_player(self)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
