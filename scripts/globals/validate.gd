@@ -21,7 +21,10 @@ static func image(img:Image) -> Image:
 
 ## Ensures that an ObjectData has the Item modifier. Returns null otherwise.
 static func item(obj:ObjectData):
-	if not obj.is_item():
+	if obj == null:
+		push_warning("Null value inputted.")
+		obj = null
+	elif not obj.is_item():
 		push_error(obj.name+ " does not have the Item modifier.")
 		obj = null
 	return obj
@@ -29,7 +32,4 @@ static func item(obj:ObjectData):
 
 ## Ensures that an ObjectDataInstance has the Item modifier. Returns null otherwise.
 static func item_instance(obj:ObjectInstanceData):
-	if not obj.object_data.is_item():
-		push_error(obj.name+ " does not have the Item modifier.")
-		obj = null
-	return obj
+	return item(obj.object_data)

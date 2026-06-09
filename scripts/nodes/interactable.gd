@@ -15,14 +15,15 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		player_in_range = true
-		notif_sprite.visible = true
+		var success = GameGlobals.try_in_range_interactable(self)
+		player_in_range = success
+		notif_sprite.visible = success
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
-		player_in_range = false
-		notif_sprite.visible = false
+		remove_in_range()
+		GameGlobals.try_remove_in_range_interactable(self)
 
 
 func _input(event: InputEvent) -> void:
@@ -32,3 +33,8 @@ func _input(event: InputEvent) -> void:
 
 func setup(obj:GameObject) -> void:
 	game_object = obj
+
+
+func remove_in_range():
+	player_in_range = false
+	notif_sprite.visible = false

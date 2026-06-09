@@ -39,7 +39,7 @@ func is_interactable() -> bool:
 
 
 ## Returns a given ObjectMod. Returns null if nonexistent.
-func get_mod(mod_type:Enums.ObjectModType):
+func get_mod(mod_type:Enums.ObjectModType) -> ObjectMod:
 	return mods.get(mod_type)
 
 

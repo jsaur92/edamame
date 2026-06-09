@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cwgtsn7ur4mtx"]
 
 [ext_resource type="Script" uid="uid://b8by0wohhiqmg" path="res://scripts/tools/texture_to_image.gd" id="1_8xlr0"]
-[ext_resource type="Texture2D" uid="uid://d10t8b6a5ni7a" path="res://assets/textures/20Free_icons/Loaf_Icon.png" id="2_e738h"]
 
 [node name="TextureToImage" type="Node" unique_id=932320529]
 script = ExtResource("1_8xlr0")
-texture = ExtResource("2_e738h")
