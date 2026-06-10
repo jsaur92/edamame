@@ -31,11 +31,11 @@ func ask(command:CommandAsk) -> void:
 
 func give(command:CommandGive) -> void:
 	display(true)
-	text.text = "You got " + command.item.name + "!"
+	text.text = "You got " + command.get_item().name + "!"
 
 func take(command:CommandTake) -> void:
 	display(true)
-	text.text = "I request 1 " + command.item.name + "."
+	text.text = "I request 1 " + command.get_item().name + "."
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and active:

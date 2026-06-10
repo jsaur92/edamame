@@ -12,6 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7h61r")
 
-[node name="DialogUI" parent="." unique_id=764160478 instance=ExtResource("2_7h61r")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=798174316]
+process_mode = 3
+
+[node name="DialogUI" parent="CanvasLayer" unique_id=764160478 instance=ExtResource("2_7h61r")]
 visible = false
-layout_mode = 1
+z_index = 100

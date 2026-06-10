@@ -13,9 +13,6 @@ var dialog_ui : DialogUI
 func set_dialog_ui(d:DialogUI):
 	dialog_ui = d
 
-func _process(delta: float) -> void:
-	print(current_node)
-
 func set_current_node(node:CommandNode):
 	current_node = node
 	get_tree().paused = (node == null)
@@ -31,6 +28,7 @@ func interact_with(object:GameObject) -> void:
 ## Execute the current command. Read the data from the CommandNode's Command,
 ## then do something about it.
 func execute() -> void:
+	get_tree().paused = true
 	if current_node != null:
 		var command = current_node.command
 		if command is CommandSay:
@@ -50,6 +48,7 @@ func execute_next(index:int) -> void:
 		execute()
 	else:
 		current_node = null
+		get_tree().paused = false
 
 
 func execute_say(command:CommandSay):

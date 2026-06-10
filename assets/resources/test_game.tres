@@ -121,6 +121,7 @@ metadata/_custom_type_script = "uid://c4b0hx6f7v4b6"
 
 [sub_resource type="Resource" id="Resource_xlbx8"]
 script = ExtResource("20_4fm7p")
+item_uid = 7354654
 metadata/_custom_type_script = "uid://bawoprftpfsep"
 
 [sub_resource type="Resource" id="Resource_slmo7"]

@@ -5,13 +5,13 @@ extends Command
 ## Prompts the Player to give the requested item. The Player may choose to give
 ## or not give the item if they have it. 
 
-## The ObjectData of the item to request. Should only accept Objects with
+## The index in ObjectLibrary of the ObjectData of the item to request. Should only accept Objects with
 ## the Item modifier (ModItem).
-@export var item : ObjectData
+@export var item_uid : int
 
-func _init(_item:ObjectData=null) -> void:
-	item = Validate.item(_item)
+func _init(_item:int=-1) -> void:
+	item_uid = _item
 
 
 func _to_string() -> String:
-	return "Take \"" + str(item) + "\""
+	return "Take Item with uid " + str(item_uid) + "."

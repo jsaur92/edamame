@@ -16,3 +16,5 @@ shape = SubResource("RectangleShape2D_dd427")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2038675516]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_bkoau")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1434650605]
