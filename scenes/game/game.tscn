@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://1q8s36b2tttc"]
 
 [ext_resource type="Script" uid="uid://4g3556u6dvr5" path="res://scripts/nodes/game.gd" id="1_7h61r"]
+[ext_resource type="PackedScene" uid="uid://di8waredqsywj" path="res://scenes/game/dialog_ui.tscn" id="2_7h61r"]
 
-[node name="Game" type="Node2D" unique_id=1292568037]
+[node name="Game" type="Control" unique_id=492444174]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_7h61r")
+
+[node name="DialogUI" parent="." unique_id=764160478 instance=ExtResource("2_7h61r")]
+visible = false
+layout_mode = 1

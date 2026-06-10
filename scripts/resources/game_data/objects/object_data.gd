@@ -46,3 +46,7 @@ func get_mod(mod_type:Enums.ObjectModType) -> ObjectMod:
 ## Returns true if this Object has an Image, false otherwise.
 func has_image() -> bool:
 	return image != null
+
+
+func _to_string() -> String:
+	return name

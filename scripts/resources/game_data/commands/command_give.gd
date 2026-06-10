@@ -8,3 +8,7 @@ extends Command
 
 func _init(_item:ObjectData=null) -> void:
 	item = Validate.item(_item)
+
+
+func _to_string() -> String:
+	return "Give \"" + str(item) + "\""

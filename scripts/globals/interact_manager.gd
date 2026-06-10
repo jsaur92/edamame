@@ -7,7 +7,8 @@ var inters_within_range : Array[Interactable] = []
 var prev_closest : Interactable
 
 func _process(delta: float) -> void:
-	heapify()
+	if inters_within_range.size() > 1:
+		heapify()
 
 ## Add an Interactable to the iwr heap and keep the min-heap condition.
 func add_near(inter:Interactable) -> void:

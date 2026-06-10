@@ -8,6 +8,19 @@ var current_obj : GameObject
 var current_data : ObjectData
 var current_node : CommandNode
 
+var dialog_ui : DialogUI
+
+func set_dialog_ui(d:DialogUI):
+	dialog_ui = d
+
+func _process(delta: float) -> void:
+	print(current_node)
+
+func set_current_node(node:CommandNode):
+	current_node = node
+	get_tree().paused = (node == null)
+
+
 func interact_with(object:GameObject) -> void:
 	current_obj = object
 	current_data = current_obj.object_data
@@ -35,33 +48,38 @@ func execute_next(index:int) -> void:
 	if current_node.has_next(index):
 		current_node = current_node.next[index]
 		execute()
+	else:
+		current_node = null
 
 
 func execute_say(command:CommandSay):
-	print(current_data.name + " says: " + command.dialogue)
-	## wait for player to continue the dialogue. That will send a signal to do the next command.
+	dialog_ui.say(command)
 
 
 func execute_ask(command:CommandAsk):
-	print(current_data.name + " asks: " + command.dialogue)
-	## wait for player to answer the question. That will send a signal to do the next command.
+	dialog_ui.ask(command)
 
 
 func execute_give(command:CommandGive):
-	if command.item == null:
-		print(current_data.name + " gives itself!")
-	else:
-		print(current_data.name + " gives: " + command.item.name)
+	pass
+	#if command.item == null:
+		#print(current_data.name + " gives itself!")
+	#else:
+		#print(current_data.name + " gives: " + command.item.name)
+	dialog_ui.give(command)
 	## wait for player to "accept" the gift. That will send a signal to do the next command.
 
 
 func execute_take(command:CommandTake):
-	if command.item == null:
-		print(current_data.name + " attempts to take one of itself!")
-	else:
-		print(current_data.name + " attempts to take: " + command.item.name)
+	pass
+	#if command.item == null:
+		#print(current_data.name + " attempts to take one of itself!")
+	#else:
+		#print(current_data.name + " attempts to take: " + command.item.name)
+	dialog_ui.take(command)
 	## wait for player give / not give. That will send a signal to do the next command.
 
 
 func execute_remove():
 	current_obj.queue_free()
+	execute_next(0)

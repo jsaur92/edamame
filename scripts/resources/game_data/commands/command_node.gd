@@ -13,3 +13,11 @@ extends Resource
 ## Returns true if this Node has a "next" node at a certain index.
 func has_next(index:int=0) -> bool:
 	return next != null and index >= 0 and index < next.size()
+
+
+func has_command() -> bool:
+	return command != null
+
+
+func _to_string() -> String:
+	return "Command: " + str(command)

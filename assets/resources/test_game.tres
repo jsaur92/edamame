@@ -82,7 +82,7 @@ metadata/_custom_type_script = "uid://bm5ki8hon2jai"
 
 [sub_resource type="Resource" id="Resource_h6h8x"]
 script = ExtResource("14_3kame")
-dialogue = "Hello! I am a sign!"
+dialog = "I am a sign!"
 metadata/_custom_type_script = "uid://by3vegmjhgnnt"
 
 [sub_resource type="Resource" id="Resource_v1wsp"]

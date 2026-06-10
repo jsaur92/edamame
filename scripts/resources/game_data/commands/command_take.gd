@@ -13,5 +13,5 @@ func _init(_item:ObjectData=null) -> void:
 	item = Validate.item(_item)
 
 
-func _execute() -> int:
-	return -1
+func _to_string() -> String:
+	return "Take \"" + str(item) + "\""
