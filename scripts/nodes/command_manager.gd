@@ -60,21 +60,11 @@ func execute_ask(command:CommandAsk):
 
 
 func execute_give(command:CommandGive):
-	pass
-	#if command.item == null:
-		#print(current_data.name + " gives itself!")
-	#else:
-		#print(current_data.name + " gives: " + command.item.name)
 	dialog_ui.give(command)
 	## wait for player to "accept" the gift. That will send a signal to do the next command.
 
 
 func execute_take(command:CommandTake):
-	pass
-	#if command.item == null:
-		#print(current_data.name + " attempts to take one of itself!")
-	#else:
-		#print(current_data.name + " attempts to take: " + command.item.name)
 	dialog_ui.take(command)
 	## wait for player give / not give. That will send a signal to do the next command.
 
