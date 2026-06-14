@@ -2,17 +2,17 @@ class_name Player
 extends CharacterBody2D
 ## Controller for the Player.
 
+@export var inventory : Inventory
 const SPEED = 300.0
 var direction : Vector2
+signal open_inventory
 
 func _ready() -> void:
 	InteractManager.set_player(self)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
-		on_interact()
 	if Input.is_action_just_pressed("inventory"):
-		on_inventory()
+		open_inventory.emit(inventory)
 
 
 func _physics_process(delta: float) -> void:
@@ -24,11 +24,3 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-
-
-func on_interact():
-	pass
-
-
-func on_inventory():
-	pass

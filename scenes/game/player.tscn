@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://dxlyubokb3s33"]
 
 [ext_resource type="Script" uid="uid://tbtpbibuugqv" path="res://scripts/nodes/player.gd" id="1_t5cse"]
-[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="2_bkoau"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://icon.svg" id="2_bkoau"]
+[ext_resource type="Script" uid="uid://bap4l6ce5bamg" path="res://scripts/nodes/inventory.gd" id="3_u3rb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd427"]
 size = Vector2(64, 64)
 
-[node name="Player" type="CharacterBody2D" unique_id=1451278525]
+[node name="Player" type="CharacterBody2D" unique_id=1451278525 node_paths=PackedStringArray("inventory")]
 z_index = 10
 script = ExtResource("1_t5cse")
+inventory = NodePath("Inventory")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1409712359]
 shape = SubResource("RectangleShape2D_dd427")
@@ -18,3 +20,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_bkoau")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1434650605]
+
+[node name="Inventory" type="Node" parent="." unique_id=325698622]
+script = ExtResource("3_u3rb4")
