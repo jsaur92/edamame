@@ -8,9 +8,6 @@ var current_node
 ## becoming true so that the "interact" input doesn't open and close at the
 ## same time. Also can accomodate an "opening" animation if applicable.
 var active : bool = false
-## Used for some commands like CommandTake which require multiple calls to confirm()
-## to continue.
-var sub_confirms : int = 0
 signal proceed
 signal give_item
 signal take_item
@@ -47,7 +44,6 @@ func take(command:CommandTake) -> void:
 	display(true)
 	text.text = "Give 1 " + command.get_item().name + "?"
 	make_answer_choices(["Give " + command.get_item().name, "Do not give"])
-	sub_confirms = 1
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and active and (current_node != null and (current_node.command is CommandSay or current_node.command is CommandGive)):
@@ -71,16 +67,16 @@ func clear_answer_choices() -> void:
 
 
 func confirm(index:int) -> void:
-	if sub_confirms > 0:
-		sub_confirms -= 1
-		if current_node.command is CommandTake:
-			if index == 0:
+	if current_node.command is CommandTake:
+		if index == 0:
+			if Game.get_game().environment.player.inventory.has_item(current_node.command.get_item()):
 				take_item.emit(current_node.command.get_item())
-	else:
-		proceed.emit(index)
-		if current_node == null:
-			active = false
-			hide()
+			else:
+				index = 1
+	proceed.emit(index)
+	if current_node == null:
+		active = false
+		hide()
 
 
 func set_current_node(node:CommandNode):
