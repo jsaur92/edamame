@@ -34,4 +34,6 @@ func _on_play_button_pressed() -> void:
 
 
 func _on_edit_button_pressed() -> void:
-	pass # Replace with function body.
+	var editor_scene = ConstScenes.EDITOR.instantiate()
+	editor_scene.setup(game_data)
+	get_tree().change_scene_to_node(editor_scene)

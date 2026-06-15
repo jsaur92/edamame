@@ -21,3 +21,7 @@ func remove_object(object:ObjectData):
 
 func get_object(key:int) -> ObjectData:
 	return objects[key]
+
+
+func get_objects() -> Array[ObjectData]:
+	return objects.values()

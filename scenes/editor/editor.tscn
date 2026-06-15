@@ -1,34 +1,85 @@
 [gd_scene format=3 uid="uid://be4ok444g1l0f"]
 
+[ext_resource type="Script" uid="uid://cibcf8xhmoiiu" path="res://scripts/nodes/editor.gd" id="1_bc6i7"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bc6i7")
+objects_dock = NodePath("HSplitContainer/VSplitContainer/Panel/ObjectsDock")
 
-[node name="CommandNodeDock" type="PanelContainer" parent="." unique_id=544600147]
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.85400003
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.19195557
-theme_override_styles/panel = SubResource("StyleBoxFlat_dhn8j")
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(600)
+split_offset = 600
 
-[node name="CommandNodeChains" type="GraphEdit" parent="." unique_id=1306502914]
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer" unique_id=346023758]
+layout_mode = 2
+split_offsets = PackedInt32Array(300)
+split_offset = 300
+
+[node name="GameView" type="SubViewportContainer" parent="HSplitContainer/VSplitContainer" unique_id=1802276125]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/VSplitContainer/GameView" unique_id=1258534256]
+handle_input_locally = false
+size = Vector2i(600, 300)
+render_target_update_mode = 4
+
+[node name="Panel" type="Panel" parent="HSplitContainer/VSplitContainer" unique_id=1907634130]
+layout_mode = 2
+
+[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/VSplitContainer/Panel" unique_id=1870313904]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.45200002
-anchor_right = 0.915
+anchor_right = 1.0
+anchor_bottom = 1.868
+offset_top = 4.0
+offset_bottom = -99.64801
+grow_horizontal = 2
+
+[node name="Inspector" type="Control" parent="HSplitContainer" unique_id=1516780413]
+layout_mode = 2
+
+[node name="InteractableTab" type="Control" parent="HSplitContainer/Inspector" unique_id=295510458]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CommandNodeDock" type="PanelContainer" parent="HSplitContainer/Inspector/InteractableTab" unique_id=544600147]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.15402222
+theme_override_styles/panel = SubResource("StyleBoxFlat_dhn8j")
+
+[node name="CommandNodeChains" type="GraphEdit" parent="HSplitContainer/Inspector/InteractableTab" unique_id=1306502914]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.734
 anchor_bottom = 1.0020001
-offset_left = 0.29595947
-offset_right = -60.08008
+offset_right = -0.15402222
 offset_bottom = -0.29608154
+scroll_offset = Vector2(0, -76.98004)
 show_grid = false
 grid_pattern = 1
 snapping_enabled = false
@@ -37,12 +88,12 @@ type_names = {
 0: "default"
 }
 
-[node name="GraphNode" type="GraphNode" parent="CommandNodeChains" unique_id=88306796]
+[node name="GraphNode" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=88306796]
 layout_mode = 0
 offset_left = 87.0
-offset_top = 304.0
+offset_top = 380.98004
 offset_right = 278.0
-offset_bottom = 414.0
+offset_bottom = 490.98004
 mouse_filter = 1
 position_offset = Vector2(87, 304)
 title = "rdgjirj"
@@ -57,16 +108,16 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 
-[node name="Label" type="Label" parent="CommandNodeChains/GraphNode" unique_id=1476689498]
+[node name="Label" type="Label" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains/GraphNode" unique_id=1476689498]
 layout_mode = 2
 text = "test"
 
-[node name="GraphNode2" type="GraphNode" parent="CommandNodeChains" unique_id=926399723]
+[node name="GraphNode2" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=926399723]
 layout_mode = 0
 offset_left = 449.0
-offset_top = 173.0
+offset_top = 249.98004
 offset_right = 640.0
-offset_bottom = 276.0
+offset_bottom = 352.98004
 mouse_filter = 1
 position_offset = Vector2(449, 173)
 title = "rdgjirj"
@@ -81,30 +132,14 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 
-[node name="Label" type="Label" parent="CommandNodeChains/GraphNode2" unique_id=1936028036]
+[node name="Label" type="Label" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains/GraphNode2" unique_id=1936028036]
 layout_mode = 2
 text = "test2"
 
-[node name="GameView" type="SubViewportContainer" parent="." unique_id=1802276125]
+[node name="InspectorTab" type="Panel" parent="HSplitContainer/Inspector" unique_id=1056349416]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.45200002
-anchor_bottom = 0.57100004
-offset_right = 0.29595947
-offset_bottom = -0.008026123
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="GameView" unique_id=1258534256]
-handle_input_locally = false
-size = Vector2i(521, 370)
-render_target_update_mode = 4
-
-[node name="ObjectDock" type="PanelContainer" parent="." unique_id=148368297]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.57100004
-anchor_right = 0.45200002
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.008026123
-offset_right = 0.29595947
-theme_override_styles/panel = SubResource("StyleBoxFlat_dhn8j")
+grow_horizontal = 2
+grow_vertical = 2

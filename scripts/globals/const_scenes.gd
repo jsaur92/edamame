@@ -5,3 +5,6 @@ const GAME = preload("uid://1q8s36b2tttc")
 const ENVIRONMENT = preload("uid://c4h1sc5o7rilv")
 const OBJECT = preload("uid://6l5iyo5bci0o")
 const INTERACTABLE = preload("uid://dfj6lxi3an2pu")
+
+const EDITOR = preload("uid://be4ok444g1l0f")
+const OBJ_THUMBNAIL = preload("uid://brrgdqby1o2b5")
