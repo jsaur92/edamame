@@ -3,6 +3,7 @@ extends Node2D
 
 @export var tilemap : TileMapLayer
 @export var objects_root : Node2D
+@export var player : Player
 var environment_data : EnvironmentData
 
 func setup(data:EnvironmentData):

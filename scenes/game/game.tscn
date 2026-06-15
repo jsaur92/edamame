@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://4g3556u6dvr5" path="res://scripts/nodes/game.gd" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://di8waredqsywj" path="res://scenes/game/dialog_ui.tscn" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://ba6hhxb84ur15" path="res://scenes/game/command_manager.tscn" id="3_kelw5"]
+[ext_resource type="PackedScene" uid="uid://qkfw666035a3" path="res://scenes/game/hud.tscn" id="3_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://btk78frqhw5g1" path="res://scenes/game/interact_manager.tscn" id="4_lfrn8"]
 
-[node name="Game" type="Control" unique_id=492444174]
+[node name="Game" type="Control" unique_id=492444174 node_paths=PackedStringArray("command_manager", "interact_manager", "dialog_ui", "hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,10 +14,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7h61r")
+command_manager = NodePath("CommandManager")
+interact_manager = NodePath("InteractManager")
+dialog_ui = NodePath("CanvasLayer/DialogUI")
+hud = NodePath("CanvasLayer/HUD")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=798174316]
 process_mode = 3
 
+[node name="HUD" parent="CanvasLayer" unique_id=1606460995 instance=ExtResource("3_lfrn8")]
+
 [node name="DialogUI" parent="CanvasLayer" unique_id=764160478 instance=ExtResource("2_7h61r")]
 visible = false
 z_index = 100
+
+[node name="CommandManager" parent="." unique_id=1990624178 instance=ExtResource("3_kelw5")]
+
+[node name="InteractManager" parent="." unique_id=515512791 instance=ExtResource("4_lfrn8")]
+
+[connection signal="give_item" from="CanvasLayer/DialogUI" to="." method="_on_dialog_ui_give_item"]
+[connection signal="take_item" from="CanvasLayer/DialogUI" to="." method="_on_dialog_ui_take_item"]
+[connection signal="update_current_node" from="CommandManager" to="." method="_on_command_manager_update_current_node"]

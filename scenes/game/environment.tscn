@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://c4h1sc5o7rilv"]
 
 [ext_resource type="Script" uid="uid://c568o2xv8ohvw" path="res://scripts/nodes/environment.gd" id="1_k68ih"]
-[ext_resource type="PackedScene" uid="uid://dxlyubokb3s33" path="res://scenes/game/player.tscn" id="2_5ywcb"]
+[ext_resource type="PackedScene" uid="uid://dxlyubokb3s33" path="res://scenes/player.tscn" id="2_5ywcb"]
 
-[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root")]
+[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root", "player")]
 script = ExtResource("1_k68ih")
 tilemap = NodePath("TileMapLayer")
 objects_root = NodePath("Objects")
+player = NodePath("Player")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1629662108]
 

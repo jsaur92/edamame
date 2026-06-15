@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://qkfw666035a3"]
+
+[ext_resource type="Script" uid="uid://d1gd67s1omyqw" path="res://scripts/nodes/hud.gd" id="1_kqgwg"]
+
+[node name="HUD" type="Control" unique_id=1606460995 node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kqgwg")
+container = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1769919765]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.846
+anchor_right = 1.0
+anchor_bottom = 0.989
+offset_left = 7.0
+offset_top = -0.20800781
+offset_right = -9.0
+offset_bottom = 3.1279907
+grow_horizontal = 2
+grow_vertical = 2

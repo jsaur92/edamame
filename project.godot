@@ -14,11 +14,6 @@ config/name="Edu Game Maker"
 run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
-[autoload]
-
-CommandManager="*uid://ba6hhxb84ur15"
-InteractManager="*uid://btk78frqhw5g1"
-
 [input]
 
 up={

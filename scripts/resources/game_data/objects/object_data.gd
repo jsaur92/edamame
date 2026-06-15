@@ -48,5 +48,9 @@ func has_image() -> bool:
 	return image != null
 
 
+func get_image() -> Image:
+	return image
+
+
 func _to_string() -> String:
 	return name

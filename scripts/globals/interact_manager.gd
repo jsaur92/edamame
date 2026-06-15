@@ -1,3 +1,4 @@
+class_name InteractManager
 extends Node
 
 ## Reference to the Player scene.

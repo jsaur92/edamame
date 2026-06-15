@@ -8,7 +8,7 @@ var direction : Vector2
 signal open_inventory
 
 func _ready() -> void:
-	InteractManager.set_player(self)
+	Game.get_game().interact_manager.set_player(self)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):

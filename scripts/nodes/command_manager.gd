@@ -1,5 +1,6 @@
+class_name CommandManager
 extends Node
-## Singleton that manages all commands.
+## Node that manages all commands.
 ##
 ## When an Interactable's Interact is called, it sends a signal that this Node
 ## receives and handles all of its Command information.
@@ -10,18 +11,22 @@ var current_node : CommandNode
 
 var dialog_ui : DialogUI
 
+signal update_current_node
+
 func set_dialog_ui(d:DialogUI):
 	dialog_ui = d
 
+
 func set_current_node(node:CommandNode):
 	current_node = node
-	get_tree().paused = (node == null)
+	update_current_node.emit(node)
+	get_tree().paused = (node != null)
 
 
 func interact_with(object:GameObject) -> void:
 	current_obj = object
 	current_data = current_obj.object_data
-	current_node = current_data.get_mod(Enums.ObjectModType.INTERACTABLE).get_command_head()
+	set_current_node(current_data.get_mod(Enums.ObjectModType.INTERACTABLE).get_command_head())
 	execute()
 
 
@@ -42,13 +47,13 @@ func execute() -> void:
 		elif command is CommandRemove:
 			execute_remove()
 
+
 func execute_next(index:int) -> void:
 	if current_node.has_next(index):
-		current_node = current_node.next[index]
+		set_current_node(current_node.next[index])
 		execute()
 	else:
-		current_node = null
-		get_tree().paused = false
+		set_current_node(null)
 
 
 func execute_say(command:CommandSay):

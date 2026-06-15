@@ -15,3 +15,7 @@ func _init(_item:int=-1) -> void:
 
 func _to_string() -> String:
 	return "Take Item with uid " + str(item_uid) + "."
+
+
+func get_item() -> ObjectData:
+	return GameDataAccess.get_game_data().object_library.get_object(item_uid)

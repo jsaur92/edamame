@@ -8,20 +8,24 @@ var player_in_range : bool = false
 var game_object : GameObject
 
 signal interacted
+signal add_near_player
+signal remove_near_player
 
 
 func _ready() -> void:
-	connect("interacted", CommandManager.interact_with)
+	interacted.connect(Game.get_game().command_manager.interact_with)
+	add_near_player.connect(Game.get_game().interact_manager.add_near)
+	remove_near_player.connect(Game.get_game().interact_manager.remove_near)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		InteractManager.add_near(self)
+		add_near_player.emit(self)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
 		set_in_range(false)
-		InteractManager.remove_near(self)
+		remove_near_player.emit(self)
 
 
 func _input(event: InputEvent) -> void:
