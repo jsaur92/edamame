@@ -14,6 +14,10 @@ config/name="Edu Game Maker"
 run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 up={
