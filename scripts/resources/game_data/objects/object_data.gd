@@ -38,6 +38,30 @@ func is_interactable() -> bool:
 	return mods.has(Enums.ObjectModType.INTERACTABLE)
 
 
+func set_item(mod:ModItem=ModItem.new()) -> void:
+	mods[Enums.ObjectModType.ITEM] = mod
+
+
+func set_collidable(mod:ModCollidable=ModCollidable.new()) -> void:
+	mods[Enums.ObjectModType.COLLIDABLE] = mod
+
+
+func set_interactable(mod:ModInteractable=ModInteractable.new()) -> void:
+	mods[Enums.ObjectModType.INTERACTABLE] = mod
+
+
+func remove_item() -> bool:
+	return mods.erase(Enums.ObjectModType.ITEM)
+
+
+func remove_collidable() -> bool:
+	return mods.erase(Enums.ObjectModType.COLLIDABLE)
+
+
+func remove_interactable() -> bool:
+	return mods.erase(Enums.ObjectModType.INTERACTABLE)
+
+
 ## Returns a given ObjectMod. Returns null if nonexistent.
 func get_mod(mod_type:Enums.ObjectModType) -> ObjectMod:
 	return mods.get(mod_type)

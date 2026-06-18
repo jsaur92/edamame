@@ -3,19 +3,29 @@
 [ext_resource type="Script" uid="uid://d38227qq5vrnk" path="res://scripts/nodes/inspector_tab.gd" id="1_64xpp"]
 [ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://icon.svg" id="1_fb10o"]
 
-[node name="InspectorTab" type="Panel" unique_id=725383050 node_paths=PackedStringArray("object_icon", "object_name", "width_text", "height_text")]
+[node name="InspectorTab" type="Panel" unique_id=725383050 node_paths=PackedStringArray("name_container", "size_container", "position_container", "toggles_container", "object_icon", "object_name", "width_text", "height_text", "x_text", "y_text", "item_check_box", "collidable_check_box", "interactable_check_box")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_64xpp")
+name_container = NodePath("VBoxContainer/NameContainer")
+size_container = NodePath("VBoxContainer/SizeContainer")
+position_container = NodePath("VBoxContainer/PositionContainer")
+toggles_container = NodePath("VBoxContainer/TogglesContainer")
 object_icon = NodePath("VBoxContainer/ObjectIcon")
-object_name = NodePath("VBoxContainer/NameEdit/NameText")
-width_text = NodePath("VBoxContainer/SizeEdit2/WidthText")
-height_text = NodePath("VBoxContainer/SizeEdit2/HeightText")
+object_name = NodePath("VBoxContainer/NameContainer/NameText")
+width_text = NodePath("VBoxContainer/SizeContainer/WidthText")
+height_text = NodePath("VBoxContainer/SizeContainer/HeightText")
+x_text = NodePath("VBoxContainer/PositionContainer/xText")
+y_text = NodePath("VBoxContainer/PositionContainer/yText")
+item_check_box = NodePath("VBoxContainer/TogglesContainer/IsItemCheckBox")
+collidable_check_box = NodePath("VBoxContainer/TogglesContainer/IsCollidableCheckBox")
+interactable_check_box = NodePath("VBoxContainer/TogglesContainer/IsInteractableCheckBox")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=620428660]
+clip_contents = true
 layout_mode = 0
 offset_left = 17.0
 offset_top = 17.0
@@ -23,43 +33,101 @@ offset_right = 208.0
 offset_bottom = 631.0
 theme_override_constants/separation = 17
 
-[node name="NameEdit" type="HBoxContainer" parent="VBoxContainer" unique_id=575844230]
+[node name="NameContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=575844230]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
-theme_override_constants/separation = 10
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/NameEdit" unique_id=1089242522]
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameContainer" unique_id=1089242522]
 layout_mode = 2
 text = "Name:"
 
-[node name="NameText" type="TextEdit" parent="VBoxContainer/NameEdit" unique_id=1620275179]
+[node name="spacer" type="Control" parent="VBoxContainer/NameContainer" unique_id=1747731926]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="NameText" type="TextEdit" parent="VBoxContainer/NameContainer" unique_id=1620275179]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "name"
 
-[node name="SizeEdit2" type="HBoxContainer" parent="VBoxContainer" unique_id=1059017040]
+[node name="SizeContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1059017040]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 
-[node name="SizeLabel" type="Label" parent="VBoxContainer/SizeEdit2" unique_id=1298539472]
+[node name="SizeLabel" type="Label" parent="VBoxContainer/SizeContainer" unique_id=1298539472]
 layout_mode = 2
 text = "Size:"
 
-[node name="WidthText" type="SpinBox" parent="VBoxContainer/SizeEdit2" unique_id=330602374]
+[node name="spacer" type="Control" parent="VBoxContainer/SizeContainer" unique_id=975250371]
+custom_minimum_size = Vector2(29, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-max_value = 999.0
+
+[node name="WidthText" type="SpinBox" parent="VBoxContainer/SizeContainer" unique_id=330602374]
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 256.0
 rounded = true
 
-[node name="xLabel" type="Label" parent="VBoxContainer/SizeEdit2" unique_id=914104648]
+[node name="xLabel" type="Label" parent="VBoxContainer/SizeContainer" unique_id=914104648]
 layout_mode = 2
 text = "x"
 
-[node name="HeightText" type="SpinBox" parent="VBoxContainer/SizeEdit2" unique_id=211195195]
+[node name="HeightText" type="SpinBox" parent="VBoxContainer/SizeContainer" unique_id=211195195]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+max_value = 256.0
+rounded = true
+
+[node name="PositionContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1542386048]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SizeLabel" type="Label" parent="VBoxContainer/PositionContainer" unique_id=1879473098]
+layout_mode = 2
+text = "Position:"
+
+[node name="xText" type="SpinBox" parent="VBoxContainer/PositionContainer" unique_id=1077546954]
+layout_mode = 2
+rounded = true
+allow_greater = true
+allow_lesser = true
+
+[node name=",Label" type="Label" parent="VBoxContainer/PositionContainer" unique_id=1612775003]
+layout_mode = 2
+text = ", "
+
+[node name="yText" type="SpinBox" parent="VBoxContainer/PositionContainer" unique_id=1459879926]
+layout_mode = 2
+rounded = true
+allow_greater = true
+allow_lesser = true
+
+[node name="TogglesContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=290168285]
+layout_mode = 2
+
+[node name="IsItemCheckBox" type="CheckBox" parent="VBoxContainer/TogglesContainer" unique_id=962643130]
+layout_mode = 2
+text = "Is Holdable"
+
+[node name="IsCollidableCheckBox" type="CheckBox" parent="VBoxContainer/TogglesContainer" unique_id=1584964402]
+layout_mode = 2
+text = "Is Obstacle"
+
+[node name="IsInteractableCheckBox" type="CheckBox" parent="VBoxContainer/TogglesContainer" unique_id=1316514000]
+layout_mode = 2
+text = "Is Interactable"
 
 [node name="ObjectIcon" type="TextureRect" parent="VBoxContainer" unique_id=1839320702]
 layout_mode = 2
 texture = ExtResource("1_fb10o")
 stretch_mode = 2
+
+[connection signal="text_changed" from="VBoxContainer/NameContainer/NameText" to="." method="_on_name_text_text_changed"]
+[connection signal="value_changed" from="VBoxContainer/SizeContainer/WidthText" to="." method="_on_width_text_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SizeContainer/HeightText" to="." method="_on_height_text_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PositionContainer/xText" to="." method="_on_x_text_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PositionContainer/yText" to="." method="_on_y_text_value_changed"]
+[connection signal="toggled" from="VBoxContainer/TogglesContainer/IsItemCheckBox" to="." method="_on_is_item_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/TogglesContainer/IsCollidableCheckBox" to="." method="_on_is_collidable_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/TogglesContainer/IsInteractableCheckBox" to="." method="_on_is_interactable_check_box_toggled"]

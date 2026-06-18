@@ -23,5 +23,4 @@ func update_objects_dock() -> void:
 
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
-	print("clicked: " + str(ot))
 	inspector_tab.update_panel(ot.get_object())
