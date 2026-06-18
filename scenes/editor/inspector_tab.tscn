@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://crkluhthhepo1"]
+
+[ext_resource type="Script" uid="uid://d38227qq5vrnk" path="res://scripts/nodes/inspector_tab.gd" id="1_64xpp"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://icon.svg" id="1_fb10o"]
+
+[node name="InspectorTab" type="Panel" unique_id=725383050 node_paths=PackedStringArray("object_icon", "object_name", "width_text", "height_text")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_64xpp")
+object_icon = NodePath("VBoxContainer/ObjectIcon")
+object_name = NodePath("VBoxContainer/NameEdit/NameText")
+width_text = NodePath("VBoxContainer/SizeEdit2/WidthText")
+height_text = NodePath("VBoxContainer/SizeEdit2/HeightText")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=620428660]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 208.0
+offset_bottom = 631.0
+theme_override_constants/separation = 17
+
+[node name="NameEdit" type="HBoxContainer" parent="VBoxContainer" unique_id=575844230]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameEdit" unique_id=1089242522]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameText" type="TextEdit" parent="VBoxContainer/NameEdit" unique_id=1620275179]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "name"
+
+[node name="SizeEdit2" type="HBoxContainer" parent="VBoxContainer" unique_id=1059017040]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+
+[node name="SizeLabel" type="Label" parent="VBoxContainer/SizeEdit2" unique_id=1298539472]
+layout_mode = 2
+text = "Size:"
+
+[node name="WidthText" type="SpinBox" parent="VBoxContainer/SizeEdit2" unique_id=330602374]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999.0
+rounded = true
+
+[node name="xLabel" type="Label" parent="VBoxContainer/SizeEdit2" unique_id=914104648]
+layout_mode = 2
+text = "x"
+
+[node name="HeightText" type="SpinBox" parent="VBoxContainer/SizeEdit2" unique_id=211195195]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer" unique_id=1839320702]
+layout_mode = 2
+texture = ExtResource("1_fb10o")
+stretch_mode = 2
