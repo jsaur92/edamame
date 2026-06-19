@@ -67,9 +67,7 @@ func set_vis() -> void:
 
 
 func update_image(object:ObjectData) -> void:
-	var img = object.get_image().duplicate(true)
-	img.resize(object.image_scale.x * img.get_width(), object.image_scale.y * img.get_height(), Image.INTERPOLATE_NEAREST)
-	object_icon.texture = ImageTexture.create_from_image(img)
+	object_icon.texture = ImageTexture.create_from_image( object.get_scaled_image() )
 
 
 func _on_name_text_text_changed() -> void:

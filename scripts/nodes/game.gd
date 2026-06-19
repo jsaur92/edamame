@@ -7,6 +7,7 @@ extends Control
 @export var dialog_ui : DialogUI
 @export var hud : HUD
 var environment : GameEnvironment
+var player : Player
 ## Reference to singleton of self
 static var game : Game
 
@@ -24,15 +25,18 @@ func _ready() -> void:
 	environment = ConstScenes.ENVIRONMENT.instantiate()
 	add_child(environment)
 	environment.setup(game_data.get_environment())
+	player = ConstScenes.PLAYER.instantiate()
+	environment.add_child(player)
+	environment.player = player
 
 
 func _on_dialog_ui_give_item(item:ObjectData) -> void:
-	environment.player.inventory.add_item(item)
+	player.inventory.add_item(item)
 	update_hud()
 
 
 func _on_dialog_ui_take_item(item:ObjectData) -> void:
-	environment.player.inventory.remove_item(item)
+	player.inventory.remove_item(item)
 	update_hud()
 
 
@@ -41,4 +45,4 @@ func _on_command_manager_update_current_node(node:CommandNode) -> void:
 
 
 func update_hud() -> void:
-	hud.update_items(environment.player.inventory)
+	hud.update_items(player.inventory)

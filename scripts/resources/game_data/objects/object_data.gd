@@ -76,5 +76,13 @@ func get_image() -> Image:
 	return image
 
 
+func get_scaled_image() -> Image:
+	if image == null:
+		return null
+	var i = get_image().duplicate()
+	i.resize(get_image().get_size().x * image_scale.x, get_image().get_size().y * image_scale.y, Image.INTERPOLATE_NEAREST)
+	return i
+
+
 func _to_string() -> String:
 	return name

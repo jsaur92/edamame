@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bb2hhnsxv1534"]
+
+[ext_resource type="Script" uid="uid://dn0fg3xqule26" path="res://scripts/nodes/dragable_container.gd" id="1_0syxh"]
+
+[node name="DragableContainer" type="Control" unique_id=101992152]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0syxh")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -6,16 +6,20 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "draggables_root")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_bc6i7")
 objects_dock = NodePath("HSplitContainer/VSplitContainer/Panel/ObjectsDock")
 inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
+game_viewport = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
+environment_graph = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer")
+draggables_root = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/DraggablesRoot")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
@@ -24,22 +28,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 split_offsets = PackedInt32Array(852)
 split_offset = 852
 
 [node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer" unique_id=346023758]
 layout_mode = 2
-split_offsets = PackedInt32Array(516)
-split_offset = 516
+mouse_filter = 2
+split_offsets = PackedInt32Array(512)
+split_offset = 512
 
-[node name="GameView" type="SubViewportContainer" parent="HSplitContainer/VSplitContainer" unique_id=1802276125]
+[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/VSplitContainer" unique_id=868302950]
 layout_mode = 2
-stretch = true
+scroll_offset = Vector2(0, -300)
+minimap_size = Vector2(180, 120)
 
-[node name="SubViewport" type="SubViewport" parent="HSplitContainer/VSplitContainer/GameView" unique_id=1258534256]
+[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameViewport" type="SubViewport" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(852, 516)
+size = Vector2i(852, 512)
+size_2d_override_stretch = true
 render_target_update_mode = 4
+
+[node name="DraggablesRoot" type="Control" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="HSplitContainer/VSplitContainer" unique_id=1907634130]
 layout_mode = 2
@@ -145,3 +171,5 @@ anchor_bottom = 1.0020001
 offset_bottom = -1.2960815
 grow_horizontal = 1
 grow_vertical = 1
+
+[connection signal="scroll_offset_changed" from="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]

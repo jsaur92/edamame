@@ -13,9 +13,11 @@ signal remove_near_player
 
 
 func _ready() -> void:
-	interacted.connect(Game.get_game().command_manager.interact_with)
-	add_near_player.connect(Game.get_game().interact_manager.add_near)
-	remove_near_player.connect(Game.get_game().interact_manager.remove_near)
+	if Game.get_game() != null:
+		interacted.connect(Game.get_game().command_manager.interact_with)
+		add_near_player.connect(Game.get_game().interact_manager.add_near)
+		remove_near_player.connect(Game.get_game().interact_manager.remove_near)
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
