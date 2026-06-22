@@ -7,7 +7,7 @@ extends Control
 @export var inspector_tab : InspectorTab
 @export var game_viewport : SubViewport
 @export var environment_graph : GraphEdit
-@export var draggables_root : Control
+@export var dragables_root : Control
 var environment : GameEnvironment
 
 ## Sets game_data. Call after instantiation and before adding as child of scene.
@@ -29,7 +29,7 @@ func _ready() -> void:
 	#wrap all objects in DragableContainers.
 	for object in environment.get_objects():
 		var dc = DragableContainer.setup(object)
-		draggables_root.add_child(dc)
+		dragables_root.add_child(dc)
 		dc.clicked.connect(_on_dragable_container_clicked)
 		dc.changed.connect(_on_dragable_container_moved)
 
@@ -59,13 +59,13 @@ func _on_dragable_container_moved(dc:DragableContainer) -> void:
 func _on_inspector_value_changed(object:Variant) -> void:
 	#for updating object data, find every instance of an object and update them.
 	if object is ObjectData:
-		for dragable:DragableContainer in draggables_root.get_children():
+		for dragable:DragableContainer in dragables_root.get_children():
 			if dragable.contained.get_object_data() == object:
 				dragable.update()
 	
 	#for updating instance data, find the instance and update it.
 	elif object is ObjectInstanceData:
-		for dragable:DragableContainer in draggables_root.get_children():
+		for dragable:DragableContainer in dragables_root.get_children():
 			if dragable.contained.get_instance_data() == object:
 				dragable.update()
 				break

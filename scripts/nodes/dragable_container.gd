@@ -32,7 +32,6 @@ static func setup(child:GameObject) -> DragableContainer:
 func update() -> void:
 	contained.update()
 	size = contained.object_data.get_scaled_image().get_size()
-	print(contained.position)
 	position = contained.position - size/2
 
 

@@ -29,6 +29,7 @@ signal edited
 func _ready() -> void:
 	update_panel(null)
 
+
 ## Used whenever a new object is selected. Gives the object to a helper function
 ## to handle it based on the object's type.
 func update_panel(object:Resource) -> void:
@@ -103,25 +104,29 @@ func _on_name_text_text_changed() -> void:
 
 
 func _on_width_text_value_changed(value: float) -> void:
-	current_object_data.image_scale.x = value / current_object_data.get_image().duplicate(true).get_width()
-	update_image(current_object_data)
-	edited.emit(current_object_data)
+	if width_text.get_line_edit().has_focus():
+		current_object_data.image_scale.x = value / current_object_data.get_image().duplicate(true).get_width()
+		update_image(current_object_data)
+		edited.emit(current_object_data)
 
 
 func _on_height_text_value_changed(value: float) -> void:
-	current_object_data.image_scale.y = value / current_object_data.get_image().duplicate(true).get_height()
-	update_image(current_object_data)
-	edited.emit(current_object_data)
+	if height_text.has_focus():
+		current_object_data.image_scale.y = value / current_object_data.get_image().duplicate(true).get_height()
+		update_image(current_object_data)
+		edited.emit(current_object_data)
 
 
 func _on_x_text_value_changed(value: float) -> void:
-	current_object_instance.position.x = value
-	edited.emit(current_object_instance)
+	if x_text.has_focus():
+		current_object_instance.position.x = value
+		edited.emit(current_object_instance)
 
 
 func _on_y_text_value_changed(value: float) -> void:
-	current_object_instance.position.y = value
-	edited.emit(current_object_instance)
+	if y_text.has_focus():
+		current_object_instance.position.y = value
+		edited.emit(current_object_instance)
 
 
 func _on_is_item_check_box_toggled(toggled_on: bool) -> void:

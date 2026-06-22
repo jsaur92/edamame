@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "draggables_root")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ objects_dock = NodePath("HSplitContainer/VSplitContainer/Panel/ObjectsDock")
 inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
 game_viewport = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer")
-draggables_root = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/DraggablesRoot")
+dragables_root = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
@@ -57,7 +57,7 @@ size = Vector2i(852, 512)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="DraggablesRoot" type="Control" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
+[node name="DragablesRoot" type="Control" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
