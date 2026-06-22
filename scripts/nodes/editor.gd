@@ -24,9 +24,14 @@ func _ready() -> void:
 	game_viewport.add_child(environment)
 	environment.setup(game_data.get_environment())
 	
+	inspector_tab.edited.connect(_on_inspector_value_changed)
+	
 	#wrap all objects in DragableContainers.
 	for object in environment.get_objects():
-		draggables_root.add_child(DragableContainer.setup(object))
+		var dc = DragableContainer.setup(object)
+		draggables_root.add_child(dc)
+		dc.clicked.connect(_on_dragable_container_clicked)
+		dc.changed.connect(_on_dragable_container_moved)
 
 
 func update_objects_dock() -> void:
@@ -40,6 +45,30 @@ func update_objects_dock() -> void:
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	inspector_tab.update_panel(ot.get_object())
+
+
+func _on_dragable_container_clicked(dc:DragableContainer) -> void:
+	inspector_tab.update_panel(dc.get_object_instance())
+
+
+func _on_dragable_container_moved(dc:DragableContainer) -> void:
+	inspector_tab.update_panel(dc.get_object_instance())
+
+
+## object can be of type ObjectData or ObjectInstanceData.
+func _on_inspector_value_changed(object:Variant) -> void:
+	#for updating object data, find every instance of an object and update them.
+	if object is ObjectData:
+		for dragable:DragableContainer in draggables_root.get_children():
+			if dragable.contained.get_object_data() == object:
+				dragable.update()
+	
+	#for updating instance data, find the instance and update it.
+	elif object is ObjectInstanceData:
+		for dragable:DragableContainer in draggables_root.get_children():
+			if dragable.contained.get_instance_data() == object:
+				dragable.update()
+				break
 
 
 ## Called when the GraphEdit's offset is chaged either by using the minimap or scroll bars.

@@ -5,12 +5,15 @@ var contained : GameObject
 var held : bool = false
 var time_last_clicked : int = 0
 var shadow : Sprite2D
+signal clicked
+## emit when a value of the attached GameObject is changed (i.e. when its
+## position is changed by dragging it).
+signal changed
 
 static func setup(child:GameObject) -> DragableContainer:
 	var container : DragableContainer = ConstScenes.DRAGABLE_CONTAINER.instantiate()
 	container.contained = child
-	container.size = child.object_data.get_scaled_image().get_size()
-	container.position = child.position - container.size/2
+	container.update()
 	
 	# makes the shadow for picking up. this is kind of superfluous and not coded great
 	# but it is fun.
@@ -24,6 +27,13 @@ static func setup(child:GameObject) -> DragableContainer:
 	container.shadow = s
 	
 	return container
+
+
+func update() -> void:
+	contained.update()
+	size = contained.object_data.get_scaled_image().get_size()
+	print(contained.position)
+	position = contained.position - size/2
 
 
 func _process(delta: float) -> void:
@@ -40,11 +50,18 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		held = Input.is_action_just_pressed("click")
 		if held:
+			clicked.emit(self)
 			time_last_clicked = Time.get_ticks_msec()
 	elif event is InputEventMouseMotion:
 		if held:
 			position += event.relative
+			contained.get_instance_data().set_position(contained.position)
+			changed.emit(self)
 
 
 func get_time_since_clicked() -> float:
 	return (Time.get_ticks_msec()-time_last_clicked) / 1000.
+
+
+func get_object_instance() -> ObjectInstanceData:
+	return contained.get_instance_data()

@@ -7,11 +7,17 @@ extends Node2D
 @export var collision_shape : CollisionShape2D
 
 func _ready() -> void:
-	setup_position()
+	update_position()
 
 
-func setup_position() -> void:
+func update_position() -> void:
 	position = instance_data.position
+
+
+func update_image() -> void:
+	if object_data.has_image():
+		sprite.texture = ImageTexture.create_from_image(object_data.image)
+		sprite.scale = object_data.image_scale
 
 
 func load_data(obj_inst : ObjectInstanceData) -> void:
@@ -24,12 +30,23 @@ func load_data(obj_inst : ObjectInstanceData) -> void:
 		var i : Interactable = ConstScenes.INTERACTABLE.instantiate()
 		i.setup(self)
 		add_child(i)
-	if object_data.has_image():
-		sprite.texture = ImageTexture.create_from_image(object_data.image)
-		sprite.scale = object_data.image_scale
+	update_image()
+
+
+func update() -> void:
+	update_position()
+	update_image()
 
 
 func get_interactable() -> Interactable:
 	if object_data.is_interactable():
 		return find_child("Interactable")
 	return null
+
+
+func get_object_data() -> ObjectData:
+	return object_data
+
+
+func get_instance_data() -> ObjectInstanceData:
+	return instance_data

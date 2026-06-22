@@ -19,6 +19,13 @@ extends Panel
 var current_object_data : ObjectData
 var current_object_instance : ObjectInstanceData
 
+## Emitted whenever the value of an object or object instance changes in the
+## inspector. Passes the changed object/instance. In the future, this could
+## also pass the changed value so that it only adjusts that.
+## Only emit on things that would change the objects displayed in the environment,
+## like size.
+signal edited
+
 func _ready() -> void:
 	update_panel(null)
 
@@ -53,17 +60,38 @@ func update_panel_object(object:ObjectData) -> void:
 ## Update the panel based on an ObjectInstanceData.
 func update_panel_instance(object:ObjectInstanceData) -> void:
 	update_panel_object(object.object_data)
-	x_text.text = str(object.position.x)
-	y_text.text = str(object.position.y)
+	x_text.set_value_no_signal(object.position.x)
+	y_text.set_value_no_signal(object.position.y)
 
 
 ## Set the visibility of containers and nodes based on current data availability.
 func set_vis() -> void:
-	name_container.visible 		= current_object_data != null
-	size_container.visible 		= current_object_data != null
-	position_container.visible 	= current_object_instance != null
-	toggles_container.visible	= current_object_data != null
-	object_icon.visible 		= current_object_data != null
+	# helper variables
+	var c_has_object_data = current_object_data != null
+	var c_has_instance_data = current_object_instance != null
+	var c_is_object_not_instance = c_has_object_data and not c_has_instance_data
+	
+	name_container.visible 		= c_has_object_data
+	size_container.visible 		= c_has_object_data
+	position_container.visible 	= c_has_instance_data
+	toggles_container.visible	= c_has_object_data
+	object_icon.visible 		= c_has_object_data
+	
+	set_container_editable(name_container, c_is_object_not_instance)
+	set_container_editable(size_container, c_is_object_not_instance)
+	set_container_editable(toggles_container, c_is_object_not_instance)
+	
+
+
+## Helper function for set_vis().
+func set_container_editable(container:Container, editable:bool=true) -> void:
+	for child in container.get_children():
+		# for the text / number edits
+		if child.get("editable") != null:
+			child.set("editable", editable)
+		# for the checkboxes / buttons
+		if child.get("disabled") != null:
+			child.set("disabled", not editable)
 
 
 func update_image(object:ObjectData) -> void:
@@ -77,19 +105,23 @@ func _on_name_text_text_changed() -> void:
 func _on_width_text_value_changed(value: float) -> void:
 	current_object_data.image_scale.x = value / current_object_data.get_image().duplicate(true).get_width()
 	update_image(current_object_data)
+	edited.emit(current_object_data)
 
 
 func _on_height_text_value_changed(value: float) -> void:
 	current_object_data.image_scale.y = value / current_object_data.get_image().duplicate(true).get_height()
 	update_image(current_object_data)
+	edited.emit(current_object_data)
 
 
 func _on_x_text_value_changed(value: float) -> void:
 	current_object_instance.position.x = value
+	edited.emit(current_object_instance)
 
 
 func _on_y_text_value_changed(value: float) -> void:
 	current_object_instance.position.y = value
+	edited.emit(current_object_instance)
 
 
 func _on_is_item_check_box_toggled(toggled_on: bool) -> void:

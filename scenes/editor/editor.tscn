@@ -40,7 +40,6 @@ split_offset = 512
 
 [node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/VSplitContainer" unique_id=868302950]
 layout_mode = 2
-scroll_offset = Vector2(0, -300)
 minimap_size = Vector2(180, 120)
 
 [node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]

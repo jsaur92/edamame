@@ -65,7 +65,9 @@ layout_mode = 2
 [node name="WidthText" type="SpinBox" parent="VBoxContainer/SizeContainer" unique_id=330602374]
 layout_mode = 2
 size_flags_horizontal = 4
+min_value = 1.0
 max_value = 256.0
+value = 1.0
 rounded = true
 
 [node name="xLabel" type="Label" parent="VBoxContainer/SizeContainer" unique_id=914104648]
@@ -75,7 +77,9 @@ text = "x"
 [node name="HeightText" type="SpinBox" parent="VBoxContainer/SizeContainer" unique_id=211195195]
 layout_mode = 2
 size_flags_horizontal = 4
+min_value = 1.0
 max_value = 256.0
+value = 1.0
 rounded = true
 
 [node name="PositionContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1542386048]
@@ -116,11 +120,12 @@ text = "Is Obstacle"
 
 [node name="IsInteractableCheckBox" type="CheckBox" parent="VBoxContainer/TogglesContainer" unique_id=1316514000]
 layout_mode = 2
-text = "Is Interactable"
+text = "Is Interactive"
 
 [node name="ObjectIcon" type="TextureRect" parent="VBoxContainer" unique_id=1839320702]
 layout_mode = 2
 texture = ExtResource("1_fb10o")
+expand_mode = 1
 stretch_mode = 2
 
 [connection signal="text_changed" from="VBoxContainer/NameContainer/NameText" to="." method="_on_name_text_text_changed"]

@@ -18,3 +18,7 @@ func setup(_object_data:ObjectData, _position:Vector2=Vector2.ZERO, _default_sta
 	object_data = _object_data
 	position = _position
 	default_state = _default_state
+
+
+func set_position(pos:Vector2) -> void:
+	position = pos
