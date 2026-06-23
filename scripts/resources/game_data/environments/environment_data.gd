@@ -26,3 +26,7 @@ func get_tilemap_pattern() -> TileMapPattern:
 
 func get_objects() -> Array[ObjectInstanceData]:
 	return objects
+
+
+func add_object(obj:ObjectInstanceData) -> void:
+	objects.append(obj)

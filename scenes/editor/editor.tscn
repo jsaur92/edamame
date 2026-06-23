@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,11 +15,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bc6i7")
-objects_dock = NodePath("HSplitContainer/VSplitContainer/Panel/ObjectsDock")
+objects_dock = NodePath("HSplitContainer/Control/VSplitContainer/Panel/ObjectsDock")
 inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
-game_viewport = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
-environment_graph = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer")
-dragables_root = NodePath("HSplitContainer/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
+game_viewport = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
+environment_graph = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer")
+dragables_root = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
+above_left_side = NodePath("HSplitContainer/Control/AboveLeftSide")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
@@ -29,20 +30,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-split_offsets = PackedInt32Array(852)
-split_offset = 852
+split_offsets = PackedInt32Array(832)
+split_offset = 832
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer" unique_id=346023758]
+[node name="Control" type="Control" parent="HSplitContainer" unique_id=1965081007]
 layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Control" unique_id=346023758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 split_offsets = PackedInt32Array(512)
 split_offset = 512
 
-[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/VSplitContainer" unique_id=868302950]
+[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/Control/VSplitContainer" unique_id=868302950]
 layout_mode = 2
+scroll_offset = Vector2(-516, 0)
 minimap_size = Vector2(180, 120)
 
-[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
+[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,14 +60,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameViewport" type="SubViewport" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
+[node name="GameViewport" type="SubViewport" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(852, 512)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="DragablesRoot" type="Control" parent="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
+[node name="DragablesRoot" type="Control" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,10 +76,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="HSplitContainer/VSplitContainer" unique_id=1907634130]
+[node name="Panel" type="Panel" parent="HSplitContainer/Control/VSplitContainer" unique_id=1907634130]
 layout_mode = 2
 
-[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/VSplitContainer/Panel" unique_id=1870313904]
+[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/Control/VSplitContainer/Panel" unique_id=1870313904]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -77,6 +87,15 @@ anchor_bottom = 1.868
 offset_top = 4.0
 offset_bottom = -99.64801
 grow_horizontal = 2
+
+[node name="AboveLeftSide" type="Control" parent="HSplitContainer/Control" unique_id=1333352097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Inspector" type="Control" parent="HSplitContainer" unique_id=1516780413]
 layout_mode = 2
@@ -107,6 +126,7 @@ anchor_right = 0.734
 anchor_bottom = 1.0020001
 offset_right = -0.15402222
 offset_bottom = -0.29608154
+scroll_offset = Vector2(-8.653978, 0)
 show_grid = false
 grid_pattern = 1
 snapping_enabled = false
@@ -117,9 +137,9 @@ type_names = {
 
 [node name="GraphNode" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=88306796]
 layout_mode = 0
-offset_left = 105.0
+offset_left = 113.65398
 offset_top = 191.0
-offset_right = 296.0
+offset_right = 304.654
 offset_bottom = 301.0
 mouse_filter = 1
 position_offset = Vector2(105, 191)
@@ -141,9 +161,9 @@ text = "test"
 
 [node name="GraphNode2" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=926399723]
 layout_mode = 0
-offset_left = 449.0
+offset_left = 457.654
 offset_top = 173.0
-offset_right = 640.0
+offset_right = 648.654
 offset_bottom = 276.0
 mouse_filter = 1
 position_offset = Vector2(449, 173)
@@ -171,4 +191,4 @@ offset_bottom = -1.2960815
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="scroll_offset_changed" from="HSplitContainer/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
+[connection signal="scroll_offset_changed" from="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]

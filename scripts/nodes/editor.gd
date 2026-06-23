@@ -8,7 +8,9 @@ extends Control
 @export var game_viewport : SubViewport
 @export var environment_graph : GraphEdit
 @export var dragables_root : Control
+@export var above_left_side : Control
 var environment : GameEnvironment
+var scroll_offset : Vector2 = Vector2.ZERO
 
 ## Sets game_data. Call after instantiation and before adding as child of scene.
 func setup(_game_data:GameData):
@@ -26,12 +28,10 @@ func _ready() -> void:
 	
 	inspector_tab.edited.connect(_on_inspector_value_changed)
 	
-	#wrap all objects in DragableContainers.
+	#wrap all objects from environment in DragableContainers.
 	for object in environment.get_objects():
 		var dc = DragableContainer.setup(object)
-		dragables_root.add_child(dc)
-		dc.clicked.connect(_on_dragable_container_clicked)
-		dc.changed.connect(_on_dragable_container_moved)
+		add_dragable(dc)
 
 
 func update_objects_dock() -> void:
@@ -41,10 +41,25 @@ func update_objects_dock() -> void:
 		var ot = ObjectThumbnail.create_from_object_data(object)
 		objects_dock.add_child(ot)
 		ot.clicked.connect(_on_object_thumbnail_clicked)
+		ot.make_obj_inst.connect(_on_dragable_container_made)
+
+
+func add_dragable(dc:DragableContainer) -> void:
+	dragables_root.add_child(dc)
+	dc.clicked.connect(_on_dragable_container_clicked)
+	dc.changed.connect(_on_dragable_container_moved)
 
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	inspector_tab.update_panel(ot.get_object())
+
+
+func _on_dragable_container_made(dc:DragableContainer) -> void:
+	print("blehh")
+	dc.get_object_instance().position += scroll_offset
+	environment.add_object(dc.get_object_instance())
+	add_dragable(dc)
+	print(environment.get_objects().size())
 
 
 func _on_dragable_container_clicked(dc:DragableContainer) -> void:
@@ -73,6 +88,7 @@ func _on_inspector_value_changed(object:Variant) -> void:
 
 ## Called when the GraphEdit's offset is chaged either by using the minimap or scroll bars.
 func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> void:
+	scroll_offset = offset
 	if environment != null:
 		environment.position = -offset
 		# TODO: make zoom work

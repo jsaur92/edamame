@@ -6,7 +6,9 @@ extends Control
 @export var texrect : TextureRect
 @export var label : RichTextLabel
 var object_data : ObjectData
+var held : bool = false
 signal clicked
+signal make_obj_inst
 
 static func create_from_object_data(object:ObjectData) -> ObjectThumbnail:
 	var ot : ObjectThumbnail = ConstScenes.OBJ_THUMBNAIL.instantiate()
@@ -27,5 +29,15 @@ func get_object() -> ObjectData:
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		clicked.emit(self)
+	if event is InputEventMouseButton:
+		held = event.is_pressed()
+		if held:
+			clicked.emit(self)
+	elif event is InputEventMouseMotion:
+		if held:
+			#spawn in an object icon that is held by the mouse
+			var o = ObjectInstanceData.new()
+			o.setup(object_data, event.global_position)
+			var dc = DragableContainer.setup( GameObject.setup( o ) )
+			make_obj_inst.emit(dc)
+			held = false

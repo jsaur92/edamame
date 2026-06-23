@@ -6,6 +6,12 @@ extends Node2D
 @export var sprite : Sprite2D
 @export var collision_shape : CollisionShape2D
 
+static func setup(obj_inst : ObjectInstanceData) -> GameObject:
+	var go : GameObject = ConstScenes.OBJECT.instantiate()
+	go.load_data(obj_inst)
+	return go
+
+
 func _ready() -> void:
 	update_position()
 

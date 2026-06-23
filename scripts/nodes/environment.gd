@@ -21,8 +21,7 @@ func setup_objects():
 	for child in get_objects():
 		child.queue_free()
 	for object in environment_data.get_objects():
-		var new_obj : GameObject = ConstScenes.OBJECT.instantiate()
-		new_obj.load_data(object)
+		var new_obj : GameObject = GameObject.setup(object)
 		objects_root.add_child(new_obj)
 
 
@@ -33,3 +32,12 @@ func get_objects() -> Array[GameObject]:
 	var objects : Array[GameObject] = []
 	objects.append_array(children)
 	return objects
+
+
+## Add ObjectInstanceData to the environment_data and return the generated
+## GameObject made in objects_root.
+func add_object(object_instance:ObjectInstanceData) -> GameObject:
+	environment_data.add_object(object_instance)
+	var new_obj = GameObject.setup(object_instance)
+	objects_root.add_child( new_obj )
+	return new_obj

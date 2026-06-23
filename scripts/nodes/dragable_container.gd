@@ -6,6 +6,7 @@ var held : bool = false
 var time_last_clicked : int = 0
 var shadow : Sprite2D
 signal clicked
+signal dropped
 ## emit when a value of the attached GameObject is changed (i.e. when its
 ## position is changed by dragging it).
 signal changed
@@ -51,6 +52,8 @@ func _on_gui_input(event: InputEvent) -> void:
 		if held:
 			clicked.emit(self)
 			time_last_clicked = Time.get_ticks_msec()
+		else:
+			dropped.emit(self)
 	elif event is InputEventMouseMotion:
 		if held:
 			position += event.relative
