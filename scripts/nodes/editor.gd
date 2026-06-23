@@ -41,7 +41,7 @@ func update_objects_dock() -> void:
 		var ot = ObjectThumbnail.create_from_object_data(object)
 		objects_dock.add_child(ot)
 		ot.clicked.connect(_on_object_thumbnail_clicked)
-		ot.make_obj_inst.connect(_on_dragable_container_made)
+		ot.make_obj_inst.connect(_on_object_thumbnail_dragged)
 
 
 func add_dragable(dc:DragableContainer) -> void:
@@ -54,12 +54,11 @@ func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	inspector_tab.update_panel(ot.get_object())
 
 
-func _on_dragable_container_made(dc:DragableContainer) -> void:
-	print("blehh")
-	dc.get_object_instance().position += scroll_offset
-	environment.add_object(dc.get_object_instance())
-	add_dragable(dc)
-	print(environment.get_objects().size())
+func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
+	var o = ObjectInstanceData.new()
+	o.setup(ot.get_object())
+	var go = GameObject.setup(o)
+	above_left_side.add_child( DragableControlParent.make(go, true) )
 
 
 func _on_dragable_container_clicked(dc:DragableContainer) -> void:

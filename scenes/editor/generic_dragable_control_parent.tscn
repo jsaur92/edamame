@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://kf8ej751k86u"]
+
+[ext_resource type="Script" uid="uid://2i3pbxvucf1i" path="res://scripts/nodes/generic_dragable_control_parent.gd" id="1_on7rj"]
+
+[node name="DragableControlParent" type="Control" unique_id=101992152]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_on7rj")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

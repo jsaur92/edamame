@@ -35,6 +35,7 @@ split_offset = 832
 
 [node name="Control" type="Control" parent="HSplitContainer" unique_id=1965081007]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Control" unique_id=346023758]
 layout_mode = 1
@@ -89,6 +90,7 @@ offset_bottom = -99.64801
 grow_horizontal = 2
 
 [node name="AboveLeftSide" type="Control" parent="HSplitContainer/Control" unique_id=1333352097]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

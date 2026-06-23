@@ -35,9 +35,5 @@ func _on_gui_input(event: InputEvent) -> void:
 			clicked.emit(self)
 	elif event is InputEventMouseMotion:
 		if held:
-			#spawn in an object icon that is held by the mouse
-			var o = ObjectInstanceData.new()
-			o.setup(object_data, event.global_position)
-			var dc = DragableContainer.setup( GameObject.setup( o ) )
-			make_obj_inst.emit(dc)
+			make_obj_inst.emit(self)
 			held = false
