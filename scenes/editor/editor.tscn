@@ -50,7 +50,6 @@ split_offset = 512
 
 [node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/Control/VSplitContainer" unique_id=868302950]
 layout_mode = 2
-scroll_offset = Vector2(-516, 0)
 minimap_size = Vector2(180, 120)
 
 [node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
@@ -128,7 +127,6 @@ anchor_right = 0.734
 anchor_bottom = 1.0020001
 offset_right = -0.15402222
 offset_bottom = -0.29608154
-scroll_offset = Vector2(-8.653978, 0)
 show_grid = false
 grid_pattern = 1
 snapping_enabled = false
@@ -139,9 +137,9 @@ type_names = {
 
 [node name="GraphNode" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=88306796]
 layout_mode = 0
-offset_left = 113.65398
+offset_left = 105.0
 offset_top = 191.0
-offset_right = 304.654
+offset_right = 296.0
 offset_bottom = 301.0
 mouse_filter = 1
 position_offset = Vector2(105, 191)
@@ -163,9 +161,9 @@ text = "test"
 
 [node name="GraphNode2" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=926399723]
 layout_mode = 0
-offset_left = 457.654
+offset_left = 449.0
 offset_top = 173.0
-offset_right = 648.654
+offset_right = 640.0
 offset_bottom = 276.0
 mouse_filter = 1
 position_offset = Vector2(449, 173)

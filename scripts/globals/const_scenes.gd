@@ -13,4 +13,3 @@ const INTERACTABLE = preload("uid://dfj6lxi3an2pu")
 
 # Editor Components
 const OBJ_THUMBNAIL = preload("uid://brrgdqby1o2b5")
-const DRAGABLE_CONTAINER = preload("uid://bb2hhnsxv1534")

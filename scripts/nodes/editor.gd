@@ -28,10 +28,11 @@ func _ready() -> void:
 	
 	inspector_tab.edited.connect(_on_inspector_value_changed)
 	
-	#wrap all objects from environment in DragableContainers.
+	#wrap all objects from environment in DragableGOParents.
 	for object in environment.get_objects():
-		var dc = DragableContainer.setup(object)
-		add_dragable(dc)
+		var dgp = DragableGOParent.make(object)
+		add_dragable(dgp)
+		dragables_root.add_child(dgp)
 
 
 func update_objects_dock() -> void:
@@ -44,10 +45,9 @@ func update_objects_dock() -> void:
 		ot.make_obj_inst.connect(_on_object_thumbnail_dragged)
 
 
-func add_dragable(dc:DragableContainer) -> void:
-	dragables_root.add_child(dc)
-	dc.clicked.connect(_on_dragable_container_clicked)
-	dc.changed.connect(_on_dragable_container_moved)
+func add_dragable(dgp:DragableGOParent) -> void:
+	dgp.clicked.connect(_on_dragable_container_clicked.bind(dgp))
+	dgp.released.connect(_on_dragable_container_released.bind(dgp))
 
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
@@ -57,29 +57,36 @@ func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	var o = ObjectInstanceData.new()
 	o.setup(ot.get_object())
-	var go = GameObject.setup(o)
-	above_left_side.add_child( DragableControlParent.make(go, true) )
+	var go = environment.add_object(o)
+	
+	var dgp = DragableGOParent.make(go, true)
+	add_dragable(dgp)
+	above_left_side.add_child( dgp )
 
 
-func _on_dragable_container_clicked(dc:DragableContainer) -> void:
-	inspector_tab.update_panel(dc.get_object_instance())
+func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
+	dgp.reparent(dragables_root)
+	inspector_tab.update_panel(dgp.game_object.get_instance_data())
 
 
-func _on_dragable_container_moved(dc:DragableContainer) -> void:
-	inspector_tab.update_panel(dc.get_object_instance())
+func _on_dragable_container_released(dgp:DragableGOParent) -> void:
+	dgp.reparent(above_left_side)
+	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+
+
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
 func _on_inspector_value_changed(object:Variant) -> void:
 	#for updating object data, find every instance of an object and update them.
 	if object is ObjectData:
-		for dragable:DragableContainer in dragables_root.get_children():
+		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.contained.get_object_data() == object:
 				dragable.update()
 	
 	#for updating instance data, find the instance and update it.
 	elif object is ObjectInstanceData:
-		for dragable:DragableContainer in dragables_root.get_children():
+		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.contained.get_instance_data() == object:
 				dragable.update()
 				break
