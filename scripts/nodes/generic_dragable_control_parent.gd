@@ -60,6 +60,10 @@ func get_time_since_clicked() -> float:
 	return (Time.get_ticks_msec()-time_last_clicked) / 1000.
 
 
+func update() -> void:
+	position = game_object.get_instance_data().position - size/2
+
+
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		held = event.is_pressed()

@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_left_side", "objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_left_side", "objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,13 +15,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bc6i7")
-v_split_left_side = NodePath("HSplitContainer/Control/VSplitContainer")
-objects_dock = NodePath("HSplitContainer/Control/VSplitContainer/Panel/ObjectsDock")
+v_split_left_side = NodePath("HSplitContainer/LeftSide/VSplitContainer")
+objects_dock = NodePath("HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsDock")
 inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
-game_viewport = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
-environment_graph = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer")
-dragables_root = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
-above_left_side = NodePath("HSplitContainer/Control/AboveLeftSide")
+game_viewport = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
+environment_graph = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
+dragables_root = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
+above_left_side = NodePath("HSplitContainer/LeftSide/LeftSideAbove")
+file_dialog = NodePath("FileDialog")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
@@ -34,11 +35,11 @@ mouse_filter = 2
 split_offsets = PackedInt32Array(832)
 split_offset = 832
 
-[node name="Control" type="Control" parent="HSplitContainer" unique_id=1965081007]
+[node name="LeftSide" type="Control" parent="HSplitContainer" unique_id=1965081007]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/Control" unique_id=346023758]
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/LeftSide" unique_id=346023758]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,14 +47,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-split_offsets = PackedInt32Array(512)
-split_offset = 512
+split_offsets = PackedInt32Array(80, 534)
+split_offset = 80
 
-[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/Control/VSplitContainer" unique_id=868302950]
+[node name="FilePanel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1012164895]
+clip_contents = true
 layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="HSplitContainer/LeftSide/VSplitContainer/FilePanel" unique_id=90335498]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 108.0
+offset_bottom = 59.0
+text = "Save"
+
+[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950]
+layout_mode = 2
+scroll_offset = Vector2(0, -102)
 minimap_size = Vector2(180, 120)
 
-[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
+[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,14 +75,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameViewport" type="SubViewport" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
+[node name="GameViewport" type="SubViewport" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(852, 512)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="DragablesRoot" type="Control" parent="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
+[node name="DragablesRoot" type="Control" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,10 +91,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="HSplitContainer/Control/VSplitContainer" unique_id=1907634130]
+[node name="Panel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1907634130]
 layout_mode = 2
 
-[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/Control/VSplitContainer/Panel" unique_id=1870313904]
+[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/LeftSide/VSplitContainer/Panel" unique_id=1870313904]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -89,7 +103,7 @@ offset_top = 4.0
 offset_bottom = -99.64801
 grow_horizontal = 2
 
-[node name="AboveLeftSide" type="Control" parent="HSplitContainer/Control" unique_id=1333352097]
+[node name="LeftSideAbove" type="Control" parent="HSplitContainer/LeftSide" unique_id=1333352097]
 z_index = 100
 clip_contents = true
 layout_mode = 1
@@ -193,4 +207,8 @@ offset_bottom = -1.2960815
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="scroll_offset_changed" from="HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
+
+[connection signal="pressed" from="HSplitContainer/LeftSide/VSplitContainer/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="scroll_offset_changed" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
