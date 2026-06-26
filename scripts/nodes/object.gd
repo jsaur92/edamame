@@ -5,9 +5,10 @@ extends Node2D
 @export var instance_data : ObjectInstanceData
 @export var sprite : Sprite2D
 @export var collision_shape : CollisionShape2D
+const _SELF_SCENE = preload("uid://6l5iyo5bci0o")
 
-static func setup(obj_inst : ObjectInstanceData) -> GameObject:
-	var go : GameObject = ConstScenes.OBJECT.instantiate()
+static func make(obj_inst : ObjectInstanceData) -> GameObject:
+	var go : GameObject = _SELF_SCENE.instantiate()
 	go.load_data(obj_inst)
 	return go
 
@@ -33,9 +34,7 @@ func load_data(obj_inst : ObjectInstanceData) -> void:
 		collision_shape.shape = object_data.get_mod(Enums.ObjectModType.COLLIDABLE).get_shape()
 	collision_shape.disabled = not object_data.is_collidable()
 	if object_data.is_interactable():
-		var i : Interactable = ConstScenes.INTERACTABLE.instantiate()
-		i.setup(self)
-		add_child(i)
+		add_child( Interactable.make(self) )
 	update_image()
 
 

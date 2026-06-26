@@ -5,11 +5,14 @@ extends Node2D
 @export var objects_root : Node2D
 @export var player : Player
 var environment_data : EnvironmentData
+const _SELF_SCENE = preload("uid://c4h1sc5o7rilv")
 
-func setup(data:EnvironmentData):
-	environment_data = data
-	setup_terrain()
-	setup_objects()
+static func make(data:EnvironmentData):
+	var ge : GameEnvironment = _SELF_SCENE.instantiate()
+	ge.environment_data = data
+	ge.setup_terrain()
+	ge.setup_objects()
+	return ge
 
 
 func setup_terrain():
@@ -21,8 +24,7 @@ func setup_objects():
 	for child in get_objects():
 		child.queue_free()
 	for object in environment_data.get_objects():
-		var new_obj : GameObject = GameObject.setup(object)
-		objects_root.add_child(new_obj)
+		objects_root.add_child( GameObject.make(object) )
 
 
 ## Returns the child GameObjects stored in the objects_root node. Uses a work
@@ -38,9 +40,9 @@ func get_objects() -> Array[GameObject]:
 ## GameObject made in objects_root.
 func add_object(object_instance:ObjectInstanceData) -> GameObject:
 	environment_data.add_object(object_instance)
-	var new_obj = GameObject.setup(object_instance)
-	objects_root.add_child( new_obj )
-	return new_obj
+	var go = GameObject.make(object_instance)
+	objects_root.add_child( go )
+	return go
 
 
 func get_mouse_pos_in_environment() -> Vector2:

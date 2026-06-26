@@ -10,11 +10,14 @@ var environment : GameEnvironment
 var player : Player
 ## Reference to singleton of self
 static var game : Game
+const _SELF_SCENE = preload("uid://1q8s36b2tttc")
 
 ## Sets game_data. Call after instantiation and before adding as child of scene.
-func setup(_game_data:GameData):
-	game_data = _game_data
-	game = self
+static func make(_game_data:GameData) -> Game:
+	var g : Game = _SELF_SCENE.instantiate()
+	g.game_data = _game_data
+	game = g
+	return g
 
 
 static func get_game():
@@ -22,10 +25,9 @@ static func get_game():
 
 
 func _ready() -> void:
-	environment = ConstScenes.ENVIRONMENT.instantiate()
+	environment = GameEnvironment.make(game_data.get_environment())
 	add_child(environment)
-	environment.setup(game_data.get_environment())
-	player = ConstScenes.PLAYER.instantiate()
+	player = Player.make()
 	environment.add_child(player)
 	environment.player = player
 

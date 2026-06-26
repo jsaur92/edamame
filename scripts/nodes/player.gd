@@ -7,6 +7,11 @@ extends CharacterBody2D
 const SPEED = 300.0
 var direction : Vector2
 signal open_inventory
+const _SELF_SCENE = preload("uid://dxlyubokb3s33")
+
+static func make() -> Player:
+	var p = _SELF_SCENE.instantiate()
+	return p
 
 func _ready() -> void:
 	Game.get_game().interact_manager.set_player(self)

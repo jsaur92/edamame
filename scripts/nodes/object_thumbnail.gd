@@ -9,9 +9,10 @@ var object_data : ObjectData
 var held : bool = false
 signal clicked
 signal make_obj_inst
+const _SELF_SCENE = preload("uid://brrgdqby1o2b5")
 
 static func create_from_object_data(object:ObjectData) -> ObjectThumbnail:
-	var ot : ObjectThumbnail = ConstScenes.OBJ_THUMBNAIL.instantiate()
+	var ot : ObjectThumbnail = _SELF_SCENE.instantiate()
 	ot.set_object(object)
 	return ot
 

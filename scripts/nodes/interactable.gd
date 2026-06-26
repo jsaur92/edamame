@@ -6,10 +6,17 @@ extends Node2D
 @export var notif_sprite : Sprite2D
 var player_in_range : bool = false
 var game_object : GameObject
+const _SELF_SCENE = preload("uid://dfj6lxi3an2pu")
 
 signal interacted
 signal add_near_player
 signal remove_near_player
+
+
+static func make(obj:GameObject) -> Interactable:
+	var i = _SELF_SCENE.instantiate()
+	i.game_object = obj
+	return i
 
 
 func _ready() -> void:
@@ -33,10 +40,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
 		interacted.emit(game_object)
-
-
-func setup(obj:GameObject) -> void:
-	game_object = obj
 
 
 func set_in_range(in_range:bool):

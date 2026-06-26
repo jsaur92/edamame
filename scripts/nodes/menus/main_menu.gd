@@ -28,12 +28,8 @@ func enable_buttons(enable:bool=true) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	var game_scene = ConstScenes.GAME.instantiate()
-	game_scene.setup(game_data)
-	get_tree().change_scene_to_node(game_scene)
+	get_tree().change_scene_to_node( Game.make(game_data) )
 
 
 func _on_edit_button_pressed() -> void:
-	var editor_scene = ConstScenes.EDITOR.instantiate()
-	editor_scene.setup(game_data)
-	get_tree().change_scene_to_node(editor_scene)
+	get_tree().change_scene_to_node( Editor.make(game_data) )

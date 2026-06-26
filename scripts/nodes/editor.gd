@@ -1,3 +1,4 @@
+class_name Editor
 extends Control
 
 @export_category("Data")
@@ -13,10 +14,13 @@ extends Control
 @export var file_dialog : FileDialog
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
+const _SELF_SCENE = preload("uid://be4ok444g1l0f")
 
-## Sets game_data. Call after instantiation and before adding as child of scene.
-func setup(_game_data:GameData):
-	game_data = _game_data
+
+static func make(_game_data:GameData) -> Editor:
+	var e = _SELF_SCENE.instantiate()
+	e.game_data = _game_data
+	return e
 
 
 func _ready() -> void:
@@ -24,9 +28,8 @@ func _ready() -> void:
 	
 	update_objects_dock()
 	
-	environment = ConstScenes.ENVIRONMENT.instantiate()
+	environment = GameEnvironment.make(game_data.get_environment())
 	game_viewport.add_child(environment)
-	environment.setup(game_data.get_environment())
 	
 	inspector_tab.edited.connect(_on_inspector_value_changed)
 	
