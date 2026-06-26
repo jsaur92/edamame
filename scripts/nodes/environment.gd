@@ -41,3 +41,7 @@ func add_object(object_instance:ObjectInstanceData) -> GameObject:
 	var new_obj = GameObject.setup(object_instance)
 	objects_root.add_child( new_obj )
 	return new_obj
+
+
+func get_mouse_pos_in_environment() -> Vector2:
+	return get_tree().root.get_mouse_position() - position

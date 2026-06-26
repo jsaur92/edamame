@@ -8,7 +8,7 @@ extends Control
 @export var game_viewport : SubViewport
 @export var environment_graph : GraphEdit
 @export var dragables_root : Control
-@export var above_left_side : CanvasLayer
+@export var above_left_side : Control
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
 
@@ -48,6 +48,7 @@ func update_objects_dock() -> void:
 func add_dragable(dgp:DragableGOParent) -> void:
 	dgp.clicked.connect(_on_dragable_container_clicked.bind(dgp))
 	dgp.released.connect(_on_dragable_container_released.bind(dgp))
+	dgp.dragged.connect(_on_dragable_container_dragged.bind(dgp))
 
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
@@ -61,22 +62,25 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	
 	var dgp = DragableGOParent.make(go, true)
 	add_dragable(dgp)
+	_on_dragable_container_clicked(dgp)
 	above_left_side.add_child( dgp )
 
 
 func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
-	print("on " + dgp.game_object.object_data.name)
 	dgp.reparent(above_left_side)
+	dgp.game_object.instance_data.position = environment.get_mouse_pos_in_environment()
+	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+
+
+func _on_dragable_container_dragged(dgp:DragableGOParent) -> void:
+	dgp.game_object.instance_data.position = environment.get_mouse_pos_in_environment()
 	inspector_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 func _on_dragable_container_released(dgp:DragableGOParent) -> void:
-	print("off " + dgp.game_object.object_data.name)
 	dgp.reparent(dragables_root)
+	dgp.game_object.instance_data.position = environment.get_mouse_pos_in_environment()
 	inspector_tab.update_panel(dgp.game_object.get_instance_data())
-	dgp.game_object.instance_data.position = dgp.game_object.position
-
-
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
@@ -100,5 +104,6 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 	scroll_offset = offset
 	if environment != null:
 		environment.position = -offset
+		dragables_root.position = environment.position
 		# TODO: make zoom work
 		#game_viewport.size_2d_override = game_viewport.size / environment_graph.zoom

@@ -7,6 +7,7 @@ var time_last_clicked : int = 0
 var shadow
 signal clicked
 signal released
+signal dragged
 const _SELF_SCENE = preload("uid://kf8ej751k86u")
 
 static func make(go:GameObject, pre_held:bool=false) -> DragableGOParent:
@@ -34,7 +35,7 @@ static func make(go:GameObject, pre_held:bool=false) -> DragableGOParent:
 
 func _ready() -> void:
 	game_object.global_position += size/2
-	global_position = game_object.global_position - size/2
+	global_position = game_object.global_position - size
 
 
 func _process(delta: float) -> void:
@@ -45,6 +46,7 @@ func _process(delta: float) -> void:
 		else:
 			global_position = get_tree().root.get_mouse_position() - size/2
 			game_object.global_position = get_tree().root.get_mouse_position()
+			dragged.emit()
 			
 			game_object.rotation = sin(get_time_since_clicked() * 10.) * 0.5
 			game_object.global_position = global_position + size/2
