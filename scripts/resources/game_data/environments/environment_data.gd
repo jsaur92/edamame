@@ -30,3 +30,7 @@ func get_objects() -> Array[ObjectInstanceData]:
 
 func add_object(obj:ObjectInstanceData) -> void:
 	objects.append(obj)
+
+
+func remove_object(obj:ObjectInstanceData) -> void:
+	objects.erase(obj)

@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_left_side", "objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bc6i7")
+v_split_left_side = NodePath("HSplitContainer/Control/VSplitContainer")
 objects_dock = NodePath("HSplitContainer/Control/VSplitContainer/Panel/ObjectsDock")
 inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
 game_viewport = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")

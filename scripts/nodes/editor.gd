@@ -3,6 +3,7 @@ extends Control
 @export_category("Data")
 @export var game_data : GameData
 @export_category("Component Nodes")
+@export var v_split_left_side : VSplitContainer
 @export var objects_dock : HFlowContainer
 @export var inspector_tab : InspectorTab
 @export var game_viewport : SubViewport
@@ -51,6 +52,17 @@ func add_dragable(dgp:DragableGOParent) -> void:
 	dgp.dragged.connect(_on_dragable_container_dragged.bind(dgp))
 
 
+func get_object_dock_top() -> float:
+	return v_split_left_side.split_offsets[0]
+
+
+## Completely remove a GameObject and its DGP from the editor view and its data from the
+## Environment data (if applicable)
+func remove_object(dgp:DragableGOParent) -> void:
+	environment.environment_data.remove_object( dgp.game_object.get_instance_data() )
+	dgp.queue_free()
+
+
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	inspector_tab.update_panel(ot.get_object())
 
@@ -78,9 +90,12 @@ func _on_dragable_container_dragged(dgp:DragableGOParent) -> void:
 
 
 func _on_dragable_container_released(dgp:DragableGOParent) -> void:
-	dgp.reparent(dragables_root)
-	dgp.game_object.instance_data.position = environment.get_mouse_pos_in_environment()
-	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+	if get_global_mouse_position().y > get_object_dock_top():
+		remove_object(dgp)
+	else:
+		dgp.reparent(dragables_root)
+		dgp.game_object.instance_data.position = environment.get_mouse_pos_in_environment()
+		inspector_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
