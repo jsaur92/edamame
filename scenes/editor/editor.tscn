@@ -20,7 +20,7 @@ inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
 game_viewport = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer")
 dragables_root = NodePath("HSplitContainer/Control/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
-above_left_side = NodePath("HSplitContainer/Control/AboveLeftSide")
+above_left_side = NodePath("HSplitContainer/Control/AboveLeftSide/AboveLeftSideCanvasLayer")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
 layout_mode = 1
@@ -89,6 +89,7 @@ offset_bottom = -99.64801
 grow_horizontal = 2
 
 [node name="AboveLeftSide" type="Control" parent="HSplitContainer/Control" unique_id=1333352097]
+z_index = 100
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -97,6 +98,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AboveLeftSideCanvasLayer" type="CanvasLayer" parent="HSplitContainer/Control/AboveLeftSide" unique_id=654264453]
+layer = 100
 
 [node name="Inspector" type="Control" parent="HSplitContainer" unique_id=1516780413]
 layout_mode = 2

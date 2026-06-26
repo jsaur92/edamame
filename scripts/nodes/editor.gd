@@ -8,7 +8,7 @@ extends Control
 @export var game_viewport : SubViewport
 @export var environment_graph : GraphEdit
 @export var dragables_root : Control
-@export var above_left_side : Control
+@export var above_left_side : CanvasLayer
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
 
@@ -65,13 +65,16 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 
 
 func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
-	dgp.reparent(dragables_root)
+	print("on " + dgp.game_object.object_data.name)
+	dgp.reparent(above_left_side)
 	inspector_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 func _on_dragable_container_released(dgp:DragableGOParent) -> void:
-	dgp.reparent(above_left_side)
+	print("off " + dgp.game_object.object_data.name)
+	dgp.reparent(dragables_root)
 	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+	dgp.game_object.instance_data.position = dgp.game_object.position
 
 
 
@@ -87,7 +90,7 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	#for updating instance data, find the instance and update it.
 	elif object is ObjectInstanceData:
 		for dragable:DragableGOParent in dragables_root.get_children():
-			if dragable.contained.get_instance_data() == object:
+			if dragable.game_object.get_instance_data() == object:
 				dragable.update()
 				break
 

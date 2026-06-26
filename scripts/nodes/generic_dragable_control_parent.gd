@@ -14,9 +14,11 @@ static func make(go:GameObject, pre_held:bool=false) -> DragableGOParent:
 	dgp.set_global_position(go.global_position)
 	dgp.held = pre_held
 	dgp.set_size(Vector2(go.sprite.texture.get_image().get_size()) * go.sprite.scale)
-	dgp.add_child(go)
+	if go.get_parent() == null:
+		dgp.add_child(go)
+	else:
+		go.reparent(dgp)
 	dgp.game_object = go
-	dgp.gui_input.connect(dgp._on_gui_input)
 	
 	#make shadow
 	var s = go.sprite.duplicate()
@@ -30,19 +32,24 @@ static func make(go:GameObject, pre_held:bool=false) -> DragableGOParent:
 	return dgp
 
 
+func _ready() -> void:
+	game_object.global_position += size/2
+	global_position = game_object.global_position - size/2
+
+
 func _process(delta: float) -> void:
-	if Input.is_action_just_released("click"):
+	if held:
+		if Input.is_action_just_released("click"):
 			held = false
 			released.emit()
-	if held:
-		global_position = get_tree().root.get_mouse_position() - size/2
-		game_object.global_position = get_tree().root.get_mouse_position()
-		
-		game_object.rotation = sin(get_time_since_clicked() * 10.) * 0.5
-		game_object.global_position = global_position + size/2
-		shadow.visible = true
+		else:
+			global_position = get_tree().root.get_mouse_position() - size/2
+			game_object.global_position = get_tree().root.get_mouse_position()
+			
+			game_object.rotation = sin(get_time_since_clicked() * 10.) * 0.5
+			game_object.global_position = global_position + size/2
+			shadow.visible = true
 	else:
-		global_position = game_object.global_position - size/2
 		game_object.rotation_degrees = 0
 		shadow.visible = false
 
