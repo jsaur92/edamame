@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://btfrqyun3bhug" path="res://scripts/resources/game_data/commands/command_remove.gd" id="21_bmidx"]
 [ext_resource type="Image" uid="uid://b5xluls20gm2f" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
 [ext_resource type="Image" uid="uid://byojb2s7o1vtk" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
+[ext_resource type="Script" uid="uid://bjbpb55op4g7c" path="res://scripts/resources/game_data/commands/command_take.gd" id="24_p2p4l"]
 [ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
 [ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
 [ext_resource type="Image" uid="uid://blomn2s3m555s" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
@@ -202,8 +203,42 @@ metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 [sub_resource type="Resource" id="Resource_wxx38"]
 script = ExtResource("19_xqf7f")
 
+[sub_resource type="Resource" id="Resource_3a46h"]
+script = ExtResource("24_p2p4l")
+item_uid = 7354654
+metadata/_custom_type_script = "uid://bjbpb55op4g7c"
+
+[sub_resource type="Resource" id="Resource_6alpa"]
+script = ExtResource("15_qo4yj")
+dialog = "Thank you for the apple!"
+metadata/_custom_type_script = "uid://by3vegmjhgnnt"
+
+[sub_resource type="Resource" id="Resource_v4r1l"]
+script = ExtResource("14_cf1he")
+command = SubResource("Resource_6alpa")
+metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
+
+[sub_resource type="Resource" id="Resource_cf1he"]
+script = ExtResource("15_qo4yj")
+dialog = "No thank you for the no apple!"
+metadata/_custom_type_script = "uid://by3vegmjhgnnt"
+
+[sub_resource type="Resource" id="Resource_qo4yj"]
+script = ExtResource("14_cf1he")
+command = SubResource("Resource_cf1he")
+metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
+
+[sub_resource type="Resource" id="Resource_1fvyo"]
+script = ExtResource("14_cf1he")
+command = SubResource("Resource_3a46h")
+next = Array[ExtResource("14_cf1he")]([SubResource("Resource_v4r1l"), SubResource("Resource_qo4yj")])
+metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
+
 [sub_resource type="Resource" id="Resource_6qaah"]
 script = ExtResource("16_1fvyo")
+command_heads = Dictionary[String, ExtResource("14_cf1he")]({
+"default": SubResource("Resource_1fvyo")
+})
 
 [sub_resource type="Resource" id="Resource_bs1yu"]
 script = ExtResource("17_0y7vy")

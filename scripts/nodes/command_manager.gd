@@ -33,8 +33,8 @@ func interact_with(object:GameObject) -> void:
 ## Execute the current command. Read the data from the CommandNode's Command,
 ## then do something about it.
 func execute() -> void:
-	get_tree().paused = true
 	if current_node != null:
+		get_tree().paused = true
 		var command = current_node.command
 		if command is CommandSay:
 			execute_say(command)

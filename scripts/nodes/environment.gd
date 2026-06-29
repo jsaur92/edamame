@@ -53,8 +53,6 @@ func get_mouse_pos_in_environment() -> Vector2:
 ## If there is a tile at this position, turn it off. If there is not a tile,
 ## add one. Update the Terrain data and then update the actual TileMapLayer.
 func toggle_tile_at(position:Vector2i) -> void:
-	position 
-	print(position)
 	var map_data = environment_data.get_tilemap_pattern()
 	if map_data.has_cell(position):
 		print("remove cell")
