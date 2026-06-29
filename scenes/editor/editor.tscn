@@ -63,12 +63,18 @@ offset_right = 108.0
 offset_bottom = 59.0
 text = "Save"
 
-[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right")]
+[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right", "tile_edit", "edit_tiles_button")]
 layout_mode = 2
+snapping_distance = 64
 minimap_size = Vector2(180, 120)
+show_zoom_label = true
+show_grid_buttons = false
+show_arrange_button = false
 script = ExtResource("2_5cfe8")
 top_left = NodePath("top-left")
 bottom_right = NodePath("top-right")
+tile_edit = NodePath("TileEditBg")
+edit_tiles_button = NodePath("EditTilesButton")
 
 [node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
 layout_mode = 1
@@ -77,11 +83,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch = true
 
 [node name="GameViewport" type="SubViewport" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(852, 512)
+size = Vector2i(832, 442)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -107,6 +114,25 @@ layout_mode = 0
 offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
+
+[node name="TileEditBg" type="ColorRect" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=255589290]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.1882353)
+
+[node name="EditTilesButton" type="Button" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1004057808]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 9.0
+offset_right = 260.0
+offset_bottom = 40.0
+text = "tile edit mode"
 
 [node name="Panel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1907634130]
 layout_mode = 2
@@ -228,4 +254,6 @@ grow_vertical = 1
 
 [connection signal="pressed" from="HSplitContainer/LeftSide/VSplitContainer/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="scroll_offset_changed" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
+[connection signal="gui_input" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/TileEditBg" to="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_tile_edit_bg_gui_input"]
+[connection signal="pressed" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/EditTilesButton" to="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_edit_tiles_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4h1sc5o7rilv"]
 
 [ext_resource type="Script" uid="uid://c568o2xv8ohvw" path="res://scripts/nodes/environment.gd" id="1_k68ih"]
+[ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="2_mhab4"]
 
 [node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root")]
 script = ExtResource("1_k68ih")
@@ -8,5 +9,6 @@ tilemap = NodePath("TileMapLayer")
 objects_root = NodePath("Objects")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1629662108]
+tile_set = ExtResource("2_mhab4")
 
 [node name="Objects" type="Node2D" parent="." unique_id=1862259055]

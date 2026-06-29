@@ -34,6 +34,7 @@ func _ready() -> void:
 	inspector_tab.edited.connect(_on_inspector_value_changed)
 	
 	environment_graph.update_boundaries( game_data.get_environment().get_used_rect() )
+	environment_graph.toggle_tile.connect(_on_tile_toggled)
 	
 	#wrap all objects from environment in DragableGOParents.
 	for object in environment.get_objects():
@@ -143,3 +144,8 @@ func _on_save_button_pressed() -> void:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	ResourceSaver.save(game_data, path)
+
+
+func _on_tile_toggled(tile_pos:Vector2i) -> void:
+	environment.toggle_tile_at(tile_pos)
+	environment_graph.update_boundaries(game_data.get_environment().get_used_rect())

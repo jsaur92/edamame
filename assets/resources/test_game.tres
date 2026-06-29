@@ -1,74 +1,74 @@
-[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://vpyocnf3c76h"]
+[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://b3lg1in3icpnf"]
 
-[ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_m00u0"]
-[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_dn8nu"]
-[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_tanaa"]
-[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_2txln"]
-[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_kiowj"]
-[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_3kame"]
-[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_h6h8x"]
-[ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_v1wsp"]
-[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_fl2ef"]
-[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_nq8pd"]
-[ext_resource type="Image" uid="uid://bgf1tx2et4f75" path="res://assets/resources/Sign_0.tres" id="11_3kame"]
-[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="11_xpfb6"]
-[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="12_4fm7p"]
-[ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="12_dn8nu"]
-[ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="13_2txln"]
-[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="13_15jn7"]
-[ext_resource type="Script" uid="uid://by3vegmjhgnnt" path="res://scripts/resources/game_data/commands/command_say.gd" id="14_3kame"]
-[ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="14_kiowj"]
-[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="14_tidjm"]
-[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="15_p2p4l"]
-[ext_resource type="Image" uid="uid://dpfqm05dk6ou2" path="res://assets/resources/Apple_Icon.tres" id="19_h6h8x"]
-[ext_resource type="Script" uid="uid://c4b0hx6f7v4b6" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_nq8pd"]
-[ext_resource type="Script" uid="uid://bawoprftpfsep" path="res://scripts/resources/game_data/commands/command_give.gd" id="20_4fm7p"]
-[ext_resource type="Image" uid="uid://byojb2s7o1vtk" path="res://assets/resources/Key1.tres" id="20_15jn7"]
-[ext_resource type="Image" uid="uid://b5xluls20gm2f" path="res://assets/resources/Rock2_0.tres" id="20_v1wsp"]
-[ext_resource type="Script" uid="uid://btfrqyun3bhug" path="res://scripts/resources/game_data/commands/command_remove.gd" id="21_15jn7"]
-[ext_resource type="Image" uid="uid://blomn2s3m555s" path="res://assets/resources/Bush1_0.tres" id="21_fl2ef"]
-[ext_resource type="Script" uid="uid://bjbpb55op4g7c" path="res://scripts/resources/game_data/commands/command_take.gd" id="25_tidjm"]
+[ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_tidjm"]
+[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_p2p4l"]
+[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_7ttud"]
+[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_0e7ah"]
+[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_xlbx8"]
+[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_slmo7"]
+[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_u0swv"]
+[ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_1htn0"]
+[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_euhno"]
+[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_3a46h"]
+[ext_resource type="Image" uid="uid://bgf1tx2et4f75" path="res://assets/resources/Sign_0.tres" id="11_bs1yu"]
+[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="12_6alpa"]
+[ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="13_v4r1l"]
+[ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="14_cf1he"]
+[ext_resource type="Script" uid="uid://by3vegmjhgnnt" path="res://scripts/resources/game_data/commands/command_say.gd" id="15_qo4yj"]
+[ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="16_1fvyo"]
+[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="17_0y7vy"]
+[ext_resource type="Image" uid="uid://dpfqm05dk6ou2" path="res://assets/resources/Apple_Icon.tres" id="18_cb6xn"]
+[ext_resource type="Script" uid="uid://c4b0hx6f7v4b6" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_xqf7f"]
+[ext_resource type="Script" uid="uid://bawoprftpfsep" path="res://scripts/resources/game_data/commands/command_give.gd" id="20_h3nma"]
+[ext_resource type="Script" uid="uid://btfrqyun3bhug" path="res://scripts/resources/game_data/commands/command_remove.gd" id="21_bmidx"]
+[ext_resource type="Image" uid="uid://b5xluls20gm2f" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
+[ext_resource type="Image" uid="uid://byojb2s7o1vtk" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
+[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
+[ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
+[ext_resource type="Image" uid="uid://blomn2s3m555s" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
+[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="27_rkej1"]
+[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="28_h0e6t"]
 
 [sub_resource type="Resource" id="Resource_03g2o"]
-script = ExtResource("2_dn8nu")
+script = ExtResource("2_p2p4l")
 correct = true
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_gxs6v"]
-script = ExtResource("2_dn8nu")
+script = ExtResource("2_p2p4l")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_dic47"]
-script = ExtResource("2_dn8nu")
+script = ExtResource("2_p2p4l")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_kn10n"]
-script = ExtResource("2_dn8nu")
+script = ExtResource("2_p2p4l")
 metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
 
 [sub_resource type="Resource" id="Resource_hgfrx"]
-script = ExtResource("4_2txln")
+script = ExtResource("4_0e7ah")
 metadata/_custom_type_script = "uid://bq5gwuq8mk1ht"
 
 [sub_resource type="Resource" id="Resource_jkf3q"]
-script = ExtResource("5_kiowj")
+script = ExtResource("5_xlbx8")
 metadata/_custom_type_script = "uid://da8wcwdigblny"
 
 [sub_resource type="Resource" id="Resource_k5egv"]
-script = ExtResource("6_3kame")
-content = Array[ExtResource("3_tanaa")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
+script = ExtResource("6_slmo7")
+content = Array[ExtResource("3_7ttud")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
 metadata/_custom_type_script = "uid://dewv8c5uj2ihu"
 
 [sub_resource type="Resource" id="Resource_5gjb6"]
-script = ExtResource("7_h6h8x")
-answer_choices = Array[ExtResource("2_dn8nu")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
+script = ExtResource("7_u0swv")
+answer_choices = Array[ExtResource("2_p2p4l")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
 multiple_selection = true
 canvas = SubResource("Resource_k5egv")
 metadata/_custom_type_script = "uid://5vu06rcfmh5e"
 
 [sub_resource type="Resource" id="Resource_pf7tr"]
-script = ExtResource("8_v1wsp")
-activities = Dictionary[String, ExtResource("1_m00u0")]({
+script = ExtResource("8_1htn0")
+activities = Dictionary[String, ExtResource("1_tidjm")]({
 "": SubResource("Resource_5gjb6")
 })
 metadata/_custom_type_script = "uid://rcg0vsvbptup"
@@ -77,215 +77,181 @@ metadata/_custom_type_script = "uid://rcg0vsvbptup"
 size = Vector2(64, 64)
 
 [sub_resource type="Resource" id="Resource_tanaa"]
-script = ExtResource("12_dn8nu")
+script = ExtResource("13_v4r1l")
 shape = SubResource("RectangleShape2D_dn8nu")
 metadata/_custom_type_script = "uid://bm5ki8hon2jai"
 
 [sub_resource type="Resource" id="Resource_h6h8x"]
-script = ExtResource("14_3kame")
+script = ExtResource("15_qo4yj")
 dialog = "I am a sign!"
 metadata/_custom_type_script = "uid://by3vegmjhgnnt"
 
 [sub_resource type="Resource" id="Resource_v1wsp"]
-script = ExtResource("13_2txln")
+script = ExtResource("14_cf1he")
 command = SubResource("Resource_h6h8x")
 metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
 
 [sub_resource type="Resource" id="Resource_3kame"]
-script = ExtResource("14_kiowj")
-command_heads = Dictionary[String, ExtResource("13_2txln")]({
+script = ExtResource("16_1fvyo")
+command_heads = Dictionary[String, ExtResource("14_cf1he")]({
 "default": SubResource("Resource_v1wsp")
 })
 metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
 [sub_resource type="Resource" id="Resource_mldwq"]
-script = ExtResource("12_4fm7p")
+script = ExtResource("17_0y7vy")
 uid = 235432
 name = "Sign"
-image = ExtResource("11_3kame")
-mods = Dictionary[int, ExtResource("11_xpfb6")]({
+image = ExtResource("11_bs1yu")
+mods = Dictionary[int, ExtResource("12_6alpa")]({
 1: SubResource("Resource_tanaa"),
 2: SubResource("Resource_3kame")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_fftk8"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_mldwq")
 position = Vector2(200, 300)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
 [sub_resource type="Resource" id="Resource_0e7ah"]
-script = ExtResource("19_nq8pd")
+script = ExtResource("19_xqf7f")
 stackable = true
 metadata/_custom_type_script = "uid://c4b0hx6f7v4b6"
 
 [sub_resource type="Resource" id="Resource_xlbx8"]
-script = ExtResource("20_4fm7p")
+script = ExtResource("20_h3nma")
 item_uid = 7354654
 metadata/_custom_type_script = "uid://bawoprftpfsep"
 
 [sub_resource type="Resource" id="Resource_slmo7"]
-script = ExtResource("21_15jn7")
+script = ExtResource("21_bmidx")
 metadata/_custom_type_script = "uid://btfrqyun3bhug"
 
 [sub_resource type="Resource" id="Resource_u0swv"]
-script = ExtResource("13_2txln")
+script = ExtResource("14_cf1he")
 command = SubResource("Resource_slmo7")
 metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
 
 [sub_resource type="Resource" id="Resource_1htn0"]
-script = ExtResource("13_2txln")
+script = ExtResource("14_cf1he")
 command = SubResource("Resource_xlbx8")
-next = Array[ExtResource("13_2txln")]([SubResource("Resource_u0swv")])
+next = Array[ExtResource("14_cf1he")]([SubResource("Resource_u0swv")])
 metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
 
 [sub_resource type="Resource" id="Resource_euhno"]
-script = ExtResource("14_kiowj")
-command_heads = Dictionary[String, ExtResource("13_2txln")]({
+script = ExtResource("16_1fvyo")
+command_heads = Dictionary[String, ExtResource("14_cf1he")]({
 "default": SubResource("Resource_1htn0")
 })
 metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
 [sub_resource type="Resource" id="Resource_fl2ef"]
-script = ExtResource("12_4fm7p")
+script = ExtResource("17_0y7vy")
 uid = 7354654
 name = "Apple"
-image = ExtResource("19_h6h8x")
+image = ExtResource("18_cb6xn")
 image_scale = Vector2(0.2, 0.2)
-mods = Dictionary[int, ExtResource("11_xpfb6")]({
+mods = Dictionary[int, ExtResource("12_6alpa")]({
 0: SubResource("Resource_0e7ah"),
 2: SubResource("Resource_euhno")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_xpfb6"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_fl2ef")
 position = Vector2(500, 100)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fl2ef"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77f6o"]
 
-[sub_resource type="Resource" id="Resource_15jn7"]
-script = ExtResource("12_dn8nu")
-shape = SubResource("CircleShape2D_fl2ef")
-metadata/_custom_type_script = "uid://bm5ki8hon2jai"
+[sub_resource type="Resource" id="Resource_77j8e"]
+script = ExtResource("13_v4r1l")
+shape = SubResource("RectangleShape2D_77f6o")
 
 [sub_resource type="Resource" id="Resource_nq8pd"]
-script = ExtResource("12_4fm7p")
+script = ExtResource("17_0y7vy")
 uid = 5465436
 name = "Rock"
-image = ExtResource("20_v1wsp")
-mods = Dictionary[int, ExtResource("11_xpfb6")]({
-1: SubResource("Resource_15jn7")
+image = ExtResource("22_6xrc8")
+mods = Dictionary[int, ExtResource("12_6alpa")]({
+1: SubResource("Resource_77j8e")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_tidjm"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_nq8pd")
 position = Vector2(600, 600)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
 [sub_resource type="Resource" id="Resource_p2p4l"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_fl2ef")
 position = Vector2(1100, 200)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
 [sub_resource type="Resource" id="Resource_7ttud"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_fl2ef")
 position = Vector2(900, 250)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
-[sub_resource type="Resource" id="Resource_3a46h"]
-script = ExtResource("19_nq8pd")
-metadata/_custom_type_script = "uid://c4b0hx6f7v4b6"
+[sub_resource type="Resource" id="Resource_wxx38"]
+script = ExtResource("19_xqf7f")
 
-[sub_resource type="Resource" id="Resource_6alpa"]
-script = ExtResource("25_tidjm")
-item_uid = 7354654
-metadata/_custom_type_script = "uid://bjbpb55op4g7c"
-
-[sub_resource type="Resource" id="Resource_v4r1l"]
-script = ExtResource("14_3kame")
-dialog = "Yoink! Thanks for the apple!"
-metadata/_custom_type_script = "uid://by3vegmjhgnnt"
-
-[sub_resource type="Resource" id="Resource_cf1he"]
-script = ExtResource("13_2txln")
-command = SubResource("Resource_v4r1l")
-metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
-
-[sub_resource type="Resource" id="Resource_qo4yj"]
-script = ExtResource("14_3kame")
-dialog = "No apple.... so sad...."
-metadata/_custom_type_script = "uid://by3vegmjhgnnt"
-
-[sub_resource type="Resource" id="Resource_1fvyo"]
-script = ExtResource("13_2txln")
-command = SubResource("Resource_qo4yj")
-metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
-
-[sub_resource type="Resource" id="Resource_0y7vy"]
-script = ExtResource("13_2txln")
-command = SubResource("Resource_6alpa")
-next = Array[ExtResource("13_2txln")]([SubResource("Resource_cf1he"), SubResource("Resource_1fvyo")])
-metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
-
-[sub_resource type="Resource" id="Resource_cb6xn"]
-script = ExtResource("14_kiowj")
-command_heads = Dictionary[String, ExtResource("13_2txln")]({
-"default": SubResource("Resource_0y7vy")
-})
-metadata/_custom_type_script = "uid://b8umwh4qgb70w"
+[sub_resource type="Resource" id="Resource_6qaah"]
+script = ExtResource("16_1fvyo")
 
 [sub_resource type="Resource" id="Resource_bs1yu"]
-script = ExtResource("12_4fm7p")
+script = ExtResource("17_0y7vy")
 uid = 3875903
 name = "Key"
-image = ExtResource("20_15jn7")
-mods = Dictionary[int, ExtResource("11_xpfb6")]({
-0: SubResource("Resource_3a46h"),
-2: SubResource("Resource_cb6xn")
+image = ExtResource("23_l2c7e")
+mods = Dictionary[int, ExtResource("12_6alpa")]({
+0: SubResource("Resource_wxx38"),
+2: SubResource("Resource_6qaah")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_xqf7f"]
-script = ExtResource("10_nq8pd")
+script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_bs1yu")
-position = Vector2(500, 400)
+position = Vector2(435.5, 378)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_fftk8"]
+[sub_resource type="Resource" id="Resource_8bb75"]
+script = ExtResource("10_3a46h")
+object_data = SubResource("Resource_nq8pd")
+position = Vector2(749.5, 219)
 
-[sub_resource type="TileSet" id="TileSet_qcs58"]
+[sub_resource type="TileMapPattern" id="TileMapPattern_7ttud"]
+tile_data = PackedInt32Array(131085, 0, 0, 131091, 0, 0, 65537, 0, 0, 131073, 0, 0, 65540, 0, 0, 4, 0, 0, 3, 0, 0, 2, 0, 0, 1, 0, 0, 196611, 0, 0, 65541, 0, 0, 65539, 0, 0, 65538, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 524298, 0, 0, 458762, 0, 0, 393226, 0, 0, 327690, 0, 0, 262154, 0, 0, 196618, 0, 0, 131082, 0, 0, 65546, 0, 0, 10, 0, 0, 9, 0, 0, 8, 0, 0, 7, 0, 0, 6, 0, 0, 5, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 131081, 0, 0, 131080, 0, 0, 131079, 0, 0, 196615, 0, 0, 196616, 0, 0, 196614, 0, 0, 196613, 0, 0, 131078, 0, 0, 196612, 0, 0, 196610, 0, 0, 196609, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262152, 0, 0, 262153, 0, 0, 196617, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327688, 0, 0, 327689, 0, 0, 393225, 0, 0, 393224, 0, 0, 393223, 0, 0, 393222, 0, 0, 393221, 0, 0, 393220, 0, 0, 393219, 0, 0, 393218, 0, 0, 393217, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524297, 0, 0, 524296, 0, 0, 524295, 0, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 327686, 0, 0, 327687, 0, 0, 262151, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 65555, 0, 0, 65554, 0, 0, 65553, 0, 0, 65552, 0, 0, 65551, 0, 0, 65550, 0, 0, 65549, 0, 0, 65548, 0, 0, 65547, 0, 0, 131083, 0, 0, 131084, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 196627, 0, 0, 196626, 0, 0, 196625, 0, 0, 196624, 0, 0, 196623, 0, 0, 196622, 0, 0, 196621, 0, 0, 196620, 0, 0, 196619, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327699, 0, 0, 327698, 0, 0, 327697, 0, 0, 327696, 0, 0, 327695, 0, 0, 327694, 0, 0, 327693, 0, 0, 327692, 0, 0, 327691, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 524307, 0, 0, 589843, 0, 0, 655379, 0, 0, 655378, 0, 0, 655377, 0, 0, 655376, 0, 0, 655375, 0, 0, 655374, 0, 0, 655373, 0, 0, 655372, 0, 0, 589842, 0, 0, 589841, 0, 0, 589840, 0, 0, 589839, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0)
 
 [sub_resource type="Resource" id="Resource_v2xvp"]
-script = ExtResource("13_15jn7")
-tileset = SubResource("TileSet_qcs58")
-tilemap = SubResource("TileMapPattern_fftk8")
+script = ExtResource("24_vxwg3")
+tileset = ExtResource("25_ovdfs")
+tilemap = SubResource("TileMapPattern_7ttud")
 metadata/_custom_type_script = "uid://bfbx5oowc5ae5"
 
 [sub_resource type="Resource" id="Resource_37w0a"]
-script = ExtResource("9_fl2ef")
+script = ExtResource("9_euhno")
 terrain = SubResource("Resource_v2xvp")
-objects = Array[ExtResource("10_nq8pd")]([SubResource("Resource_fftk8"), SubResource("Resource_xpfb6"), SubResource("Resource_tidjm"), SubResource("Resource_p2p4l"), SubResource("Resource_7ttud"), SubResource("Resource_xqf7f")])
+objects = Array[ExtResource("10_3a46h")]([SubResource("Resource_fftk8"), SubResource("Resource_xpfb6"), SubResource("Resource_tidjm"), SubResource("Resource_p2p4l"), SubResource("Resource_7ttud"), SubResource("Resource_xqf7f"), SubResource("Resource_8bb75")])
 metadata/_custom_type_script = "uid://yn4vu5ct3xdg"
 
 [sub_resource type="Resource" id="Resource_4fm7p"]
-script = ExtResource("12_4fm7p")
+script = ExtResource("17_0y7vy")
 uid = 65436426
 name = "Bush"
-image = ExtResource("21_fl2ef")
+image = ExtResource("26_eo84b")
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_7lwst"]
-script = ExtResource("14_tidjm")
-objects = Dictionary[int, ExtResource("12_4fm7p")]({
+script = ExtResource("27_rkej1")
+objects = Dictionary[int, ExtResource("17_0y7vy")]({
 235432: SubResource("Resource_mldwq"),
 3875903: SubResource("Resource_bs1yu"),
 5465436: SubResource("Resource_nq8pd"),
@@ -295,11 +261,11 @@ objects = Dictionary[int, ExtResource("12_4fm7p")]({
 metadata/_custom_type_script = "uid://5xk0bnggh24o"
 
 [resource]
-script = ExtResource("15_p2p4l")
+script = ExtResource("28_h0e6t")
 title = "Test Game"
 subject = "Software Testing"
 author = "Joe"
-environments = Array[ExtResource("9_fl2ef")]([SubResource("Resource_37w0a")])
+environments = Array[ExtResource("9_euhno")]([SubResource("Resource_37w0a")])
 object_library = SubResource("Resource_7lwst")
 activity_library = SubResource("Resource_pf7tr")
 metadata/_custom_type_script = "uid://b1ir2t21ostou"
