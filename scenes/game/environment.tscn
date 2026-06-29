@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c568o2xv8ohvw" path="res://scripts/nodes/environment.gd" id="1_k68ih"]
 
-[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root", "player")]
+[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root")]
 script = ExtResource("1_k68ih")
 tilemap = NodePath("TileMapLayer")
 objects_root = NodePath("Objects")
-player = NodePath("")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1629662108]
 

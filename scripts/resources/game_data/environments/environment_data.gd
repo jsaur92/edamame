@@ -34,3 +34,23 @@ func add_object(obj:ObjectInstanceData) -> void:
 
 func remove_object(obj:ObjectInstanceData) -> void:
 	objects.erase(obj)
+
+
+## Get the used rectangle of the TileMap of the TerrainData, then expand that
+## to fit in any objects that are outside of that rectangle.
+func get_used_rect() -> Rect2:
+	var rect : Rect2 = terrain.get_used_rect()
+	
+	var top_left : Vector2 = rect.position
+	var bottom_right : Vector2 = rect.size + rect.position
+	
+	for object in objects:
+		top_left.x = min(object.get_position().x, top_left.x)
+		top_left.y = min(object.get_position().y, top_left.y)
+		bottom_right.x = max(object.get_position().x, bottom_right.x)
+		bottom_right.y = max(object.get_position().y, bottom_right.y)
+	
+	rect.position = top_left
+	rect.size = bottom_right - rect.position
+	
+	return rect

@@ -8,7 +8,7 @@ extends Control
 @export var objects_dock : HFlowContainer
 @export var inspector_tab : InspectorTab
 @export var game_viewport : SubViewport
-@export var environment_graph : GraphEdit
+@export var environment_graph : EnvironmentGraphEdit
 @export var dragables_root : Control
 @export var above_left_side : Control
 @export var file_dialog : FileDialog
@@ -32,6 +32,8 @@ func _ready() -> void:
 	game_viewport.add_child(environment)
 	
 	inspector_tab.edited.connect(_on_inspector_value_changed)
+	
+	environment_graph.update_boundaries( game_data.get_environment().get_used_rect() )
 	
 	#wrap all objects from environment in DragableGOParents.
 	for object in environment.get_objects():
@@ -87,7 +89,10 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 
 
 func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
-	dgp.reparent(above_left_side)
+	if dgp.get_parent() != null:
+		dgp.reparent(above_left_side)
+	else:
+		above_left_side.add_child(dgp)
 	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
 	inspector_tab.update_panel(dgp.game_object.get_instance_data())
 
