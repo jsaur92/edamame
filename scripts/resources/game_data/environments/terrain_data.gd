@@ -28,7 +28,6 @@ func get_used_rect_in_tiles() -> Rect2i:
 		top_left.y = min(tile.y, top_left.y)
 		bottom_right.x = max(tile.x, bottom_right.x)
 		bottom_right.y = max(tile.y, bottom_right.y)
-	print(Rect2i(top_left, bottom_right - top_left))
 	return Rect2i(top_left, bottom_right - top_left)
 
 

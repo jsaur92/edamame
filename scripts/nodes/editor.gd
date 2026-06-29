@@ -4,6 +4,7 @@ extends Control
 @export_category("Data")
 @export var game_data : GameData
 @export_category("Component Nodes")
+@export var h_split : HSplitContainer
 @export var v_split_left_side : VSplitContainer
 @export var objects_dock : HFlowContainer
 @export var inspector_tab : InspectorTab
@@ -14,6 +15,7 @@ extends Control
 @export var file_dialog : FileDialog
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
+var min_inspector_size : float = 320
 const _SELF_SCENE = preload("uid://be4ok444g1l0f")
 
 
@@ -149,3 +151,30 @@ func _on_file_dialog_file_selected(path: String) -> void:
 func _on_tile_toggled(tile_pos:Vector2i) -> void:
 	environment.toggle_tile_at(tile_pos)
 	environment_graph.update_boundaries(game_data.get_environment().get_used_rect())
+
+
+## When the Inspector tab changes, change the min/max boundaries on the HSplitContainer.
+func _on_inspector_tab_changed(tab: int) -> void:
+	var already_min = h_split.split_offsets[0] == get_viewport().get_visible_rect().size.x - min_inspector_size
+	match tab:
+		#properties tab
+		0:
+			min_inspector_size = 320
+		#collision tab
+		1:
+			min_inspector_size = 320
+		#interact tab
+		2:
+			min_inspector_size = 1020
+	if already_min:
+		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size
+	check_h_split_offset()
+
+
+func _on_h_split_container_dragged(offset: int) -> void:
+	check_h_split_offset()
+
+
+func check_h_split_offset() -> void:
+	if h_split.split_offsets[0] > get_viewport().get_visible_rect().size.x - min_inspector_size:
+		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size

@@ -55,9 +55,7 @@ func get_mouse_pos_in_environment() -> Vector2:
 func toggle_tile_at(position:Vector2i) -> void:
 	var map_data = environment_data.get_tilemap_pattern()
 	if map_data.has_cell(position):
-		print("remove cell")
 		map_data.remove_cell(position, true)
 	else:
-		print("add cell")
 		map_data.set_cell(position, 0, Vector2i(0,0), 0)
 	setup_terrain()

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://crkluhthhepo1"]
 
 [ext_resource type="Script" uid="uid://d38227qq5vrnk" path="res://scripts/nodes/inspector_tab.gd" id="1_64xpp"]
-[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://icon.svg" id="1_fb10o"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="1_fb10o"]
 
-[node name="InspectorTab" type="Panel" unique_id=725383050 node_paths=PackedStringArray("name_container", "size_container", "position_container", "toggles_container", "object_icon", "object_name", "width_text", "height_text", "x_text", "y_text", "item_check_box", "collidable_check_box", "interactable_check_box")]
+[node name="InspectorTab" type="Control" unique_id=546715514 node_paths=PackedStringArray("name_container", "size_container", "position_container", "toggles_container", "object_icon", "object_name", "width_text", "height_text", "x_text", "y_text", "item_check_box", "collidable_check_box", "interactable_check_box")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

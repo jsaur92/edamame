@@ -1,5 +1,5 @@
 class_name InspectorTab
-extends Panel
+extends Control
 
 @export_category("Containers")
 @export var name_container : HBoxContainer
