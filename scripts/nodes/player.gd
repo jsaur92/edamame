@@ -4,7 +4,8 @@ extends CharacterBody2D
 
 @export var inventory : Inventory
 @export var camera : Camera2D
-const SPEED = 300.0
+@export var sprite : AnimatedSprite2D
+const SPEED = 600.0
 var direction : Vector2
 signal open_inventory
 const _SELF_SCENE = preload("uid://dxlyubokb3s33")
@@ -21,6 +22,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		open_inventory.emit(inventory)
+	
+	update_sprite()
 
 
 func _physics_process(delta: float) -> void:
@@ -32,3 +35,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+
+func update_sprite() -> void:
+	if velocity.length() > 0:
+		sprite.play("walk")
+	else:
+		sprite.play("default")
+	
+	if velocity.x > 0:
+		sprite.flip_h = false
+	elif velocity.x < 0:
+		sprite.flip_h = true

@@ -66,7 +66,6 @@ text = "Save"
 
 [node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right", "tile_edit", "edit_tiles_button")]
 layout_mode = 2
-scroll_offset = Vector2(-11, 0)
 snapping_distance = 64
 minimap_size = Vector2(180, 120)
 show_zoom_label = true
@@ -106,16 +105,14 @@ mouse_filter = 2
 [node name="top-left" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1655155889]
 visible = false
 layout_mode = 0
-offset_left = 11.0
-offset_right = 20.0
+offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 
 [node name="top-right" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=2016604311]
 visible = false
 layout_mode = 0
-offset_left = 11.0
-offset_right = 20.0
+offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 

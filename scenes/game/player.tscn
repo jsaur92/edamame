@@ -1,24 +1,58 @@
 [gd_scene format=3 uid="uid://dxlyubokb3s33"]
 
 [ext_resource type="Script" uid="uid://tbtpbibuugqv" path="res://scripts/nodes/player.gd" id="1_t5cse"]
-[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://icon.svg" id="2_bkoau"]
+[ext_resource type="Texture2D" uid="uid://bnj8nnd0jk3xj" path="res://assets/textures/player/player_idle.png" id="2_u3rb4"]
+[ext_resource type="Shader" uid="uid://qmrvi0rexcsx" path="res://assets/shaders/player.gdshader" id="2_wwvfn"]
+[ext_resource type="Texture2D" uid="uid://dk8w247f7hivj" path="res://assets/textures/player/player_walk_1.png" id="3_68xwl"]
 [ext_resource type="Script" uid="uid://bap4l6ce5bamg" path="res://scripts/nodes/inventory.gd" id="3_u3rb4"]
+[ext_resource type="Texture2D" uid="uid://cw5r1b6ceoxv0" path="res://assets/textures/player/player_walk_2.png" id="4_wwvfn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8yk2"]
+shader = ExtResource("2_wwvfn")
+shader_parameter/wb = Vector3(0.439, 0.439, 0.439)
+shader_parameter/my_color = Vector4(0, 0.8, 1, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nybob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u3rb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_68xwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wwvfn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd427"]
-size = Vector2(64, 64)
+size = Vector2(117, 59)
 
-[node name="Player" type="CharacterBody2D" unique_id=1451278525 node_paths=PackedStringArray("inventory", "camera")]
+[node name="Player" type="CharacterBody2D" unique_id=1451278525 node_paths=PackedStringArray("inventory", "camera", "sprite")]
 z_index = 10
 script = ExtResource("1_t5cse")
 inventory = NodePath("Inventory")
 camera = NodePath("Camera2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=437802724]
+material = SubResource("ShaderMaterial_t8yk2")
+sprite_frames = SubResource("SpriteFrames_nybob")
+frame_progress = 0.10457931
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1409712359]
+visible = false
+position = Vector2(0.5, 88.5)
 shape = SubResource("RectangleShape2D_dd427")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2038675516]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_bkoau")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1434650605]
 
