@@ -1,31 +1,31 @@
-[gd_resource type="Resource" script_class="GameData" format=3]
+[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://3yfexke7ekt6"]
 
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_tidjm"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_p2p4l"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_7ttud"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_0e7ah"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_xlbx8"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_slmo7"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_u0swv"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_1htn0"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_euhno"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_3a46h"]
-[ext_resource type="Image" path="res://assets/resources/Sign_0.tres" id="11_bs1yu"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="12_6alpa"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="13_v4r1l"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_node.gd" id="14_cf1he"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_say.gd" id="15_qo4yj"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="16_1fvyo"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_data.gd" id="17_0y7vy"]
-[ext_resource type="Image" path="res://assets/resources/Apple_Icon.tres" id="18_cb6xn"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_xqf7f"]
-[ext_resource type="Image" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
-[ext_resource type="Image" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
-[ext_resource type="TileSet" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
-[ext_resource type="Image" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_library.gd" id="27_rkej1"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/game_data.gd" id="28_h0e6t"]
+[ext_resource type="Script" uid="uid://bpso5g01i1yvs" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_tidjm"]
+[ext_resource type="Script" uid="uid://ccqcmhmnuqt8j" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_p2p4l"]
+[ext_resource type="Script" uid="uid://uuh16mk3uto3" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_7ttud"]
+[ext_resource type="Script" uid="uid://bq5gwuq8mk1ht" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_0e7ah"]
+[ext_resource type="Script" uid="uid://da8wcwdigblny" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_xlbx8"]
+[ext_resource type="Script" uid="uid://dewv8c5uj2ihu" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_slmo7"]
+[ext_resource type="Script" uid="uid://5vu06rcfmh5e" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_u0swv"]
+[ext_resource type="Script" uid="uid://rcg0vsvbptup" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_1htn0"]
+[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_euhno"]
+[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_3a46h"]
+[ext_resource type="Image" uid="uid://bgf1tx2et4f75" path="res://assets/resources/Sign_0.tres" id="11_bs1yu"]
+[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="12_6alpa"]
+[ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="13_v4r1l"]
+[ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="14_cf1he"]
+[ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="16_1fvyo"]
+[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="17_0y7vy"]
+[ext_resource type="Image" uid="uid://dpfqm05dk6ou2" path="res://assets/resources/Apple_Icon.tres" id="18_cb6xn"]
+[ext_resource type="Script" uid="uid://bawoprftpfsep" path="res://scripts/resources/game_data/commands/command_give.gd" id="19_4fm7p"]
+[ext_resource type="Script" uid="uid://c4b0hx6f7v4b6" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_xqf7f"]
+[ext_resource type="Image" uid="uid://b5xluls20gm2f" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
+[ext_resource type="Image" uid="uid://byojb2s7o1vtk" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
+[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
+[ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
+[ext_resource type="Image" uid="uid://blomn2s3m555s" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
+[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="27_rkej1"]
+[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="28_h0e6t"]
 
 [sub_resource type="Resource" id="Resource_03g2o"]
 script = ExtResource("2_p2p4l")
@@ -71,28 +71,14 @@ activities = Dictionary[String, ExtResource("1_tidjm")]({
 })
 metadata/_custom_type_script = "uid://rcg0vsvbptup"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fm7p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpfb6"]
 
 [sub_resource type="Resource" id="Resource_15jn7"]
 script = ExtResource("13_v4r1l")
-shape = SubResource("RectangleShape2D_4fm7p")
+shape = SubResource("RectangleShape2D_xpfb6")
 
-[sub_resource type="Resource" id="Resource_h6h8x"]
-script = ExtResource("15_qo4yj")
-dialog = "I am a sign!"
-metadata/_custom_type_script = "uid://by3vegmjhgnnt"
-
-[sub_resource type="Resource" id="Resource_v1wsp"]
-script = ExtResource("14_cf1he")
-command = SubResource("Resource_h6h8x")
-metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
-
-[sub_resource type="Resource" id="Resource_3kame"]
+[sub_resource type="Resource" id="Resource_0e7ah"]
 script = ExtResource("16_1fvyo")
-command_heads = Dictionary[String, ExtResource("14_cf1he")]({
-"default": SubResource("Resource_v1wsp")
-})
-metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
 [sub_resource type="Resource" id="Resource_mldwq"]
 script = ExtResource("17_0y7vy")
@@ -102,21 +88,34 @@ image = ExtResource("11_bs1yu")
 image_scale = Vector2(2, 2)
 mods = Dictionary[int, ExtResource("12_6alpa")]({
 1: SubResource("Resource_15jn7"),
-2: SubResource("Resource_3kame")
+2: SubResource("Resource_0e7ah")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"
 
 [sub_resource type="Resource" id="Resource_fftk8"]
 script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_mldwq")
-position = Vector2(181.80138, 463.69354)
+position = Vector2(475.93536, 153.43364)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
-[sub_resource type="Resource" id="Resource_0e7ah"]
+[sub_resource type="Resource" id="Resource_slmo7"]
 script = ExtResource("19_xqf7f")
+
+[sub_resource type="Resource" id="Resource_v4r1l"]
+script = ExtResource("19_4fm7p")
+item_uid = 7354654
+metadata/_custom_type_script = "uid://bawoprftpfsep"
+
+[sub_resource type="Resource" id="Resource_cf1he"]
+script = ExtResource("14_cf1he")
+command = SubResource("Resource_v4r1l")
+metadata/_custom_type_script = "uid://b8ktbc2g5dckx"
 
 [sub_resource type="Resource" id="Resource_xlbx8"]
 script = ExtResource("16_1fvyo")
+command_heads = Dictionary[String, ExtResource("14_cf1he")]({
+"default": SubResource("Resource_cf1he")
+})
 
 [sub_resource type="Resource" id="Resource_fl2ef"]
 script = ExtResource("17_0y7vy")
@@ -125,7 +124,7 @@ name = "Apple"
 image = ExtResource("18_cb6xn")
 image_scale = Vector2(0.3125, 0.3125)
 mods = Dictionary[int, ExtResource("12_6alpa")]({
-0: SubResource("Resource_0e7ah"),
+0: SubResource("Resource_slmo7"),
 2: SubResource("Resource_xlbx8")
 })
 metadata/_custom_type_script = "uid://bul6ia38j5v6b"

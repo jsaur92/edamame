@@ -45,6 +45,7 @@ func update_panel(object:Resource) -> void:
 		current_object_instance = object
 		update_panel_instance(object)
 	set_vis()
+	edited.emit(object)
 
 
 ## Update the panel based on an ObjectData.
@@ -134,6 +135,7 @@ func _on_is_item_check_box_toggled(toggled_on: bool) -> void:
 		current_object_data.set_item()
 	else:
 		current_object_data.remove_item()
+	edited.emit(current_object_data)
 
 
 func _on_is_collidable_check_box_toggled(toggled_on: bool) -> void:
@@ -141,6 +143,7 @@ func _on_is_collidable_check_box_toggled(toggled_on: bool) -> void:
 		current_object_data.set_collidable()
 	else:
 		current_object_data.remove_collidable()
+	edited.emit(current_object_data)
 
 
 func _on_is_interactable_check_box_toggled(toggled_on: bool) -> void:
@@ -148,3 +151,4 @@ func _on_is_interactable_check_box_toggled(toggled_on: bool) -> void:
 		current_object_data.set_interactable()
 	else:
 		current_object_data.remove_interactable()
+	edited.emit(current_object_data)

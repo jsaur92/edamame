@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
 bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("h_split", "v_split_left_side", "objects_dock", "inspector_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,10 @@ script = ExtResource("1_bc6i7")
 h_split = NodePath("HSplitContainer")
 v_split_left_side = NodePath("HSplitContainer/LeftSide/VSplitContainer")
 objects_dock = NodePath("HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsDock")
-inspector_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
+inspector_tabs_container = NodePath("HSplitContainer/Inspector")
+details_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
+obstacle_tab = NodePath("HSplitContainer/Inspector/ObstacleProperties")
+interactive_tab = NodePath("HSplitContainer/Inspector/InteractableTab")
 game_viewport = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
 dragables_root = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")

@@ -7,7 +7,10 @@ extends Control
 @export var h_split : HSplitContainer
 @export var v_split_left_side : VSplitContainer
 @export var objects_dock : HFlowContainer
-@export var inspector_tab : InspectorTab
+@export var inspector_tabs_container  : TabContainer
+@export var details_tab : InspectorTab
+@export var obstacle_tab : Control
+@export var interactive_tab : Control
 @export var game_viewport : SubViewport
 @export var environment_graph : EnvironmentGraphEdit
 @export var dragables_root : Control
@@ -33,7 +36,7 @@ func _ready() -> void:
 	environment = GameEnvironment.make(game_data.get_environment())
 	game_viewport.add_child(environment)
 	
-	inspector_tab.edited.connect(_on_inspector_value_changed)
+	details_tab.edited.connect(_on_inspector_value_changed)
 	
 	environment_graph.update_boundaries( game_data.get_environment().get_used_rect() )
 	environment_graph.toggle_tile.connect(_on_tile_toggled)
@@ -76,8 +79,15 @@ func get_mouse_pos_in_environment() -> Vector2:
 	return environment.get_mouse_pos_in_environment() - Vector2(0, v_split_left_side.split_offsets[0])
 
 
+func update_inspector_tabs() -> void:
+	var obstacle_tab_index = inspector_tabs_container.get_tab_idx_from_control(obstacle_tab)
+	var interactive_tab_index = inspector_tabs_container.get_tab_idx_from_control(interactive_tab)
+	inspector_tabs_container.set_tab_hidden(obstacle_tab_index, not details_tab.current_object_data.is_collidable())
+	inspector_tabs_container.set_tab_hidden(interactive_tab_index, not details_tab.current_object_data.is_interactable())
+
+
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
-	inspector_tab.update_panel(ot.get_object())
+	details_tab.update_panel(ot.get_object())
 
 
 func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
@@ -97,12 +107,12 @@ func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
 	else:
 		above_left_side.add_child(dgp)
 	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
-	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+	details_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 func _on_dragable_container_dragged(dgp:DragableGOParent) -> void:
 	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
-	inspector_tab.update_panel(dgp.game_object.get_instance_data())
+	details_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 func _on_dragable_container_released(dgp:DragableGOParent) -> void:
@@ -111,7 +121,7 @@ func _on_dragable_container_released(dgp:DragableGOParent) -> void:
 	else:
 		dgp.reparent(dragables_root)
 		dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
-		inspector_tab.update_panel(dgp.game_object.get_instance_data())
+		details_tab.update_panel(dgp.game_object.get_instance_data())
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
@@ -128,6 +138,8 @@ func _on_inspector_value_changed(object:Variant) -> void:
 			if dragable.game_object.get_instance_data() == object:
 				dragable.update()
 				break
+	
+	update_inspector_tabs()
 
 
 ## Called when the GraphEdit's offset is chaged either by using the minimap or scroll bars.
