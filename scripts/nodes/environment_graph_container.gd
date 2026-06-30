@@ -6,7 +6,7 @@ extends GraphEdit
 @export var tile_edit : Control
 @export var edit_tiles_button : Button
 signal toggle_tile
-const TILE_SIZE = 64
+const TILE_SIZE = 160
 var this_drag : Array[Vector2i] = []
 var held : bool = false
 

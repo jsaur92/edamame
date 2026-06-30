@@ -35,7 +35,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd427"]
-size = Vector2(117, 59)
+size = Vector2(112, 60)
 
 [node name="Player" type="CharacterBody2D" unique_id=1451278525 node_paths=PackedStringArray("inventory", "camera", "sprite")]
 z_index = 10
@@ -46,12 +46,11 @@ sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=437802724]
 material = SubResource("ShaderMaterial_t8yk2")
+position = Vector2(0, -99)
 sprite_frames = SubResource("SpriteFrames_nybob")
-frame_progress = 0.10457931
+frame_progress = 0.56190026
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1409712359]
-visible = false
-position = Vector2(0.5, 88.5)
 shape = SubResource("RectangleShape2D_dd427")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1434650605]
