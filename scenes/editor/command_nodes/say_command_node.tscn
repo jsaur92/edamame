@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d3gl55ve5torv"]
+
+[ext_resource type="Script" uid="uid://chmnki7ldl0da" path="res://scenes/editor/command_nodes/say_command_node.gd" id="1_4undf"]
+
+[node name="SayCommandNode" type="GraphNode" unique_id=415856084]
+offset_right = 155.0
+offset_bottom = 96.0
+title = "Say"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_4undf")
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=548175847]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Text to say..."
