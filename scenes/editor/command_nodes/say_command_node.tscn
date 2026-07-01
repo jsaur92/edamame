@@ -17,7 +17,8 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_4undf")
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=548175847]
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1129374478]
 layout_mode = 2
-size_flags_vertical = 3
-placeholder_text = "Text to say..."
+placeholder_text = "Text to ask..."
+wrap_mode = 1
+scroll_fit_content_height = true

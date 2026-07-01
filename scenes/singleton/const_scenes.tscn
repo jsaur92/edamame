@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c5fqshf4jfa0q"]
-
-[sub_resource type="GDScript" id="GDScript_b1ohg"]
-
-[node name="ConstScenes" type="Node" unique_id=374748217]
-script = SubResource("GDScript_b1ohg")

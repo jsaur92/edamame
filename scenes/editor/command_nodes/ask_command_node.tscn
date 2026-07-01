@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://jro4xbkf8tjv"]
 
-[ext_resource type="Script" uid="uid://4e2cyu0s2luo" path="res://scenes/editor/command_nodes/command_graph_node.gd" id="1_iaev1"]
+[ext_resource type="Script" uid="uid://xnq8igq1prbh" path="res://scenes/editor/command_nodes/ask_command_node.gd" id="1_iaev1"]
 
-[node name="AskCommandNode" type="GraphNode" unique_id=415856084]
+[node name="AskCommandNode" type="GraphNode" unique_id=415856084 node_paths=PackedStringArray("question_text_edit", "answer_line_edits", "buttons_container", "add_button", "remove_button")]
 offset_right = 155.0
 offset_bottom = 213.0
 title = "Ask"
@@ -52,11 +52,17 @@ slot/4/right_color = Color(1, 1, 1, 1)
 slot/4/right_icon = null
 slot/4/draw_stylebox = true
 script = ExtResource("1_iaev1")
+question_text_edit = NodePath("TextEdit")
+answer_line_edits = [NodePath("LineEdit"), NodePath("LineEdit2")]
+buttons_container = NodePath("ButtonsContainer")
+add_button = NodePath("ButtonsContainer/AddButton")
+remove_button = NodePath("ButtonsContainer/RemoveButton")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=548175847]
 layout_mode = 2
-size_flags_vertical = 3
 placeholder_text = "Text to ask..."
+wrap_mode = 1
+scroll_fit_content_height = true
 
 [node name="Control" type="Control" parent="." unique_id=1804755364]
 custom_minimum_size = Vector2(0, 16)
@@ -70,6 +76,18 @@ placeholder_text = "Answer 1"
 layout_mode = 2
 placeholder_text = "Answer 2"
 
-[node name="Button" type="Button" parent="." unique_id=1275227171]
+[node name="ButtonsContainer" type="HBoxContainer" parent="." unique_id=2048110929]
 layout_mode = 2
+
+[node name="AddButton" type="Button" parent="ButtonsContainer" unique_id=1275227171]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "+"
+
+[node name="RemoveButton" type="Button" parent="ButtonsContainer" unique_id=1458215936]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-"
+
+[connection signal="pressed" from="ButtonsContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

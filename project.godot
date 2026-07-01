@@ -15,10 +15,6 @@ run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/stretch/aspect="keep"
 
-[autoload]
-
-ConstScenes="*uid://c5fqshf4jfa0q"
-
 [display]
 
 window/size/viewport_width=1920
