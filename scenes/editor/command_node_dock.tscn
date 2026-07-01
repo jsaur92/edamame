@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://umdkdg3o254j"]
+
+[ext_resource type="Script" uid="uid://c4ootdr2mqosl" path="res://scripts/nodes/command_node_dock.gd" id="1_8yva2"]
+[ext_resource type="PackedScene" uid="uid://d3gl55ve5torv" path="res://scenes/editor/command_nodes/say_command_node.tscn" id="1_hmosl"]
+[ext_resource type="PackedScene" uid="uid://jro4xbkf8tjv" path="res://scenes/editor/command_nodes/ask_command_node.tscn" id="2_8yva2"]
+
+[node name="CommandNodeDock" type="Control" unique_id=2114585556]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_8yva2")
+
+[node name="SayCommandNode" parent="." unique_id=415856084 instance=ExtResource("1_hmosl")]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 23.0
+offset_right = 196.0
+offset_bottom = 119.0
+
+[node name="AskCommandNode" parent="." unique_id=201691679 instance=ExtResource("2_8yva2")]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 22.0
+offset_right = 408.0
+offset_bottom = 235.0
+
+[connection signal="gui_input" from="SayCommandNode" to="." method="_on_say_command_node_gui_input"]
+[connection signal="gui_input" from="AskCommandNode" to="." method="_on_ask_command_node_gui_input"]

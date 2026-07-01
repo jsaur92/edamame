@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://cibcf8xhmoiiu" path="res://scripts/nodes/editor.gd" id="1_bc6i7"]
 [ext_resource type="Script" uid="uid://bv7lntmxjb0pk" path="res://scripts/nodes/environment_graph_container.gd" id="2_5cfe8"]
 [ext_resource type="PackedScene" uid="uid://crkluhthhepo1" path="res://scenes/editor/inspector_tab.tscn" id="2_m0is4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhn8j"]
-bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+[ext_resource type="PackedScene" uid="uid://bap2qw6puiqrw" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 
 [node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
 layout_mode = 3
@@ -22,7 +20,7 @@ objects_dock = NodePath("HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsD
 inspector_tabs_container = NodePath("HSplitContainer/Inspector")
 details_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
 obstacle_tab = NodePath("HSplitContainer/Inspector/ObstacleProperties")
-interactive_tab = NodePath("HSplitContainer/Inspector/InteractableTab")
+interactive_tab = NodePath("")
 game_viewport = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
 dragables_root = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
@@ -69,7 +67,6 @@ text = "Save"
 
 [node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right", "tile_edit", "edit_tiles_button")]
 layout_mode = 2
-scroll_offset = Vector2(-135, 0)
 snapping_distance = 64
 minimap_size = Vector2(180, 120)
 show_zoom_label = true
@@ -109,16 +106,14 @@ mouse_filter = 2
 [node name="top-left" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1655155889]
 visible = false
 layout_mode = 0
-offset_left = 135.0
-offset_right = 144.0
+offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 
 [node name="top-right" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=2016604311]
 visible = false
 layout_mode = 0
-offset_left = 135.0
-offset_right = 144.0
+offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 
@@ -183,83 +178,8 @@ layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = "Obstacle"
 
-[node name="InteractableTab" type="Control" parent="HSplitContainer/Inspector" unique_id=295510458]
-visible = false
+[node name="InteractableTab" parent="HSplitContainer/Inspector" unique_id=402749850 instance=ExtResource("4_7gtdv")]
 layout_mode = 2
-metadata/_tab_index = 2
-metadata/_tab_name = "Interactive"
-
-[node name="CommandNodeDock" type="PanelContainer" parent="HSplitContainer/Inspector/InteractableTab" unique_id=544600147]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.734
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.15402222
-theme_override_styles/panel = SubResource("StyleBoxFlat_dhn8j")
-
-[node name="CommandNodeChains" type="GraphEdit" parent="HSplitContainer/Inspector/InteractableTab" unique_id=1306502914]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.734
-anchor_bottom = 1.0020001
-offset_right = -0.15402222
-offset_bottom = -0.29608154
-show_grid = false
-grid_pattern = 1
-snapping_enabled = false
-right_disconnects = true
-type_names = {
-0: "default"
-}
-
-[node name="GraphNode" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=88306796]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 191.0
-offset_right = 296.0
-offset_bottom = 301.0
-mouse_filter = 1
-position_offset = Vector2(105, 191)
-title = "rdgjirj"
-ignore_invalid_connection_type = true
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-
-[node name="Label" type="Label" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains/GraphNode" unique_id=1476689498]
-layout_mode = 2
-text = "test"
-
-[node name="GraphNode2" type="GraphNode" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains" unique_id=926399723]
-layout_mode = 0
-offset_left = 449.0
-offset_top = 173.0
-offset_right = 640.0
-offset_bottom = 276.0
-mouse_filter = 1
-position_offset = Vector2(449, 173)
-title = "rdgjirj"
-ignore_invalid_connection_type = true
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-
-[node name="Label" type="Label" parent="HSplitContainer/Inspector/InteractableTab/CommandNodeChains/GraphNode2" unique_id=1936028036]
-layout_mode = 2
-text = "test2"
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
 
