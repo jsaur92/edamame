@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chmnki7ldl0da" path="res://scenes/editor/command_nodes/say_command_node.gd" id="1_4undf"]
 
-[node name="SayCommandNode" type="GraphNode" unique_id=415856084]
+[node name="SayCommandNode" type="GraphNode" unique_id=415856084 node_paths=PackedStringArray("text_edit")]
 offset_right = 155.0
 offset_bottom = 96.0
 title = "Say"
@@ -17,9 +17,10 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_4undf")
+text_edit = NodePath("TextEdit")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=1129374478]
 layout_mode = 2
-placeholder_text = "Text to ask..."
+placeholder_text = "Text to say..."
 wrap_mode = 1
 scroll_fit_content_height = true

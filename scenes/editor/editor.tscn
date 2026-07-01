@@ -20,7 +20,7 @@ objects_dock = NodePath("HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsD
 inspector_tabs_container = NodePath("HSplitContainer/Inspector")
 details_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
 obstacle_tab = NodePath("HSplitContainer/Inspector/ObstacleProperties")
-interactive_tab = NodePath("")
+interactive_tab = NodePath("HSplitContainer/Inspector/InteractableTab")
 game_viewport = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
 dragables_root = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
@@ -179,6 +179,7 @@ metadata/_tab_index = 1
 metadata/_tab_name = "Obstacle"
 
 [node name="InteractableTab" parent="HSplitContainer/Inspector" unique_id=402749850 instance=ExtResource("4_7gtdv")]
+visible = false
 layout_mode = 2
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c4ootdr2mqosl" path="res://scripts/nodes/command_node_dock.gd" id="1_8yva2"]
 [ext_resource type="PackedScene" uid="uid://d3gl55ve5torv" path="res://scenes/editor/command_nodes/say_command_node.tscn" id="1_hmosl"]
 [ext_resource type="PackedScene" uid="uid://jro4xbkf8tjv" path="res://scenes/editor/command_nodes/ask_command_node.tscn" id="2_8yva2"]
+[ext_resource type="PackedScene" uid="uid://b3y1o0h0nwvq3" path="res://scenes/editor/command_nodes/give_command_node.tscn" id="4_lny6f"]
+[ext_resource type="PackedScene" uid="uid://de4t4xhsumgu5" path="res://scenes/editor/command_nodes/take_command_node.tscn" id="5_0fqap"]
+[ext_resource type="PackedScene" uid="uid://27igkab5ompo" path="res://scenes/editor/command_nodes/remove_command_node.tscn" id="6_71vnt"]
 
 [node name="CommandNodeDock" type="Control" unique_id=2114585556]
 layout_mode = 3
@@ -12,17 +15,38 @@ script = ExtResource("1_8yva2")
 
 [node name="SayCommandNode" parent="." unique_id=415856084 instance=ExtResource("1_hmosl")]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 23.0
-offset_right = 196.0
-offset_bottom = 119.0
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 179.0
+offset_bottom = 115.0
 
 [node name="AskCommandNode" parent="." unique_id=201691679 instance=ExtResource("2_8yva2")]
 layout_mode = 0
-offset_left = 253.0
-offset_top = 22.0
-offset_right = 408.0
-offset_bottom = 235.0
+offset_left = 255.0
+offset_top = 17.0
+offset_right = 410.0
+offset_bottom = 230.0
+
+[node name="GiveCommandNode" parent="." unique_id=1028422452 instance=ExtResource("4_lny6f")]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 14.0
+offset_right = 647.0
+offset_bottom = 247.0
+
+[node name="TakeCommandNode" parent="." unique_id=837369138 instance=ExtResource("5_0fqap")]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 12.0
+offset_right = 894.0
+offset_bottom = 313.0
+
+[node name="RemoveCommandNode" parent="." unique_id=1079883680 instance=ExtResource("6_71vnt")]
+layout_mode = 0
+offset_left = 939.0
+offset_top = 14.0
+offset_right = 1094.0
+offset_bottom = 110.0
 
 [connection signal="gui_input" from="SayCommandNode" to="." method="_on_say_command_node_gui_input"]
 [connection signal="gui_input" from="AskCommandNode" to="." method="_on_ask_command_node_gui_input"]

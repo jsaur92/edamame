@@ -10,7 +10,7 @@ extends Control
 @export var inspector_tabs_container  : TabContainer
 @export var details_tab : InspectorTab
 @export var obstacle_tab : Control
-@export var interactive_tab : Control
+@export var interactive_tab : InteractableTab
 @export var game_viewport : SubViewport
 @export var environment_graph : EnvironmentGraphEdit
 @export var dragables_root : Control
@@ -32,6 +32,7 @@ func _ready() -> void:
 	OS.set_low_processor_usage_mode(true) #this should be toggled when going into/outof playtest.
 	
 	update_objects_dock()
+	update_inspector_tabs()
 	
 	environment = GameEnvironment.make(game_data.get_environment())
 	game_viewport.add_child(environment)
@@ -82,8 +83,8 @@ func get_mouse_pos_in_environment() -> Vector2:
 func update_inspector_tabs() -> void:
 	var obstacle_tab_index = inspector_tabs_container.get_tab_idx_from_control(obstacle_tab)
 	var interactive_tab_index = inspector_tabs_container.get_tab_idx_from_control(interactive_tab)
-	inspector_tabs_container.set_tab_hidden(obstacle_tab_index, not details_tab.current_object_data.is_collidable())
-	inspector_tabs_container.set_tab_hidden(interactive_tab_index, not details_tab.current_object_data.is_interactable())
+	inspector_tabs_container.set_tab_hidden(obstacle_tab_index, details_tab.current_object_data == null or not details_tab.current_object_data.is_collidable())
+	inspector_tabs_container.set_tab_hidden(interactive_tab_index, details_tab.current_object_data == null or not details_tab.current_object_data.is_interactable())
 
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
@@ -178,6 +179,7 @@ func _on_inspector_tab_changed(tab: int) -> void:
 		#interact tab
 		2:
 			min_inspector_size = 1020
+			interactive_tab.load_data(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
 	if already_min:
 		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size
 	check_h_split_offset()

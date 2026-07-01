@@ -135,11 +135,11 @@ object_data = SubResource("Resource_fl2ef")
 position = Vector2(167.15488, 174.2659)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_slmo7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fm7p"]
 
 [sub_resource type="Resource" id="Resource_u0swv"]
 script = ExtResource("13_v4r1l")
-shape = SubResource("RectangleShape2D_slmo7")
+shape = SubResource("RectangleShape2D_4fm7p")
 
 [sub_resource type="Resource" id="Resource_nq8pd"]
 script = ExtResource("17_0y7vy")
@@ -197,7 +197,7 @@ metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 [sub_resource type="Resource" id="Resource_8bb75"]
 script = ExtResource("10_3a46h")
 object_data = SubResource("Resource_nq8pd")
-position = Vector2(682.8637, 178.54993)
+position = Vector2(1636.2128, 279.01486)
 
 [sub_resource type="Resource" id="Resource_3a46h"]
 script = ExtResource("10_3a46h")

@@ -39,12 +39,12 @@ show_grid_buttons = false
 
 [node name="GraphNode" type="GraphNode" parent="VBoxContainer/CommandNodeChains" unique_id=399781868]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 191.0
-offset_right = 231.0
-offset_bottom = 331.0
+offset_left = 111.0
+offset_top = 147.0
+offset_right = 237.0
+offset_bottom = 287.0
 mouse_filter = 1
-position_offset = Vector2(105, 191)
+position_offset = Vector2(111, 147)
 title = "On Interact"
 ignore_invalid_connection_type = true
 slot/0/left_enabled = false
