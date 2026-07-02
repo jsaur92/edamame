@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cibcf8xhmoiiu" path="res://scripts/nodes/editor.gd" id="1_bc6i7"]
 [ext_resource type="Script" uid="uid://bv7lntmxjb0pk" path="res://scripts/nodes/environment_graph_container.gd" id="2_5cfe8"]
 [ext_resource type="PackedScene" uid="uid://crkluhthhepo1" path="res://scenes/editor/inspector_tab.tscn" id="2_m0is4"]
-[ext_resource type="PackedScene" uid="uid://bap2qw6puiqrw" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
+[ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 
 [node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
 layout_mode = 3
@@ -135,6 +135,12 @@ offset_top = 9.0
 offset_right = 260.0
 offset_bottom = 40.0
 text = "tile edit mode"
+
+[node name="GraphNode" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1466511997]
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 55.0
+mouse_filter = 1
 
 [node name="Panel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1907634130]
 layout_mode = 2

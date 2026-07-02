@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bap2qw6puiqrw"]
+[gd_scene format=3 uid="uid://da5ixokyjg6d7"]
 
-[ext_resource type="PackedScene" uid="uid://umdkdg3o254j" path="res://scenes/editor/command_node_dock.tscn" id="1_gdd2s"]
-[ext_resource type="Script" uid="uid://60fx57ur3oy" path="res://scripts/nodes/interactable_tab.gd" id="1_uoij4"]
+[ext_resource type="PackedScene" path="res://scenes/editor/command_node_dock.tscn" id="1_gdd2s"]
+[ext_resource type="Script" path="res://scripts/nodes/interactable_tab.gd" id="1_uoij4"]
 
 [node name="InteractableTab" type="Control" unique_id=402749850 node_paths=PackedStringArray("graph_edit")]
 layout_mode = 3

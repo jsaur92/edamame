@@ -149,8 +149,9 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 	if environment != null:
 		environment.position = -offset
 		dragables_root.position = environment.position
-		# TODO: make zoom work
-		#game_viewport.size_2d_override = game_viewport.size / environment_graph.zoom
+		var zoom_vec = Vector2(environment_graph.zoom, environment_graph.zoom)
+		environment.scale = zoom_vec
+		dragables_root.scale = zoom_vec
 
 
 func _on_save_button_pressed() -> void:
