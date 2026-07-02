@@ -156,7 +156,6 @@ grow_horizontal = 2
 
 [node name="LeftSideAbove" type="Control" parent="HSplitContainer/LeftSide" unique_id=1333352097]
 z_index = 100
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

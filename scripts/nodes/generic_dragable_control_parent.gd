@@ -44,12 +44,13 @@ func _process(delta: float) -> void:
 			held = false
 			released.emit()
 		else:
-			global_position = get_tree().root.get_mouse_position() - size/2
-			game_object.global_position = get_tree().root.get_mouse_position()
+			global_position = get_tree().root.get_mouse_position()
+			game_object.global_position = global_position
+			#game_object.global_position = get_tree().root.get_mouse_position()
 			dragged.emit()
 			
 			game_object.rotation = sin(get_time_since_clicked() * 10.) * 0.5
-			game_object.global_position = global_position + size/2
+			#game_object.global_position = global_position + size/2
 			shadow.visible = true
 	else:
 		game_object.rotation_degrees = 0

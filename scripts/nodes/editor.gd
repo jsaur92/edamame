@@ -77,7 +77,7 @@ func remove_object(dgp:DragableGOParent) -> void:
 
 
 func get_mouse_pos_in_environment() -> Vector2:
-	return environment.get_mouse_pos_in_environment() - Vector2(0, v_split_left_side.split_offsets[0])
+	return (environment.get_mouse_pos_in_environment() * environment_graph.scale) - Vector2(0, v_split_left_side.split_offsets[0])
 
 
 func update_inspector_tabs() -> void:
@@ -121,7 +121,8 @@ func _on_dragable_container_released(dgp:DragableGOParent) -> void:
 		remove_object(dgp)
 	else:
 		dgp.reparent(dragables_root)
-		dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
+		dgp.game_object.instance_data.position = dgp.position + dgp.size/2
+		#dgp.game_object.instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
 		details_tab.update_panel(dgp.game_object.get_instance_data())
 
 
@@ -152,6 +153,8 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 		var zoom_vec = Vector2(environment_graph.zoom, environment_graph.zoom)
 		environment.scale = zoom_vec
 		dragables_root.scale = zoom_vec
+		above_left_side.global_position = environment.global_position
+		above_left_side.scale = zoom_vec
 
 
 func _on_save_button_pressed() -> void:
