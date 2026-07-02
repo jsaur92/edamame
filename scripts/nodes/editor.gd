@@ -4,6 +4,7 @@ extends Control
 @export_category("Data")
 @export var game_data : GameData
 @export_category("Component Nodes")
+@export var v_split_root : VSplitContainer
 @export var h_split : HSplitContainer
 @export var v_split_left_side : VSplitContainer
 @export var objects_dock : HFlowContainer
@@ -66,7 +67,7 @@ func add_dragable(dgp:DragableGOParent) -> void:
 
 
 func get_object_dock_top() -> float:
-	return v_split_left_side.position.y + v_split_left_side.split_offsets[1]
+	return v_split_left_side.position.y + v_split_left_side.split_offsets[0]
 
 
 ## Completely remove a GameObject and its DGP from the editor view and its data from the
@@ -77,7 +78,7 @@ func remove_object(dgp:DragableGOParent) -> void:
 
 
 func get_mouse_pos_in_environment() -> Vector2:
-	return (environment.get_mouse_pos_in_environment() * environment_graph.scale) - Vector2(0, v_split_left_side.split_offsets[0])
+	return (environment.get_mouse_pos_in_environment())
 
 
 func update_inspector_tabs() -> void:
@@ -132,13 +133,13 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	if object is ObjectData:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_object_data() == object:
-				dragable.update()
+				dragable.update_position()
 	
 	#for updating instance data, find the instance and update it.
 	elif object is ObjectInstanceData:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_instance_data() == object:
-				dragable.update()
+				dragable.update_position()
 				break
 	
 	update_inspector_tabs()
@@ -153,8 +154,9 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 		var zoom_vec = Vector2(environment_graph.zoom, environment_graph.zoom)
 		environment.scale = zoom_vec
 		dragables_root.scale = zoom_vec
-		above_left_side.global_position = environment.global_position
+		above_left_side.global_position = environment.global_position + environment_graph.global_position
 		above_left_side.scale = zoom_vec
+		environment.graph_zoom = zoom_vec
 
 
 func _on_save_button_pressed() -> void:
@@ -196,3 +198,7 @@ func _on_h_split_container_dragged(offset: int) -> void:
 func check_h_split_offset() -> void:
 	if h_split.split_offsets[0] > get_viewport().get_visible_rect().size.x - min_inspector_size:
 		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size
+
+
+func _on_v_split_container_dragged(offset: int) -> void:
+	above_left_side.position.y = offset

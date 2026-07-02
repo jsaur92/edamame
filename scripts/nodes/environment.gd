@@ -5,6 +5,7 @@ extends Node2D
 @export var objects_root : Node2D
 @export var player : Player
 var environment_data : EnvironmentData
+var graph_zoom : Vector2 = Vector2.ONE
 const _SELF_SCENE = preload("uid://c4h1sc5o7rilv")
 
 static func make(data:EnvironmentData):
@@ -13,6 +14,10 @@ static func make(data:EnvironmentData):
 	ge.setup_terrain()
 	ge.setup_objects()
 	return ge
+
+
+func _process(delta: float) -> void:
+	print(get_mouse_pos_in_environment(), ", ", graph_zoom)
 
 
 func setup_terrain():
@@ -47,7 +52,7 @@ func add_object(object_instance:ObjectInstanceData) -> GameObject:
 
 
 func get_mouse_pos_in_environment() -> Vector2:
-	return get_tree().root.get_mouse_position() - position
+	return (get_global_mouse_position() - global_position) / graph_zoom
 
 
 ## If there is a tile at this position, turn it off. If there is not a tile,

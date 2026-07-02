@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://crkluhthhepo1" path="res://scenes/editor/inspector_tab.tscn" id="2_m0is4"]
 [ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,50 +14,37 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bc6i7")
-h_split = NodePath("HSplitContainer")
-v_split_left_side = NodePath("HSplitContainer/LeftSide/VSplitContainer")
-objects_dock = NodePath("HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsDock")
-inspector_tabs_container = NodePath("HSplitContainer/Inspector")
-details_tab = NodePath("HSplitContainer/Inspector/InspectorTab")
-obstacle_tab = NodePath("HSplitContainer/Inspector/ObstacleProperties")
-interactive_tab = NodePath("HSplitContainer/Inspector/InteractableTab")
-game_viewport = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
-environment_graph = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
-dragables_root = NodePath("HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
-above_left_side = NodePath("HSplitContainer/LeftSide/LeftSideAbove")
+v_split_root = NodePath("VSplitRoot")
+h_split = NodePath("VSplitRoot/HSplitContainer")
+v_split_left_side = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer")
+objects_dock = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsDock")
+inspector_tabs_container = NodePath("VSplitRoot/HSplitContainer/Inspector")
+details_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/InspectorTab")
+obstacle_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/ObstacleProperties")
+interactive_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/InteractableTab")
+game_viewport = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
+environment_graph = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
+dragables_root = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
+above_left_side = NodePath("VSplitRoot/HSplitContainer/LeftSide/LeftSideAbove")
 file_dialog = NodePath("FileDialog")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1973835883]
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
+
+[node name="VSplitRoot" type="VSplitContainer" parent="." unique_id=76124584]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-split_offsets = PackedInt32Array(1620)
-split_offset = 1620
-
-[node name="LeftSide" type="Control" parent="HSplitContainer" unique_id=1965081007]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/LeftSide" unique_id=346023758]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-split_offsets = PackedInt32Array(80, 900)
+split_offsets = PackedInt32Array(80)
 split_offset = 80
 
-[node name="FilePanel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1012164895]
+[node name="FilePanel" type="Panel" parent="VSplitRoot" unique_id=1012164895]
 clip_contents = true
 layout_mode = 2
 
-[node name="SaveButton" type="Button" parent="HSplitContainer/LeftSide/VSplitContainer/FilePanel" unique_id=90335498]
+[node name="SaveButton" type="Button" parent="VSplitRoot/FilePanel" unique_id=90335498]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 19.0
@@ -65,9 +52,30 @@ offset_right = 108.0
 offset_bottom = 59.0
 text = "Save"
 
-[node name="EnvironmentGraphContainer" type="GraphEdit" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right", "tile_edit", "edit_tiles_button")]
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitRoot" unique_id=1973835883]
 layout_mode = 2
-snapping_distance = 64
+mouse_filter = 2
+split_offsets = PackedInt32Array(1620)
+split_offset = 1620
+
+[node name="LeftSide" type="Control" parent="VSplitRoot/HSplitContainer" unique_id=1965081007]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VSplitRoot/HSplitContainer/LeftSide" unique_id=346023758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+split_offsets = PackedInt32Array(808)
+split_offset = 808
+
+[node name="EnvironmentGraphContainer" type="GraphEdit" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer" unique_id=868302950 node_paths=PackedStringArray("top_left", "bottom_right", "tile_edit", "edit_tiles_button")]
+layout_mode = 2
+snapping_distance = 80
 minimap_size = Vector2(180, 120)
 show_zoom_label = true
 show_grid_buttons = false
@@ -78,7 +86,7 @@ bottom_right = NodePath("top-right")
 tile_edit = NodePath("TileEditBg")
 edit_tiles_button = NodePath("EditTilesButton")
 
-[node name="GameViewContainer" type="SubViewportContainer" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
+[node name="GameViewContainer" type="SubViewportContainer" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1802276125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,14 +95,14 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="GameViewport" type="SubViewport" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
+[node name="GameViewport" type="SubViewport" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer" unique_id=1258534256]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1620, 808)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="DragablesRoot" type="Control" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
+[node name="DragablesRoot" type="Control" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=967166414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,21 +111,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="top-left" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1655155889]
+[node name="top-left" type="GraphNode" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1655155889]
 visible = false
 layout_mode = 0
 offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 
-[node name="top-right" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=2016604311]
+[node name="top-right" type="GraphNode" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=2016604311]
 visible = false
 layout_mode = 0
 offset_right = 9.0
 offset_bottom = 55.0
 mouse_filter = 1
 
-[node name="TileEditBg" type="ColorRect" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=255589290]
+[node name="TileEditBg" type="ColorRect" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=255589290]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -128,7 +136,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.1882353)
 
-[node name="EditTilesButton" type="Button" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1004057808]
+[node name="EditTilesButton" type="Button" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1004057808]
 layout_mode = 0
 offset_left = 185.0
 offset_top = 9.0
@@ -136,16 +144,10 @@ offset_right = 260.0
 offset_bottom = 40.0
 text = "tile edit mode"
 
-[node name="GraphNode" type="GraphNode" parent="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" unique_id=1466511997]
-layout_mode = 0
-offset_right = 86.0
-offset_bottom = 55.0
-mouse_filter = 1
-
-[node name="Panel" type="Panel" parent="HSplitContainer/LeftSide/VSplitContainer" unique_id=1907634130]
+[node name="Panel" type="Panel" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer" unique_id=1907634130]
 layout_mode = 2
 
-[node name="ObjectsDock" type="HFlowContainer" parent="HSplitContainer/LeftSide/VSplitContainer/Panel" unique_id=1870313904]
+[node name="ObjectsDock" type="HFlowContainer" parent="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/Panel" unique_id=1870313904]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -154,7 +156,7 @@ offset_top = 4.0
 offset_bottom = -99.64801
 grow_horizontal = 2
 
-[node name="LeftSideAbove" type="Control" parent="HSplitContainer/LeftSide" unique_id=1333352097]
+[node name="LeftSideAbove" type="Control" parent="VSplitRoot/HSplitContainer/LeftSide" unique_id=1333352097]
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -164,7 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Inspector" type="TabContainer" parent="HSplitContainer" unique_id=1931919905]
+[node name="Inspector" type="TabContainer" parent="VSplitRoot/HSplitContainer" unique_id=1931919905]
 layout_mode = 2
 tab_alignment = 2
 current_tab = 0
@@ -172,27 +174,26 @@ tab_0/title = "Details"
 tab_1/title = "Obstacle"
 tab_2/title = "Interactive"
 
-[node name="InspectorTab" parent="HSplitContainer/Inspector" unique_id=725383050 instance=ExtResource("2_m0is4")]
+[node name="InspectorTab" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=725383050 instance=ExtResource("2_m0is4")]
 layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "Details"
 
-[node name="ObstacleProperties" type="Control" parent="HSplitContainer/Inspector" unique_id=1974346828]
+[node name="ObstacleProperties" type="Control" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=1974346828]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = "Obstacle"
 
-[node name="InteractableTab" parent="HSplitContainer/Inspector" unique_id=402749850 instance=ExtResource("4_7gtdv")]
+[node name="InteractableTab" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=402749850 instance=ExtResource("4_7gtdv")]
 visible = false
 layout_mode = 2
 
-[node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
-
-[connection signal="dragged" from="HSplitContainer" to="." method="_on_h_split_container_dragged"]
-[connection signal="pressed" from="HSplitContainer/LeftSide/VSplitContainer/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="scroll_offset_changed" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
-[connection signal="gui_input" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/TileEditBg" to="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_tile_edit_bg_gui_input"]
-[connection signal="pressed" from="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/EditTilesButton" to="HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_edit_tiles_button_pressed"]
-[connection signal="tab_changed" from="HSplitContainer/Inspector" to="." method="_on_inspector_tab_changed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="VSplitRoot/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="dragged" from="VSplitRoot/HSplitContainer" to="." method="_on_h_split_container_dragged"]
+[connection signal="dragged" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer" to="." method="_on_v_split_container_dragged"]
+[connection signal="scroll_offset_changed" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]
+[connection signal="gui_input" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/TileEditBg" to="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_tile_edit_bg_gui_input"]
+[connection signal="pressed" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/EditTilesButton" to="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_edit_tiles_button_pressed"]
+[connection signal="tab_changed" from="VSplitRoot/HSplitContainer/Inspector" to="." method="_on_inspector_tab_changed"]

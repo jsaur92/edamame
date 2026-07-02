@@ -44,8 +44,9 @@ func _process(delta: float) -> void:
 			held = false
 			released.emit()
 		else:
-			global_position = get_tree().root.get_mouse_position()
-			game_object.global_position = global_position
+			update_position()
+			#global_position = get_tree().root.get_mouse_position() - size/2
+			#game_object.global_position = global_position + size/2
 			#game_object.global_position = get_tree().root.get_mouse_position()
 			dragged.emit()
 			
@@ -61,14 +62,18 @@ func get_time_since_clicked() -> float:
 	return (Time.get_ticks_msec()-time_last_clicked) / 1000.
 
 
-func update() -> void:
+func update_position() -> void:
 	position = game_object.get_instance_data().position - size/2
 
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		held = event.is_pressed()
-		if event.is_pressed():
-			clicked.emit()
+		if Input.is_action_just_pressed("click"):
+			mouse_filter = Control.MOUSE_FILTER_STOP
+			held = event.is_pressed()
+			if event.is_pressed():
+				clicked.emit()
+			else:
+				released.emit()
 		else:
-			released.emit()
+			mouse_filter = Control.MOUSE_FILTER_PASS
