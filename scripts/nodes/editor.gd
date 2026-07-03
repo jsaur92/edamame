@@ -186,8 +186,6 @@ func _on_inspector_tab_changed(tab: int) -> void:
 		#interact tab
 		2:
 			min_inspector_size = 1500
-			print(details_tab.current_object_data)
-			print(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
 			interactive_tab.load_data(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
 	if already_min:
 		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size

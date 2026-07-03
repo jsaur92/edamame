@@ -10,7 +10,9 @@ static func make(node:CommandNode) -> GiveCommandGraphNode:
 	cgn.command = node.command
 	cgn.node_data = node
 	var lib = ObjectLibrary.get_current_library()
-	cgn.texture_rect.texture = ImageTexture.create_from_image( cgn.command.get_item().get_image() )
+	var img = cgn.command.get_item().get_image()
+	img.resize( min(img.get_size().x, MAX_TEX_SIZE.x), min(img.get_size().y, MAX_TEX_SIZE.y) )
+	cgn.texture_rect.texture =  ImageTexture.create_from_image( img )
 	return cgn
 
 

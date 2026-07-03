@@ -22,15 +22,15 @@ func release() -> void:
 
 ## Load in a whole Interactable node tree.
 func load_data(data:ModInteractable) -> void:
-	print("loading data")
 	for graph_node in graph_edit.get_children():
 		if graph_node is GraphNode:
 			graph_node.queue_free()
 	##when support for multiple node heads is available, this must be expanded.
-	print(data.command_heads)
-	graph_edit.add_child( HeadCommandGraphNode.make() )
+	var head_cgn = HeadCommandGraphNode.make()
+	graph_edit.add_child( head_cgn )
 	if data.get_command_head() != null:
-		_load_node( data.get_command_head(), Vector2.ZERO + Vector2(NODE_SPACING.x, 0) )
+		var first_node = _load_node( data.get_command_head(), Vector2.ZERO + Vector2(NODE_SPACING.x, 0) )
+		graph_edit.connect_node(head_cgn.name, 0, first_node.name, 0)
 	graph_edit.arrange_nodes()
 
 
@@ -50,7 +50,6 @@ func write_data() -> ModInteractable:
 
 ## Load in a single node by its CommandNode data, then load in its child(ren).
 func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
-	print("load node: " + str(node.command))
 	var command = node.command
 	var new_node
 	if command is CommandSay:
@@ -81,7 +80,7 @@ func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
 	var i = 0
 	for next in node.next:
 		var new_new_node = _load_node(next, pos + Vector2(NODE_SPACING.x, NODE_SPACING.y*i))
-		graph_edit.connect_node(new_node, i, new_new_node, 0)
+		graph_edit.connect_node(new_node.name, i, new_new_node.name, 0)
 		i += 1
 	return new_node
 

@@ -19,6 +19,12 @@ static func make(node:CommandNode) -> AskCommandGraphNode:
 	cgn.command = node.command
 	cgn.node_data = node
 	cgn.question_text_edit.text = cgn.command.dialog
+	var i = 0
+	for answer_choice in cgn.command.choices:
+		if i >= cgn.answer_line_edits.size():
+			cgn.add_answer()
+		cgn.answer_line_edits[i].text = answer_choice
+		i += 1
 	return cgn
 
 

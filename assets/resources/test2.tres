@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bawoprftpfsep" path="res://scripts/resources/game_data/commands/command_give.gd" id="13_l81iy"]
 [ext_resource type="Script" uid="uid://btfrqyun3bhug" path="res://scripts/resources/game_data/commands/command_remove.gd" id="14_1ded1"]
 [ext_resource type="Script" uid="uid://c4b0hx6f7v4b6" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="14_vnrup"]
+[ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="18_1ded1"]
 
 [sub_resource type="Resource" id="Resource_jk2vp"]
 script = ExtResource("2_bmna8")
@@ -65,6 +66,10 @@ script = ExtResource("4_1l1m4")
 object_data = SubResource("Resource_giag8")
 position = Vector2(400, 300)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
+
+[sub_resource type="Resource" id="Resource_671et"]
+script = ExtResource("14_vnrup")
+metadata/_custom_type_script = "uid://c4b0hx6f7v4b6"
 
 [sub_resource type="Resource" id="Resource_ldnq6"]
 script = ExtResource("11_u8dyg")
@@ -121,13 +126,13 @@ dialog = "The implications of this are horrifying..."
 metadata/_custom_type_script = "uid://by3vegmjhgnnt"
 
 [sub_resource type="Resource" id="Resource_tfje8"]
-script = ExtResource("14_1ded1")
-metadata/_custom_type_script = "uid://btfrqyun3bhug"
-
-[sub_resource type="Resource" id="Resource_ajq8u"]
 script = ExtResource("12_l81iy")
 dialog = "Great... you killed it..."
 metadata/_custom_type_script = "uid://by3vegmjhgnnt"
+
+[sub_resource type="Resource" id="Resource_ajq8u"]
+script = ExtResource("14_1ded1")
+metadata/_custom_type_script = "uid://btfrqyun3bhug"
 
 [sub_resource type="Resource" id="Resource_gj4ot"]
 script = ExtResource("10_vegr7")
@@ -159,10 +164,6 @@ command_heads = Dictionary[String, ExtResource("10_vegr7")]({
 })
 metadata/_custom_type_script = "uid://b8umwh4qgb70w"
 
-[sub_resource type="Resource" id="Resource_671et"]
-script = ExtResource("14_vnrup")
-metadata/_custom_type_script = "uid://c4b0hx6f7v4b6"
-
 [sub_resource type="Resource" id="Resource_vnrup"]
 script = ExtResource("6_giag8")
 uid = 397465
@@ -180,8 +181,12 @@ object_data = SubResource("Resource_vnrup")
 position = Vector2(250, 500)
 metadata/_custom_type_script = "uid://c8oidyh2lkxt5"
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_1ded1"]
+
 [sub_resource type="Resource" id="Resource_wadft"]
 script = ExtResource("5_o5a07")
+tileset = ExtResource("18_1ded1")
+tilemap = SubResource("TileMapPattern_1ded1")
 metadata/_custom_type_script = "uid://bfbx5oowc5ae5"
 
 [sub_resource type="Resource" id="Resource_wyg43"]
