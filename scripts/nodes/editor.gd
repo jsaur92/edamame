@@ -100,7 +100,8 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	var dgp = DragableGOParent.make(go, true)
 	add_dragable(dgp)
 	_on_dragable_container_clicked(dgp)
-	above_left_side.add_child( dgp )
+	if dgp.get_parent() == null:
+		above_left_side.add_child( dgp )
 
 
 func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
@@ -184,7 +185,9 @@ func _on_inspector_tab_changed(tab: int) -> void:
 			min_inspector_size = 320
 		#interact tab
 		2:
-			min_inspector_size = 1020
+			min_inspector_size = 1500
+			print(details_tab.current_object_data)
+			print(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
 			interactive_tab.load_data(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
 	if already_min:
 		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size

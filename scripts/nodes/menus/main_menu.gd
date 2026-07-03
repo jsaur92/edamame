@@ -13,7 +13,6 @@ func _on_pick_file_button_pressed() -> void:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	game_data = load(path)
-	GameDataAccess.set_game_data(game_data)
 	set_game_text()
 	enable_buttons()
 

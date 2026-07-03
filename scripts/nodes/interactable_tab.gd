@@ -3,6 +3,7 @@ extends Control
 
 @export var graph_edit : GraphEdit
 var held_node : GraphNode
+var head_nodes : Array[HeadCommandGraphNode]
 const NODE_SPACING : Vector2 = Vector2(300, 300)
 
 func _process(delta: float) -> void:
@@ -21,16 +22,35 @@ func release() -> void:
 
 ## Load in a whole Interactable node tree.
 func load_data(data:ModInteractable) -> void:
+	print("loading data")
 	for graph_node in graph_edit.get_children():
-		graph_node.queue_free()
-	#when support for multiple node heads is available, this must be expanded.
+		if graph_node is GraphNode:
+			graph_node.queue_free()
+	##when support for multiple node heads is available, this must be expanded.
+	print(data.command_heads)
+	graph_edit.add_child( HeadCommandGraphNode.make() )
 	if data.get_command_head() != null:
-		_load_node( data.get_command_head(), Vector2.ZERO )
+		_load_node( data.get_command_head(), Vector2.ZERO + Vector2(NODE_SPACING.x, 0) )
 	graph_edit.arrange_nodes()
+
+
+## Write the interactable data to a new object.
+func write_data() -> ModInteractable:
+	#gather head command node(s)
+	for child in graph_edit.get_children():
+		if child is HeadCommandGraphNode:
+			head_nodes.append(child)
+	
+	var interactable = ModInteractable.new()
+	#write each command chain starting with the head
+	for head in head_nodes:
+		pass
+	return null
 
 
 ## Load in a single node by its CommandNode data, then load in its child(ren).
 func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
+	print("load node: " + str(node.command))
 	var command = node.command
 	var new_node
 	if command is CommandSay:
@@ -42,7 +62,7 @@ func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
 	elif command is CommandTake:
 		new_node = TakeCommandGraphNode.make(node)
 	elif command is CommandRemove:
-		new_node = RemoveCommandGraphNode.make()
+		new_node = RemoveCommandGraphNode.make(node)
 	#elif command is CommandReset:
 		#pass
 	#elif command is CommandEnd:
@@ -55,6 +75,8 @@ func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
 		#pass
 	else:
 		push_error("Command type not recognized by load_node()")
+	
+	graph_edit.add_child(new_node)
 	
 	var i = 0
 	for next in node.next:

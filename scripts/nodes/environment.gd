@@ -16,10 +16,6 @@ static func make(data:EnvironmentData):
 	return ge
 
 
-func _process(delta: float) -> void:
-	print(get_mouse_pos_in_environment(), ", ", graph_zoom)
-
-
 func setup_terrain():
 	tilemap.tile_set = environment_data.get_tileset()
 	tilemap.clear()

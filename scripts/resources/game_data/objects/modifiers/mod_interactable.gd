@@ -6,6 +6,8 @@ extends ObjectMod
 ## Uses Head Node type as keys.
 @export var command_heads : Dictionary[String, CommandNode]
 
+func _init() -> void:
+	print(command_heads)
 
 ## Returns the starting Node for the Object's Interact chain. In the future, there
 ## may be multiple command heads for different triggers, such as when the player
@@ -13,6 +15,7 @@ extends ObjectMod
 ## this command will return null if there are no command nodes, the "default"
 ## node if that exists, and otherwise simply the first in the dict's values.
 func get_command_head() -> CommandNode:
+	print(command_heads)
 	if command_heads.size() == 0:
 		return null
 	if command_heads.has("default"):

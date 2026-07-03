@@ -16,7 +16,7 @@ const SLOT_OFFSET = 2 #what you add to a lineedit's index in answer_line_edits
 
 static func make(node:CommandNode) -> AskCommandGraphNode:
 	var cgn : AskCommandGraphNode = _SELF_SCENE.instantiate()
-	cgn.command = cgn.node.command
+	cgn.command = node.command
 	cgn.node_data = node
 	cgn.question_text_edit.text = cgn.command.dialog
 	return cgn
@@ -28,6 +28,10 @@ func update_data() -> void:
 	for line_edit in answer_line_edits:
 		choices.append(line_edit.text)
 	command.choices = choices
+
+
+func get_command() -> Command:
+	return command
 
 
 func update_button_abled() -> void:

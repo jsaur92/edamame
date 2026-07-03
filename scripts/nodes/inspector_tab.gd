@@ -132,7 +132,8 @@ func _on_y_text_value_changed(value: float) -> void:
 
 func _on_is_item_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		current_object_data.set_item()
+		if not current_object_data.is_item():
+			current_object_data.set_item()
 	else:
 		current_object_data.remove_item()
 	edited.emit(current_object_data)
@@ -140,7 +141,8 @@ func _on_is_item_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_is_collidable_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		current_object_data.set_collidable()
+		if not current_object_data.is_collidable():
+			current_object_data.set_collidable()
 	else:
 		current_object_data.remove_collidable()
 	edited.emit(current_object_data)
@@ -148,7 +150,8 @@ func _on_is_collidable_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_is_interactable_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		current_object_data.set_interactable()
+		if not current_object_data.is_interactable():
+			current_object_data.set_interactable()
 	else:
 		current_object_data.remove_interactable()
 	edited.emit(current_object_data)

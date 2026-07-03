@@ -15,4 +15,8 @@ func _to_string() -> String:
 
 
 func get_item() -> ObjectData:
-	return GameDataAccess.get_game_data().object_library.get_object(item_uid)
+	return ObjectLibrary.get_current_library().get_object(item_uid)
+
+
+func set_item(new_item_uid:int) -> void:
+	item_uid = new_item_uid

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bamaejce7q7et" path="res://scenes/editor/command_nodes/give_command_node.gd" id="1_dko1a"]
 [ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="2_ucsy7"]
 
-[node name="GiveCommandNode" type="GraphNode" unique_id=415856084]
+[node name="GiveCommandNode" type="GraphNode" unique_id=415856084 node_paths=PackedStringArray("texture_rect")]
 offset_right = 155.0
 offset_bottom = 96.0
 title = "Give"
@@ -36,6 +36,7 @@ slot/2/right_color = Color(1, 1, 1, 1)
 slot/2/right_icon = null
 slot/2/draw_stylebox = true
 script = ExtResource("1_dko1a")
+texture_rect = NodePath("TextureRect")
 
 [node name="Label" type="Label" parent="." unique_id=1662287867]
 layout_mode = 2

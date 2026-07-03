@@ -4,8 +4,11 @@ extends BaseCommandGraphNode
 var command : CommandRemove
 const _SELF_SCENE = preload("uid://27igkab5ompo")
 
-static func make() -> RemoveCommandGraphNode:
-	return null
+static func make(node:CommandNode) -> RemoveCommandGraphNode:
+	var cgn : RemoveCommandGraphNode = _SELF_SCENE.instantiate()
+	cgn.command = node.command
+	cgn.node_data = node
+	return cgn
 
 
 func update_data() -> void:

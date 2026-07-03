@@ -4,9 +4,22 @@ extends Resource
 
 ## The dictionary of Objects in the library. Key is the UID for each ObjectData.
 @export var objects : Dictionary[int, ObjectData]
+static var library : ObjectLibrary
 
 func _init(_objects:Dictionary[int, ObjectData]={}) -> void:
 	objects = _objects
+	_set_library(self)
+
+
+## Returns the static ObjectLibrary instance.
+static func get_current_library() -> ObjectLibrary:
+	if library == null:
+		_set_library( ObjectLibrary.new() )
+	return library
+
+
+static func _set_library(new_library:ObjectLibrary) -> void:
+	library = new_library
 
 
 ## Add an object to the Objects library
