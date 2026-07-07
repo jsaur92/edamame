@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://umdkdg3o254j" path="res://scenes/editor/command_node_dock.tscn" id="1_gdd2s"]
 [ext_resource type="Script" uid="uid://60fx57ur3oy" path="res://scripts/nodes/interactable_tab.gd" id="1_uoij4"]
 
-[node name="InteractableTab" type="Control" unique_id=402749850 node_paths=PackedStringArray("graph_edit")]
+[node name="InteractableTab" type="Control" unique_id=402749850 node_paths=PackedStringArray("graph_edit", "split_container", "node_dock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,11 +11,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uoij4")
-graph_edit = NodePath("VBoxContainer/CommandNodeChains")
+graph_edit = NodePath("VSplitContainer/CommandNodeChains")
+split_container = NodePath("VSplitContainer")
+node_dock = NodePath("VSplitContainer/CommandNodeDock")
 metadata/_tab_index = 2
 metadata/_tab_name = "Interactive"
 
-[node name="VBoxContainer" type="VSplitContainer" parent="." unique_id=1962847641]
+[node name="VSplitContainer" type="VSplitContainer" parent="." unique_id=1962847641]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +27,7 @@ grow_vertical = 2
 split_offsets = PackedInt32Array(300)
 split_offset = 300
 
-[node name="CommandNodeChains" type="GraphEdit" parent="VBoxContainer" unique_id=206247263]
+[node name="CommandNodeChains" type="GraphEdit" parent="VSplitContainer" unique_id=206247263]
 layout_mode = 2
 size_flags_vertical = 3
 show_grid = false
@@ -37,7 +39,7 @@ type_names = {
 }
 show_grid_buttons = false
 
-[node name="GraphNode" type="GraphNode" parent="VBoxContainer/CommandNodeChains" unique_id=399781868]
+[node name="GraphNode" type="GraphNode" parent="VSplitContainer/CommandNodeChains" unique_id=399781868]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 147.0
@@ -57,7 +59,7 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 
-[node name="Label" type="Label" parent="VBoxContainer/CommandNodeChains/GraphNode" unique_id=1094335033]
+[node name="Label" type="Label" parent="VSplitContainer/CommandNodeChains/GraphNode" unique_id=1094335033]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 24
@@ -65,8 +67,9 @@ text = "Start:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CommandNodeDock" parent="VBoxContainer" unique_id=2114585556 instance=ExtResource("1_gdd2s")]
+[node name="CommandNodeDock" parent="VSplitContainer" unique_id=2114585556 instance=ExtResource("1_gdd2s")]
 layout_mode = 2
 
-[connection signal="connection_request" from="VBoxContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
-[connection signal="node_clicked" from="VBoxContainer/CommandNodeDock" to="." method="_on_command_node_dock_node_clicked"]
+[connection signal="connection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
+[connection signal="scroll_offset_changed" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_scroll_offset_changed"]
+[connection signal="node_clicked" from="VSplitContainer/CommandNodeDock" to="." method="_on_command_node_dock_node_clicked"]
