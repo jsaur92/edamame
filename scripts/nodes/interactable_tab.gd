@@ -10,11 +10,12 @@ var head_nodes : Array[HeadCommandGraphNode]
 const NODE_SPACING : Vector2 = Vector2(300, 300)
 
 func _process(delta: float) -> void:
-	pass
 	if held_node != null:
 		held_node.global_position = get_global_mouse_position() + held_node_offset
 		if Input.is_action_just_released("click"):
 			release()
+	if Input.is_action_just_released("click"):
+		graph_edit.set_selected(null)
 
 
 func release() -> void:
@@ -30,9 +31,10 @@ func release() -> void:
 		else:
 			held_node.queue_free()
 		
+		graph_edit.set_selected(null)
+		
 	held_node = null
 	held_node_offset = Vector2.ZERO
-	graph_edit.set_selected(null)
 
 
 ## Load in a whole Interactable node tree.
