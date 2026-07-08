@@ -55,6 +55,7 @@ func load_data(data:ModInteractable) -> void:
 func write_data() -> ModInteractable:
 	#gather head command node(s)
 	print('a')
+	head_nodes = []
 	for child in graph_edit.get_children():
 		print(child)
 		if child is HeadCommandGraphNode:
@@ -164,8 +165,9 @@ func _is_over_dock(y_val:float) -> bool:
 	return y_val < get_viewport_rect().size.y - split_container.split_offsets[0]
 
 
-func _on_command_node_dock_node_clicked(node:Node) -> void:
-	held_node = node.duplicate()
+func _on_command_node_dock_node_clicked(node:BaseCommandGraphNode) -> void:
+	held_node = node.make()
+	held_node.position = node.position
 	add_child(held_node)
 	held_node.dragged.connect(_node_pos_changed.bind(held_node))
 	held_node.selected = true

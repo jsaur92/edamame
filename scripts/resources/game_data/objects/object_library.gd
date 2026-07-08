@@ -33,6 +33,8 @@ func remove_object(object:ObjectData):
 
 
 func get_object(key:int) -> ObjectData:
+	if not objects.keys().has(key):
+		key = objects.keys()[0]
 	return objects[key]
 
 

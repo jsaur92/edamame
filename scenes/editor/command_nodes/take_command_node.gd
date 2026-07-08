@@ -5,8 +5,11 @@ extends BaseCommandGraphNode
 var command : CommandTake
 const _SELF_SCENE = preload("uid://de4t4xhsumgu5")
 
-static func make(node:CommandNode) -> TakeCommandGraphNode:
+static func make(node:CommandNode=null) -> TakeCommandGraphNode:
 	var cgn : TakeCommandGraphNode = _SELF_SCENE.instantiate()
+	if node == null:
+		node = CommandNode.new()
+		node.command = CommandTake.new()
 	cgn.command = node.command
 	cgn.node_data = node
 	var lib = ObjectLibrary.get_current_library()

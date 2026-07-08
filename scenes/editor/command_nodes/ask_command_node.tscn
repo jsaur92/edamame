@@ -90,5 +90,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "-"
 
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="LineEdit2" to="." method="_on_line_edit_2_text_changed"]
 [connection signal="pressed" from="ButtonsContainer/AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/RemoveButton" to="." method="_on_remove_button_pressed"]
