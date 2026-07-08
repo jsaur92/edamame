@@ -18,3 +18,7 @@ func get_command_head() -> CommandNode:
 	if command_heads.has("default"):
 		return command_heads["default"]
 	return command_heads.values()[0]
+
+
+func set_command_head(key:String, value:CommandNode) -> void:
+	command_heads[key] = value

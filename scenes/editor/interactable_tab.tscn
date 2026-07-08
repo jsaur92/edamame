@@ -37,6 +37,9 @@ right_disconnects = true
 type_names = {
 0: "default"
 }
+zoom_min = 1.0
+zoom_max = 1.0
+show_zoom_buttons = false
 show_grid_buttons = false
 
 [node name="GraphNode" type="GraphNode" parent="VSplitContainer/CommandNodeChains" unique_id=399781868]
@@ -70,6 +73,15 @@ vertical_alignment = 1
 [node name="CommandNodeDock" parent="VSplitContainer" unique_id=2114585556 instance=ExtResource("1_gdd2s")]
 layout_mode = 2
 
+[node name="SaveButton" type="Button" parent="." unique_id=1216693634]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 12.0
+offset_right = 243.0
+offset_bottom = 53.0
+text = "save node tree"
+
 [connection signal="connection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
 [connection signal="scroll_offset_changed" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_scroll_offset_changed"]
 [connection signal="node_clicked" from="VSplitContainer/CommandNodeDock" to="." method="_on_command_node_dock_node_clicked"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]

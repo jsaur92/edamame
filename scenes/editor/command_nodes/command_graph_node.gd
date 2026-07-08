@@ -10,3 +10,7 @@ const MAX_TEX_SIZE = Vector2(100,100)
 @export var node_data : CommandNode
 
 @abstract func update_data() -> void
+
+
+func get_node_data() -> CommandNode:
+	return node_data

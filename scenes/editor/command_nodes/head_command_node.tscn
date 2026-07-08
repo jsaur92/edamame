@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csd8wrm2b0jkl" path="res://scenes/editor/command_nodes/head_command_node.gd" id="1_si67n"]
 
-[node name="RemoveCommandNode" type="GraphNode" unique_id=415856084]
+[node name="HeadCommandNode" type="GraphNode" unique_id=415856084]
 offset_right = 118.0
 offset_bottom = 145.0
 title = "On Interact"

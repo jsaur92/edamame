@@ -203,3 +203,7 @@ func check_h_split_offset() -> void:
 
 func _on_v_split_container_dragged(offset: int) -> void:
 	above_left_side.position.y = offset
+
+
+func _on_interactable_tab_save_node_tree(mod_int:ModInteractable) -> void:
+	details_tab.current_object_data.set_interactable(mod_int)

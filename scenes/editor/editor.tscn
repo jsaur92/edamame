@@ -197,3 +197,4 @@ layout_mode = 2
 [connection signal="gui_input" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/TileEditBg" to="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_tile_edit_bg_gui_input"]
 [connection signal="pressed" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/EditTilesButton" to="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_edit_tiles_button_pressed"]
 [connection signal="tab_changed" from="VSplitRoot/HSplitContainer/Inspector" to="." method="_on_inspector_tab_changed"]
+[connection signal="save_node_tree" from="VSplitRoot/HSplitContainer/Inspector/InteractableTab" to="." method="_on_interactable_tab_save_node_tree"]

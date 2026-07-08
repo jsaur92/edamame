@@ -8,6 +8,7 @@ var held_node : GraphNode
 var held_node_offset : Vector2 = Vector2.ZERO
 var head_nodes : Array[HeadCommandGraphNode]
 const NODE_SPACING : Vector2 = Vector2(300, 300)
+signal save_node_tree
 
 func _process(delta: float) -> void:
 	if held_node != null:
@@ -24,7 +25,6 @@ func release() -> void:
 		var c_pos = get_global_mouse_position() - global_position + held_node_offset
 		#position in graph edit
 		var g_pos = c_pos + graph_edit.scroll_offset
-		print(c_pos)
 		if _is_over_dock(c_pos.y):
 			held_node.reparent(graph_edit)
 			held_node.position_offset = g_pos 
@@ -54,15 +54,66 @@ func load_data(data:ModInteractable) -> void:
 ## Write the interactable data to a new object.
 func write_data() -> ModInteractable:
 	#gather head command node(s)
+	print('a')
 	for child in graph_edit.get_children():
+		print(child)
 		if child is HeadCommandGraphNode:
 			head_nodes.append(child)
 	
 	var interactable = ModInteractable.new()
-	#write each command chain starting with the head
-	for head in head_nodes:
-		pass
-	return null
+	print('b')
+	for head_node in head_nodes:
+		print(head_node)
+		head_node.node_data = _get_node_chain_from_head_node(head_node)
+		interactable.set_command_head(head_node.get_interact_condition(), head_node.get_node_data())
+	
+	return interactable
+
+
+func _get_node_chain_from_head_node(hgn:HeadCommandGraphNode) -> CommandNode:
+	var first : BaseCommandGraphNode = _get_graph_node_nexts(hgn)[0]
+	var cmd : CommandNode = first.node_data
+	_update_connected_nodes(first, cmd)
+	print('c')
+	print(cmd)
+	return cmd
+
+
+##recursively set the connections of command nodes tied to command graph nodes
+func _update_connected_nodes(cgn:BaseCommandGraphNode, cmd:CommandNode) -> void:
+	cmd.command = cgn.command
+	cmd.next = []
+	for gn:BaseCommandGraphNode in _get_graph_node_nexts(cgn):
+		var new_cmd = CommandNode.new()
+		new_cmd.command = cgn.command
+		cmd.next.append(new_cmd)
+		_update_connected_nodes(gn, new_cmd)
+
+
+func _get_graph_node_nexts(gn:BaseCommandGraphNode) -> Array[BaseCommandGraphNode]:
+	var these_connections : Array[Dictionary] = []
+	var connection_list = graph_edit.get_connection_list_from_node(gn.name)
+	#gather all of the connections that start from this node
+	for connection in connection_list:
+		if connection["from_node"] == gn.name:
+			these_connections.append(connection)
+	#sort the connections by from_port, ascending.
+	these_connections.sort_custom(_compare_connections_by_port)
+	#make the `next` array as large as the port of the last connection and place the `next` nodes into the array by port index
+	var i = 0
+	var next : Array[BaseCommandGraphNode] = []
+	while i < these_connections.size():
+		if these_connections[i]["from_port"] == next.size():
+			next.append(graph_edit.get_node(NodePath(these_connections[i]["to_node"])))
+			i += 1
+		else:
+			next.append(null)
+	
+	return next
+
+
+func _compare_connections_by_port(a, b) -> bool:
+	return a["from_port"] < b["from_port"]
 
 
 ## Load in a single node by its CommandNode data, then load in its child(ren).
@@ -127,3 +178,7 @@ func _on_command_node_chains_connection_request(from_node: StringName, from_port
 
 func _on_command_node_chains_scroll_offset_changed(offset: Vector2) -> void:
 	release()
+
+
+func _on_save_button_pressed() -> void:
+	save_node_tree.emit( write_data() )
