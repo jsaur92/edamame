@@ -2,7 +2,7 @@ class_name HUD
 extends Control
 
 @export var container : HBoxContainer
-const ICON_SIZE : int = 96
+const ICON_SIZE : int = 192
 
 func update_items(inventory:Inventory) -> void:
 	var i : int = 0

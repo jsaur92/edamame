@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dm5jomvsm5vek"]
+[gd_scene format=3 uid="uid://cvbrlr4wbvgxk"]
 
 [sub_resource type="GDScript" id="GDScript_rk2vl"]
 script/source = "class_name DragableContainer
