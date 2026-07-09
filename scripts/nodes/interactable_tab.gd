@@ -9,6 +9,8 @@ var held_node_offset : Vector2 = Vector2.ZERO
 var head_nodes : Array[HeadCommandGraphNode]
 const NODE_SPACING : Vector2 = Vector2(300, 300)
 signal save_node_tree
+var arrange_timer = 2
+const DEFAULT_SCROLL_OFFSET = Vector2(-80, -120)
 
 func _process(delta: float) -> void:
 	if held_node != null:
@@ -17,6 +19,19 @@ func _process(delta: float) -> void:
 			release()
 	if Input.is_action_just_released("click"):
 		graph_edit.set_selected(null)
+	
+	# arrange nodes if they have been loaded in for at least 1 frame. for some reason, doing it
+	# immediately doesn't work right.
+	if arrange_timer < 2:
+		if arrange_timer == 1:
+			graph_edit.arrange_nodes()
+			graph_edit.scroll_offset = DEFAULT_SCROLL_OFFSET
+		arrange_timer += 1
+
+func open_tab(object_data:ObjectData) -> void:
+	if object_data.is_interactable():
+		load_data(object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
+		arrange_timer = 0
 
 
 func release() -> void:
@@ -48,23 +63,18 @@ func load_data(data:ModInteractable) -> void:
 	if data.get_command_head() != null:
 		var first_node = _load_node( data.get_command_head(), Vector2.ZERO + Vector2(NODE_SPACING.x, 0) )
 		graph_edit.connect_node(head_cgn.name, 0, first_node.name, 0)
-	graph_edit.arrange_nodes()
 
 
 ## Write the interactable data to a new object.
 func write_data() -> ModInteractable:
 	#gather head command node(s)
-	print('a')
 	head_nodes = []
 	for child in graph_edit.get_children():
-		print(child)
 		if child is HeadCommandGraphNode:
 			head_nodes.append(child)
 	
 	var interactable = ModInteractable.new()
-	print('b')
 	for head_node in head_nodes:
-		print(head_node)
 		head_node.node_data = _get_node_chain_from_head_node(head_node)
 		interactable.set_command_head(head_node.get_interact_condition(), head_node.get_node_data())
 	
@@ -75,8 +85,6 @@ func _get_node_chain_from_head_node(hgn:HeadCommandGraphNode) -> CommandNode:
 	var first : BaseCommandGraphNode = _get_graph_node_nexts(hgn)[0]
 	var cmd : CommandNode = first.node_data
 	_update_connected_nodes(first, cmd)
-	print('c')
-	print(cmd)
 	return cmd
 
 
@@ -184,3 +192,7 @@ func _on_command_node_chains_scroll_offset_changed(offset: Vector2) -> void:
 
 func _on_save_button_pressed() -> void:
 	save_node_tree.emit( write_data() )
+
+
+func _on_command_node_chains_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
+	graph_edit.disconnect_node(from_node, from_port, to_node, to_port)

@@ -90,6 +90,7 @@ func update_inspector_tabs() -> void:
 
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	details_tab.update_panel(ot.get_object())
+	interactive_tab.open_tab(details_tab.current_object_data)
 
 
 func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
@@ -111,6 +112,7 @@ func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
 		above_left_side.add_child(dgp)
 	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
 	details_tab.update_panel(dgp.game_object.get_instance_data())
+	interactive_tab.open_tab(details_tab.current_object_data)
 
 
 func _on_dragable_container_dragged(dgp:DragableGOParent) -> void:
@@ -186,7 +188,7 @@ func _on_inspector_tab_changed(tab: int) -> void:
 		#interact tab
 		2:
 			min_inspector_size = 1500
-			interactive_tab.load_data(details_tab.current_object_data.get_mod(Enums.ObjectModType.INTERACTABLE))
+			interactive_tab.open_tab(details_tab.current_object_data)
 	if already_min:
 		h_split.split_offsets[0] = get_viewport().get_visible_rect().size.x - min_inspector_size
 	check_h_split_offset()

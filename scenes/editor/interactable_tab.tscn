@@ -42,34 +42,6 @@ zoom_max = 1.0
 show_zoom_buttons = false
 show_grid_buttons = false
 
-[node name="GraphNode" type="GraphNode" parent="VSplitContainer/CommandNodeChains" unique_id=399781868]
-layout_mode = 0
-offset_left = 111.0
-offset_top = 147.0
-offset_right = 237.0
-offset_bottom = 287.0
-mouse_filter = 1
-position_offset = Vector2(111, 147)
-title = "On Interact"
-ignore_invalid_connection_type = true
-slot/0/left_enabled = false
-slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-
-[node name="Label" type="Label" parent="VSplitContainer/CommandNodeChains/GraphNode" unique_id=1094335033]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 24
-text = "Start:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CommandNodeDock" parent="VSplitContainer" unique_id=2114585556 instance=ExtResource("1_gdd2s")]
 layout_mode = 2
 
@@ -82,6 +54,7 @@ offset_bottom = 53.0
 text = "save node tree"
 
 [connection signal="connection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
+[connection signal="disconnection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_disconnection_request"]
 [connection signal="scroll_offset_changed" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_scroll_offset_changed"]
 [connection signal="node_clicked" from="VSplitContainer/CommandNodeDock" to="." method="_on_command_node_dock_node_clicked"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
