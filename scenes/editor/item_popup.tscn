@@ -4,6 +4,7 @@
 
 [node name="ItemPopup" type="PopupMenu" unique_id=1628542123 node_paths=PackedStringArray("grid_container")]
 oversampling_override = 1.0
+title = "Object Picker"
 size = Vector2i(400, 400)
 visible = true
 script = ExtResource("1_oyodd")

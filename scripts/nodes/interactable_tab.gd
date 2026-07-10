@@ -12,6 +12,8 @@ const NODE_SPACING : Vector2 = Vector2(300, 300)
 signal save_node_tree
 var arrange_timer = 2
 const DEFAULT_SCROLL_OFFSET = Vector2(-80, -120)
+const POPUP_RECT_SIZE = Vector2i(400, 400)
+var selected_graph_node : BaseCommandGraphNode
 
 func _process(delta: float) -> void:
 	if held_node != null:
@@ -153,6 +155,9 @@ func _load_node(node:CommandNode, pos:Vector2) -> BaseCommandGraphNode:
 	else:
 		push_error("Command type not recognized by load_node()")
 	
+	if new_node.has_signal("clicked"):
+		new_node.clicked.connect(_on_cgn_clicked)
+	
 	graph_edit.add_child(new_node)
 	new_node.dragged.connect(_node_pos_changed.bind(new_node))
 	
@@ -179,10 +184,10 @@ func _on_command_node_dock_node_clicked(node:BaseCommandGraphNode) -> void:
 	held_node.position = node.position
 	add_child(held_node)
 	held_node.dragged.connect(_node_pos_changed.bind(held_node))
+	if held_node.has_signal("clicked"):
+		held_node.clicked.connect(_on_cgn_clicked)
 	held_node.selected = true
 	held_node_offset = held_node.global_position - get_global_mouse_position() + node_dock.position
-	if held_node.has_signal("clicked"):
-		held_node.clicked.connect()
 
 
 func _on_command_node_chains_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
@@ -199,3 +204,15 @@ func _on_save_button_pressed() -> void:
 
 func _on_command_node_chains_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	graph_edit.disconnect_node(from_node, from_port, to_node, to_port)
+
+
+func _on_cgn_clicked(cgn:BaseCommandGraphNode) -> void:
+	selected_graph_node = cgn
+	print('d')
+	item_popup.popup(Rect2i(cgn.global_position + Vector2(cgn.size.x, 0), POPUP_RECT_SIZE))
+	item_popup.load_objects()
+
+
+func _on_item_popup_selected_obj(thum:ObjectThumbnail) -> void:
+	selected_graph_node.get_node_data().command.set_item( thum.get_object().uid )
+	selected_graph_node.update_data()

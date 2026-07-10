@@ -57,9 +57,12 @@ text = "save node tree"
 
 [node name="ItemPopup" parent="." unique_id=1628542123 instance=ExtResource("3_1gh2f")]
 visible = false
+shrink_height = false
+shrink_width = false
 
 [connection signal="connection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
 [connection signal="disconnection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_disconnection_request"]
 [connection signal="scroll_offset_changed" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_scroll_offset_changed"]
 [connection signal="node_clicked" from="VSplitContainer/CommandNodeDock" to="." method="_on_command_node_dock_node_clicked"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="selected_obj" from="ItemPopup" to="." method="_on_item_popup_selected_obj"]
