@@ -3,7 +3,6 @@ extends CharacterBody2D
 ## Controller for the Player.
 
 @export var inventory : Inventory
-@export var camera : Camera2D
 @export var sprite : AnimatedSprite2D
 const SPEED = 600.0
 var direction : Vector2
@@ -16,7 +15,6 @@ static func make() -> Player:
 
 func _ready() -> void:
 	Game.get_game().interact_manager.set_player(self)
-	camera.enabled = true
 
 
 func _process(delta: float) -> void:

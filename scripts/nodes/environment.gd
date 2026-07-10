@@ -3,6 +3,7 @@ extends Node2D
 
 @export var tilemap : TileMapLayer
 @export var objects_root : Node2D
+@export var camera : Camera2D
 @export var player : Player
 var environment_data : EnvironmentData
 var graph_zoom : Vector2 = Vector2.ONE
@@ -13,7 +14,16 @@ static func make(data:EnvironmentData):
 	ge.environment_data = data
 	ge.setup_terrain()
 	ge.setup_objects()
+	ge.camera.limit_left = data.get_used_rect().position.x
+	ge.camera.limit_top = data.get_used_rect().position.y
+	ge.camera.limit_right = data.get_used_rect().position.x + data.get_used_rect().size.x
+	ge.camera.limit_bottom = data.get_used_rect().position.y + data.get_used_rect().size.y
 	return ge
+
+
+func _process(delta: float) -> void:
+	if player:
+		camera.position = player.position
 
 
 func setup_terrain():

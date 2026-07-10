@@ -3,12 +3,18 @@
 [ext_resource type="Script" uid="uid://c568o2xv8ohvw" path="res://scripts/nodes/environment.gd" id="1_k68ih"]
 [ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="2_mhab4"]
 
-[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root")]
+[node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root", "camera")]
+y_sort_enabled = true
 script = ExtResource("1_k68ih")
 tilemap = NodePath("TileMapLayer")
 objects_root = NodePath("Objects")
+camera = NodePath("Camera2D")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1629662108]
+z_index = -100
 tile_set = ExtResource("2_mhab4")
 
 [node name="Objects" type="Node2D" parent="." unique_id=1862259055]
+y_sort_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1202554626]
