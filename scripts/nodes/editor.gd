@@ -57,7 +57,7 @@ func update_objects_dock() -> void:
 		var ot = ObjectThumbnail.create_from_object_data(object)
 		objects_dock.add_child(ot)
 		ot.clicked.connect(_on_object_thumbnail_clicked)
-		ot.make_obj_inst.connect(_on_object_thumbnail_dragged)
+		ot.drag_start.connect(_on_object_thumbnail_dragged)
 
 
 func add_dragable(dgp:DragableGOParent) -> void:
@@ -103,6 +103,10 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	_on_dragable_container_clicked(dgp)
 	if dgp.get_parent() == null:
 		above_left_side.add_child( dgp )
+	
+	#correct for graph edit scale stuff
+	go.scale = Vector2(1,1)
+	go.position = dgp.size/2
 
 
 func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
@@ -136,10 +140,10 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	if object is ObjectData:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_object_data() == object:
-				dragable.update_position()
+				dragable.game_object.update_image()
 	
 	#for updating instance data, find the instance and update it.
-	elif object is ObjectInstanceData:
+	if object is ObjectInstanceData:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_instance_data() == object:
 				dragable.update_position()

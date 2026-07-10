@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://umdkdg3o254j" path="res://scenes/editor/command_node_dock.tscn" id="1_gdd2s"]
 [ext_resource type="Script" uid="uid://60fx57ur3oy" path="res://scripts/nodes/interactable_tab.gd" id="1_uoij4"]
+[ext_resource type="PackedScene" uid="uid://dxofke6755lsu" path="res://scenes/editor/item_popup.tscn" id="3_1gh2f"]
 
-[node name="InteractableTab" type="Control" unique_id=402749850 node_paths=PackedStringArray("graph_edit", "split_container", "node_dock")]
+[node name="InteractableTab" type="Control" unique_id=402749850 node_paths=PackedStringArray("graph_edit", "split_container", "node_dock", "item_popup")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +15,7 @@ script = ExtResource("1_uoij4")
 graph_edit = NodePath("VSplitContainer/CommandNodeChains")
 split_container = NodePath("VSplitContainer")
 node_dock = NodePath("VSplitContainer/CommandNodeDock")
+item_popup = NodePath("ItemPopup")
 metadata/_tab_index = 2
 metadata/_tab_name = "Interactive"
 
@@ -52,6 +54,9 @@ offset_top = 12.0
 offset_right = 243.0
 offset_bottom = 53.0
 text = "save node tree"
+
+[node name="ItemPopup" parent="." unique_id=1628542123 instance=ExtResource("3_1gh2f")]
+visible = false
 
 [connection signal="connection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_connection_request"]
 [connection signal="disconnection_request" from="VSplitContainer/CommandNodeChains" to="." method="_on_command_node_chains_disconnection_request"]

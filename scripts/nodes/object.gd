@@ -23,8 +23,7 @@ func update_position() -> void:
 
 func update_image() -> void:
 	if object_data.has_image():
-		sprite.texture = ImageTexture.create_from_image(object_data.image)
-		sprite.scale = object_data.image_scale
+		sprite.texture = ImageTexture.create_from_image(object_data.get_scaled_image())
 
 
 func load_data(obj_inst : ObjectInstanceData) -> void:

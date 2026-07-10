@@ -26,3 +26,11 @@ func get_position() -> Vector2:
 
 func set_position(pos:Vector2) -> void:
 	position = pos
+
+
+func set_pos_x(x:int) -> void:
+	position.x = x
+
+
+func set_pos_y(y:int) -> void:
+	position.y = y

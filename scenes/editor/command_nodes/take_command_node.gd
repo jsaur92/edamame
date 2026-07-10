@@ -4,6 +4,7 @@ extends BaseCommandGraphNode
 @export var texture_rect : TextureRect
 var command : CommandTake
 const _SELF_SCENE = preload("uid://de4t4xhsumgu5")
+signal clicked
 
 static func make(node:CommandNode=null) -> TakeCommandGraphNode:
 	var cgn : TakeCommandGraphNode = _SELF_SCENE.instantiate()
@@ -19,3 +20,9 @@ static func make(node:CommandNode=null) -> TakeCommandGraphNode:
 
 func update_data() -> void:
 	pass
+
+
+func _on_texture_rect_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			clicked.emit(self)

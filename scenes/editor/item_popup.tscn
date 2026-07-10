@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dxofke6755lsu"]
+
+[ext_resource type="Script" uid="uid://dpv0c7gyihll6" path="res://scenes/editor/item_popup.gd" id="1_oyodd"]
+
+[node name="ItemPopup" type="PopupMenu" unique_id=1628542123 node_paths=PackedStringArray("grid_container")]
+oversampling_override = 1.0
+size = Vector2i(400, 400)
+visible = true
+script = ExtResource("1_oyodd")
+grid_container = NodePath("ScrollContainer/GridContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=747594100]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=187231832]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

@@ -11,7 +11,7 @@ extends Resource
 ## Image file used for the object's sprite.
 @export var image : Image
 ## Scale vector for the texture made from Image.
-@export var image_scale : Vector2 = Vector2(1,1)
+@export var image_size_pixels : Vector2 = Vector2(100,100)
 ## Object Modifiers. If an Object is an Item, Collidable, or Interactable, the data
 ## for each modifier will be stored here.
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]
@@ -50,6 +50,14 @@ func set_interactable(mod:ModInteractable=ModInteractable.new()) -> void:
 	mods[Enums.ObjectModType.INTERACTABLE] = mod
 
 
+func set_size_x(x:int) -> void:
+	image_size_pixels.x = x
+
+
+func set_size_y(y:int) -> void:
+	image_size_pixels.y = y
+
+
 func remove_item() -> bool:
 	return mods.erase(Enums.ObjectModType.ITEM)
 
@@ -80,7 +88,7 @@ func get_scaled_image() -> Image:
 	if image == null:
 		return null
 	var i = get_image().duplicate()
-	i.resize(get_image().get_size().x * image_scale.x, get_image().get_size().y * image_scale.y, Image.INTERPOLATE_NEAREST)
+	i.resize(image_size_pixels.x, image_size_pixels.y, Image.INTERPOLATE_NEAREST)
 	return i
 
 

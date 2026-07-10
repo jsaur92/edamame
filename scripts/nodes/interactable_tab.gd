@@ -4,6 +4,7 @@ extends Control
 @export var graph_edit : GraphEdit
 @export var split_container : VSplitContainer
 @export var node_dock : Control
+@export var item_popup : PopupMenu
 var held_node : GraphNode
 var held_node_offset : Vector2 = Vector2.ZERO
 var head_nodes : Array[HeadCommandGraphNode]
@@ -180,6 +181,8 @@ func _on_command_node_dock_node_clicked(node:BaseCommandGraphNode) -> void:
 	held_node.dragged.connect(_node_pos_changed.bind(held_node))
 	held_node.selected = true
 	held_node_offset = held_node.global_position - get_global_mouse_position() + node_dock.position
+	if held_node.has_signal("clicked"):
+		held_node.clicked.connect()
 
 
 func _on_command_node_chains_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:

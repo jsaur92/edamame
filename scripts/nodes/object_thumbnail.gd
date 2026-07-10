@@ -8,7 +8,7 @@ extends Control
 var object_data : ObjectData
 var held : bool = false
 signal clicked
-signal make_obj_inst
+signal drag_start
 const _SELF_SCENE = preload("uid://brrgdqby1o2b5")
 
 static func create_from_object_data(object:ObjectData) -> ObjectThumbnail:
@@ -36,5 +36,5 @@ func _on_gui_input(event: InputEvent) -> void:
 			clicked.emit(self)
 	elif event is InputEventMouseMotion:
 		if held:
-			make_obj_inst.emit(self)
+			drag_start.emit(self)
 			held = false

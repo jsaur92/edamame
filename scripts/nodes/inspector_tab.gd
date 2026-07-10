@@ -52,11 +52,11 @@ func update_panel(object:Resource) -> void:
 func update_panel_object(object:ObjectData) -> void:
 	object_name.text = object.name
 	update_image(object)
-	width_text.value = int(object_icon.texture.get_width())
-	height_text.value = int(object_icon.texture.get_height())
-	item_check_box.button_pressed = object.is_item()
-	collidable_check_box.button_pressed = object.is_collidable()
-	interactable_check_box.button_pressed = object.is_interactable()
+	width_text.set_value_no_signal(int(object_icon.texture.get_width()))
+	height_text.set_value_no_signal(int(object_icon.texture.get_height()))
+	item_check_box.set_pressed_no_signal(object.is_item())
+	collidable_check_box.set_pressed_no_signal(object.is_collidable())
+	interactable_check_box.set_pressed_no_signal(object.is_interactable())
 
 
 ## Update the panel based on an ObjectInstanceData.
@@ -105,29 +105,29 @@ func _on_name_text_text_changed() -> void:
 
 
 func _on_width_text_value_changed(value: float) -> void:
-	if width_text.get_line_edit().has_focus():
-		current_object_data.image_scale.x = value / current_object_data.get_image().duplicate(true).get_width()
-		update_image(current_object_data)
-		edited.emit(current_object_data)
+	current_object_data.set_size_x(value)
+	update_image(current_object_data)
+	edited.emit(current_object_data)
 
 
 func _on_height_text_value_changed(value: float) -> void:
-	if height_text.get_line_edit().has_focus():
-		current_object_data.image_scale.y = value / current_object_data.get_image().duplicate(true).get_height()
-		update_image(current_object_data)
-		edited.emit(current_object_data)
+	current_object_data.set_size_y(value)
+	update_image(current_object_data)
+	edited.emit(current_object_data)
 
 
 func _on_x_text_value_changed(value: float) -> void:
-	if x_text.get_line_edit().has_focus():
-		current_object_instance.position.x = value
-		edited.emit(current_object_instance)
+	current_object_instance.set_pos_x(value)
+	edited.emit(current_object_instance)
 
 
 func _on_y_text_value_changed(value: float) -> void:
-	if y_text.get_line_edit().has_focus():
-		current_object_instance.position.y = value
-		edited.emit(current_object_instance)
+	current_object_instance.set_pos_y(value)
+	edited.emit(current_object_instance)
+
+
+func _is_player_input_on(line:LineEdit) -> bool:
+	return line.has_focus() or Input.is_action_just_pressed("editor_confirm")
 
 
 func _on_is_item_check_box_toggled(toggled_on: bool) -> void:
