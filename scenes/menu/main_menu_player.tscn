@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bciwvccv01rmp"]
+
+[ext_resource type="Script" uid="uid://brbk3erpvocqq" path="res://scripts/nodes/menus/main_menu.gd" id="1_ui8nc"]
+
+[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("play_button", "edit_button", "file_dialog", "game_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui8nc")
+play_button = NodePath("PlayButton")
+edit_button = NodePath("")
+file_dialog = NodePath("FileDialog")
+game_text = NodePath("GameText")
+
+[node name="TitleText" type="RichTextLabel" parent="." unique_id=846571225]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
+text = "EduGame Maker"
+scroll_active = false
+
+[node name="PickFileButton" type="Button" parent="." unique_id=1361611074]
+layout_mode = 1
+offset_left = 82.0
+offset_top = 156.0
+offset_right = 202.0
+offset_bottom = 188.0
+text = "Pick Game File"
+
+[node name="PlayButton" type="Button" parent="." unique_id=799238178]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 233.0
+offset_right = 233.0
+offset_bottom = 284.0
+disabled = true
+text = "Play"
+
+[node name="GameText" type="RichTextLabel" parent="." unique_id=1789245458]
+layout_mode = 1
+offset_left = 277.0
+offset_top = 146.0
+offset_right = 517.0
+offset_bottom = 195.0
+vertical_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1552736645]
+oversampling_override = 1.0
+title = "Open a File"
+ok_button_text = "Select"
+file_mode = 0
+root_subfolder = "res://assets/resources/"
+
+[connection signal="pressed" from="PickFileButton" to="." method="_on_pick_file_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

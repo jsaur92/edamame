@@ -1,78 +1,26 @@
-[gd_resource type="Resource" script_class="GameData" format=3]
+[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://dqsh7wr0c3aa3"]
 
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/activity_data.gd" id="1_tidjm"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/multiple-choice/mc_answer.gd" id="2_p2p4l"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content.gd" id="3_7ttud"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content_text.gd" id="4_0e7ah"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas_content_image.gd" id="5_xlbx8"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/canvas/canvas.gd" id="6_slmo7"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/multiple-choice/mc_activity.gd" id="7_u0swv"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/activities/activity_library.gd" id="8_1htn0"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_euhno"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_3a46h"]
-[ext_resource type="Image" path="res://assets/resources/Sign_0.tres" id="11_bs1yu"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="12_6alpa"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="13_v4r1l"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_node.gd" id="14_cf1he"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_say.gd" id="15_p2p4l"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="16_1fvyo"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_data.gd" id="17_0y7vy"]
-[ext_resource type="Image" path="res://assets/resources/Apple_Icon.tres" id="18_cb6xn"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_give.gd" id="19_4fm7p"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_xqf7f"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_take.gd" id="21_7ttud"]
-[ext_resource type="Image" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/commands/command_remove.gd" id="23_0e7ah"]
-[ext_resource type="Image" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
-[ext_resource type="TileSet" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
-[ext_resource type="Image" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/objects/object_library.gd" id="27_rkej1"]
-[ext_resource type="Script" path="res://scripts/resources/game_data/game_data.gd" id="28_h0e6t"]
-
-[sub_resource type="Resource" id="Resource_03g2o"]
-script = ExtResource("2_p2p4l")
-correct = true
-metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
-
-[sub_resource type="Resource" id="Resource_gxs6v"]
-script = ExtResource("2_p2p4l")
-metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
-
-[sub_resource type="Resource" id="Resource_dic47"]
-script = ExtResource("2_p2p4l")
-metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
-
-[sub_resource type="Resource" id="Resource_kn10n"]
-script = ExtResource("2_p2p4l")
-metadata/_custom_type_script = "uid://ccqcmhmnuqt8j"
-
-[sub_resource type="Resource" id="Resource_hgfrx"]
-script = ExtResource("4_0e7ah")
-metadata/_custom_type_script = "uid://bq5gwuq8mk1ht"
-
-[sub_resource type="Resource" id="Resource_jkf3q"]
-script = ExtResource("5_xlbx8")
-metadata/_custom_type_script = "uid://da8wcwdigblny"
-
-[sub_resource type="Resource" id="Resource_k5egv"]
-script = ExtResource("6_slmo7")
-content = Array[ExtResource("3_7ttud")]([SubResource("Resource_hgfrx"), SubResource("Resource_jkf3q")])
-metadata/_custom_type_script = "uid://dewv8c5uj2ihu"
-
-[sub_resource type="Resource" id="Resource_5gjb6"]
-script = ExtResource("7_u0swv")
-answer_choices = Array[ExtResource("2_p2p4l")]([SubResource("Resource_03g2o"), SubResource("Resource_gxs6v"), SubResource("Resource_dic47"), SubResource("Resource_kn10n")])
-multiple_selection = true
-canvas = SubResource("Resource_k5egv")
-metadata/_custom_type_script = "uid://5vu06rcfmh5e"
-
-[sub_resource type="Resource" id="Resource_pf7tr"]
-script = ExtResource("8_1htn0")
-activities = Dictionary[String, ExtResource("1_tidjm")]({
-"": SubResource("Resource_5gjb6")
-})
-metadata/_custom_type_script = "uid://rcg0vsvbptup"
+[ext_resource type="Script" uid="uid://yn4vu5ct3xdg" path="res://scripts/resources/game_data/environments/environment_data.gd" id="9_euhno"]
+[ext_resource type="Script" uid="uid://c8oidyh2lkxt5" path="res://scripts/resources/game_data/objects/object_instance.gd" id="10_3a46h"]
+[ext_resource type="Image" uid="uid://bgf1tx2et4f75" path="res://assets/resources/Sign_0.tres" id="11_bs1yu"]
+[ext_resource type="Script" uid="uid://btjrhlhaey0u2" path="res://scripts/resources/game_data/objects/modifiers/object_mod.gd" id="12_6alpa"]
+[ext_resource type="Script" uid="uid://bm5ki8hon2jai" path="res://scripts/resources/game_data/objects/modifiers/mod_collidable.gd" id="13_v4r1l"]
+[ext_resource type="Script" uid="uid://b8ktbc2g5dckx" path="res://scripts/resources/game_data/commands/command_node.gd" id="14_cf1he"]
+[ext_resource type="Script" uid="uid://by3vegmjhgnnt" path="res://scripts/resources/game_data/commands/command_say.gd" id="15_p2p4l"]
+[ext_resource type="Script" uid="uid://b8umwh4qgb70w" path="res://scripts/resources/game_data/objects/modifiers/mod_interactable.gd" id="16_1fvyo"]
+[ext_resource type="Script" uid="uid://bul6ia38j5v6b" path="res://scripts/resources/game_data/objects/object_data.gd" id="17_0y7vy"]
+[ext_resource type="Image" uid="uid://dpfqm05dk6ou2" path="res://assets/resources/Apple_Icon.tres" id="18_cb6xn"]
+[ext_resource type="Script" uid="uid://bawoprftpfsep" path="res://scripts/resources/game_data/commands/command_give.gd" id="19_4fm7p"]
+[ext_resource type="Script" uid="uid://c4b0hx6f7v4b6" path="res://scripts/resources/game_data/objects/modifiers/mod_item.gd" id="19_xqf7f"]
+[ext_resource type="Script" uid="uid://bjbpb55op4g7c" path="res://scripts/resources/game_data/commands/command_take.gd" id="21_7ttud"]
+[ext_resource type="Image" uid="uid://b5xluls20gm2f" path="res://assets/resources/Rock2_0.tres" id="22_6xrc8"]
+[ext_resource type="Script" uid="uid://btfrqyun3bhug" path="res://scripts/resources/game_data/commands/command_remove.gd" id="23_0e7ah"]
+[ext_resource type="Image" uid="uid://byojb2s7o1vtk" path="res://assets/resources/Key1.tres" id="23_l2c7e"]
+[ext_resource type="Script" uid="uid://bfbx5oowc5ae5" path="res://scripts/resources/game_data/environments/terrain_data.gd" id="24_vxwg3"]
+[ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="25_ovdfs"]
+[ext_resource type="Image" uid="uid://blomn2s3m555s" path="res://assets/resources/Bush1_0.tres" id="26_eo84b"]
+[ext_resource type="Script" uid="uid://5xk0bnggh24o" path="res://scripts/resources/game_data/objects/object_library.gd" id="27_rkej1"]
+[ext_resource type="Script" uid="uid://b1ir2t21ostou" path="res://scripts/resources/game_data/game_data.gd" id="28_h0e6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpfb6"]
 
@@ -324,5 +272,4 @@ subject = "Software Testing"
 author = "Joe"
 environments = Array[ExtResource("9_euhno")]([SubResource("Resource_37w0a")])
 object_library = SubResource("Resource_7lwst")
-activity_library = SubResource("Resource_pf7tr")
 metadata/_custom_type_script = "uid://b1ir2t21ostou"

@@ -14,8 +14,16 @@ extends Resource
 @export var environments : Array[EnvironmentData]
 ## Library of all data for Objects in the Game (including unused content).
 @export var object_library : ObjectLibrary
-## Library of all data for Activities in the Game (including unused content).
-@export var activity_library : ActivityLibrary
+
+
+static func create(title:String, subject:String, author:String) -> GameData:
+	var gd = GameData.new()
+	gd.title = title
+	gd.subject = subject
+	gd.author = author
+	gd.environments = Array([EnvironmentData.create()], TYPE_OBJECT, "RefCounted", EnvironmentData)
+	gd.object_library = ObjectLibrary.new()
+	return gd
 
 
 ## Returns the game's environment of a given index. No parameters gives default Environment.

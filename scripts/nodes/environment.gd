@@ -21,6 +21,13 @@ static func make(data:EnvironmentData):
 	return ge
 
 
+func toggle_camera(on=null) -> void:
+	if on == null:
+		camera.enabled = not camera.enabled
+	else:
+		camera.enabled = on
+
+
 func _process(delta: float) -> void:
 	if player:
 		camera.position = player.position

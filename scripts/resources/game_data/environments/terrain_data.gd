@@ -8,6 +8,14 @@ extends Resource
 @export var tilemap : TileMapPattern
 ## The top-left position of the tilemap.
 @export var top_left : Vector2i
+const DEFAULT_TILESET = preload("uid://cy0d150bm28j1")
+
+
+static func create() -> TerrainData:
+	var td = TerrainData.new()
+	td.setup(DEFAULT_TILESET)
+	return td
+
 
 func setup(_tileset:TileSet, _tilemap:TileMapPattern=TileMapPattern.new()) -> void:
 	tileset = _tileset

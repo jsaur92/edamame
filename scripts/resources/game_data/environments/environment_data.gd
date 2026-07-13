@@ -11,6 +11,13 @@ extends Resource
 ## Array of all instanced Object data used in the Game.
 @export var objects : Array[ObjectInstanceData]
 
+
+static func create() -> EnvironmentData:
+	var ed = EnvironmentData.new()
+	ed.setup(TerrainData.create(), [])
+	return ed
+
+
 func setup(_terrain:TerrainData, _objects:Array[ObjectInstanceData]=[]) -> void:
 	terrain = _terrain
 	objects = _objects

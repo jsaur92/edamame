@@ -36,6 +36,7 @@ func _ready() -> void:
 	update_inspector_tabs()
 	
 	environment = GameEnvironment.make(game_data.get_environment())
+	environment.toggle_camera(false)
 	game_viewport.add_child(environment)
 	
 	details_tab.edited.connect(_on_inspector_value_changed)

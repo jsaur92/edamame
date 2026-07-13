@@ -26,6 +26,7 @@ static func get_game():
 
 func _ready() -> void:
 	environment = GameEnvironment.make(game_data.get_environment())
+	environment.toggle_camera(true)
 	add_child(environment)
 	player = Player.make()
 	environment.add_child(player)
