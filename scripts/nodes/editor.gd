@@ -174,8 +174,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 	ResourceSaver.save(game_data, path)
 
 
-func _on_tile_toggled(tile_pos:Vector2i) -> void:
-	environment.toggle_tile_at(tile_pos)
+func _on_tile_toggled(tile_pos:Vector2i, erase:bool=false) -> void:
+	environment.toggle_tile_at(tile_pos, erase)
 	environment_graph.update_boundaries(game_data.get_environment().get_used_rect())
 
 
