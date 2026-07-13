@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://crkluhthhepo1"]
 
 [ext_resource type="Script" uid="uid://d38227qq5vrnk" path="res://scripts/nodes/inspector_tab.gd" id="1_64xpp"]
-[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="1_fb10o"]
+[ext_resource type="PackedScene" uid="uid://cnb8sjxmisuq4" path="res://scenes/editor/object_icon.tscn" id="2_64xpp"]
 
 [node name="InspectorTab" type="Control" unique_id=546715514 node_paths=PackedStringArray("name_container", "size_container", "position_container", "toggles_container", "object_icon", "object_name", "width_text", "height_text", "x_text", "y_text", "item_check_box", "collidable_check_box", "interactable_check_box")]
 layout_mode = 3
@@ -123,11 +123,10 @@ text = "Is Obstacle"
 layout_mode = 2
 text = "Is Interactive"
 
-[node name="ObjectIcon" type="TextureRect" parent="VBoxContainer" unique_id=1839320702]
+[node name="ObjectIcon" parent="VBoxContainer" unique_id=378483278 instance=ExtResource("2_64xpp")]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("1_fb10o")
-expand_mode = 1
-stretch_mode = 2
+size_flags_horizontal = 0
 
 [connection signal="text_changed" from="VBoxContainer/NameContainer/NameText" to="." method="_on_name_text_text_changed"]
 [connection signal="value_changed" from="VBoxContainer/SizeContainer/WidthText" to="." method="_on_width_text_value_changed"]
@@ -137,3 +136,4 @@ stretch_mode = 2
 [connection signal="toggled" from="VBoxContainer/TogglesContainer/IsItemCheckBox" to="." method="_on_is_item_check_box_toggled"]
 [connection signal="toggled" from="VBoxContainer/TogglesContainer/IsCollidableCheckBox" to="." method="_on_is_collidable_check_box_toggled"]
 [connection signal="toggled" from="VBoxContainer/TogglesContainer/IsInteractableCheckBox" to="." method="_on_is_interactable_check_box_toggled"]
+[connection signal="change_image" from="VBoxContainer/ObjectIcon" to="." method="_on_object_icon_change_image"]

@@ -142,6 +142,9 @@ func _on_inspector_value_changed(object:Variant) -> void:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_object_data() == object:
 				dragable.game_object.update_image()
+		for child:ObjectThumbnail in objects_dock.get_children():
+			if child.object_data == object:
+				child.set_object(object)
 	
 	#for updating instance data, find the instance and update it.
 	if object is ObjectInstanceData:

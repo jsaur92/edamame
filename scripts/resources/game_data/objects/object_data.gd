@@ -9,16 +9,19 @@ extends Resource
 ## Name of the Object.
 @export var name : String
 ## Image file used for the object's sprite.
-@export var image : Image
+@export var image : PackedByteArray
+## Dimensions of the source image.
+@export var image_source_size_pixels : Vector2i
 ## Scale vector for the texture made from Image.
 @export var image_size_pixels : Vector2 = Vector2(100,100)
 ## Object Modifiers. If an Object is an Item, Collidable, or Interactable, the data
 ## for each modifier will be stored here.
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]
+const DEFAULT_IMAGE_PATH : String = "uid://c2e54hcvh2rbc"
 
 func setup(_name:String="", _image:Image=null, _mods:Dictionary[Enums.ObjectModType, ObjectMod]={}, _uid:int=-1) -> void:
 	name = _name
-	image = Validate.image(_image)
+	image = Validate.image(_image).get_data()
 	uid = Validate.uid(_uid)
 	mods = _mods
 
@@ -80,15 +83,27 @@ func has_image() -> bool:
 	return image != null
 
 
+## Set the image binary data and dimensions based on a given image.
+func set_image(img:Image) -> void:
+	image = img.get_data()
+	image_source_size_pixels = img.get_size()
+
+
 func get_image() -> Image:
-	return image
+	print("image size: ", image.size())
+	if image.size() > 0:
+		var img = Image.create_from_data(image_source_size_pixels.x, image_source_size_pixels.y, false, Image.FORMAT_RGBA8, image)
+		return img
+	else:
+		return load(DEFAULT_IMAGE_PATH)
 
 
 func get_scaled_image() -> Image:
 	if image == null:
 		return null
-	var i = get_image().duplicate()
+	var i = get_image()
 	i.resize(image_size_pixels.x, image_size_pixels.y, Image.INTERPOLATE_NEAREST)
+	#print(i.get_data_size())
 	return i
 
 

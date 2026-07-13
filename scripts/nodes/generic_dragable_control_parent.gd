@@ -22,13 +22,7 @@ static func make(go:GameObject, pre_held:bool=false) -> DragableGOParent:
 	dgp.game_object = go
 	
 	#make shadow
-	var s = go.sprite.duplicate()
-	s.z_index -= 1
-	s.modulate = 0x0000007f
-	s.position += Vector2(7,7)
-	s.visible = false
-	go.add_child(s)
-	dgp.shadow = s
+	dgp._update_shadow()
 	
 	return dgp
 
@@ -40,7 +34,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if held:
-		if Input.is_action_just_released("click"):
+		if Input.is_action_just_pressed("click"):
+			_update_shadow()
+		elif Input.is_action_just_released("click"):
 			held = false
 			released.emit()
 		else:
@@ -64,6 +60,18 @@ func get_time_since_clicked() -> float:
 
 func update_position() -> void:
 	position = game_object.get_instance_data().position - size/2
+
+
+func _update_shadow() -> void:
+	if shadow != null:
+		shadow.queue_free()
+	var s = game_object.sprite.duplicate()
+	s.z_index -= 1
+	s.modulate = 0x0000007f
+	s.position += Vector2(7,7)
+	s.visible = false
+	game_object.add_child(s)
+	shadow = s
 
 
 func _on_gui_input(event: InputEvent) -> void:

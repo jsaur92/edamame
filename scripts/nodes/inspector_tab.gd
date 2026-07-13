@@ -7,7 +7,7 @@ extends Control
 @export var position_container : HBoxContainer
 @export var toggles_container : VBoxContainer
 @export_category("Other Nodes")
-@export var object_icon : TextureRect
+@export var object_icon : ObjectIconTexRect
 @export var object_name : TextEdit
 @export var width_text : SpinBox
 @export var height_text : SpinBox
@@ -97,7 +97,11 @@ func set_container_editable(container:Container, editable:bool=true) -> void:
 
 
 func update_image(object:ObjectData) -> void:
-	object_icon.texture = ImageTexture.create_from_image( object.get_scaled_image() )
+	#print(object)
+	#print(object.get_scaled_image())
+	#print(ImageTexture.create_from_image( object.get_scaled_image() ))
+	#print('end')
+	object_icon.set_texture_with_size_adjustment( ImageTexture.create_from_image( object.get_scaled_image() ) )
 
 
 func _on_name_text_text_changed() -> void:
@@ -154,4 +158,16 @@ func _on_is_interactable_check_box_toggled(toggled_on: bool) -> void:
 			current_object_data.set_interactable()
 	else:
 		current_object_data.remove_interactable()
+	edited.emit(current_object_data)
+
+
+func _on_object_icon_change_image(image) -> void:
+	if not image is Image:
+		if image.has_method("get_image"):
+			image = image.get_image()
+		else:
+			push_error("Image not selected.")
+			image = load(ObjectData.DEFAULT_IMAGE_PATH)
+	current_object_data.set_image( image )
+	update_image(current_object_data)
 	edited.emit(current_object_data)

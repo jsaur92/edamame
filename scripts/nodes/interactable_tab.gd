@@ -212,7 +212,6 @@ func _on_command_node_chains_disconnection_request(from_node: StringName, from_p
 
 func _on_cgn_clicked(cgn:BaseCommandGraphNode) -> void:
 	selected_graph_node = cgn
-	print('d')
 	item_popup.popup(Rect2i(cgn.global_position + Vector2(cgn.size.x, 0), POPUP_RECT_SIZE))
 	item_popup.load_objects()
 
