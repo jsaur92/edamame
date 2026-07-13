@@ -191,6 +191,10 @@ func _on_command_node_dock_node_clicked(node:BaseCommandGraphNode) -> void:
 
 
 func _on_command_node_chains_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
+	var connection_list = graph_edit.get_connection_list_from_node(from_node)
+	for connection in connection_list:
+		if connection["from_node"] == from_node and connection["from_port"] == from_port:
+			graph_edit.disconnect_node(connection["from_node"], connection["from_port"], connection["to_node"], connection["to_port"])
 	graph_edit.connect_node(from_node, from_port, to_node, to_port)
 
 
