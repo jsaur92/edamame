@@ -97,10 +97,6 @@ func set_container_editable(container:Container, editable:bool=true) -> void:
 
 
 func update_image(object:ObjectData) -> void:
-	#print(object)
-	#print(object.get_scaled_image())
-	#print(ImageTexture.create_from_image( object.get_scaled_image() ))
-	#print('end')
 	object_icon.set_texture_with_size_adjustment( ImageTexture.create_from_image( object.get_scaled_image() ) )
 
 

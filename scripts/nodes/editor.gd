@@ -59,6 +59,12 @@ func update_objects_dock() -> void:
 		objects_dock.add_child(ot)
 		ot.clicked.connect(_on_object_thumbnail_clicked)
 		ot.drag_start.connect(_on_object_thumbnail_dragged)
+	#put in the 'add' button
+	var b = Button.new()
+	b.text = "Add Object"
+	b.custom_minimum_size = Vector2(80, 80)
+	b.pressed.connect(_on_add_object_button_pressed)
+	objects_dock.add_child(b)
 
 
 func add_dragable(dgp:DragableGOParent) -> void:
@@ -142,9 +148,10 @@ func _on_inspector_value_changed(object:Variant) -> void:
 		for dragable:DragableGOParent in dragables_root.get_children():
 			if dragable.game_object.get_object_data() == object:
 				dragable.game_object.update_image()
-		for child:ObjectThumbnail in objects_dock.get_children():
-			if child.object_data == object:
-				child.set_object(object)
+		for child in objects_dock.get_children():
+			if child is ObjectThumbnail:
+				if child.object_data == object:
+					child.set_object(object)
 	
 	#for updating instance data, find the instance and update it.
 	if object is ObjectInstanceData:
@@ -217,3 +224,8 @@ func _on_v_split_container_dragged(offset: int) -> void:
 
 func _on_interactable_tab_save_node_tree(mod_int:ModInteractable) -> void:
 	details_tab.current_object_data.set_interactable(mod_int)
+
+
+func _on_add_object_button_pressed() -> void:
+	ObjectLibrary.get_current_library().add_object(ObjectData.create())
+	update_objects_dock()

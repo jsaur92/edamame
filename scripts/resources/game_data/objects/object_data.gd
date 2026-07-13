@@ -19,6 +19,13 @@ extends Resource
 @export var mods : Dictionary[Enums.ObjectModType, ObjectMod]
 const DEFAULT_IMAGE_PATH : String = "uid://c2e54hcvh2rbc"
 
+
+static func create() -> ObjectData:
+	var od = ObjectData.new()
+	od.setup()
+	return od
+
+
 func setup(_name:String="", _image:Image=null, _mods:Dictionary[Enums.ObjectModType, ObjectMod]={}, _uid:int=-1) -> void:
 	name = _name
 	image = Validate.image(_image).get_data()
@@ -90,7 +97,6 @@ func set_image(img:Image) -> void:
 
 
 func get_image() -> Image:
-	print("image size: ", image.size())
 	if image.size() > 0:
 		var img = Image.create_from_data(image_source_size_pixels.x, image_source_size_pixels.y, false, Image.FORMAT_RGBA8, image)
 		return img
@@ -103,7 +109,6 @@ func get_scaled_image() -> Image:
 		return null
 	var i = get_image()
 	i.resize(image_size_pixels.x, image_size_pixels.y, Image.INTERPOLATE_NEAREST)
-	#print(i.get_data_size())
 	return i
 
 
