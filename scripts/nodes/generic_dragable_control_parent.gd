@@ -1,5 +1,7 @@
 class_name DragableParent
 extends Control
+## Holds a Node2D. Not actually that generic and is hardcoded to expect a
+## GameObject or Player in most circumstances.
 
 var held : bool = false
 var child : Node2D
@@ -14,7 +16,7 @@ static func make(node:Node2D, pre_held:bool=false) -> DragableParent:
 	var dgp : DragableParent = _SELF_SCENE.instantiate()
 	dgp.set_global_position(node.global_position)
 	dgp.held = pre_held
-	dgp.set_size(Vector2(node.sprite.texture.get_image().get_size()) * node.sprite.scale)
+	dgp.set_size(Vector2(node.get_size()) * node.sprite.scale)
 	if node.get_parent() == null:
 		dgp.add_child(node)
 	else:
@@ -41,13 +43,9 @@ func _process(delta: float) -> void:
 			released.emit()
 		else:
 			update_position()
-			#global_position = get_tree().root.get_mouse_position() - size/2
-			#game_object.global_position = global_position + size/2
-			#game_object.global_position = get_tree().root.get_mouse_position()
 			dragged.emit()
 			
 			child.rotation = sin(get_time_since_clicked() * 10.) * 0.5
-			#game_object.global_position = global_position + size/2
 			shadow.visible = true
 	else:
 		child.rotation_degrees = 0
@@ -61,6 +59,8 @@ func get_time_since_clicked() -> float:
 func update_position() -> void:
 	if child is GameObject:
 		position = child.get_instance_data().position - size/2
+	elif child is Player:
+		position = child.get_init_data().init_pos - size/2
 
 
 func has_game_object() -> bool:
@@ -71,6 +71,17 @@ func get_game_object() -> GameObject:
 	if has_game_object():
 		return child
 	push_error("Attempted to get a GameObject child from a DragableParent without a GameObject.")
+	return null
+
+
+func has_player() -> bool:
+	return child and child is Player
+
+
+func get_player() -> Player:
+	if has_player():
+		return child
+	push_error("Attempted to get a Player child from a DragableParent without a Player.")
 	return null
 
 

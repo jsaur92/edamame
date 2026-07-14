@@ -54,3 +54,7 @@ func get_object_data() -> ObjectData:
 
 func get_instance_data() -> ObjectInstanceData:
 	return instance_data
+
+
+func get_size() -> Vector2i:
+	return sprite.texture.get_image().get_size()

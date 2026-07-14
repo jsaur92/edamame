@@ -4,18 +4,25 @@ extends CharacterBody2D
 
 @export var inventory : Inventory
 @export var sprite : AnimatedSprite2D
+@export var init_data : PlayerInitData
 const SPEED = 600.0
 var direction : Vector2
 signal open_inventory
 const _SELF_SCENE = preload("uid://dxlyubokb3s33")
 
-static func make() -> Player:
-	var p = _SELF_SCENE.instantiate()
+static func make(init:PlayerInitData=null) -> Player:
+	var p : Player = _SELF_SCENE.instantiate()
+	if init == null:
+		init = PlayerInitData.new()
+	p.init_data = init
 	return p
 
 
 func _ready() -> void:
-	Game.get_game().interact_manager.set_player(self)
+	if Game.get_game() != null:
+		Game.get_game().interact_manager.set_player(self)
+	if init_data != null:
+		position = init_data.init_pos
 
 
 func _process(delta: float) -> void:
@@ -46,3 +53,10 @@ func update_sprite() -> void:
 		sprite.flip_h = false
 	elif velocity.x < 0:
 		sprite.flip_h = true
+
+func get_size() -> Vector2i:
+	return sprite.sprite_frames.get_frame_texture( sprite.animation, sprite.frame ).get_size()
+
+
+func get_init_data() -> PlayerInitData:
+	return init_data

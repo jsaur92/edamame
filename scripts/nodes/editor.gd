@@ -50,11 +50,17 @@ func _ready() -> void:
 	environment_graph.update_boundaries( game_data.get_environment().get_used_rect() )
 	environment_graph.toggle_tile.connect(_on_tile_toggled)
 	
-	#wrap all objects from environment in DragableGOParents.
+	#wrap all objects from environment in DragableParents.
 	for object in environment.get_objects():
 		var dgp = DragableParent.make(object)
 		add_dragable(dgp)
 		dragables_root.add_child(dgp)
+	
+	#make the player object and wrap it in a DGP
+	var p = Player.make()
+	var dgp = DragableParent.make(p)
+	add_dragable(dgp)
+	dragables_root.add_child(dgp)
 
 
 func update_objects_dock() -> void:
@@ -127,24 +133,32 @@ func _on_dragable_container_clicked(dgp:DragableParent) -> void:
 		dgp.reparent(above_left_side)
 	else:
 		above_left_side.add_child(dgp)
-	dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
-	details_tab.update_panel(dgp.get_game_object().get_instance_data())
-	interactive_tab.open_tab(details_tab.current_object_data)
+	
+	if dgp.has_game_object():
+		dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
+		details_tab.update_panel(dgp.get_game_object().get_instance_data())
+		interactive_tab.open_tab(details_tab.current_object_data)
 
 
 func _on_dragable_container_dragged(dgp:DragableParent) -> void:
-	dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
-	details_tab.update_panel(dgp.get_game_object().get_instance_data())
+	if dgp.has_game_object():
+		dgp.get_game_object().get_instance_data().position = get_mouse_pos_in_environment()
+		details_tab.update_panel(dgp.get_game_object().get_instance_data())
+	elif dgp.has_player():
+		dgp.get_player().get_init_data().init_pos = get_mouse_pos_in_environment()
 
 
 func _on_dragable_container_released(dgp:DragableParent) -> void:
-	if get_global_mouse_position().y > get_object_dock_top():
-		remove_object(dgp)
+	if dgp.has_game_object():
+		if get_global_mouse_position().y > get_object_dock_top():
+			remove_object(dgp)
+		else:
+			dgp.reparent(dragables_root)
+			dgp.get_game_object().instance_data.position = dgp.position + dgp.size/2
+			#dgp.get_game_object().instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
+			details_tab.update_panel(dgp.get_game_object().get_instance_data())
 	else:
 		dgp.reparent(dragables_root)
-		dgp.get_game_object().instance_data.position = dgp.position + dgp.size/2
-		#dgp.get_game_object().instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
-		details_tab.update_panel(dgp.get_game_object().get_instance_data())
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
@@ -163,7 +177,7 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	#for updating instance data, find the instance and update it.
 	if object is ObjectInstanceData:
 		for dragable:DragableParent in dragables_root.get_children():
-			if dragable.get_game_object().get_instance_data() == object:
+			if dragable.has_game_object() and dragable.get_game_object().get_instance_data() == object:
 				dragable.update_position()
 				break
 	
