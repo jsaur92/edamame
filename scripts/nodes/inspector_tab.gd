@@ -18,6 +18,7 @@ extends Control
 @export var interactable_check_box : CheckBox
 var current_object_data : ObjectData
 var current_object_instance : ObjectInstanceData
+var current_player_data : PlayerInitData
 
 ## Emitted whenever the value of an object or object instance changes in the
 ## inspector. Passes the changed object/instance. In the future, this could
@@ -33,17 +34,28 @@ func _ready() -> void:
 ## Used whenever a new object is selected. Gives the object to a helper function
 ## to handle it based on the object's type.
 func update_panel(object:Resource) -> void:
-	if object == null:
-		current_object_data = null
-		current_object_instance = null
-	elif object is ObjectData:
+	if object is ObjectData:
 		current_object_data = object
 		current_object_instance = null
+		current_player_data = null
 		update_panel_object(object)
+	
 	elif object is ObjectInstanceData:
 		current_object_data = object.object_data
 		current_object_instance = object
+		current_player_data = null
 		update_panel_instance(object)
+	
+	elif object is PlayerInitData:
+		current_object_data = null
+		current_object_instance = null
+		current_player_data = object
+		update_panel_player(object)
+	
+	else:
+		current_object_data = null
+		current_object_instance = null
+		current_player_data = null
 	set_vis()
 	edited.emit(object)
 
@@ -66,16 +78,22 @@ func update_panel_instance(object:ObjectInstanceData) -> void:
 	y_text.set_value_no_signal(object.position.y)
 
 
+func update_panel_player(object:PlayerInitData) -> void:
+	object_name.text = "Player"
+	x_text.set_value_no_signal(object.init_pos.x)
+	y_text.set_value_no_signal(object.init_pos.y)
+
 ## Set the visibility of containers and nodes based on current data availability.
 func set_vis() -> void:
 	# helper variables
 	var c_has_object_data = current_object_data != null
 	var c_has_instance_data = current_object_instance != null
 	var c_is_object_not_instance = c_has_object_data and not c_has_instance_data
+	var c_is_player = current_player_data != null
 	
-	name_container.visible 		= c_has_object_data
+	name_container.visible 		= c_has_object_data or c_is_player
 	size_container.visible 		= c_has_object_data
-	position_container.visible 	= c_has_instance_data
+	position_container.visible 	= c_has_instance_data or c_is_player
 	toggles_container.visible	= c_has_object_data
 	object_icon.visible 		= c_has_object_data
 	
@@ -117,13 +135,23 @@ func _on_height_text_value_changed(value: float) -> void:
 
 
 func _on_x_text_value_changed(value: float) -> void:
-	current_object_instance.set_pos_x(value)
-	edited.emit(current_object_instance)
+	if current_object_instance != null:
+		current_object_instance.set_pos_x(value)
+		edited.emit(current_object_instance)
+	
+	elif current_player_data != null:
+		current_player_data.set_pos_x(value)
+		edited.emit(current_player_data)
 
 
 func _on_y_text_value_changed(value: float) -> void:
-	current_object_instance.set_pos_y(value)
-	edited.emit(current_object_instance)
+	if current_object_instance != null:
+		current_object_instance.set_pos_y(value)
+		edited.emit(current_object_instance)
+	
+	elif current_player_data != null:
+		current_player_data.set_pos_y(value)
+		edited.emit(current_player_data)
 
 
 func _is_player_input_on(line:LineEdit) -> bool:

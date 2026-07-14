@@ -21,26 +21,31 @@ static func make(init:PlayerInitData=null) -> Player:
 func _ready() -> void:
 	if Game.get_game() != null:
 		Game.get_game().interact_manager.set_player(self)
-	if init_data != null:
-		position = init_data.init_pos
+		if init_data != null:
+			position = init_data.init_pos
+		else:
+			init_data = PlayerInitData.new()
+			Game.get_game().game_data.player_init_data = init_data
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("inventory"):
-		open_inventory.emit(inventory)
-	
-	update_sprite()
+	if can_move():
+		if Input.is_action_just_pressed("inventory"):
+			open_inventory.emit(inventory)
+		
+		update_sprite()
 
 
 func _physics_process(delta: float) -> void:
-	direction = Input.get_vector("left", "right", "up", "down")
-	if direction:
-		velocity = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+	if can_move():
+		direction = Input.get_vector("left", "right", "up", "down")
+		if direction:
+			velocity = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 
-	move_and_slide()
+		move_and_slide()
 
 
 func update_sprite() -> void:
@@ -60,3 +65,7 @@ func get_size() -> Vector2i:
 
 func get_init_data() -> PlayerInitData:
 	return init_data
+
+
+func can_move() -> bool:
+	return Game.get_game() != null

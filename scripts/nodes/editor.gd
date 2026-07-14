@@ -10,7 +10,7 @@ extends Control
 @export var objects_dock : HFlowContainer
 @export var inspector_tabs_container  : TabContainer
 @export var details_tab : InspectorTab
-@export var obstacle_tab : Control
+@export var obstacle_tab : ObstacleTab
 @export var interactive_tab : InteractableTab
 @export var game_viewport : SubViewport
 @export var environment_graph : EnvironmentGraphEdit
@@ -57,8 +57,9 @@ func _ready() -> void:
 		dragables_root.add_child(dgp)
 	
 	#make the player object and wrap it in a DGP
-	var p = Player.make()
+	var p = Player.make(game_data.player_init_data)
 	var dgp = DragableParent.make(p)
+	dgp.position = p.init_data.init_pos
 	add_dragable(dgp)
 	dragables_root.add_child(dgp)
 
@@ -107,9 +108,18 @@ func update_inspector_tabs() -> void:
 	inspector_tabs_container.set_tab_hidden(interactive_tab_index, details_tab.current_object_data == null or not details_tab.current_object_data.is_interactable())
 
 
+func fit_within_bounds(dgp:DragableParent) -> void:
+	var bounds = environment.environment_data.get_used_rect()
+	dgp.position.x = min( max(dgp.position.x, bounds.position.x) , bounds.position.x + bounds.size.x )
+	dgp.position.y = min( max(dgp.position.y, bounds.position.y) , bounds.position.y + bounds.size.y )
+
+
 func _on_object_thumbnail_clicked(ot:ObjectThumbnail) -> void:
 	details_tab.update_panel(ot.get_object())
-	interactive_tab.open_tab(details_tab.current_object_data)
+	if details_tab.current_object_data.is_interactable():
+		interactive_tab.open_tab(details_tab.current_object_data)
+	if details_tab.current_object_data.is_collidable():
+		obstacle_tab.open_tab(details_tab.current_object_data)
 
 
 func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
@@ -138,6 +148,9 @@ func _on_dragable_container_clicked(dgp:DragableParent) -> void:
 		dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
 		details_tab.update_panel(dgp.get_game_object().get_instance_data())
 		interactive_tab.open_tab(details_tab.current_object_data)
+	elif dgp.has_player():
+		dgp.get_player().get_init_data().init_pos = get_mouse_pos_in_environment()
+		details_tab.update_panel(dgp.get_player().get_init_data())
 
 
 func _on_dragable_container_dragged(dgp:DragableParent) -> void:
@@ -146,6 +159,7 @@ func _on_dragable_container_dragged(dgp:DragableParent) -> void:
 		details_tab.update_panel(dgp.get_game_object().get_instance_data())
 	elif dgp.has_player():
 		dgp.get_player().get_init_data().init_pos = get_mouse_pos_in_environment()
+		details_tab.update_panel(dgp.get_player().get_init_data())
 
 
 func _on_dragable_container_released(dgp:DragableParent) -> void:
@@ -155,10 +169,10 @@ func _on_dragable_container_released(dgp:DragableParent) -> void:
 		else:
 			dgp.reparent(dragables_root)
 			dgp.get_game_object().instance_data.position = dgp.position + dgp.size/2
-			#dgp.get_game_object().instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
 			details_tab.update_panel(dgp.get_game_object().get_instance_data())
 	else:
 		dgp.reparent(dragables_root)
+		fit_within_bounds(dgp)
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
@@ -175,11 +189,18 @@ func _on_inspector_value_changed(object:Variant) -> void:
 					child.set_object(object)
 	
 	#for updating instance data, find the instance and update it.
-	if object is ObjectInstanceData:
+	elif object is ObjectInstanceData:
 		for dragable:DragableParent in dragables_root.get_children():
 			if dragable.has_game_object() and dragable.get_game_object().get_instance_data() == object:
 				dragable.update_position()
 				break
+	
+	elif object is PlayerInitData:
+		for dragable:DragableParent in dragables_root.get_children():
+			if dragable.has_player():
+				dragable.update_position()
+				break
+	
 	
 	update_inspector_tabs()
 
@@ -229,6 +250,7 @@ func _on_inspector_tab_changed(tab: int) -> void:
 		#collision tab
 		1:
 			min_inspector_size = 320
+			obstacle_tab.open_tab(details_tab.current_object_data)
 		#interact tab
 		2:
 			min_inspector_size = 1500

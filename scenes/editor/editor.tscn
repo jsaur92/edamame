@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bv7lntmxjb0pk" path="res://scripts/nodes/environment_graph_container.gd" id="2_5cfe8"]
 [ext_resource type="PackedScene" uid="uid://crkluhthhepo1" path="res://scenes/editor/inspector_tab.tscn" id="2_m0is4"]
 [ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
+[ext_resource type="PackedScene" uid="uid://blsmx88ljel4d" path="res://scenes/editor/obstacle_tab.tscn" id="4_jwsr6"]
 
 [node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject")]
 layout_mode = 3
@@ -20,7 +21,7 @@ v_split_left_side = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContaine
 objects_dock = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/Panel/ObjectsDock")
 inspector_tabs_container = NodePath("VSplitRoot/HSplitContainer/Inspector")
 details_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/InspectorTab")
-obstacle_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/ObstacleProperties")
+obstacle_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/ObstacleTab")
 interactive_tab = NodePath("VSplitRoot/HSplitContainer/Inspector/InteractableTab")
 game_viewport = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/GameViewContainer/GameViewport")
 environment_graph = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer")
@@ -224,11 +225,9 @@ layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "Details"
 
-[node name="ObstacleProperties" type="Control" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=1974346828]
+[node name="ObstacleTab" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=1590368900 instance=ExtResource("4_jwsr6")]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
-metadata/_tab_name = "Obstacle"
 
 [node name="InteractableTab" parent="VSplitRoot/HSplitContainer/Inspector" unique_id=402749850 instance=ExtResource("4_7gtdv")]
 visible = false

@@ -28,7 +28,7 @@ func _ready() -> void:
 	environment = GameEnvironment.make(game_data.get_environment())
 	environment.toggle_camera(true)
 	add_child(environment)
-	player = Player.make()
+	player = Player.make(game_data.player_init_data)
 	environment.add_child(player)
 	environment.player = player
 
