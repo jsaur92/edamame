@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://crkluhthhepo1" path="res://scenes/editor/inspector_tab.tscn" id="2_m0is4"]
 [ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,9 @@ environment_graph = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContaine
 dragables_root = NodePath("VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/DragablesRoot")
 above_left_side = NodePath("VSplitRoot/HSplitContainer/LeftSide/LeftSideAbove")
 file_dialog = NodePath("FileDialog")
+line_edit_title = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditTitle")
+line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
+line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
 
@@ -51,6 +54,48 @@ offset_top = 19.0
 offset_right = 108.0
 offset_bottom = 59.0
 text = "Save"
+
+[node name="SaveExitButton" type="Button" parent="VSplitRoot/FilePanel" unique_id=1761556191]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 59.0
+text = "Save & Exit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitRoot/FilePanel" unique_id=1026401269]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 19.0
+offset_right = 1529.0
+offset_bottom = 59.0
+
+[node name="LineEditTitle" type="LineEdit" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=1662303164]
+layout_mode = 2
+placeholder_text = "title"
+expand_to_text_length = true
+
+[node name="Label" type="Label" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=1187514471]
+layout_mode = 2
+text = " by "
+
+[node name="LineEditAuthor" type="LineEdit" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=705387131]
+layout_mode = 2
+placeholder_text = "author"
+expand_to_text_length = true
+
+[node name="Label2" type="Label" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=1369967456]
+layout_mode = 2
+text = " (subject: "
+
+[node name="LineEditSubject" type="LineEdit" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=1728402571]
+layout_mode = 2
+placeholder_text = "subject"
+expand_to_text_length = true
+
+[node name="Label3" type="Label" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=613237069]
+layout_mode = 2
+text = ")"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VSplitRoot" unique_id=1973835883]
 layout_mode = 2
@@ -191,6 +236,10 @@ layout_mode = 2
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="VSplitRoot/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VSplitRoot/FilePanel/SaveExitButton" to="." method="_on_save_exit_button_pressed"]
+[connection signal="text_changed" from="VSplitRoot/FilePanel/HBoxContainer/LineEditTitle" to="." method="_on_line_edit_title_text_changed"]
+[connection signal="text_changed" from="VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor" to="." method="_on_line_edit_author_text_changed"]
+[connection signal="text_changed" from="VSplitRoot/FilePanel/HBoxContainer/LineEditSubject" to="." method="_on_line_edit_subject_text_changed"]
 [connection signal="dragged" from="VSplitRoot/HSplitContainer" to="." method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer" to="." method="_on_v_split_container_dragged"]
 [connection signal="scroll_offset_changed" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" to="." method="_on_environment_graph_container_scroll_offset_changed"]

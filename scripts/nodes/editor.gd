@@ -17,10 +17,15 @@ extends Control
 @export var dragables_root : Control
 @export var above_left_side : Control
 @export var file_dialog : FileDialog
+@export var line_edit_title : LineEdit
+@export var line_edit_author : LineEdit
+@export var line_edit_subject : LineEdit
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
 var min_inspector_size : float = 320
+var exit_on_save : bool = false
 const _SELF_SCENE = preload("uid://be4ok444g1l0f")
+const _MAIN_MENU_SCENE = preload("uid://ouacseb7xvgj")
 
 
 static func make(_game_data:GameData) -> Editor:
@@ -34,6 +39,7 @@ func _ready() -> void:
 	
 	update_objects_dock()
 	update_inspector_tabs()
+	update_header_text()
 	
 	environment = GameEnvironment.make(game_data.get_environment())
 	environment.toggle_camera(false)
@@ -179,10 +185,18 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 
 func _on_save_button_pressed() -> void:
 	file_dialog.popup_file_dialog()
+	exit_on_save = false
+
+
+func _on_save_exit_button_pressed() -> void:
+	file_dialog.popup_file_dialog()
+	exit_on_save = true
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	ResourceSaver.save(game_data, path)
+	if exit_on_save:
+		get_tree().change_scene_to_packed(_MAIN_MENU_SCENE)
 
 
 func _on_tile_toggled(tile_pos:Vector2i, erase:bool=false) -> void:
@@ -229,3 +243,22 @@ func _on_interactable_tab_save_node_tree(mod_int:ModInteractable) -> void:
 func _on_add_object_button_pressed() -> void:
 	ObjectLibrary.get_current_library().add_object(ObjectData.create())
 	update_objects_dock()
+
+
+func _on_line_edit_title_text_changed(new_text: String) -> void:
+	game_data.title = new_text
+
+
+func _on_line_edit_author_text_changed(new_text: String) -> void:
+	game_data.author = new_text
+
+
+func _on_line_edit_subject_text_changed(new_text: String) -> void:
+	game_data.subject = new_text
+
+
+func update_header_text() -> void:
+	line_edit_title.text = game_data.title
+	line_edit_author.text = game_data.author
+	line_edit_subject.text = game_data.subject
+	
