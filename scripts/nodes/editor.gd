@@ -52,7 +52,7 @@ func _ready() -> void:
 	
 	#wrap all objects from environment in DragableGOParents.
 	for object in environment.get_objects():
-		var dgp = DragableGOParent.make(object)
+		var dgp = DragableParent.make(object)
 		add_dragable(dgp)
 		dragables_root.add_child(dgp)
 
@@ -73,7 +73,7 @@ func update_objects_dock() -> void:
 	objects_dock.add_child(b)
 
 
-func add_dragable(dgp:DragableGOParent) -> void:
+func add_dragable(dgp:DragableParent) -> void:
 	dgp.clicked.connect(_on_dragable_container_clicked.bind(dgp))
 	dgp.released.connect(_on_dragable_container_released.bind(dgp))
 	dgp.dragged.connect(_on_dragable_container_dragged.bind(dgp))
@@ -85,8 +85,8 @@ func get_object_dock_top() -> float:
 
 ## Completely remove a GameObject and its DGP from the editor view and its data from the
 ## Environment data (if applicable)
-func remove_object(dgp:DragableGOParent) -> void:
-	environment.environment_data.remove_object( dgp.game_object.get_instance_data() )
+func remove_object(dgp:DragableParent) -> void:
+	environment.environment_data.remove_object( dgp.get_game_object().get_instance_data() )
 	dgp.queue_free()
 
 
@@ -111,7 +111,7 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	o.setup(ot.get_object())
 	var go = environment.add_object(o)
 	
-	var dgp = DragableGOParent.make(go, true)
+	var dgp = DragableParent.make(go, true)
 	add_dragable(dgp)
 	_on_dragable_container_clicked(dgp)
 	if dgp.get_parent() == null:
@@ -122,38 +122,39 @@ func _on_object_thumbnail_dragged(ot:ObjectThumbnail) -> void:
 	go.position = dgp.size/2
 
 
-func _on_dragable_container_clicked(dgp:DragableGOParent) -> void:
+func _on_dragable_container_clicked(dgp:DragableParent) -> void:
 	if dgp.get_parent() != null:
 		dgp.reparent(above_left_side)
 	else:
 		above_left_side.add_child(dgp)
-	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
-	details_tab.update_panel(dgp.game_object.get_instance_data())
+	dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
+	details_tab.update_panel(dgp.get_game_object().get_instance_data())
 	interactive_tab.open_tab(details_tab.current_object_data)
 
 
-func _on_dragable_container_dragged(dgp:DragableGOParent) -> void:
-	dgp.game_object.instance_data.position = get_mouse_pos_in_environment()
-	details_tab.update_panel(dgp.game_object.get_instance_data())
+func _on_dragable_container_dragged(dgp:DragableParent) -> void:
+	dgp.get_game_object().instance_data.position = get_mouse_pos_in_environment()
+	details_tab.update_panel(dgp.get_game_object().get_instance_data())
 
 
-func _on_dragable_container_released(dgp:DragableGOParent) -> void:
+func _on_dragable_container_released(dgp:DragableParent) -> void:
 	if get_global_mouse_position().y > get_object_dock_top():
 		remove_object(dgp)
 	else:
 		dgp.reparent(dragables_root)
-		dgp.game_object.instance_data.position = dgp.position + dgp.size/2
-		#dgp.game_object.instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
-		details_tab.update_panel(dgp.game_object.get_instance_data())
+		dgp.get_game_object().instance_data.position = dgp.position + dgp.size/2
+		#dgp.get_game_object().instance_data.position = (get_mouse_pos_in_environment() / environment_graph.zoom) - (dgp.size/2)
+		details_tab.update_panel(dgp.get_game_object().get_instance_data())
 
 
 ## object can be of type ObjectData or ObjectInstanceData.
 func _on_inspector_value_changed(object:Variant) -> void:
 	#for updating object data, find every instance of an object and update them.
 	if object is ObjectData:
-		for dragable:DragableGOParent in dragables_root.get_children():
-			if dragable.game_object.get_object_data() == object:
-				dragable.game_object.update_image()
+		for dragable:DragableParent in dragables_root.get_children():
+			if dragable.has_game_object():
+				if dragable.get_game_object().get_object_data() == object:
+					dragable.get_game_object().update_image()
 		for child in objects_dock.get_children():
 			if child is ObjectThumbnail:
 				if child.object_data == object:
@@ -161,8 +162,8 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	
 	#for updating instance data, find the instance and update it.
 	if object is ObjectInstanceData:
-		for dragable:DragableGOParent in dragables_root.get_children():
-			if dragable.game_object.get_instance_data() == object:
+		for dragable:DragableParent in dragables_root.get_children():
+			if dragable.get_game_object().get_instance_data() == object:
 				dragable.update_position()
 				break
 	

@@ -13,6 +13,7 @@ static func make() -> Player:
 	var p = _SELF_SCENE.instantiate()
 	return p
 
+
 func _ready() -> void:
 	Game.get_game().interact_manager.set_player(self)
 
