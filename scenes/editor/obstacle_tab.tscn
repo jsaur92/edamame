@@ -14,14 +14,18 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_axwd4"]
 image = SubResource("Image_wgsul")
 
-[node name="ObstacleProperties" type="Control" unique_id=1590368900 node_paths=PackedStringArray("object_texture", "rect_options", "circ_options")]
+[node name="ObstacleProperties" type="Control" unique_id=1590368900 node_paths=PackedStringArray("object_texture", "shape_option", "rect_options", "circ_options", "width_spin_box", "height_spin_box", "radius_spin_box")]
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wgsul")
 object_texture = NodePath("VBoxContainer/ObjectTextureRect")
+shape_option = NodePath("VBoxContainer/OptionButton")
 rect_options = NodePath("VBoxContainer/RectOptions")
 circ_options = NodePath("VBoxContainer/CircOptions")
+width_spin_box = NodePath("VBoxContainer/RectOptions/HBoxContainer/WidthSpinBox")
+height_spin_box = NodePath("VBoxContainer/RectOptions/HBoxContainer2/HeightSpinBox")
+radius_spin_box = NodePath("VBoxContainer/CircOptions/HBoxContainer/RadiusSpinBox")
 metadata/_tab_index = 1
 metadata/_tab_name = "Obstacle"
 
@@ -57,27 +61,35 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Control" type="Control" parent="VBoxContainer/RectOptions/HBoxContainer" unique_id=1342158964]
-custom_minimum_size = Vector2(2, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/RectOptions/HBoxContainer" unique_id=1557525598]
 layout_mode = 2
 text = "width"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/RectOptions/HBoxContainer" unique_id=1313801728]
+[node name="WidthSpinBox" type="SpinBox" parent="VBoxContainer/RectOptions/HBoxContainer" unique_id=1194446706]
 layout_mode = 2
-size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+allow_greater = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/RectOptions" unique_id=461554209]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/RectOptions/HBoxContainer2" unique_id=1978973444]
+custom_minimum_size = Vector2(6, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/RectOptions/HBoxContainer2" unique_id=1835843007]
 layout_mode = 2
 text = "height"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/RectOptions/HBoxContainer2" unique_id=138269565]
+[node name="HeightSpinBox" type="SpinBox" parent="VBoxContainer/RectOptions/HBoxContainer2" unique_id=1609137450]
 layout_mode = 2
-size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+allow_greater = true
 
 [node name="CircOptions" type="VBoxContainer" parent="VBoxContainer" unique_id=304229069]
 visible = false
@@ -87,13 +99,20 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Control" type="Control" parent="VBoxContainer/CircOptions/HBoxContainer" unique_id=42724500]
-custom_minimum_size = Vector2(2, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/CircOptions/HBoxContainer" unique_id=854551245]
 layout_mode = 2
 text = "radius"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/CircOptions/HBoxContainer" unique_id=888950734]
+[node name="RadiusSpinBox" type="SpinBox" parent="VBoxContainer/CircOptions/HBoxContainer" unique_id=420875685]
 layout_mode = 2
-size_flags_horizontal = 3
+min_value = 1.0
+value = 1.0
+allow_greater = true
+
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/RectOptions/HBoxContainer/WidthSpinBox" to="." method="_on_width_spin_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/RectOptions/HBoxContainer2/HeightSpinBox" to="." method="_on_height_spin_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/CircOptions/HBoxContainer/RadiusSpinBox" to="." method="_on_radius_spin_box_value_changed"]

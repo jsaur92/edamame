@@ -13,6 +13,11 @@ var dialog_ui : DialogUI
 
 signal update_current_node
 
+
+func _process(delta: float) -> void:
+	print("Obj: ", current_obj, ", Data: ", current_data, ", Node: ", current_node)
+
+
 func set_dialog_ui(d:DialogUI):
 	dialog_ui = d
 
