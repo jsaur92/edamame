@@ -29,6 +29,11 @@ func get_object() -> ObjectData:
 	return object_data
 
 
+func mult_size(value:float) -> void:
+	custom_minimum_size *= value
+	label.add_theme_font_size_override("normal_font_size", label.get_theme_font_size("normal_font_size") * value )
+
+
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		held = event.is_pressed()

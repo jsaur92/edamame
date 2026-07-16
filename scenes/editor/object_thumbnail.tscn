@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://brrgdqby1o2b5"]
 
 [ext_resource type="Script" uid="uid://yhbr2xocvbp2" path="res://scripts/nodes/object_thumbnail.gd" id="1_4uhwv"]
+[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="2_lk5yw"]
 
 [node name="ObjectThumbnail" type="Control" unique_id=1143475267 node_paths=PackedStringArray("texrect", "label")]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
 anchor_right = 0.083000004
 anchor_bottom = 0.148
-offset_right = 0.38399506
-offset_bottom = 0.09600067
+offset_right = 0.63998413
+offset_bottom = 0.16000366
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4uhwv")
@@ -17,28 +18,27 @@ label = NodePath("RichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1612819262]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_right = 40.0
-offset_bottom = 80.0
+anchors_preset = -1
+anchor_left = 0.087000005
+anchor_right = 0.91200006
+anchor_bottom = 0.82500005
+offset_left = 0.07999897
+offset_right = 0.07998657
 grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lk5yw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=68630363]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -18.0
-offset_right = 48.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
+text = "test"
 scroll_active = false
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

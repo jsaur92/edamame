@@ -25,7 +25,7 @@ func set_current_node(node:CommandNode):
 
 
 func interact_with(object:GameObject) -> void:
-	print("OBJECT: ", object)
+	print("OBJECT: ", object, ", CURRENT_OBJECT: ", current_obj)
 	if current_obj == null:
 		current_obj = object
 		current_data = current_obj.object_data

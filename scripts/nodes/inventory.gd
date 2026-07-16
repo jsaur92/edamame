@@ -10,13 +10,13 @@ func add_item(item:ObjectData):
 		items.append(item)
 
 
-func remove_item(item:ObjectData):
+func remove_item(item:ObjectData) -> void:
 	items.erase(item)
 
 
-func get_items():
+func get_items() -> Array[ObjectData]:
 	return items
 
 
-func has_item(item:ObjectData):
+func has_item(item:ObjectData) -> bool:
 	return item in items

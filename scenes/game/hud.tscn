@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://qkfw666035a3"]
 
 [ext_resource type="Script" uid="uid://d1gd67s1omyqw" path="res://scripts/nodes/hud.gd" id="1_kqgwg"]
-[ext_resource type="Texture2D" uid="uid://cmm2dkhfw2lgh" path="res://assets/textures/icon.svg" id="2_77e6q"]
+[ext_resource type="Texture2D" uid="uid://qtl6asqfiyjh" path="res://assets/textures/backpack.png" id="2_77e6q"]
 
-[node name="HUD" type="Control" unique_id=1606460995 node_paths=PackedStringArray("inventory_control")]
+[node name="HUD" type="Control" unique_id=1606460995 node_paths=PackedStringArray("inventory_control", "item_grid_container")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +14,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kqgwg")
 inventory_control = NodePath("Inventory")
+item_grid_container = NodePath("Inventory/GridContainer")
 
 [node name="Inventory" type="Control" parent="." unique_id=1022371772]
 visible = false
@@ -20,18 +22,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="Inventory" unique_id=1081182287]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 240.0
-offset_top = 57.0
-offset_right = -326.0
-offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -44,16 +34,46 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5882353)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1838740934]
+[node name="GridContainer" type="GridContainer" parent="Inventory" unique_id=1081182287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 57.0
+offset_right = -326.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 8
+
+[node name="InventoryButton" type="Button" parent="." unique_id=878972102]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -158.0
-offset_right = 160.0
-offset_bottom = -30.0
+offset_left = 17.0
+offset_top = -144.0
+offset_right = 139.0
+offset_bottom = -19.0
 grow_vertical = 0
-texture = ExtResource("2_77e6q")
+focus_mode = 0
 
-[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]
+[node name="TextureRect" type="TextureRect" parent="InventoryButton" unique_id=1838740934]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_77e6q")
+expand_mode = 1
+
+[connection signal="pressed" from="InventoryButton" to="." method="_on_inventory_button_pressed"]
