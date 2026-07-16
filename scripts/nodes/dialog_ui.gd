@@ -60,8 +60,8 @@ func take(command:CommandTake) -> void:
 	make_answer_choices(["Give " + command.get_item().name, "Do not give"])
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and active and (current_node != null and (current_node.command is CommandSay or current_node.command is CommandGive)):
-		if text.visible_characters >= text.text.length():
+	if Input.is_action_just_pressed("interact") and active and current_node != null:
+		if text.visible_characters >= text.text.length() and (current_node.command is CommandSay or current_node.command is CommandGive):
 			confirm(0)
 		else:
 			text.visible_characters = text.text.length()

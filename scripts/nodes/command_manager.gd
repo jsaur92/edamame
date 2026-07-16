@@ -11,7 +11,16 @@ var current_node : CommandNode
 
 var dialog_ui : DialogUI
 
+#cooldown timer (physics frames) to prevent double inputs at the end of an interact.
+var cooldown_timer = 0
+const INTERACT_COOLDOWN = 2
+
 signal update_current_node
+
+
+func _physics_process(delta: float) -> void:
+	if cooldown_timer > 0:
+		cooldown_timer -= 1
 
 
 func set_dialog_ui(d:DialogUI):
@@ -26,7 +35,7 @@ func set_current_node(node:CommandNode):
 
 func interact_with(object:GameObject) -> void:
 	print("OBJECT: ", object, ", CURRENT_OBJECT: ", current_obj)
-	if current_obj == null:
+	if current_obj == null and cooldown_timer <= 0:
 		current_obj = object
 		current_data = current_obj.object_data
 		set_current_node(current_data.get_mod(Enums.ObjectModType.INTERACTABLE).get_command_head())
@@ -37,6 +46,7 @@ func reset() -> void:
 	current_obj = null
 	current_data = null
 	set_current_node(null)
+	cooldown_timer = 2
 
 
 ## Execute the current command. Read the data from the CommandNode's Command,
