@@ -14,10 +14,6 @@ var dialog_ui : DialogUI
 signal update_current_node
 
 
-func _process(delta: float) -> void:
-	print("Obj: ", current_obj, ", Data: ", current_data, ", Node: ", current_node)
-
-
 func set_dialog_ui(d:DialogUI):
 	dialog_ui = d
 
@@ -29,15 +25,24 @@ func set_current_node(node:CommandNode):
 
 
 func interact_with(object:GameObject) -> void:
-	current_obj = object
-	current_data = current_obj.object_data
-	set_current_node(current_data.get_mod(Enums.ObjectModType.INTERACTABLE).get_command_head())
-	execute()
+	print("OBJECT: ", object)
+	if current_obj == null:
+		current_obj = object
+		current_data = current_obj.object_data
+		set_current_node(current_data.get_mod(Enums.ObjectModType.INTERACTABLE).get_command_head())
+		execute()
+
+
+func reset() -> void:
+	current_obj = null
+	current_data = null
+	set_current_node(null)
 
 
 ## Execute the current command. Read the data from the CommandNode's Command,
 ## then do something about it.
 func execute() -> void:
+	print("CURRENT: ", current_node)
 	if current_node != null:
 		get_tree().paused = true
 		var command = current_node.command
@@ -58,7 +63,7 @@ func execute_next(index:int) -> void:
 		set_current_node(current_node.next[index])
 		execute()
 	else:
-		set_current_node(null)
+		reset()
 
 
 func execute_say(command:CommandSay):

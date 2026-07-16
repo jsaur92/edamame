@@ -2,7 +2,8 @@ class_name DialogUI
 extends Control
 
 @export var text : RichTextLabel
-@export var answers_dock : VBoxContainer
+@export var answers_dock : GridContainer
+@export var object_tex_rect : TextureRect
 var current_node
 ## True when the UI is on screen. Small buffer between it popping up and active
 ## becoming true so that the "interact" input doesn't open and close at the
@@ -13,6 +14,8 @@ signal give_item
 signal take_item
 const OPEN_DELAY = 0.1
 const CLOSE_DELAY = 0.0
+const TEXT_SPEED = 1
+const QUESTION_ASK_DELAY = 0.3
 
 func _ready() -> void:
 	Game.get_game().command_manager.set_dialog_ui(self)
@@ -21,12 +24,23 @@ func _ready() -> void:
 
 func display(on:bool) -> void:
 	clear_answer_choices()
+	object_tex_rect.texture = ImageTexture.create_from_image(Game.get_game().command_manager.current_data.get_scaled_image())
 	visible = on
 	if on:
+		text.visible_characters = 0
+		answers_dock.visible = false
 		await get_tree().create_timer(OPEN_DELAY).timeout
 		active = on
 
+func _physics_process(delta: float) -> void:
+	if active:
+		text.visible_characters += TEXT_SPEED
+		if text.visible_characters >= text.text.length() and not answers_dock.visible:
+			await get_tree().create_timer(QUESTION_ASK_DELAY).timeout
+			answers_dock.visible = true
+
 func say(command:CommandSay) -> void:
+	
 	display(true)
 	text.text = command.dialog
 
@@ -47,7 +61,10 @@ func take(command:CommandTake) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and active and (current_node != null and (current_node.command is CommandSay or current_node.command is CommandGive)):
-		confirm(0)
+		if text.visible_characters >= text.text.length():
+			confirm(0)
+		else:
+			text.visible_characters = text.text.length()
 
 
 ## Helper function for ask() that generates the buttons for choices.
@@ -56,6 +73,9 @@ func make_answer_choices(choices:Array[String]) -> void:
 	for choice in choices:
 		var b = Button.new()
 		b.text = choice
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		b.add_theme_font_size_override("font_size", 32)
 		b.connect("pressed", confirm.bind(i))
 		answers_dock.add_child(b)
 		i += 1

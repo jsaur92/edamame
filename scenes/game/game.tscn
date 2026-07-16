@@ -29,6 +29,7 @@ visible = false
 z_index = 100
 
 [node name="CommandManager" parent="." unique_id=1990624178 instance=ExtResource("3_kelw5")]
+process_mode = 3
 
 [node name="InteractManager" parent="." unique_id=515512791 instance=ExtResource("4_lfrn8")]
 

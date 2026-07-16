@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4skgc7mofo1i" path="res://scripts/nodes/dialog_ui.gd" id="1_2diwe"]
 
-[node name="DialogUI" type="Control" unique_id=764160478 node_paths=PackedStringArray("text", "answers_dock")]
+[node name="DialogUI" type="Control" unique_id=764160478 node_paths=PackedStringArray("text", "answers_dock", "object_tex_rect")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_2diwe")
 text = NodePath("ColorRect/RichTextLabel")
 answers_dock = NodePath("AnswersDock")
+object_tex_rect = NodePath("ObjectTextureRect")
 
 [node name="bg" type="ColorRect" parent="." unique_id=1658892]
 layout_mode = 1
@@ -21,7 +22,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.3137255)
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="ObjectTextureRect" type="TextureRect" parent="." unique_id=249429871]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = 134.0
+offset_right = -173.0
+offset_bottom = -409.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="ObjectTextureRect" unique_id=226785504]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=352378210]
 layout_mode = 1
@@ -29,25 +53,42 @@ anchors_preset = -1
 anchor_top = 0.633
 anchor_right = 1.0
 anchor_bottom = 0.938
-offset_left = 42.0
-offset_top = -0.184021
-offset_right = -42.0
-offset_bottom = 0.17596436
+offset_left = 116.0
+offset_top = 3.3599854
+offset_right = -163.0
+offset_bottom = -45.04004
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=1697022883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20784314, 0.20784314, 0.20784314, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=560166494]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = -25.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 48
 text = "text"
 
-[node name="AnswersDock" type="VBoxContainer" parent="." unique_id=84231828]
+[node name="AnswersDock" type="GridContainer" parent="." unique_id=1249644430]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -55,5 +96,5 @@ anchor_bottom = 0.597
 offset_left = 45.0
 offset_top = 33.0
 offset_right = -42.0
-offset_bottom = 0.14401245
-alignment = 1
+offset_bottom = 0.14404297
+columns = 2
