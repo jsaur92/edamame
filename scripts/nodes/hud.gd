@@ -3,9 +3,13 @@ extends Control
 
 @export var inventory_control : Control
 @export var item_grid_container : GridContainer
+@export var inventory_button : Button
 const ICON_SIZE : int = 192
 
 func update_items(inventory:Inventory) -> void:
+	
+	inventory_button.visible = inventory.get_items().size() > 0
+	
 	for child in item_grid_container.get_children():
 		child.queue_free()
 	for item in inventory.get_items():

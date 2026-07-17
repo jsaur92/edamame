@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d1gd67s1omyqw" path="res://scripts/nodes/hud.gd" id="1_kqgwg"]
 [ext_resource type="Texture2D" uid="uid://qtl6asqfiyjh" path="res://assets/textures/backpack.png" id="2_77e6q"]
 
-[node name="HUD" type="Control" unique_id=1606460995 node_paths=PackedStringArray("inventory_control", "item_grid_container")]
+[node name="HUD" type="Control" unique_id=1606460995 node_paths=PackedStringArray("inventory_control", "item_grid_container", "inventory_button")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -15,6 +15,7 @@ mouse_filter = 2
 script = ExtResource("1_kqgwg")
 inventory_control = NodePath("Inventory")
 item_grid_container = NodePath("Inventory/GridContainer")
+inventory_button = NodePath("InventoryButton")
 
 [node name="Inventory" type="Control" parent="." unique_id=1022371772]
 visible = false
@@ -48,6 +49,7 @@ grow_vertical = 2
 columns = 8
 
 [node name="InventoryButton" type="Button" parent="." unique_id=878972102]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
