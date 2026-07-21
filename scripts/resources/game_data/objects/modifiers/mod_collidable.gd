@@ -10,3 +10,15 @@ extends ObjectMod
 
 func get_shape() -> Shape2D:
 	return shape
+
+
+func scale_width(value:float) -> void:
+	if shape is RectangleShape2D:
+		shape.size.x *= value
+
+
+func scale_height(value:float) -> void:
+	if shape is RectangleShape2D:
+		shape.size.y *= value
+	elif shape is CircleShape2D:
+		shape.radius *= value

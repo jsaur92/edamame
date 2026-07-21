@@ -20,7 +20,7 @@ static func make(node:CommandNode=null) -> TakeCommandGraphNode:
 
 
 func update_data() -> void:
-	texture_rect.texture = ImageTexture.create_from_image(command.get_item().get_image())
+	texture_rect.texture = ImageTexture.create_from_image(command.get_item().get_scaled_image())
 
 
 func _on_texture_rect_gui_input(event: InputEvent) -> void:

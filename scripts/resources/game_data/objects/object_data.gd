@@ -112,5 +112,9 @@ func get_scaled_image() -> Image:
 	return i
 
 
+func get_image_size_pixels() -> Vector2i:
+	return image_size_pixels
+
+
 func _to_string() -> String:
 	return name

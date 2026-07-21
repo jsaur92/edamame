@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 			graph_edit.scroll_offset = DEFAULT_SCROLL_OFFSET
 		arrange_timer += 1
 
+
 func open_tab(object_data:ObjectData) -> void:
 	if object_data.is_interactable():
 		load_data(object_data.get_mod(Enums.ObjectModType.INTERACTABLE))

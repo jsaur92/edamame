@@ -51,9 +51,9 @@ func update_button_abled() -> void:
 func add_answer() -> void:
 	set_slot_enabled_right(answer_line_edits.size()+SLOT_OFFSET, true)
 	var new_line_edit = LineEdit.new()
-	new_line_edit.text_changed.connect(update_data)
 	new_line_edit.placeholder_text = "Answer " + str(answer_line_edits.size()+1)
 	answer_line_edits.append(new_line_edit)
+	new_line_edit.text_changed.connect(_on_line_edit_text_changed)
 	remove_child(buttons_container)
 	add_child(new_line_edit)
 	add_child(buttons_container)

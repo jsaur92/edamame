@@ -123,14 +123,20 @@ func _on_name_text_text_changed() -> void:
 
 
 func _on_width_text_value_changed(value: float) -> void:
+	var pre_value = current_object_data.get_image_size_pixels().x
 	current_object_data.set_size_x(value)
 	update_image(current_object_data)
+	if current_object_data.is_collidable():
+		current_object_data.get_mod(Enums.ObjectModType.COLLIDABLE).scale_width( value / pre_value )
 	edited.emit(current_object_data)
 
 
 func _on_height_text_value_changed(value: float) -> void:
+	var pre_value = current_object_data.get_image_size_pixels().y
 	current_object_data.set_size_y(value)
 	update_image(current_object_data)
+	if current_object_data.is_collidable():
+		current_object_data.get_mod(Enums.ObjectModType.COLLIDABLE).scale_height( value / pre_value )
 	edited.emit(current_object_data)
 
 

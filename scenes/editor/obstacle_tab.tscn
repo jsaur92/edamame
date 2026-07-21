@@ -74,6 +74,10 @@ min_value = 1.0
 value = 1.0
 allow_greater = true
 
+[node name="Label2" type="Label" parent="VBoxContainer/RectOptions/HBoxContainer" unique_id=817574650]
+layout_mode = 2
+text = "%"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/RectOptions" unique_id=461554209]
 layout_mode = 2
 
@@ -90,6 +94,10 @@ layout_mode = 2
 min_value = 1.0
 value = 1.0
 allow_greater = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/RectOptions/HBoxContainer2" unique_id=1222158560]
+layout_mode = 2
+text = "%"
 
 [node name="CircOptions" type="VBoxContainer" parent="VBoxContainer" unique_id=304229069]
 visible = false
@@ -111,6 +119,10 @@ layout_mode = 2
 min_value = 1.0
 value = 1.0
 allow_greater = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/CircOptions/HBoxContainer" unique_id=1463277012]
+layout_mode = 2
+text = "%"
 
 [connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/RectOptions/HBoxContainer/WidthSpinBox" to="." method="_on_width_spin_box_value_changed"]
