@@ -20,3 +20,7 @@ func get_items() -> Array[ObjectData]:
 
 func has_item(item:ObjectData) -> bool:
 	return item in items
+
+
+func is_empty() -> bool:
+	return items.size() == 0

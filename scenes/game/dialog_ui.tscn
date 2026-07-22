@@ -88,6 +88,15 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 48
 text = "text"
 
+[node name="InputCatcher" type="Control" parent="." unique_id=1493522740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
 [node name="AnswersDock" type="GridContainer" parent="." unique_id=1249644430]
 layout_mode = 1
 anchors_preset = -1
@@ -98,3 +107,5 @@ offset_top = 33.0
 offset_right = -42.0
 offset_bottom = 0.14404297
 columns = 2
+
+[connection signal="gui_input" from="InputCatcher" to="." method="_on_input_catcher_gui_input"]

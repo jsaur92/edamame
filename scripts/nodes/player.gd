@@ -59,6 +59,7 @@ func update_sprite() -> void:
 	elif velocity.x < 0:
 		sprite.flip_h = true
 
+
 func get_size() -> Vector2i:
 	return sprite.sprite_frames.get_frame_texture( sprite.animation, sprite.frame ).get_size()
 

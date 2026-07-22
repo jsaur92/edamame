@@ -9,6 +9,8 @@ var current_node
 ## becoming true so that the "interact" input doesn't open and close at the
 ## same time. Also can accomodate an "opening" animation if applicable.
 var active : bool = false
+## Used for treating a screen tap as an "interact" press.
+var just_tapped : bool = false
 signal proceed
 signal give_item
 signal take_item
@@ -32,6 +34,7 @@ func display(on:bool) -> void:
 		await get_tree().create_timer(OPEN_DELAY).timeout
 		active = on
 
+
 func _physics_process(delta: float) -> void:
 	if active:
 		text.visible_characters += TEXT_SPEED
@@ -39,28 +42,34 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(QUESTION_ASK_DELAY).timeout
 			answers_dock.visible = true
 
+
 func say(command:CommandSay) -> void:
 	
 	display(true)
 	text.text = command.dialog
+
 
 func ask(command:CommandAsk) -> void:
 	display(true)
 	text.text = command.dialog
 	make_answer_choices(command.choices)
 
+
 func give(command:CommandGive) -> void:
 	display(true)
 	text.text = "You got " + command.get_item().name + "!"
 	give_item.emit(command.get_item())
+
 
 func take(command:CommandTake) -> void:
 	display(true)
 	text.text = "Give 1 " + command.get_item().name + "?"
 	make_answer_choices(["Give " + command.get_item().name, "Do not give"])
 
+
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and active and current_node != null:
+	if (Input.is_action_just_pressed("interact") or just_tapped) and active and current_node != null:
+		just_tapped = false
 		if text.visible_characters >= text.text.length() and (current_node.command is CommandSay or current_node.command is CommandGive):
 			confirm(0)
 		else:
@@ -69,6 +78,7 @@ func _input(event: InputEvent) -> void:
 
 ## Helper function for ask() that generates the buttons for choices.
 func make_answer_choices(choices:Array[String]) -> void:
+	answers_dock.mouse_behavior_recursive = Control.MOUSE_BEHAVIOR_ENABLED
 	var i = 0
 	for choice in choices:
 		var b = Button.new()
@@ -82,6 +92,7 @@ func make_answer_choices(choices:Array[String]) -> void:
 
 
 func clear_answer_choices() -> void:
+	answers_dock.mouse_behavior_recursive = Control.MOUSE_BEHAVIOR_DISABLED
 	for child in answers_dock.get_children():
 		child.queue_free()
 
@@ -101,3 +112,8 @@ func confirm(index:int) -> void:
 
 func set_current_node(node:CommandNode):
 	current_node = node
+
+
+func _on_input_catcher_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.is_action("click"):
+		just_tapped = true

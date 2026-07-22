@@ -34,7 +34,6 @@ func set_current_node(node:CommandNode):
 
 
 func interact_with(object:GameObject) -> void:
-	print("OBJECT: ", object, ", CURRENT_OBJECT: ", current_obj)
 	if current_obj == null and cooldown_timer <= 0:
 		current_obj = object
 		current_data = current_obj.object_data
@@ -52,7 +51,6 @@ func reset() -> void:
 ## Execute the current command. Read the data from the CommandNode's Command,
 ## then do something about it.
 func execute() -> void:
-	print("CURRENT: ", current_node)
 	if current_node != null:
 		get_tree().paused = true
 		var command = current_node.command

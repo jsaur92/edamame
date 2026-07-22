@@ -6,6 +6,10 @@ var player : Player
 ## All Interactables within range of the Player. Would work best as a minheap.
 var inters_within_range : Array[Interactable] = []
 var prev_closest : Interactable
+static var interact_manager
+
+func _ready() -> void:
+	interact_manager = self
 
 func _process(delta: float) -> void:
 	if inters_within_range.size() > 1:
@@ -88,3 +92,7 @@ func set_player(p:Player) -> void:
 
 func dist_sq_to_player(index:int):
 	return player.global_position.distance_squared_to(inters_within_range[index].global_position)
+
+
+static func get_instance() -> InteractManager:
+	return interact_manager
