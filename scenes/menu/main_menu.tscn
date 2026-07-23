@@ -218,7 +218,7 @@ oversampling_override = 1.0
 title = "Open a File"
 ok_button_text = "Select"
 file_mode = 0
-root_subfolder = "res://assets/resources/"
+access = 2
 
 [connection signal="pressed" from="PickFileButton" to="." method="_on_pick_file_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

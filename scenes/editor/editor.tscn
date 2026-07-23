@@ -33,6 +33,7 @@ line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
 line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
+access = 2
 
 [node name="VSplitRoot" type="VSplitContainer" parent="." unique_id=76124584]
 layout_mode = 1
