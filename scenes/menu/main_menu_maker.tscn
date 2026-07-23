@@ -1,7 +1,42 @@
 [gd_scene format=3 uid="uid://ouacseb7xvgj"]
 
 [ext_resource type="Script" uid="uid://bne2750spt18n" path="res://scripts/nodes/menus/main_menu_maker.gd" id="1_r3ivl"]
+[ext_resource type="PackedScene" uid="uid://cymoenflan0ui" path="res://scenes/menu/title_char.tscn" id="2_67cvw"]
 [ext_resource type="PackedScene" uid="uid://dpub0ilklgmx7" path="res://scenes/menu/game_data_initializer.tscn" id="2_l4b0p"]
+[ext_resource type="Shader" uid="uid://djmwa5pa2bo7x" path="res://assets/shaders/title_char.gdshader" id="3_sptwh"]
+[ext_resource type="Texture2D" uid="uid://bqafs06ebpp4i" path="res://assets/textures/menu/title/title_E.png" id="3_y5p3x"]
+[ext_resource type="Texture2D" uid="uid://d74u8fds4ejg" path="res://assets/textures/menu/title/title_d.png" id="4_sptwh"]
+[ext_resource type="Texture2D" uid="uid://cmvnbdobo0fq5" path="res://assets/textures/menu/title/title_a.png" id="5_d780c"]
+[ext_resource type="Texture2D" uid="uid://bxq1og38j4xl6" path="res://assets/textures/menu/title/title_m.png" id="6_t6jjh"]
+[ext_resource type="Texture2D" uid="uid://3m3xh0afwdcu" path="res://assets/textures/menu/title/title_e.png" id="7_xkony"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5p3x"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sptwh"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d780c"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6jjh"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkony"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8saqi"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tjiys"]
+shader = ExtResource("3_sptwh")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("edit_button", "file_dialog", "game_text", "game_data_init")]
 layout_mode = 3
@@ -16,50 +51,133 @@ file_dialog = NodePath("FileDialog")
 game_text = NodePath("GameText")
 game_data_init = NodePath("GameDataInitializer")
 
-[node name="TitleText" type="RichTextLabel" parent="." unique_id=846571225]
+[node name="Title" type="Control" parent="." unique_id=1064893769]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 114.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "EduGame Maker"
-scroll_active = false
+grow_vertical = 2
+
+[node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_y5p3x")
+layout_mode = 0
+offset_left = 120.0
+offset_top = 48.0
+offset_right = 408.0
+offset_bottom = 432.0
+rotation = 0.044374228
+pivot_offset = Vector2(144, 192)
+texture = ExtResource("3_y5p3x")
+character = "E"
+color_name = "Lawn Green"
+
+[node name="TitleChar2" parent="Title" unique_id=675455983 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_sptwh")
+layout_mode = 0
+offset_left = 408.0
+offset_top = 64.0
+offset_right = 616.0
+offset_bottom = 416.0
+rotation = 0.044374228
+pivot_offset = Vector2(104, 176)
+texture = ExtResource("4_sptwh")
+character = "d"
+
+[node name="TitleChar3" parent="Title" unique_id=977619065 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_d780c")
+layout_mode = 0
+offset_left = 627.0
+offset_top = 254.0
+offset_right = 819.0
+offset_bottom = 414.0
+rotation = 0.044374228
+pivot_offset = Vector2(96, 80)
+texture = ExtResource("5_d780c")
+character = "a"
+color_name = "Lawn Green"
+
+[node name="TitleChar4" parent="Title" unique_id=9974502 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_t6jjh")
+layout_mode = 0
+offset_left = 836.0
+offset_top = 245.0
+offset_right = 1076.0
+offset_bottom = 421.0
+rotation = 0.044374228
+pivot_offset = Vector2(120, 88)
+texture = ExtResource("6_t6jjh")
+character = "m"
+
+[node name="TitleChar5" parent="Title" unique_id=1914241924 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_xkony")
+layout_mode = 0
+offset_left = 1103.0
+offset_top = 250.0
+offset_right = 1295.0
+offset_bottom = 410.0
+rotation = 0.044374228
+pivot_offset = Vector2(96, 80)
+texture = ExtResource("5_d780c")
+character = "a"
+color_name = "Lawn Green"
+
+[node name="TitleChar6" parent="Title" unique_id=336004101 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_8saqi")
+layout_mode = 0
+offset_left = 1306.0
+offset_top = 236.0
+offset_right = 1546.0
+offset_bottom = 412.0
+rotation = 0.044374228
+pivot_offset = Vector2(120, 88)
+texture = ExtResource("6_t6jjh")
+character = "m"
+
+[node name="TitleChar7" parent="Title" unique_id=420559316 instance=ExtResource("2_67cvw")]
+material = SubResource("ShaderMaterial_tjiys")
+layout_mode = 0
+offset_left = 1560.0
+offset_top = 226.0
+offset_right = 1800.0
+offset_bottom = 418.0
+rotation = 0.044374228
+pivot_offset = Vector2(120, 96)
+texture = ExtResource("7_xkony")
+character = "e"
+color_name = "Lawn Green"
 
 [node name="PickFileButton" type="Button" parent="." unique_id=1361611074]
 layout_mode = 1
-offset_left = 82.0
-offset_top = 156.0
-offset_right = 202.0
-offset_bottom = 188.0
+offset_left = 1221.0
+offset_top = 947.0
+offset_right = 1341.0
+offset_bottom = 979.0
 text = "Pick Game File"
 
 [node name="NewGameButton" type="Button" parent="." unique_id=994457552]
 layout_mode = 1
-offset_left = 293.0
-offset_top = 156.0
-offset_right = 417.0
-offset_bottom = 188.0
+offset_left = 1432.0
+offset_top = 947.0
+offset_right = 1556.0
+offset_bottom = 979.0
 text = "New Game File"
 
 [node name="EditButton" type="Button" parent="." unique_id=186929316]
 layout_mode = 1
-offset_left = 51.0
-offset_top = 245.0
-offset_right = 233.0
-offset_bottom = 296.0
+offset_left = 1190.0
+offset_top = 1036.0
+offset_right = 1372.0
+offset_bottom = 1087.0
 disabled = true
 text = "Edit"
 
 [node name="GameText" type="RichTextLabel" parent="." unique_id=1789245458]
 layout_mode = 1
-offset_left = 507.0
-offset_top = 146.0
-offset_right = 747.0
-offset_bottom = 195.0
+offset_left = 575.0
+offset_top = 173.0
+offset_right = 815.0
+offset_bottom = 222.0
 vertical_alignment = 1
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1552736645]

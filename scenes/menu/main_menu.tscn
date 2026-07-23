@@ -1,6 +1,50 @@
 [gd_scene format=3 uid="uid://e7ed5bvjy3jm"]
 
 [ext_resource type="Script" uid="uid://brbk3erpvocqq" path="res://scripts/nodes/menus/main_menu.gd" id="1_nl8w3"]
+[ext_resource type="PackedScene" uid="uid://cymoenflan0ui" path="res://scenes/menu/title_char.tscn" id="2_qgo02"]
+[ext_resource type="Shader" uid="uid://djmwa5pa2bo7x" path="res://assets/shaders/title_char.gdshader" id="3_vovv2"]
+[ext_resource type="Texture2D" uid="uid://bqafs06ebpp4i" path="res://assets/textures/menu/title/title_E.png" id="4_1k4da"]
+[ext_resource type="Texture2D" uid="uid://d74u8fds4ejg" path="res://assets/textures/menu/title/title_d.png" id="5_bbqo6"]
+[ext_resource type="Texture2D" uid="uid://cmvnbdobo0fq5" path="res://assets/textures/menu/title/title_a.png" id="6_d4hu8"]
+[ext_resource type="Texture2D" uid="uid://bxq1og38j4xl6" path="res://assets/textures/menu/title/title_m.png" id="7_p1nwe"]
+[ext_resource type="Texture2D" uid="uid://3m3xh0afwdcu" path="res://assets/textures/menu/title/title_e.png" id="8_prbor"]
+[ext_resource type="Texture2D" uid="uid://bcgovbjf0df12" path="res://icon.svg" id="9_vovv2"]
+[ext_resource type="Script" uid="uid://7rlpr5j5j5ej" path="res://scenes/menu/tilty_rect.gd" id="10_1k4da"]
+
+[sub_resource type="Gradient" id="Gradient_qgo02"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.5647059, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjd4h"]
+gradient = SubResource("Gradient_qgo02")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27h4x"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gdhp0"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pstia"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41tvm"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxdmp"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3h20m"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uaj4g"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("play_button", "edit_button", "file_dialog", "game_text")]
 layout_mode = 3
@@ -15,51 +59,158 @@ edit_button = NodePath("EditButton")
 file_dialog = NodePath("FileDialog")
 game_text = NodePath("GameText")
 
-[node name="TitleText" type="RichTextLabel" parent="." unique_id=846571225]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=448826396]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 114.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "EduGame Maker"
-scroll_active = false
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kjd4h")
+
+[node name="Title" type="Control" parent="." unique_id=1305294402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_27h4x")
+layout_mode = 0
+offset_left = 120.0
+offset_top = 48.0
+offset_right = 408.0
+offset_bottom = 432.0
+rotation = -0.034483135
+pivot_offset = Vector2(144, 192)
+texture = ExtResource("4_1k4da")
+character = "E"
+color_name = "Lawn Green"
+
+[node name="TitleChar2" parent="Title" unique_id=1416050564 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_gdhp0")
+layout_mode = 0
+offset_left = 408.0
+offset_top = 64.0
+offset_right = 616.0
+offset_bottom = 416.0
+rotation = -0.034081884
+pivot_offset = Vector2(104, 176)
+texture = ExtResource("5_bbqo6")
+character = "d"
+
+[node name="TitleChar3" parent="Title" unique_id=450958192 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_pstia")
+layout_mode = 0
+offset_left = 627.0
+offset_top = 254.0
+offset_right = 819.0
+offset_bottom = 414.0
+rotation = -0.034081884
+pivot_offset = Vector2(96, 80)
+texture = ExtResource("6_d4hu8")
+character = "a"
+color_name = "Lawn Green"
+
+[node name="TitleChar4" parent="Title" unique_id=419203262 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_41tvm")
+layout_mode = 0
+offset_left = 836.0
+offset_top = 245.0
+offset_right = 1076.0
+offset_bottom = 421.0
+rotation = -0.034081884
+pivot_offset = Vector2(120, 88)
+texture = ExtResource("7_p1nwe")
+character = "m"
+
+[node name="TitleChar5" parent="Title" unique_id=604308388 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_vxdmp")
+layout_mode = 0
+offset_left = 1103.0
+offset_top = 250.0
+offset_right = 1295.0
+offset_bottom = 410.0
+rotation = -0.034081884
+pivot_offset = Vector2(96, 80)
+texture = ExtResource("6_d4hu8")
+character = "a"
+color_name = "Lawn Green"
+
+[node name="TitleChar6" parent="Title" unique_id=155295922 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_3h20m")
+layout_mode = 0
+offset_left = 1306.0
+offset_top = 236.0
+offset_right = 1546.0
+offset_bottom = 412.0
+rotation = -0.034081884
+pivot_offset = Vector2(120, 88)
+texture = ExtResource("7_p1nwe")
+character = "m"
+
+[node name="TitleChar7" parent="Title" unique_id=213229426 instance=ExtResource("2_qgo02")]
+material = SubResource("ShaderMaterial_uaj4g")
+layout_mode = 0
+offset_left = 1560.0
+offset_top = 226.0
+offset_right = 1800.0
+offset_bottom = 418.0
+rotation = -0.034081884
+pivot_offset = Vector2(120, 96)
+texture = ExtResource("8_prbor")
+character = "e"
+color_name = "Lawn Green"
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1974401046]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 482.0
+offset_right = 730.0
+offset_bottom = 1021.34717
+texture = ExtResource("9_vovv2")
+expand_mode = 1
+script = ExtResource("10_1k4da")
 
 [node name="PickFileButton" type="Button" parent="." unique_id=1361611074]
 layout_mode = 1
-offset_left = 82.0
-offset_top = 156.0
-offset_right = 202.0
-offset_bottom = 188.0
+offset_left = 1467.0
+offset_top = 520.0
+offset_right = 1747.0
+offset_bottom = 656.0
+theme_override_font_sizes/font_size = 32
 text = "Pick Game File"
 
 [node name="PlayButton" type="Button" parent="." unique_id=799238178]
 layout_mode = 1
-offset_left = 51.0
-offset_top = 233.0
-offset_right = 233.0
-offset_bottom = 284.0
+offset_left = 1467.0
+offset_top = 670.0
+offset_right = 1747.0
+offset_bottom = 806.0
+theme_override_font_sizes/font_size = 32
 disabled = true
 text = "Play"
 
 [node name="EditButton" type="Button" parent="." unique_id=186929316]
 layout_mode = 1
-offset_left = 51.0
-offset_top = 307.0
-offset_right = 233.0
-offset_bottom = 358.0
+offset_left = 1467.0
+offset_top = 820.0
+offset_right = 1747.0
+offset_bottom = 956.0
+theme_override_font_sizes/font_size = 32
 disabled = true
 text = "Edit"
 
 [node name="GameText" type="RichTextLabel" parent="." unique_id=1789245458]
 layout_mode = 1
-offset_left = 277.0
-offset_top = 146.0
-offset_right = 517.0
-offset_bottom = 195.0
+offset_left = 1075.0
+offset_top = 512.0
+offset_right = 1418.0
+offset_bottom = 675.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
 vertical_alignment = 1
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1552736645]

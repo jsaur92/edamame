@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cymoenflan0ui"]
+
+[ext_resource type="Shader" uid="uid://djmwa5pa2bo7x" path="res://assets/shaders/title_char.gdshader" id="1_0so7l"]
+[ext_resource type="Script" uid="uid://btl7atw1av7e1" path="res://scripts/nodes/menus/title_letter.gd" id="1_saww0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0so7l"]
+shader = ExtResource("1_0so7l")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[node name="TitleChar" type="TextureRect" unique_id=315842940]
+material = SubResource("ShaderMaterial_0so7l")
+offset_right = 64.0
+offset_bottom = 64.0
+stretch_mode = 2
+script = ExtResource("1_saww0")
+color_name = "Web Green"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
