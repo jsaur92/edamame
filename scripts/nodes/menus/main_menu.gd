@@ -5,6 +5,8 @@ extends Control
 @export var file_dialog : FileDialog
 @export var game_text : RichTextLabel
 var game_data : GameData
+const MAKE_MENU_SCENE : PackedScene = preload("uid://ouacseb7xvgj")
+const PLAY_MENU_SCENE : PackedScene = preload("uid://bciwvccv01rmp")
 
 
 func _on_pick_file_button_pressed() -> void:
@@ -27,8 +29,8 @@ func enable_buttons(enable:bool=true) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_node( Game.make(game_data) )
+	get_tree().change_scene_to_packed( PLAY_MENU_SCENE )
 
 
-func _on_edit_button_pressed() -> void:
-	get_tree().change_scene_to_node( Editor.make(game_data) )
+func _on_make_button_pressed() -> void:
+	get_tree().change_scene_to_packed( MAKE_MENU_SCENE )

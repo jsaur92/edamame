@@ -1,94 +1,116 @@
 [gd_scene format=3 uid="uid://dpub0ilklgmx7"]
 
 [ext_resource type="Script" uid="uid://bs60dlduqg7jw" path="res://scripts/nodes/game_data_initializer.gd" id="1_6ay3j"]
+[ext_resource type="Theme" uid="uid://cbdao3sifk57h" path="res://assets/resources/menu_theme_2.tres" id="1_il27f"]
 
 [node name="GameDataInitializer" type="Popup" unique_id=1901562189 node_paths=PackedStringArray("line_edit_name", "line_edit_subject", "line_edit_author")]
 oversampling_override = 1.0
-size = Vector2i(400, 500)
+size = Vector2i(752, 992)
 visible = true
+theme = ExtResource("1_il27f")
 script = ExtResource("1_6ay3j")
 line_edit_name = NodePath("LineEditName")
 line_edit_subject = NodePath("LineEditSubject")
 line_edit_author = NodePath("LineEditAuthor")
 
+[node name="bg2" type="ColorRect" parent="." unique_id=481536148]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+
 [node name="bg" type="ColorRect" parent="." unique_id=1310096614]
-offset_right = 400.0
-offset_bottom = 500.0
-color = Color(0.2509804, 0.2509804, 0.2509804, 1)
-
-[node name="LineEditName" type="LineEdit" parent="." unique_id=1022085496]
-offset_left = 31.0
-offset_top = 78.0
-offset_right = 360.0
-offset_bottom = 109.0
-placeholder_text = "My Cool Game"
-
-[node name="LineEditSubject" type="LineEdit" parent="." unique_id=896764203]
-offset_left = 31.0
-offset_top = 168.0
-offset_right = 360.0
-offset_bottom = 199.0
-placeholder_text = "\"Math\", \"Science\", \"Reading\", etc."
-
-[node name="LineEditAuthor" type="LineEdit" parent="." unique_id=1843259677]
-offset_left = 31.0
-offset_top = 251.0
-offset_right = 360.0
-offset_bottom = 282.0
-placeholder_text = "Your name here"
-
-[node name="Label" type="Label" parent="." unique_id=746508503]
-offset_left = 36.0
-offset_top = 109.0
-offset_right = 132.0
-offset_bottom = 132.0
-text = "Game Name"
-
-[node name="Label2" type="Label" parent="." unique_id=408350350]
-offset_left = 36.0
-offset_top = 199.0
-offset_right = 143.0
-offset_bottom = 222.0
-text = "Game Subject"
-
-[node name="Label3" type="Label" parent="." unique_id=1371429466]
-offset_left = 36.0
-offset_top = 285.0
-offset_right = 143.0
-offset_bottom = 308.0
-text = "Author Name"
-
-[node name="Label4" type="Label" parent="." unique_id=88629285]
-offset_left = 36.0
-offset_top = 369.0
-offset_right = 143.0
-offset_bottom = 392.0
-text = "Template"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84660333, 0.91, 0.7371, 1)
 
 [node name="Title" type="RichTextLabel" parent="." unique_id=1984863347]
-offset_left = 19.0
-offset_top = 11.0
-offset_right = 382.0
-offset_bottom = 56.0
-theme_override_font_sizes/normal_font_size = 32
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -343.0
+offset_top = 33.0
+offset_right = 375.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[center]New Game"
 
-[node name="OptionButton" type="OptionButton" parent="." unique_id=1540122587]
-offset_left = 33.0
-offset_top = 339.0
-offset_right = 360.0
+[node name="LineEditName" type="LineEdit" parent="." unique_id=1022085496]
+offset_left = 76.0
+offset_top = 166.0
+offset_right = 676.0
+offset_bottom = 220.0
+placeholder_text = "My Cool Game"
+
+[node name="Label" type="Label" parent="LineEditName" unique_id=746508503]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 143.0
+text = "Game Name"
+
+[node name="LineEditSubject" type="LineEdit" parent="." unique_id=896764203]
+offset_left = 76.0
+offset_top = 316.0
+offset_right = 676.0
 offset_bottom = 370.0
+placeholder_text = "\"Math\", \"Science\", \"Reading\", etc."
+
+[node name="Label2" type="Label" parent="LineEditSubject" unique_id=408350350]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 159.0
+text = "Game Subject"
+
+[node name="LineEditAuthor" type="LineEdit" parent="." unique_id=1843259677]
+offset_left = 76.0
+offset_top = 466.0
+offset_right = 676.0
+offset_bottom = 520.0
+placeholder_text = "Your name here"
+
+[node name="Label3" type="Label" parent="LineEditAuthor" unique_id=1371429466]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 156.0
+text = "Author Name"
+
+[node name="OptionButton" type="OptionButton" parent="." unique_id=1540122587]
+offset_left = 76.0
+offset_top = 616.0
+offset_right = 676.0
+offset_bottom = 670.0
 selected = 0
 item_count = 1
 popup/item_0/text = "blank"
 popup/item_0/id = 0
 
+[node name="Label4" type="Label" parent="OptionButton" unique_id=88629285]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 143.0
+text = "Template"
+
 [node name="ConfirmButton" type="Button" parent="." unique_id=1183257980]
-offset_left = 107.0
-offset_top = 428.0
-offset_right = 292.0
-offset_bottom = 472.0
+offset_left = 76.0
+offset_top = 791.0
+offset_right = 676.0
+offset_bottom = 899.0
+theme_override_font_sizes/font_size = 48
 text = "Create Game"
 
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

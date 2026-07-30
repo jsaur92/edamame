@@ -1,0 +1,123 @@
+[gd_resource type="Theme" format=3 uid="uid://cbdao3sifk57h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dil4u"]
+bg_color = Color(0.4688533, 0.59, 0.25959998, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3443, 0.44, 0.242, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owagx"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdc4y"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uewcy"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7wis"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[resource]
+Button/colors/font_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Button/colors/font_disabled_color = Color(0.2561, 0.2522, 0.26, 0.6313726)
+Button/colors/font_focus_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Button/colors/font_hover_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Button/colors/font_hover_pressed_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 32
+Button/styles/disabled = SubResource("StyleBoxFlat_dil4u")
+Button/styles/focus = SubResource("StyleBoxFlat_owagx")
+Button/styles/hover = SubResource("StyleBoxFlat_mdc4y")
+Button/styles/normal = SubResource("StyleBoxFlat_uewcy")
+Button/styles/pressed = SubResource("StyleBoxFlat_uewcy")
+Label/colors/font_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+Label/font_sizes/font_size = 24
+LineEdit/colors/font_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+LineEdit/colors/font_outline_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_placeholder_color = Color(0.6304, 0.6208, 0.64, 1)
+LineEdit/constants/outline_size = 6
+LineEdit/font_sizes/font_size = 32
+LineEdit/styles/normal = SubResource("StyleBoxFlat_q7wis")
+RichTextLabel/colors/default_color = Color(0.25490198, 0.2509804, 0.25882354, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/constants/outline_size = 16
