@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 func setup_terrain():
 	tilemap.tile_set = environment_data.get_tileset()
 	tilemap.clear()
-	tilemap.set_pattern(Vector2i.ZERO, environment_data.get_tilemap_pattern())
+	tilemap.set_pattern(environment_data.terrain.top_left, environment_data.get_tilemap_pattern())
 
 
 func setup_objects():
@@ -71,7 +71,16 @@ func get_mouse_pos_in_environment() -> Vector2:
 ## If there is a tile at this position, turn it off. If there is not a tile,
 ## add one. Update the Terrain data and then update the actual TileMapLayer.
 func toggle_tile_at(position:Vector2i, erase:bool=false) -> void:
+	
+	#take the raw position and modify it by the terrain's offset
 	var map_data = environment_data.get_tilemap_pattern()
+	var offset = environment_data.terrain.top_left
+	position -= offset
+	
+	if position.x < 0 or position.y < 0:
+		position += environment_data.terrain.adjust_offset(position)
+		
+	
 	if erase:
 		map_data.remove_cell(position, true)
 	else:

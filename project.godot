@@ -13,6 +13,7 @@ config_version=5
 config/name="Edamame"
 run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="uid://bcgovbjf0df12"
 run/stretch/aspect="keep"
 
 [display]

@@ -6,7 +6,7 @@ extends Resource
 @export var tileset : TileSet
 ## The tiles of the TileMap.
 @export var tilemap : TileMapPattern
-## The top-left position of the tilemap.
+## The top-left position of the tilemap (offset).
 @export var top_left : Vector2i
 const DEFAULT_TILESET = preload("uid://cy0d150bm28j1")
 
@@ -47,3 +47,28 @@ func get_used_rect_in_pixels() -> Rect2i:
 	rect.size += Vector2i.ONE
 	rect.size *= tileset.tile_size
 	return rect
+
+
+## Adjust the top-left of the tiles so that the given point fits in the tilemap.
+## Returns the amount adjusted by.
+func adjust_offset(point:Vector2i) -> Vector2i:
+	point += top_left
+	
+	var adjust_amt = Vector2i.ZERO
+	if point.x < top_left.x:
+		adjust_amt.x = top_left.x - point.x
+		top_left.x = point.x
+	if point.y < top_left.y:
+		adjust_amt.y = top_left.y - point.y
+		top_left.y = point.y
+	
+	if adjust_amt.length() > 0:
+		
+		var new_tilemap = TileMapPattern.new()
+		
+		for old_cell in tilemap.get_used_cells():
+			var cell_data = [tilemap.get_cell_source_id(old_cell), tilemap.get_cell_atlas_coords(old_cell), tilemap.get_cell_alternative_tile(old_cell)]
+			new_tilemap.set_cell(old_cell + adjust_amt, cell_data[0], cell_data[1], cell_data[2])
+		
+		tilemap = new_tilemap
+	return adjust_amt

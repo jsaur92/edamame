@@ -31,13 +31,14 @@ func _on_tile_edit_bg_gui_input(event: InputEvent) -> void:
 			tile_edit.mouse_filter = Control.MOUSE_FILTER_STOP
 			if event.is_pressed():
 				erase = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
-				var this_tile = Vector2i((event.position + scroll_offset)/(TILE_SIZE * zoom))
+				var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
+				print("click " , this_tile)
 				toggle_tile.emit(this_tile, erase)
 				this_drag = [this_tile]
 		else:
 			tile_edit.mouse_filter = Control.MOUSE_FILTER_PASS
 	elif event is InputEventMouseMotion and held:
-		var this_tile = Vector2i((event.position + scroll_offset)/(TILE_SIZE * zoom))
+		var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
 		if not this_drag.has(this_tile):
 			toggle_tile.emit(this_tile, erase)
 			this_drag.append(this_tile)
