@@ -192,7 +192,7 @@ func _on_is_interactable_check_box_toggled(toggled_on: bool) -> void:
 
 
 func _on_object_icon_change_image(image) -> void:
-	if not image is Image:
+	if image is Texture2D:
 		if image.has_method("get_image"):
 			image = image.get_image()
 		else:

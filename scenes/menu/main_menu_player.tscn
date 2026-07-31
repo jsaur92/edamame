@@ -1,49 +1,199 @@
 [gd_scene format=3 uid="uid://bciwvccv01rmp"]
 
-[ext_resource type="Script" uid="uid://brbk3erpvocqq" path="res://scripts/nodes/menus/main_menu.gd" id="1_ui8nc"]
+[ext_resource type="Script" uid="uid://dleqdpptifdva" path="res://scenes/menu/main_menu_player.gd" id="1_cnhee"]
+[ext_resource type="PackedScene" uid="uid://cymoenflan0ui" path="res://scenes/menu/title_char.tscn" id="2_cnhee"]
+[ext_resource type="Shader" uid="uid://djmwa5pa2bo7x" path="res://assets/shaders/title_char.gdshader" id="3_dyi1w"]
+[ext_resource type="Texture2D" uid="uid://cyi6gjgoe7wxy" path="res://assets/textures/menu/title/title_P.png" id="4_ofemp"]
+[ext_resource type="Texture2D" uid="uid://b6mvolg8cxjra" path="res://assets/textures/menu/title/title_l.png" id="5_6j6j3"]
+[ext_resource type="Texture2D" uid="uid://cmvnbdobo0fq5" path="res://assets/textures/menu/title/title_a.png" id="6_krx8g"]
+[ext_resource type="Texture2D" uid="uid://cg0icl0r4v444" path="res://assets/textures/menu/title/title_y.png" id="7_7qbfy"]
+[ext_resource type="Texture2D" uid="uid://3m3xh0afwdcu" path="res://assets/textures/menu/title/title_e.png" id="8_dgyy4"]
+[ext_resource type="Texture2D" uid="uid://ck7sse5p5h853" path="res://assets/textures/menu/title/title_r.png" id="9_8uwcm"]
+[ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="10_xjcig"]
 
-[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("play_button", "edit_button", "file_dialog", "game_text")]
+[sub_resource type="Gradient" id="Gradient_qgo02"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.5666666, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_173ot"]
+gradient = SubResource("Gradient_qgo02")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnhee"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyi1w"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofemp"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j6j3"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_krx8g"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qbfy"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v77i"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 18
+border_width_top = 18
+border_width_right = 18
+border_width_bottom = 18
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[node name="PlayerMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog", "filter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ui8nc")
-play_button = NodePath("PlayButton")
-edit_button = NodePath("")
+script = ExtResource("1_cnhee")
 file_dialog = NodePath("FileDialog")
-game_text = NodePath("GameText")
+filter = NodePath("filter")
 
-[node name="TitleText" type="RichTextLabel" parent="." unique_id=846571225]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1473670954]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 114.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "EduGame Maker"
-scroll_active = false
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_173ot")
 
-[node name="PickFileButton" type="Button" parent="." unique_id=1361611074]
+[node name="Title" type="Control" parent="." unique_id=453572495]
 layout_mode = 1
-offset_left = 82.0
-offset_top = 156.0
-offset_right = 202.0
-offset_bottom = 188.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_cnhee")
+layout_mode = 0
+offset_left = 409.94522
+offset_top = 49.633293
+offset_right = 617.9452
+offset_bottom = 369.6333
+rotation = -0.064029105
+pivot_offset = Vector2(104, 160)
+texture = ExtResource("4_ofemp")
+character = "P"
+color_name = "Lawn Green"
+
+[node name="TitleChar2" parent="Title" unique_id=880388878 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_dyi1w")
+layout_mode = 0
+offset_left = 632.0
+offset_top = 47.0
+offset_right = 728.0
+offset_bottom = 367.0
+rotation = -0.064029105
+pivot_offset = Vector2(48, 160)
+texture = ExtResource("5_6j6j3")
+character = "l"
+
+[node name="TitleChar3" parent="Title" unique_id=691192299 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_ofemp")
+layout_mode = 0
+offset_left = 750.0
+offset_top = 199.0
+offset_right = 942.0
+offset_bottom = 359.0
+rotation = -0.064029105
+pivot_offset = Vector2(96, 80)
+texture = ExtResource("6_krx8g")
+character = "a"
+color_name = "Lawn Green"
+
+[node name="TitleChar4" parent="Title" unique_id=1911694487 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_6j6j3")
+layout_mode = 0
+offset_left = 926.99994
+offset_top = 180.0
+offset_right = 1167.0
+offset_bottom = 468.0
+rotation = -0.064029105
+pivot_offset = Vector2(120, 144)
+texture = ExtResource("7_7qbfy")
+character = "y"
+
+[node name="TitleChar5" parent="Title" unique_id=1427481939 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_krx8g")
+layout_mode = 0
+offset_left = 1125.0
+offset_top = 191.0
+offset_right = 1317.0
+offset_bottom = 383.0
+rotation = -0.064029105
+pivot_offset = Vector2(96, 96)
+texture = ExtResource("8_dgyy4")
+character = "e"
+color_name = "Lawn Green"
+
+[node name="TitleChar6" parent="Title" unique_id=1065484407 instance=ExtResource("2_cnhee")]
+material = SubResource("ShaderMaterial_7qbfy")
+layout_mode = 0
+offset_left = 1337.0001
+offset_top = 194.99998
+offset_right = 1529.0001
+offset_bottom = 387.0
+rotation = -0.064029105
+pivot_offset = Vector2(96, 96)
+texture = ExtResource("9_8uwcm")
+character = "r"
+
+[node name="PickFileButton2" type="Button" parent="." unique_id=1028316552]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -458.0
+offset_right = 254.0
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_xjcig")
 text = "Pick Game File"
 
-[node name="PlayButton" type="Button" parent="." unique_id=799238178]
+[node name="BackButton" type="Button" parent="." unique_id=1415138004]
 layout_mode = 1
-offset_left = 51.0
-offset_top = 233.0
-offset_right = 233.0
-offset_bottom = 284.0
-disabled = true
-text = "Play"
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -167.0
+offset_right = 221.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme = ExtResource("10_xjcig")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_2v77i")
+text = "back"
 
 [node name="GameText" type="RichTextLabel" parent="." unique_id=1789245458]
 layout_mode = 1
@@ -53,6 +203,16 @@ offset_right = 517.0
 offset_bottom = 195.0
 vertical_alignment = 1
 
+[node name="filter" type="ColorRect" parent="." unique_id=2060871649]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6313726)
+
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1552736645]
 oversampling_override = 1.0
 title = "Open a File"
@@ -60,6 +220,7 @@ ok_button_text = "Select"
 file_mode = 0
 root_subfolder = "res://assets/resources/"
 
-[connection signal="pressed" from="PickFileButton" to="." method="_on_pick_file_button_pressed"]
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PickFileButton2" to="." method="_on_pick_file_button_2_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="canceled" from="FileDialog" to="." method="_on_file_dialog_canceled"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

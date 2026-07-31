@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://ck7sse5p5h853" path="res://assets/textures/menu/title/title_r.png" id="8_d780c"]
 [ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="9_sptwh"]
 
-[sub_resource type="Gradient" id="Gradient_qgo02"]
-colors = PackedColorArray(0.8, 0.8, 0.8, 1, 0, 0.4533333, 0.8, 1)
+[sub_resource type="Gradient" id="Gradient_sptwh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.5666666, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d780c"]
-gradient = SubResource("Gradient_qgo02")
+gradient = SubResource("Gradient_sptwh")
 fill_to = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sptwh"]
@@ -38,7 +38,26 @@ shader_parameter/my_color = Vector4(0, 0, 0, 0)
 shader = ExtResource("3_sptwh")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
-[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog", "game_text", "game_data_init")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sptwh"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 18
+border_width_top = 18
+border_width_right = 18
+border_width_bottom = 18
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog", "game_data_init", "filter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,8 +66,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3ivl")
 file_dialog = NodePath("FileDialog")
-game_text = NodePath("GameText")
 game_data_init = NodePath("GameDataInitializer")
+filter = NodePath("filter")
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=1834763610]
 layout_mode = 1
@@ -74,7 +93,7 @@ offset_left = 329.60004
 offset_top = 54.489532
 offset_right = 665.60004
 offset_bottom = 438.48953
-rotation = 0.012619222
+rotation = -0.017411012
 pivot_offset = Vector2(168, 192)
 texture = ExtResource("4_y5p3x")
 character = "M"
@@ -87,7 +106,7 @@ offset_left = 675.60004
 offset_top = 205.48953
 offset_right = 883.60004
 offset_bottom = 365.48953
-rotation = 0.012619222
+rotation = -0.017411012
 pivot_offset = Vector2(104, 80)
 texture = ExtResource("5_d780c")
 character = "a"
@@ -99,7 +118,7 @@ offset_left = 887.60004
 offset_top = 69.489525
 offset_right = 1127.6001
 offset_bottom = 373.48953
-rotation = 0.012619222
+rotation = -0.017411012
 pivot_offset = Vector2(120.00003, 152)
 texture = ExtResource("6_sptwh")
 character = "k"
@@ -112,7 +131,7 @@ offset_left = 1118.6001
 offset_top = 169.48953
 offset_right = 1358.6001
 offset_bottom = 361.48953
-rotation = 0.012619222
+rotation = -0.017411012
 pivot_offset = Vector2(120, 96)
 texture = ExtResource("7_xkony")
 character = "e"
@@ -124,7 +143,7 @@ offset_left = 1323.6
 offset_top = 179.48953
 offset_right = 1515.6
 offset_bottom = 371.48953
-rotation = 0.012619222
+rotation = -0.017411012
 pivot_offset = Vector2(96, 96)
 texture = ExtResource("8_d780c")
 character = "r"
@@ -132,36 +151,69 @@ color_name = "Lawn Green"
 
 [node name="PickFileButton" type="Button" parent="." unique_id=1361611074]
 layout_mode = 1
-offset_left = 690.0
-offset_top = 511.0
-offset_right = 1185.0
-offset_bottom = 647.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -389.0
+offset_right = 254.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("9_sptwh")
 text = "Pick Game File"
 
 [node name="NewGameButton" type="Button" parent="." unique_id=994457552]
 layout_mode = 1
-offset_left = 688.0
-offset_top = 719.0
-offset_right = 1196.0
-offset_bottom = 855.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -594.0
+offset_right = 254.0
+offset_bottom = -458.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("9_sptwh")
 text = "New Game"
 
-[node name="GameText" type="RichTextLabel" parent="." unique_id=1789245458]
+[node name="BackButton" type="Button" parent="." unique_id=1747506528]
 layout_mode = 1
-offset_left = 2091.0
-offset_top = 766.0
-offset_right = 2331.0
-offset_bottom = 815.0
-vertical_alignment = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -167.0
+offset_right = 221.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme = ExtResource("9_sptwh")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_sptwh")
+text = "back"
+
+[node name="filter" type="ColorRect" parent="." unique_id=1687218256]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6313726)
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1552736645]
 oversampling_override = 1.0
 title = "Open a File"
+initial_position = 2
+size = Vector2i(860, 430)
 ok_button_text = "Select"
 file_mode = 0
-root_subfolder = "res://assets/resources/"
+access = 2
 
 [node name="GameDataInitializer" parent="." unique_id=2009332499 instance=ExtResource("2_l4b0p")]
 initial_position = 2
@@ -169,5 +221,8 @@ visible = false
 
 [connection signal="pressed" from="PickFileButton" to="." method="_on_pick_file_button_pressed"]
 [connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="canceled" from="FileDialog" to="." method="_on_file_dialog_canceled"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="create_game" from="GameDataInitializer" to="." method="_on_game_data_initializer_create_game"]
+[connection signal="popup_hide" from="GameDataInitializer" to="." method="_on_game_data_initializer_popup_hide"]

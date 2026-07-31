@@ -46,10 +46,8 @@ func update_char() -> void:
 	if FileAccess.file_exists(path):
 		texture = load(path)
 		pivot_offset = size/2
-		print("load successful!")
 	else:
 		texture = null
-		print("load unsuccessful.")
 
 
 func update_color() -> void:
@@ -63,7 +61,9 @@ func update_color() -> void:
 
 func _on_mouse_entered() -> void:
 	hovered = true
+	z_index += 1
 
 
 func _on_mouse_exited() -> void:
 	hovered = false
+	z_index -= 1
