@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c71d04dx7bdxl"]
+
+[ext_resource type="Shader" uid="uid://qmrvi0rexcsx" path="res://assets/shaders/player.gdshader" id="1_5fxbg"]
+
+[resource]
+shader = ExtResource("1_5fxbg")
+shader_parameter/wb = Vector3(0.439, 0.439, 0.439)
+shader_parameter/my_color = Vector4(0, 0.8, 1, 0)

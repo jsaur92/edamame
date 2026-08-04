@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://3m3xh0afwdcu" path="res://assets/textures/menu/title/title_e.png" id="8_dgyy4"]
 [ext_resource type="Texture2D" uid="uid://ck7sse5p5h853" path="res://assets/textures/menu/title/title_r.png" id="9_8uwcm"]
 [ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="10_xjcig"]
+[ext_resource type="Material" uid="uid://c71d04dx7bdxl" path="res://assets/shaders/player_shader_material.tres" id="11_6j6j3"]
+[ext_resource type="Texture2D" uid="uid://bnj8nnd0jk3xj" path="res://assets/textures/player/player_idle.png" id="11_ofemp"]
 
 [sub_resource type="Gradient" id="Gradient_cnhee"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.5666666, 1, 1)
@@ -17,18 +19,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0.5666666, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_173ot"]
 gradient = SubResource("Gradient_cnhee")
 fill_to = Vector2(1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyi1w"]
-shader = ExtResource("3_dyi1w")
-shader_parameter/my_color = Vector4(0, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofemp"]
-shader = ExtResource("3_dyi1w")
-shader_parameter/my_color = Vector4(0, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j6j3"]
-shader = ExtResource("3_dyi1w")
-shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krx8g"]
 shader = ExtResource("3_dyi1w")
@@ -39,6 +29,18 @@ shader = ExtResource("3_dyi1w")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dgyy4"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uwcm"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjcig"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_173ot"]
 shader = ExtResource("3_dyi1w")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
@@ -60,6 +62,72 @@ expand_margin_bottom = 16.0
 shadow_color = Color(0, 0, 0, 0.42352942)
 shadow_size = 1
 shadow_offset = Vector2(8, 8)
+
+[sub_resource type="Gradient" id="Gradient_6j6j3"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6j6j3"]
+gradient = SubResource("Gradient_6j6j3")
+
+[sub_resource type="Gradient" id="Gradient_ofemp"]
+colors = PackedColorArray(1, 0.49803922, 0, 1, 1, 0.49803922, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ofemp"]
+gradient = SubResource("Gradient_ofemp")
+
+[sub_resource type="Gradient" id="Gradient_krx8g"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7qbfy"]
+gradient = SubResource("Gradient_krx8g")
+
+[sub_resource type="Gradient" id="Gradient_7qbfy"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dgyy4"]
+gradient = SubResource("Gradient_7qbfy")
+
+[sub_resource type="Gradient" id="Gradient_dgyy4"]
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjd4h"]
+gradient = SubResource("Gradient_dgyy4")
+
+[sub_resource type="Gradient" id="Gradient_8uwcm"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xjcig"]
+gradient = SubResource("Gradient_8uwcm")
+
+[sub_resource type="Gradient" id="Gradient_xjcig"]
+colors = PackedColorArray(0.49803922, 0, 1, 1, 0.49803922, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_08jak"]
+gradient = SubResource("Gradient_xjcig")
+
+[sub_resource type="Gradient" id="Gradient_173ot"]
+colors = PackedColorArray(1, 0, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_krx8g"]
+gradient = SubResource("Gradient_173ot")
+
+[sub_resource type="Gradient" id="Gradient_08jak"]
+colors = PackedColorArray(1, 0.49803922, 1, 1, 1, 0.49803922, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xxtwf"]
+gradient = SubResource("Gradient_08jak")
+
+[sub_resource type="Gradient" id="Gradient_xxtwf"]
+colors = PackedColorArray(0.49803922, 0.24705882, 0, 1, 0.5019608, 0.2509804, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3bnhi"]
+gradient = SubResource("Gradient_xxtwf")
+
+[sub_resource type="Gradient" id="Gradient_3bnhi"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5mkpx"]
+gradient = SubResource("Gradient_3bnhi")
 
 [node name="PlayerMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog", "filter")]
 layout_mode = 3
@@ -90,76 +158,76 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_dyi1w")
+material = SubResource("ShaderMaterial_krx8g")
 layout_mode = 0
 offset_left = 409.94522
 offset_top = 49.633293
 offset_right = 617.9452
 offset_bottom = 369.6333
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(104, 160)
 texture = ExtResource("4_ofemp")
 character = "P"
 color_name = "Lawn Green"
 
 [node name="TitleChar2" parent="Title" unique_id=880388878 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_ofemp")
+material = SubResource("ShaderMaterial_7qbfy")
 layout_mode = 0
 offset_left = 632.0
 offset_top = 47.0
 offset_right = 728.0
 offset_bottom = 367.0
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(48, 160)
 texture = ExtResource("5_6j6j3")
 character = "l"
 
 [node name="TitleChar3" parent="Title" unique_id=691192299 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_6j6j3")
+material = SubResource("ShaderMaterial_dgyy4")
 layout_mode = 0
 offset_left = 750.0
 offset_top = 199.0
 offset_right = 942.0
 offset_bottom = 359.0
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(96, 80)
 texture = ExtResource("6_krx8g")
 character = "a"
 color_name = "Lawn Green"
 
 [node name="TitleChar4" parent="Title" unique_id=1911694487 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_krx8g")
+material = SubResource("ShaderMaterial_8uwcm")
 layout_mode = 0
 offset_left = 926.99994
 offset_top = 180.0
 offset_right = 1167.0
 offset_bottom = 468.0
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(120.00003, 144)
 texture = ExtResource("7_7qbfy")
 character = "y"
 
 [node name="TitleChar5" parent="Title" unique_id=1427481939 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_7qbfy")
+material = SubResource("ShaderMaterial_xjcig")
 layout_mode = 0
 offset_left = 1125.0
 offset_top = 191.0
 offset_right = 1317.0
 offset_bottom = 383.0
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(96, 96)
 texture = ExtResource("8_dgyy4")
 character = "e"
 color_name = "Lawn Green"
 
 [node name="TitleChar6" parent="Title" unique_id=1065484407 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_dgyy4")
+material = SubResource("ShaderMaterial_173ot")
 layout_mode = 0
 offset_left = 1337.0001
 offset_top = 194.99998
 offset_right = 1529.0001
 offset_bottom = 387.0
-rotation = -0.026015159
+rotation = -0.081907466
 pivot_offset = Vector2(96, 96.00001)
 texture = ExtResource("9_8uwcm")
 character = "r"
@@ -203,6 +271,58 @@ offset_right = 517.0
 offset_bottom = 195.0
 vertical_alignment = 1
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2010826454]
+material = ExtResource("11_6j6j3")
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 566.0
+offset_right = 1752.0
+offset_bottom = 806.0
+texture = ExtResource("11_ofemp")
+
+[node name="OptionButton" type="OptionButton" parent="." unique_id=1301182479]
+layout_mode = 0
+offset_left = 1437.0
+offset_top = 833.0
+offset_right = 1843.0
+offset_bottom = 969.0
+theme = ExtResource("10_xjcig")
+selected = 4
+item_count = 11
+popup/item_0/text = "red"
+popup/item_0/icon = SubResource("GradientTexture2D_6j6j3")
+popup/item_0/id = 0
+popup/item_1/text = "orange"
+popup/item_1/icon = SubResource("GradientTexture2D_ofemp")
+popup/item_1/id = 1
+popup/item_2/text = "yellow"
+popup/item_2/icon = SubResource("GradientTexture2D_7qbfy")
+popup/item_2/id = 2
+popup/item_3/text = "green"
+popup/item_3/icon = SubResource("GradientTexture2D_dgyy4")
+popup/item_3/id = 3
+popup/item_4/text = "cyan"
+popup/item_4/icon = SubResource("GradientTexture2D_kjd4h")
+popup/item_4/id = 4
+popup/item_5/text = "blue"
+popup/item_5/icon = SubResource("GradientTexture2D_xjcig")
+popup/item_5/id = 5
+popup/item_6/text = "purple"
+popup/item_6/icon = SubResource("GradientTexture2D_08jak")
+popup/item_6/id = 6
+popup/item_7/text = "magenta"
+popup/item_7/icon = SubResource("GradientTexture2D_krx8g")
+popup/item_7/id = 7
+popup/item_8/text = "pink"
+popup/item_8/icon = SubResource("GradientTexture2D_xxtwf")
+popup/item_8/id = 8
+popup/item_9/text = "brown"
+popup/item_9/icon = SubResource("GradientTexture2D_3bnhi")
+popup/item_9/id = 9
+popup/item_10/text = "white"
+popup/item_10/icon = SubResource("GradientTexture2D_5mkpx")
+popup/item_10/id = 10
+
 [node name="filter" type="ColorRect" parent="." unique_id=2060871649]
 visible = false
 layout_mode = 1
@@ -223,5 +343,6 @@ root_subfolder = "res://assets/resources/"
 
 [connection signal="pressed" from="PickFileButton2" to="." method="_on_pick_file_button_2_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="canceled" from="FileDialog" to="." method="_on_file_dialog_canceled"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
