@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bdks471wf3n2s"]
+
+[ext_resource type="Script" uid="uid://8yy4thhnk4mm" path="res://scenes/editor/command_nodes/end_command_node.gd" id="1_vmrbt"]
+
+[node name="EndCommandNode" type="GraphNode" unique_id=415856084]
+offset_right = 155.0
+offset_bottom = 96.0
+title = "End the Game"
+ignore_invalid_connection_type = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_vmrbt")
+
+[node name="Label" type="Label" parent="." unique_id=1520717925]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Finish"
+horizontal_alignment = 1
+vertical_alignment = 1

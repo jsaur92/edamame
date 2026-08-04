@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://5qb028tk6h4w"]
+
+[ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="1_m5nxi"]
+[ext_resource type="Script" uid="uid://dt08chk6irgne" path="res://scenes/game/end_screen.gd" id="1_u5k3h"]
+
+[sub_resource type="Gradient" id="Gradient_qgo02"]
+colors = PackedColorArray(0, 0.28235295, 0.49803922, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5nxi"]
+gradient = SubResource("Gradient_qgo02")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5k3h"]
+bg_color = Color(0.6313726, 0.85882354, 0.24705882, 1)
+border_width_left = 18
+border_width_top = 18
+border_width_right = 18
+border_width_bottom = 18
+border_color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(8, 8)
+
+[node name="EndScreen" type="Control" unique_id=887842241]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5k3h")
+
+[node name="ColorRect2" type="TextureRect" parent="." unique_id=1956923003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_m5nxi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1228385323]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -454.0
+offset_top = 39.0
+offset_right = 454.0
+offset_bottom = 230.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 128
+text = "Finished!"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=2125153611]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -172.0
+offset_right = 443.0
+offset_bottom = -64.0
+grow_vertical = 0
+theme = ExtResource("1_m5nxi")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_u5k3h")
+text = "back to menu"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

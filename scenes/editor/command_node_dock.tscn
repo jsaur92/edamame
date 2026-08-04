@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3y1o0h0nwvq3" path="res://scenes/editor/command_nodes/give_command_node.tscn" id="4_lny6f"]
 [ext_resource type="PackedScene" uid="uid://de4t4xhsumgu5" path="res://scenes/editor/command_nodes/take_command_node.tscn" id="5_0fqap"]
 [ext_resource type="PackedScene" uid="uid://27igkab5ompo" path="res://scenes/editor/command_nodes/remove_command_node.tscn" id="6_71vnt"]
+[ext_resource type="PackedScene" uid="uid://bdks471wf3n2s" path="res://scenes/editor/command_nodes/end_command_node.tscn" id="7_dh0cy"]
 
 [node name="CommandNodeDock" type="Control" unique_id=2114585556]
 layout_mode = 3
@@ -47,6 +48,13 @@ offset_left = 939.0
 offset_top = 14.0
 offset_right = 1094.0
 offset_bottom = 110.0
+
+[node name="EndCommandNode" parent="." unique_id=1483440572 instance=ExtResource("7_dh0cy")]
+layout_mode = 0
+offset_left = 1137.0
+offset_top = 13.0
+offset_right = 1292.0
+offset_bottom = 109.0
 
 [connection signal="gui_input" from="SayCommandNode" to="." method="_on_say_command_node_gui_input"]
 [connection signal="gui_input" from="AskCommandNode" to="." method="_on_ask_command_node_gui_input"]

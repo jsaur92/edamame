@@ -64,6 +64,8 @@ func execute() -> void:
 			execute_take(command)
 		elif command is CommandRemove:
 			execute_remove()
+		elif command is CommandEnd:
+			execute_end()
 
 
 func execute_next(index:int) -> void:
@@ -95,3 +97,11 @@ func execute_take(command:CommandTake):
 func execute_remove():
 	current_obj.queue_free()
 	execute_next(0)
+
+
+func execute_end():
+	get_tree().paused = false
+	if Editor.get_instance() == null:
+		get_tree().change_scene_to_node( EndScreen.create() )
+	else:
+		Editor.get_instance().end_playtest()

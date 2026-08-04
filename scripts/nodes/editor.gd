@@ -241,6 +241,7 @@ func _on_save_exit_button_pressed() -> void:
 func _on_file_dialog_file_selected(path: String) -> void:
 	ResourceSaver.save(game_data, path)
 	if exit_on_save:
+		close_editor()
 		get_tree().change_scene_to_packed(_MAIN_MENU_SCENE)
 
 
@@ -314,5 +315,18 @@ func _on_environment_graph_container_switch_modes() -> void:
 
 
 func _on_playtest_button_pressed() -> void:
+	start_playtest()
+
+
+func start_playtest() -> void:
 	playtest_vp_container.visible = true
 	playtest_vp.add_child( Game.make(game_data) )
+
+
+func end_playtest() -> void:
+	playtest_vp_container.visible = false
+	playtest_vp.get_child(0).queue_free()
+
+
+func close_editor() -> void:
+	instance = null

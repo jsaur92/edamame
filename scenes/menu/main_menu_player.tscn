@@ -11,16 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://ck7sse5p5h853" path="res://assets/textures/menu/title/title_r.png" id="9_8uwcm"]
 [ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="10_xjcig"]
 
-[sub_resource type="Gradient" id="Gradient_qgo02"]
+[sub_resource type="Gradient" id="Gradient_cnhee"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.5666666, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_173ot"]
-gradient = SubResource("Gradient_qgo02")
+gradient = SubResource("Gradient_cnhee")
 fill_to = Vector2(1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnhee"]
-shader = ExtResource("3_dyi1w")
-shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyi1w"]
 shader = ExtResource("3_dyi1w")
@@ -39,6 +35,10 @@ shader = ExtResource("3_dyi1w")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7qbfy"]
+shader = ExtResource("3_dyi1w")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dgyy4"]
 shader = ExtResource("3_dyi1w")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
@@ -90,76 +90,76 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_cnhee")
+material = SubResource("ShaderMaterial_dyi1w")
 layout_mode = 0
 offset_left = 409.94522
 offset_top = 49.633293
 offset_right = 617.9452
 offset_bottom = 369.6333
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(104, 160)
 texture = ExtResource("4_ofemp")
 character = "P"
 color_name = "Lawn Green"
 
 [node name="TitleChar2" parent="Title" unique_id=880388878 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_dyi1w")
+material = SubResource("ShaderMaterial_ofemp")
 layout_mode = 0
 offset_left = 632.0
 offset_top = 47.0
 offset_right = 728.0
 offset_bottom = 367.0
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(48, 160)
 texture = ExtResource("5_6j6j3")
 character = "l"
 
 [node name="TitleChar3" parent="Title" unique_id=691192299 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_ofemp")
+material = SubResource("ShaderMaterial_6j6j3")
 layout_mode = 0
 offset_left = 750.0
 offset_top = 199.0
 offset_right = 942.0
 offset_bottom = 359.0
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(96, 80)
 texture = ExtResource("6_krx8g")
 character = "a"
 color_name = "Lawn Green"
 
 [node name="TitleChar4" parent="Title" unique_id=1911694487 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_6j6j3")
+material = SubResource("ShaderMaterial_krx8g")
 layout_mode = 0
 offset_left = 926.99994
 offset_top = 180.0
 offset_right = 1167.0
 offset_bottom = 468.0
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(120.00003, 144)
 texture = ExtResource("7_7qbfy")
 character = "y"
 
 [node name="TitleChar5" parent="Title" unique_id=1427481939 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_krx8g")
+material = SubResource("ShaderMaterial_7qbfy")
 layout_mode = 0
 offset_left = 1125.0
 offset_top = 191.0
 offset_right = 1317.0
 offset_bottom = 383.0
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(96, 96)
 texture = ExtResource("8_dgyy4")
 character = "e"
 color_name = "Lawn Green"
 
 [node name="TitleChar6" parent="Title" unique_id=1065484407 instance=ExtResource("2_cnhee")]
-material = SubResource("ShaderMaterial_7qbfy")
+material = SubResource("ShaderMaterial_dgyy4")
 layout_mode = 0
 offset_left = 1337.0001
 offset_top = 194.99998
 offset_right = 1529.0001
 offset_bottom = 387.0
-rotation = 0.053784464
+rotation = -0.026015159
 pivot_offset = Vector2(96, 96.00001)
 texture = ExtResource("9_8uwcm")
 character = "r"
