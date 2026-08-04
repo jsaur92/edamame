@@ -7,7 +7,6 @@ extends GraphEdit
 @export var edit_tiles_button : Button
 signal toggle_tile
 const TILE_SIZE = 160
-var this_drag : Array[Vector2i] = []
 var held : bool = false
 var erase = false
 
@@ -32,13 +31,10 @@ func _on_tile_edit_bg_gui_input(event: InputEvent) -> void:
 			if event.is_pressed():
 				erase = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
 				var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
-				print("click " , this_tile)
+				#print("click " , this_tile)
 				toggle_tile.emit(this_tile, erase)
-				this_drag = [this_tile]
 		else:
 			tile_edit.mouse_filter = Control.MOUSE_FILTER_PASS
 	elif event is InputEventMouseMotion and held:
 		var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
-		if not this_drag.has(this_tile):
-			toggle_tile.emit(this_tile, erase)
-			this_drag.append(this_tile)
+		toggle_tile.emit(this_tile, erase)

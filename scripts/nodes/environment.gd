@@ -79,10 +79,10 @@ func toggle_tile_at(position:Vector2i, erase:bool=false) -> void:
 	
 	if position.x < 0 or position.y < 0:
 		position += environment_data.terrain.adjust_offset(position)
-		
 	
 	if erase:
 		map_data.remove_cell(position, true)
 	else:
 		map_data.set_cell(position, 0, Vector2i(0,0), 0)
+	
 	setup_terrain()
