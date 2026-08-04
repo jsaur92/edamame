@@ -1,12 +1,26 @@
 [gd_resource type="TileSet" format=3 uid="uid://cy0d150bm28j1"]
 
 [ext_resource type="Texture2D" uid="uid://cpghkka226rvo" path="res://assets/textures/FieldsTile_11.png" id="1_gio6l"]
+[ext_resource type="Texture2D" uid="uid://dei74n7v6dfdt" path="res://assets/textures/FieldsTile_38.png" id="2_iuvdi"]
+[ext_resource type="Texture2D" uid="uid://bq8krixg6nt8j" path="res://assets/textures/FieldsTile_47.png" id="3_26dhg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iuvdi"]
 texture = ExtResource("1_gio6l")
 texture_region_size = Vector2i(160, 160)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjb5o"]
+texture = ExtResource("2_iuvdi")
+texture_region_size = Vector2i(160, 160)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4lcc"]
+texture = ExtResource("3_26dhg")
+texture_region_size = Vector2i(160, 160)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(160, 160)
 sources/0 = SubResource("TileSetAtlasSource_iuvdi")
+sources/4 = SubResource("TileSetAtlasSource_jjb5o")
+sources/5 = SubResource("TileSetAtlasSource_e4lcc")

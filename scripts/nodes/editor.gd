@@ -7,6 +7,7 @@ extends Control
 @export var v_split_root : VSplitContainer
 @export var h_split : HSplitContainer
 @export var v_split_left_side : VSplitContainer
+@export var odpanel : Panel
 @export var objects_dock : HFlowContainer
 @export var inspector_tabs_container  : TabContainer
 @export var details_tab : InspectorTab
@@ -24,6 +25,7 @@ var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
 var min_inspector_size : float = 320
 var exit_on_save : bool = false
+static var instance : Editor
 const _SELF_SCENE = preload("uid://be4ok444g1l0f")
 const _MAIN_MENU_SCENE = preload("uid://ouacseb7xvgj")
 
@@ -31,6 +33,7 @@ const _MAIN_MENU_SCENE = preload("uid://ouacseb7xvgj")
 static func make(_game_data:GameData) -> Editor:
 	var e = _SELF_SCENE.instantiate()
 	e.game_data = _game_data
+	instance = e
 	return e
 
 
@@ -62,6 +65,10 @@ func _ready() -> void:
 	dgp.position = p.init_data.init_pos
 	add_dragable(dgp)
 	dragables_root.add_child(dgp)
+
+
+static func get_instance() -> Editor:
+	return instance
 
 
 func update_objects_dock() -> void:
@@ -235,8 +242,8 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		get_tree().change_scene_to_packed(_MAIN_MENU_SCENE)
 
 
-func _on_tile_toggled(tile_pos:Vector2i, erase:bool=false) -> void:
-	environment.toggle_tile_at(tile_pos, erase)
+func _on_tile_toggled(tile_pos:Vector2i, source:int, erase:bool=false) -> void:
+	environment.toggle_tile_at(tile_pos, source, erase)
 	environment_graph.update_boundaries(game_data.get_environment().get_used_rect())
 
 
@@ -298,4 +305,7 @@ func update_header_text() -> void:
 	line_edit_title.text = game_data.title
 	line_edit_author.text = game_data.author
 	line_edit_subject.text = game_data.subject
-	
+
+
+func _on_environment_graph_container_switch_modes() -> void:
+	odpanel.visible = not odpanel.visible

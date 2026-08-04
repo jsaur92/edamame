@@ -3,9 +3,10 @@ extends GraphEdit
 
 @export var top_left : GraphNode
 @export var bottom_right : GraphNode
-@export var tile_edit : Control
+@export var tile_edit : TileEditBG
 @export var edit_tiles_button : Button
 signal toggle_tile
+signal switch_modes
 const TILE_SIZE = 160
 var held : bool = false
 var erase = false
@@ -21,6 +22,7 @@ func _on_edit_tiles_button_pressed() -> void:
 		edit_tiles_button.text = "object edit mode"
 	else:
 		edit_tiles_button.text = "tile edit mode"
+	switch_modes.emit()
 
 
 func _on_tile_edit_bg_gui_input(event: InputEvent) -> void:
@@ -31,10 +33,9 @@ func _on_tile_edit_bg_gui_input(event: InputEvent) -> void:
 			if event.is_pressed():
 				erase = event.button_index == MouseButton.MOUSE_BUTTON_RIGHT
 				var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
-				#print("click " , this_tile)
-				toggle_tile.emit(this_tile, erase)
+				toggle_tile.emit(this_tile, tile_edit.get_current_tile_source_id(), erase)
 		else:
 			tile_edit.mouse_filter = Control.MOUSE_FILTER_PASS
 	elif event is InputEventMouseMotion and held:
 		var this_tile = Vector2i(floor((event.position + scroll_offset)/(TILE_SIZE * zoom)))
-		toggle_tile.emit(this_tile, erase)
+		toggle_tile.emit(this_tile, tile_edit.get_current_tile_source_id(), erase)

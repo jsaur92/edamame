@@ -72,3 +72,10 @@ func adjust_offset(point:Vector2i) -> Vector2i:
 		
 		tilemap = new_tilemap
 	return adjust_amt
+
+
+func add_tile_to_tileset(texture:Texture2D) -> void:
+	var new_source = TileSetAtlasSource.new()
+	new_source.texture = texture
+	new_source.create_tile(Vector2i.ZERO, texture.get_size())
+	tileset.add_source(new_source)
