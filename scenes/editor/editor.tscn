@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 [ext_resource type="PackedScene" uid="uid://blsmx88ljel4d" path="res://scenes/editor/obstacle_tab.tscn" id="4_jwsr6"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "playtest_vp_container", "playtest_vp")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +33,8 @@ file_dialog = NodePath("FileDialog")
 line_edit_title = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditTitle")
 line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
 line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
+playtest_vp_container = NodePath("PlaytestViewportContainer")
+playtest_vp = NodePath("PlaytestViewportContainer/PlaytestViewport")
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
 access = 2
@@ -51,27 +53,35 @@ split_offset = 80
 clip_contents = true
 layout_mode = 2
 
+[node name="PlaytestButton" type="Button" parent="VSplitRoot/FilePanel" unique_id=2048774496]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 145.0
+offset_bottom = 65.0
+text = "Playtest"
+
 [node name="SaveButton" type="Button" parent="VSplitRoot/FilePanel" unique_id=90335498]
 layout_mode = 0
-offset_left = 19.0
+offset_left = 182.0
 offset_top = 19.0
-offset_right = 108.0
+offset_right = 271.0
 offset_bottom = 59.0
 text = "Save"
 
 [node name="SaveExitButton" type="Button" parent="VSplitRoot/FilePanel" unique_id=1761556191]
 layout_mode = 0
-offset_left = 133.0
+offset_left = 296.0
 offset_top = 19.0
-offset_right = 222.0
+offset_right = 389.0
 offset_bottom = 59.0
 text = "Save & Exit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VSplitRoot/FilePanel" unique_id=1026401269]
 layout_mode = 0
-offset_left = 305.0
+offset_left = 468.0
 offset_top = 19.0
-offset_right = 1529.0
+offset_right = 1692.0
 offset_bottom = 59.0
 
 [node name="LineEditTitle" type="LineEdit" parent="VSplitRoot/FilePanel/HBoxContainer" unique_id=1662303164]
@@ -229,7 +239,24 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="PlaytestViewportContainer" type="SubViewportContainer" parent="." unique_id=1151956513]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaytestViewport" type="SubViewport" parent="PlaytestViewportContainer" unique_id=1966386598]
+process_mode = 3
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="VSplitRoot/FilePanel/PlaytestButton" to="." method="_on_playtest_button_pressed"]
 [connection signal="pressed" from="VSplitRoot/FilePanel/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VSplitRoot/FilePanel/SaveExitButton" to="." method="_on_save_exit_button_pressed"]
 [connection signal="text_changed" from="VSplitRoot/FilePanel/HBoxContainer/LineEditTitle" to="." method="_on_line_edit_title_text_changed"]

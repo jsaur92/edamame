@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cy0d150bm28j1" path="res://assets/resources/new_tile_set.tres" id="2_mhab4"]
 
 [node name="Envronment" type="Node2D" unique_id=1163295902 node_paths=PackedStringArray("tilemap", "objects_root", "camera")]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_k68ih")
 tilemap = NodePath("TileMapLayer")

@@ -12,7 +12,7 @@ var player : Player
 static var game : Game
 const _SELF_SCENE = preload("uid://1q8s36b2tttc")
 
-## Sets game_data. Call after instantiation and before adding as child of scene.
+## Constructor function
 static func make(_game_data:GameData) -> Game:
 	var g : Game = _SELF_SCENE.instantiate()
 	g.game_data = _game_data

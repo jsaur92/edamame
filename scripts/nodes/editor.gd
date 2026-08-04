@@ -21,6 +21,8 @@ extends Control
 @export var line_edit_title : LineEdit
 @export var line_edit_author : LineEdit
 @export var line_edit_subject : LineEdit
+@export var playtest_vp_container : SubViewportContainer
+@export var playtest_vp : SubViewport
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
 var min_inspector_size : float = 320
@@ -309,3 +311,8 @@ func update_header_text() -> void:
 
 func _on_environment_graph_container_switch_modes() -> void:
 	odpanel.visible = not odpanel.visible
+
+
+func _on_playtest_button_pressed() -> void:
+	playtest_vp_container.visible = true
+	playtest_vp.add_child( Game.make(game_data) )

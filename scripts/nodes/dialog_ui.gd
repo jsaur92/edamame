@@ -68,12 +68,14 @@ func take(command:CommandTake) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("interact") or just_tapped) and active and current_node != null:
-		just_tapped = false
-		if text.visible_characters >= text.text.length() and (current_node.command is CommandSay or current_node.command is CommandGive):
-			confirm(0)
-		else:
-			text.visible_characters = text.text.length()
+	if (Input.is_action_just_pressed("interact") or just_tapped):
+		if active:
+			if current_node != null:
+				just_tapped = false
+				if text.visible_characters >= text.text.length() and (current_node.command is CommandSay or current_node.command is CommandGive):
+					confirm(0)
+				else:
+					text.visible_characters = text.text.length()
 
 
 ## Helper function for ask() that generates the buttons for choices.
