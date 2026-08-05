@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://di0xb2wlhw4uw" path="res://scenes/editor/tile_edit_bg.tscn" id="3_ro56m"]
 [ext_resource type="PackedScene" uid="uid://da5ixokyjg6d7" path="res://scenes/editor/interactable_tab.tscn" id="4_7gtdv"]
 [ext_resource type="PackedScene" uid="uid://blsmx88ljel4d" path="res://scenes/editor/obstacle_tab.tscn" id="4_jwsr6"]
+[ext_resource type="PackedScene" uid="uid://coluil2826hys" path="res://scenes/menu/add_object_popup.tscn" id="7_qbwwq"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "playtest_vp_container", "playtest_vp")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "popup_filter", "add_object_popup", "playtest_vp_container", "playtest_vp")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +34,8 @@ file_dialog = NodePath("FileDialog")
 line_edit_title = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditTitle")
 line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
 line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
+popup_filter = NodePath("PopupFilter")
+add_object_popup = NodePath("AddObjectPopup")
 playtest_vp_container = NodePath("PlaytestViewportContainer")
 playtest_vp = NodePath("PlaytestViewportContainer/PlaytestViewport")
 
@@ -239,6 +242,19 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="PopupFilter" type="ColorRect" parent="." unique_id=956160871]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6313726)
+
+[node name="AddObjectPopup" parent="." unique_id=1901562189 instance=ExtResource("7_qbwwq")]
+visible = false
+
 [node name="PlaytestViewportContainer" type="SubViewportContainer" parent="." unique_id=1151956513]
 process_mode = 3
 visible = false
@@ -270,3 +286,5 @@ render_target_update_mode = 0
 [connection signal="pressed" from="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer/EditTilesButton" to="VSplitRoot/HSplitContainer/LeftSide/VSplitContainer/EnvironmentGraphContainer" method="_on_edit_tiles_button_pressed"]
 [connection signal="tab_changed" from="VSplitRoot/HSplitContainer/Inspector" to="." method="_on_inspector_tab_changed"]
 [connection signal="save_node_tree" from="VSplitRoot/HSplitContainer/Inspector/InteractableTab" to="." method="_on_interactable_tab_save_node_tree"]
+[connection signal="create_object" from="AddObjectPopup" to="." method="_on_add_object_popup_create_object"]
+[connection signal="popup_hide" from="AddObjectPopup" to="." method="_on_add_object_popup_popup_hide"]

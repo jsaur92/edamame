@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://coluil2826hys"]
+
+[ext_resource type="Theme" uid="uid://cbdao3sifk57h" path="res://assets/resources/menu_theme_2.tres" id="1_kv83o"]
+[ext_resource type="Script" uid="uid://bl4p3e3gmxoyu" path="res://scenes/menu/add_object_popup.gd" id="2_hq6py"]
+[ext_resource type="PackedScene" uid="uid://cnb8sjxmisuq4" path="res://scenes/editor/object_icon.tscn" id="3_hq6py"]
+
+[node name="AddObjectPopup" type="Popup" unique_id=1901562189 node_paths=PackedStringArray("object_name", "object_desc", "object_icon", "type_options_button", "type_description_label")]
+oversampling_override = 1.0
+size = Vector2i(752, 992)
+visible = true
+theme = ExtResource("1_kv83o")
+script = ExtResource("2_hq6py")
+object_name = NodePath("LineEditName")
+object_desc = NodePath("LineEditDescription")
+object_icon = NodePath("ObjectIcon")
+type_options_button = NodePath("OptionButton")
+type_description_label = NodePath("OptionButton/TypeDescriptionLabel")
+
+[node name="bg2" type="ColorRect" parent="." unique_id=481536148]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+
+[node name="bg" type="ColorRect" parent="." unique_id=1310096614]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84660333, 0.91, 0.7371, 1)
+
+[node name="LineEditName" type="LineEdit" parent="." unique_id=1022085496]
+offset_left = 76.0
+offset_top = 95.0
+offset_right = 676.0
+offset_bottom = 149.0
+
+[node name="Label" type="Label" parent="LineEditName" unique_id=746508503]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 143.0
+text = "Object Name"
+
+[node name="ObjectIcon" parent="." unique_id=378483278 instance=ExtResource("3_hq6py")]
+custom_minimum_size = Vector2(128, 128)
+offset_left = 76.0
+offset_top = 225.0
+offset_right = 300.0
+offset_bottom = 449.0
+size_flags_horizontal = 0
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="ObjectIcon" unique_id=184760377]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 143.0
+text = "Object Image"
+
+[node name="LineEditDescription" type="TextEdit" parent="." unique_id=479920248]
+visible = false
+offset_left = 365.0
+offset_top = 225.0
+offset_right = 676.0
+offset_bottom = 445.0
+theme = ExtResource("1_kv83o")
+wrap_mode = 1
+
+[node name="Label3" type="Label" parent="LineEditDescription" unique_id=1371429466]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 156.0
+text = "Description (optional)"
+
+[node name="OptionButton" type="OptionButton" parent="." unique_id=1540122587]
+offset_left = 76.0
+offset_top = 526.0
+offset_right = 676.0
+offset_bottom = 580.0
+selected = 0
+item_count = 4
+popup/item_0/text = "default"
+popup/item_0/id = 0
+popup/item_1/text = "item"
+popup/item_1/id = 1
+popup/item_2/text = "character/sign"
+popup/item_2/id = 2
+popup/item_3/text = "obstacle"
+popup/item_3/id = 3
+
+[node name="Label4" type="Label" parent="OptionButton" unique_id=88629285]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -34.0
+offset_right = 143.0
+text = "Object Type"
+
+[node name="TypeDescriptionLabel" type="Label" parent="OptionButton" unique_id=1455643511]
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 64.0
+offset_right = 599.0
+offset_bottom = 144.0
+text = "An simple object with no given properties."
+autowrap_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="." unique_id=1183257980]
+offset_left = 76.0
+offset_top = 791.0
+offset_right = 676.0
+offset_bottom = 899.0
+theme_override_font_sizes/font_size = 48
+text = "Create Object"
+
+[connection signal="change_image" from="ObjectIcon" to="." method="_on_object_icon_change_image"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]

@@ -21,6 +21,8 @@ extends Control
 @export var line_edit_title : LineEdit
 @export var line_edit_author : LineEdit
 @export var line_edit_subject : LineEdit
+@export var popup_filter : ColorRect
+@export var add_object_popup : Popup
 @export var playtest_vp_container : SubViewportContainer
 @export var playtest_vp : SubViewport
 var environment : GameEnvironment
@@ -288,8 +290,8 @@ func _on_interactable_tab_save_node_tree(mod_int:ModInteractable) -> void:
 
 
 func _on_add_object_button_pressed() -> void:
-	ObjectLibrary.get_current_library().add_object(ObjectData.create())
-	update_objects_dock()
+	add_object_popup.popup_centered()
+	popup_filter.visible = true
 
 
 func _on_line_edit_title_text_changed(new_text: String) -> void:
@@ -330,3 +332,12 @@ func end_playtest() -> void:
 
 func close_editor() -> void:
 	instance = null
+
+
+func _on_add_object_popup_popup_hide() -> void:
+	popup_filter.visible = false
+
+
+func _on_add_object_popup_create_object(obj:ObjectData) -> void:
+	ObjectLibrary.get_current_library().add_object(obj)
+	update_objects_dock()

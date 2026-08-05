@@ -8,6 +8,8 @@ extends Resource
 @export var uid : int
 ## Name of the Object.
 @export var name : String
+## Description of the Object. An optional attribute.
+@export var description : String
 ## Image file used for the object's sprite.
 @export var image : PackedByteArray
 ## Dimensions of the source image.
