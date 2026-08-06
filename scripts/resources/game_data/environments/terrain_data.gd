@@ -43,8 +43,8 @@ func get_used_rect_in_tiles() -> Rect2i:
 
 func get_used_rect_in_pixels() -> Rect2i:
 	var rect = get_used_rect_in_tiles()
+	rect.position += top_left
 	rect.position *= tileset.tile_size
-	rect.size += Vector2i.ONE
 	rect.size *= tileset.tile_size
 	return rect
 

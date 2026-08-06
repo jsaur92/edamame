@@ -5,6 +5,7 @@ extends Popup
 @export var object_icon : TextureRect
 @export var type_options_button : OptionButton
 @export var type_description_label : Label
+var loaded_img : Image
 const description_dict : Dictionary[int, String] = {
 	0 : "A simple object with no given properties.",
 	1 : "An object that can be picked up off the ground, given to the player from a character, and held in the player's backpack.",
@@ -18,6 +19,7 @@ func _on_option_button_item_selected(index: int) -> void:
 
 
 func _on_object_icon_change_image(image : Image) -> void:
+	loaded_img = image
 	object_icon.texture = ImageTexture.create_from_image(image)
 
 
@@ -25,7 +27,9 @@ func _on_confirm_button_pressed() -> void:
 	var obj = ObjectData.create()
 	obj.name = object_name.text
 	obj.description = object_desc.text
-	obj.set_image(object_icon.texture.get_image())
+	obj.set_image(loaded_img)
+	obj.set_size_x(loaded_img.get_width())
+	obj.set_size_y(loaded_img.get_height())
 	
 	match type_options_button.selected:
 		0:

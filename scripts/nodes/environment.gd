@@ -16,8 +16,8 @@ static func make(data:EnvironmentData):
 	ge.setup_objects()
 	ge.camera.limit_left = data.get_used_rect().position.x
 	ge.camera.limit_top = data.get_used_rect().position.y
-	ge.camera.limit_right = data.get_used_rect().position.x + data.get_used_rect().size.x
-	ge.camera.limit_bottom = data.get_used_rect().position.y + data.get_used_rect().size.y
+	ge.camera.limit_right = data.get_used_rect().position.x + data.get_used_rect().size.x + data.terrain.tileset.tile_size.x
+	ge.camera.limit_bottom = data.get_used_rect().position.y + data.get_used_rect().size.y + data.terrain.tileset.tile_size.y
 	return ge
 
 

@@ -67,9 +67,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 min_value = 1.0
-max_value = 256.0
+max_value = 99999.0
 value = 1.0
 rounded = true
+allow_greater = true
 
 [node name="xLabel" type="Label" parent="VBoxContainer/SizeContainer" unique_id=914104648]
 layout_mode = 2
@@ -79,9 +80,10 @@ text = "x"
 layout_mode = 2
 size_flags_horizontal = 4
 min_value = 1.0
-max_value = 256.0
+max_value = 99999.0
 value = 1.0
 rounded = true
+allow_greater = true
 
 [node name="PositionContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1542386048]
 custom_minimum_size = Vector2(0, 42)
