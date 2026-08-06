@@ -32,4 +32,8 @@ func _on_button_pressed() -> void:
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	change_image.emit( Image.load_from_file(path) )
+	var img = Image.load_from_file(path)
+	if img != null:
+		change_image.emit( img )
+	else:
+		push_error("No image found at ", path)

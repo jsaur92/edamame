@@ -11,6 +11,11 @@ signal clicked
 signal released
 signal dragged
 const _SELF_SCENE = preload("uid://kf8ej751k86u")
+## The maximum "length" of a GameObject's size in pixels (that is, taking the .length()
+## parameter of the size vector) before the GameObject counts as "large".
+## (Large GameObjects get a modifier attached to their rotation to rotate less).
+## (This set value is the size length value of a 128 x 128 pixel object).
+const SMALL_SIZE_THRESHOLD := 181.02
 
 static func make(node:Node2D, pre_held:bool=false) -> DragableParent:
 	var dgp : DragableParent = _SELF_SCENE.instantiate()
@@ -45,7 +50,13 @@ func _process(delta: float) -> void:
 			update_position()
 			dragged.emit()
 			
-			child.rotation = sin(get_time_since_clicked() * 10.) * 0.5
+			var rot_range_mod := 1.0
+			if has_game_object():
+				child = child as GameObject
+				if child.object_data.get_image_size_pixels().length() > SMALL_SIZE_THRESHOLD:
+					rot_range_mod = SMALL_SIZE_THRESHOLD / child.object_data.get_image_size_pixels().length()
+			
+			child.rotation = sin(get_time_since_clicked() * 10.) * 0.5 * rot_range_mod
 			shadow.visible = true
 	else:
 		child.rotation_degrees = 0
