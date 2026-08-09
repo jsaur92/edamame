@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blsmx88ljel4d" path="res://scenes/editor/obstacle_tab.tscn" id="4_jwsr6"]
 [ext_resource type="PackedScene" uid="uid://coluil2826hys" path="res://scenes/menu/add_object_popup.tscn" id="7_qbwwq"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "popup_filter", "add_object_popup", "playtest_vp_container", "playtest_vp")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "popup_filter", "add_object_popup", "playtest_parent", "playtest_vp")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,8 +36,8 @@ line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
 line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
 popup_filter = NodePath("PopupFilter")
 add_object_popup = NodePath("AddObjectPopup")
-playtest_vp_container = NodePath("PlaytestViewportContainer")
-playtest_vp = NodePath("PlaytestViewportContainer/PlaytestViewport")
+playtest_parent = NodePath("PlaytestParent")
+playtest_vp = NodePath("PlaytestParent/PlaytestViewportContainer/PlaytestViewport")
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
 access = 2
@@ -255,8 +255,7 @@ color = Color(0, 0, 0, 0.6313726)
 [node name="AddObjectPopup" parent="." unique_id=1901562189 instance=ExtResource("7_qbwwq")]
 visible = false
 
-[node name="PlaytestViewportContainer" type="SubViewportContainer" parent="." unique_id=1151956513]
-process_mode = 3
+[node name="PlaytestParent" type="Control" parent="." unique_id=1791155607]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -265,11 +264,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlaytestViewport" type="SubViewport" parent="PlaytestViewportContainer" unique_id=1966386598]
+[node name="PlaytestViewportContainer" type="SubViewportContainer" parent="PlaytestParent" unique_id=1151956513]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1880.0
+offset_bottom = 1040.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaytestViewport" type="SubViewport" parent="PlaytestParent/PlaytestViewportContainer" unique_id=1966386598]
 process_mode = 3
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 0
+
+[node name="PlaytestEndButton" type="Button" parent="PlaytestParent" unique_id=1600903778]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 131.0
+offset_bottom = 58.0
+text = "end playtest"
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="VSplitRoot/FilePanel/PlaytestButton" to="." method="_on_playtest_button_pressed"]
@@ -288,3 +306,4 @@ render_target_update_mode = 0
 [connection signal="save_node_tree" from="VSplitRoot/HSplitContainer/Inspector/InteractableTab" to="." method="_on_interactable_tab_save_node_tree"]
 [connection signal="create_object" from="AddObjectPopup" to="." method="_on_add_object_popup_create_object"]
 [connection signal="popup_hide" from="AddObjectPopup" to="." method="_on_add_object_popup_popup_hide"]
+[connection signal="pressed" from="PlaytestParent/PlaytestEndButton" to="." method="_on_playtest_end_button_pressed"]

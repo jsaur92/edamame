@@ -23,7 +23,7 @@ extends Control
 @export var line_edit_subject : LineEdit
 @export var popup_filter : ColorRect
 @export var add_object_popup : Popup
-@export var playtest_vp_container : SubViewportContainer
+@export var playtest_parent : Control
 @export var playtest_vp : SubViewport
 var environment : GameEnvironment
 var scroll_offset : Vector2 = Vector2.ZERO
@@ -321,12 +321,12 @@ func _on_playtest_button_pressed() -> void:
 
 
 func start_playtest() -> void:
-	playtest_vp_container.visible = true
+	playtest_parent.visible = true
 	playtest_vp.add_child( Game.make(game_data) )
 
 
 func end_playtest() -> void:
-	playtest_vp_container.visible = false
+	playtest_parent.visible = false
 	playtest_vp.get_child(0).queue_free()
 
 
@@ -341,3 +341,7 @@ func _on_add_object_popup_popup_hide() -> void:
 func _on_add_object_popup_create_object(obj:ObjectData) -> void:
 	ObjectLibrary.get_current_library().add_object(obj)
 	update_objects_dock()
+
+
+func _on_playtest_end_button_pressed() -> void:
+	end_playtest()

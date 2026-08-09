@@ -18,6 +18,7 @@ func _on_option_button_item_selected(index: int) -> void:
 
 
 func _on_object_icon_change_image(image : Image) -> void:
+	image.convert(Image.FORMAT_RGBA8)
 	object_icon.texture = ImageTexture.create_from_image(image)
 
 

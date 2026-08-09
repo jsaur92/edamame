@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 func update_char() -> void:
 	var path = TEXTURE_DIRECTORY_PATH % character
-	if FileAccess.file_exists(path):
+	if ResourceLoader.exists(path):
 		texture = load(path)
 		pivot_offset = size/2
 	else:

@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Edamame"
+config/description="Simple game-making software, no programming required. Designed specifically for serious games (i.e. educational games)."
+config/version="0.1.1"
 run/main_scene="uid://e7ed5bvjy3jm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://bcgovbjf0df12"
@@ -23,6 +25,7 @@ window/size/viewport_height=1080
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
+window/version="0.1.1a"
 
 [input]
 
