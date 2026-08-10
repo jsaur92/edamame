@@ -6,6 +6,10 @@ extends Command
 ## the Item modifier (ModItem).
 @export var item_uid : int
 
+const ENCODE_HEADER = "CommandGive"
+const ENCODE_ITEM_START = "item : "
+const ENCODE_SPLIT = "\n"
+
 func _init(_item:int=-1) -> void:
 	item_uid = _item
 

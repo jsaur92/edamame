@@ -32,3 +32,4 @@ static func create(title:String, subject:String, author:String) -> GameData:
 ## Returns the game's environment of a given index. No parameters gives default Environment.
 func get_environment(index:int=0) -> EnvironmentData:
 	return environments[index]
+	

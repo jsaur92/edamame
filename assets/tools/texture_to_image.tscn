@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cwgtsn7ur4mtx"]
-
-[ext_resource type="Script" uid="uid://b8by0wohhiqmg" path="res://scripts/tools/texture_to_image.gd" id="1_8xlr0"]
-
-[node name="TextureToImage" type="Node" unique_id=932320529]
-script = ExtResource("1_8xlr0")

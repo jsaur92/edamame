@@ -6,16 +6,29 @@ extends Control
 var game_data : GameData
 const MAIN_MENU_SCENE_PATH : String = "uid://e7ed5bvjy3jm"
 
+var file_access_web: FileAccessWeb = FileAccessWeb.new()
 
 func _on_pick_file_button_pressed() -> void:
-	file_dialog.popup_file_dialog()
-	filter.visible = true
+	if OS.get_name() == "Web":
+		file_access_web.open(".res")
+		file_access_web.loaded.connect(_on_file_loaded_web)
+	else:
+		file_dialog.popup_file_dialog()
+		filter.visible = true
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	game_data = load(path)
+	game_data.get_data_config()
 	get_tree().change_scene_to_node( Editor.make(game_data) )
 
+
+func _on_file_loaded_web(file_name: String, type: String, base64_data: String) -> void:
+	var decoded = Marshalls.base64_to_variant(base64_data, true)
+	print(decoded)
+	#get_tree().change_scene_to_node( Editor.make(game_data) )
+	#var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	
 
 func _on_new_game_button_pressed() -> void:
 	game_data_init.popup_centered()
