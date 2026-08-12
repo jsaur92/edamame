@@ -10,7 +10,7 @@ var file_access_web: FileAccessWeb = FileAccessWeb.new()
 
 func _on_pick_file_button_pressed() -> void:
 	if OS.get_name() == "Web":
-		file_access_web.open(".res")
+		file_access_web.open(".edamame")
 		file_access_web.loaded.connect(_on_file_loaded_web)
 	else:
 		file_dialog.popup_file_dialog()
@@ -29,10 +29,14 @@ func _on_file_dialog_file_selected(path: String) -> void:
 
 
 func _on_file_loaded_web(file_name: String, type: String, base64_data: String) -> void:
-	var decoded = Marshalls.base64_to_variant(base64_data, true)
-	print(decoded)
-	#get_tree().change_scene_to_node( Editor.make(game_data) )
-	#var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	#convert base64 string into a byte array
+	var decoded_bytes : PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	#convert byte array into hexadecimal string
+	var hex_string : String = decoded_bytes.get_string_from_utf8()
+	#send string to GameData and get a GameData object back
+	game_data = GameData.load_game_file_from_hex(hex_string)
+	#go to editor
+	get_tree().change_scene_to_node( Editor.make(game_data) )
 	
 
 func _on_new_game_button_pressed() -> void:
