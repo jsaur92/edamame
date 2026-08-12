@@ -144,6 +144,5 @@ static func from_json_string(json_string : String) -> TerrainData:
 		var tex_json_string = dict["tileset_tile"+str(int(i))]
 		var tex = json_string_to_texture(tex_json_string)
 		td.add_tile_to_tileset(tex)
-	ResourceSaver.save(td.tileset, "res://tiletest.tres")
 	td.tilemap = json_string_to_tilemap(dict["tilemap"])
 	return td

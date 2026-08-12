@@ -241,7 +241,7 @@ func _on_save_exit_button_pressed() -> void:
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	ResourceSaver.save(game_data, path)
+	game_data.save_game_file_to_path(path)
 	if exit_on_save:
 		close_editor()
 		get_tree().change_scene_to_packed(_MAIN_MENU_SCENE)

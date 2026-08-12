@@ -74,7 +74,7 @@ static func from_json_string(json_string : String) -> GameData:
 func save_game_file_to_path(path:String) -> void:
 	var json_string = to_json_string()
 	var packed_bytes = var_to_bytes(json_string)
-	#packed_bytes = packed_bytes.compress(FileAccess.COMPRESSION_ZSTD)
+	packed_bytes = packed_bytes.compress(FileAccess.COMPRESSION_GZIP)
 	var out_string = packed_bytes.hex_encode()
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(out_string)
@@ -86,7 +86,6 @@ static func load_game_file_from_path(path:String) -> GameData:
 	var in_string = file.get_as_text()
 	file.close()
 	var packed_bytes = in_string.hex_decode()
-	#packed_bytes = packed_bytes.decompress(packed_bytes.size(), FileAccess.COMPRESSION_ZSTD)
-	#print(packed_bytes.size())
+	packed_bytes = packed_bytes.decompress_dynamic(-1, FileAccess.COMPRESSION_GZIP)
 	var json_string = bytes_to_var(packed_bytes)
 	return GameData.from_json_string( json_string )

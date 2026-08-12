@@ -41,6 +41,7 @@ playtest_vp = NodePath("PlaytestParent/PlaytestViewportContainer/PlaytestViewpor
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1161373797]
 access = 2
+filters = PackedStringArray("*.edamame")
 
 [node name="VSplitRoot" type="VSplitContainer" parent="." unique_id=76124584]
 layout_mode = 1
