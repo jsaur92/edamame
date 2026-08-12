@@ -64,29 +64,29 @@ static func from_json_string(json_string : String) -> GameData:
 	
 	var environments : Array[EnvironmentData] = []
 	for i in int(dict["environments_size"]):
-		environments.append(dict["environment"+str(i)])
+		environments.append(EnvironmentData.from_json_string( dict["environment"+str(i)] ))
 	gd.environments = environments
 	
 	return gd
 
 
-func save_game_file(path:String) -> void:
+## Save game file as a .edamame file.
+func save_game_file_to_path(path:String) -> void:
 	var json_string = to_json_string()
 	var packed_bytes = var_to_bytes(json_string)
-	
-	### TESTING COMPRESSION MODES ###
-	## NOTE: I DID IT SO WRONG LAST TIME OOPS. IN MULTIPLE WAYS
-	var modes = ["fastlz", "deflate", "zstd", "gzip", "brotli"]
-	for i in 5:
-		print(i)
-		var start_time = Time.get_ticks_msec()
-		var compressed_bytes = packed_bytes.compress(i)
-		var out_string = compressed_bytes.hex_encode()
-		var file = FileAccess.open("res://tests/testfile_"+modes[i]+".edamame", FileAccess.WRITE)
-		file.store_string(out_string)
-		file.close()
-		print("time taken for " + modes[i] + ": " + str(Time.get_ticks_msec() - start_time))
-	
-	## Conclusion: zstd slowest but lowest file size. since our file sizes arent that big anyway. let's just go with it.
-	
-	
+	#packed_bytes = packed_bytes.compress(FileAccess.COMPRESSION_ZSTD)
+	var out_string = packed_bytes.hex_encode()
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(out_string)
+	file.close()
+
+
+static func load_game_file_from_path(path:String) -> GameData:
+	var file = FileAccess.open(path, FileAccess.READ)
+	var in_string = file.get_as_text()
+	file.close()
+	var packed_bytes = in_string.hex_decode()
+	#packed_bytes = packed_bytes.decompress(packed_bytes.size(), FileAccess.COMPRESSION_ZSTD)
+	#print(packed_bytes.size())
+	var json_string = bytes_to_var(packed_bytes)
+	return GameData.from_json_string( json_string )

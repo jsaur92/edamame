@@ -53,5 +53,5 @@ static func from_json_string(json_string : String) -> ObjectLibrary:
 	var dict = JSON.parse_string(json_string)
 	var obj_dict : Dictionary[int, ObjectData] = {}
 	for key in dict:
-		obj_dict[key] = ObjectData.from_json_string(dict[key])
+		obj_dict[int(key)] = ObjectData.from_json_string(dict[key])
 	return ObjectLibrary.new(obj_dict)

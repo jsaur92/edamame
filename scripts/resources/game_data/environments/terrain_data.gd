@@ -138,7 +138,7 @@ static func from_json_string(json_string : String) -> TerrainData:
 	var td = TerrainData.new()  #.new(), not .create(), since create loads the default tiles and we want to load in these specific ones.
 	td.tileset = TileSet.new()
 	for i in dict["tileset_tile_count"]:
-		var tex_json_string = dict["tileset_tile"+str(i)]
+		var tex_json_string = dict["tileset_tile"+str(int(i))]
 		var tex = json_string_to_texture(tex_json_string)
 		td.add_tile_to_tileset(tex)
 	td.tilemap = json_string_to_tilemap(dict["tilemap"])

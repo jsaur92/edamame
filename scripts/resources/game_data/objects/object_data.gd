@@ -150,5 +150,5 @@ static func from_json_string(json_string : String) -> ObjectData:
 	od.image_size_pixels = Vector2i(dict["img_size.x"], dict["img_size.y"])
 	var mods_dict = JSON.parse_string(dict["mods"])
 	for key in mods_dict:
-		od.mods[key] = ObjectMod.from_json_string( mods_dict[key] )
+		od.mods[int(key)] = ObjectMod.from_json_string( mods_dict[key] )
 	return od

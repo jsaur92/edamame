@@ -18,9 +18,13 @@ func _on_pick_file_button_pressed() -> void:
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	game_data = load(path)
-	
-	game_data.save_game_file("res://testfile.edamame")
+	if path.ends_with(".res") or path.ends_with(".tres"):
+		game_data = load(path)
+		game_data.save_game_file_to_path("res://testgame.edamame")
+	elif path.ends_with(".edamame"):
+		game_data = GameData.load_game_file_from_path(path)
+	else:
+		push_error("Attempted to load unsupported file type.")
 	
 	get_tree().change_scene_to_node( Editor.make(game_data) )
 
