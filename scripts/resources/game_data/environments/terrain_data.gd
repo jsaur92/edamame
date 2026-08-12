@@ -9,6 +9,7 @@ extends Resource
 ## The top-left position of the tilemap (offset).
 @export var top_left : Vector2i
 const DEFAULT_TILESET = preload("uid://cy0d150bm28j1")
+const TILE_SIZE = Vector2i(160, 160)
 
 
 static func create() -> TerrainData:
@@ -77,7 +78,8 @@ func adjust_offset(point:Vector2i) -> Vector2i:
 func add_tile_to_tileset(texture:Texture2D) -> void:
 	var new_source = TileSetAtlasSource.new()
 	new_source.texture = texture
-	new_source.create_tile(Vector2i.ZERO, texture.get_size())
+	new_source.texture_region_size = TILE_SIZE
+	new_source.create_tile(Vector2i.ZERO, Vector2i.ONE)
 	tileset.add_source(new_source)
 
 
@@ -137,9 +139,11 @@ static func from_json_string(json_string : String) -> TerrainData:
 	var dict = JSON.parse_string(json_string)
 	var td = TerrainData.new()  #.new(), not .create(), since create loads the default tiles and we want to load in these specific ones.
 	td.tileset = TileSet.new()
+	td.tileset.tile_size = TILE_SIZE
 	for i in dict["tileset_tile_count"]:
 		var tex_json_string = dict["tileset_tile"+str(int(i))]
 		var tex = json_string_to_texture(tex_json_string)
 		td.add_tile_to_tileset(tex)
+	ResourceSaver.save(td.tileset, "res://tiletest.tres")
 	td.tilemap = json_string_to_tilemap(dict["tilemap"])
 	return td
