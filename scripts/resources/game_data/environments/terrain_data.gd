@@ -79,3 +79,67 @@ func add_tile_to_tileset(texture:Texture2D) -> void:
 	new_source.texture = texture
 	new_source.create_tile(Vector2i.ZERO, texture.get_size())
 	tileset.add_source(new_source)
+
+
+func tileset_to_textures_array() -> Array[Texture2D]:
+	var arr = []
+	for i in tileset.get_source_count():
+		var source : TileSetAtlasSource = tileset.get_source( tileset.get_source_id(i) )
+		arr.append( source.texture )
+	return arr
+
+
+func texture_to_json_string(tex : Texture2D) -> String:
+	var img = tex.get_image()
+	var bytes = img.save_png_to_buffer()
+	return bytes.hex_encode()
+
+
+static func json_string_to_texture(str : String) -> Texture2D:
+	var bytes = str.hex_decode()
+	var img = Image.new()
+	img.load_png_from_buffer(bytes)
+	return ImageTexture.create_from_image(img)
+
+
+func tilemap_to_json_string() -> String:
+	var dict = {}
+	for tile in tilemap.get_used_cells():
+		dict["source_id_"+str(tile)] = tilemap.get_cell_source_id(tile)
+	return JSON.stringify(dict)
+
+
+static func json_string_to_tilemap(str : String) -> TileMapPattern:
+	var dict = JSON.parse_string(str)
+	var tmp = TileMapPattern.new()
+	for key:String in dict:
+		if key.begins_with("source_id_"):
+			var coords_str : String = key.substr("source_id_".length())
+			coords_str = coords_str.replace("(", "")
+			coords_str = coords_str.replace(")", "")
+			var coords_split = coords_str.split(",")
+			var coords := Vector2i(int(coords_split[0]), int(coords_split[1]))
+			tmp.set_cell(coords, dict[key], Vector2i.ZERO, 0)
+	return tmp
+
+
+func to_json_string() -> String:
+	var dict = {}
+	var tex_arr = tileset_to_textures_array()
+	dict["tileset_tile_count"] = tex_arr.size()
+	for i in tex_arr.size():
+		dict["tileset_tile"+str(i)] = texture_to_json_string(tex_arr[i])
+	dict["tilemap"] = tilemap_to_json_string()
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> TerrainData:
+	var dict = JSON.parse_string(json_string)
+	var td = TerrainData.new()  #.new(), not .create(), since create loads the default tiles and we want to load in these specific ones.
+	td.tileset = TileSet.new()
+	for i in dict["tileset_tile_count"]:
+		var tex_json_string = dict["tileset_tile"+str(i)]
+		var tex = json_string_to_texture(tex_json_string)
+		td.add_tile_to_tileset(tex)
+	td.tilemap = json_string_to_tilemap(dict["tilemap"])
+	return td

@@ -120,3 +120,35 @@ func get_image_size_pixels() -> Vector2i:
 
 func _to_string() -> String:
 	return name
+
+
+func to_json_string() -> String:
+	var dict = {}
+	dict["uid"] = uid
+	dict["name"] = name
+	dict["description"] = description
+	dict["image"] = image.hex_encode()
+	dict["img_source_size.x"] = image_source_size_pixels.x
+	dict["img_source_size.y"] = image_source_size_pixels.y
+	dict["img_size.x"] = image_size_pixels.x
+	dict["img_size.y"] = image_size_pixels.y
+	var mods_dict = {}
+	for key in mods:
+		mods_dict[key] = mods[key].to_json_string()
+	dict["mods"] = JSON.stringify(mods_dict)
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> ObjectData:
+	var dict = JSON.parse_string(json_string)
+	var od = ObjectData.new()
+	od.uid = dict["uid"]
+	od.name = dict["name"]
+	od.description = dict["description"]
+	od.image = dict["image"].hex_decode()
+	od.image_source_size_pixels = Vector2i(dict["img_source_size.x"], dict["img_source_size.y"])
+	od.image_size_pixels = Vector2i(dict["img_size.x"], dict["img_size.y"])
+	var mods_dict = JSON.parse_string(dict["mods"])
+	for key in mods_dict:
+		od.mods[key] = ObjectMod.from_json_string( mods_dict[key] )
+	return od

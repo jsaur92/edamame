@@ -34,3 +34,21 @@ func set_pos_x(x:int) -> void:
 
 func set_pos_y(y:int) -> void:
 	position.y = y
+
+
+func to_json_string() -> String:
+	var dict = {}
+	dict["object_data_uid"] = object_data.uid
+	dict["position.x"] = position.x
+	dict["position.y"] = position.y
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> ObjectInstanceData:
+	var dict = JSON.parse_string(json_string)
+	var object_data = ObjectLibrary.get_current_library().get_object(dict["object_data_uid"])
+	var position = Vector2(dict["position.x"], dict["position.y"])
+	var oid = ObjectInstanceData.new()
+	oid.setup(object_data, position)
+	return oid
+	

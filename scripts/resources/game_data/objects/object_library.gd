@@ -40,3 +40,18 @@ func get_object(key:int) -> ObjectData:
 
 func get_objects() -> Array[ObjectData]:
 	return objects.values()
+
+
+func to_json_string() -> String:
+	var dict = {}
+	for key in objects:
+		dict[key] = objects[key].to_json_string()
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> ObjectLibrary:
+	var dict = JSON.parse_string(json_string)
+	var obj_dict : Dictionary[int, ObjectData] = {}
+	for key in dict:
+		obj_dict[key] = ObjectData.from_json_string(dict[key])
+	return ObjectLibrary.new(obj_dict)

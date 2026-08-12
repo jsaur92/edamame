@@ -19,7 +19,7 @@ func _on_pick_file_button_pressed() -> void:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	game_data = load(path)
-	game_data.get_data_config()
+	print(game_data.get_json_string())
 	get_tree().change_scene_to_node( Editor.make(game_data) )
 
 

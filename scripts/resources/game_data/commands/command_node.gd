@@ -21,3 +21,24 @@ func has_command() -> bool:
 
 func _to_string() -> String:
 	return "Command: " + str(command)
+
+
+func to_json_string() -> String:
+	var dict = {}
+	dict["command"] = command.to_json_string()
+	dict["next_size"] = next.size()
+	for i in next.size():
+		dict["next"+str(i)] = next[i].to_json_string()
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> CommandNode:
+	var dict = JSON.parse_string(json_string)
+	var command = Command.from_json_string(dict["command"])
+	var next : Array[CommandNode] = []
+	for i in int(dict["next_size"]):
+		next.append(CommandNode.from_json_string(dict["next"+str(i)]))
+	var node = CommandNode.new()
+	node.command = command
+	node.next = next
+	return node

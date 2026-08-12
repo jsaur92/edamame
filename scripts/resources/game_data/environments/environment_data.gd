@@ -61,3 +61,23 @@ func get_used_rect() -> Rect2:
 	rect.size = bottom_right - rect.position
 	
 	return rect
+
+
+func to_json_string() -> String:
+	var dict = {}
+	dict["terrain"] = terrain.to_json_string()
+	dict["objects_size"] = objects.size()
+	for i in objects.size():
+		dict["object"+str(i)] = objects[i].to_json_string()
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> EnvironmentData:
+	var dict = JSON.parse_string(json_string)
+	var terrain = TerrainData.from_json_string(dict["terrain"])
+	var objects : Array[ObjectInstanceData] = []
+	for i in int(dict["objects_size"]):
+		objects.append( ObjectInstanceData.from_json_string(dict["object"+str(i)]) )
+	var ed = EnvironmentData.new()
+	ed.setup(terrain, objects)
+	return ed

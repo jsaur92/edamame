@@ -6,9 +6,7 @@ extends Command
 ## the Item modifier (ModItem).
 @export var item_uid : int
 
-const ENCODE_HEADER = "CommandGive"
-const ENCODE_ITEM_START = "item : "
-const ENCODE_SPLIT = "\n"
+const FILE_PATH = "uid://bawoprftpfsep"
 
 func _init(_item:int=-1) -> void:
 	item_uid = _item
@@ -24,3 +22,15 @@ func get_item() -> ObjectData:
 
 func set_item(new_item_uid:int) -> void:
 	item_uid = new_item_uid
+
+
+func to_json_string() -> String:
+	var dict = {}
+	dict["script_path"] = FILE_PATH
+	dict["item_uid"] = item_uid
+	return JSON.stringify(dict)
+
+
+static func from_json_string(json_string : String) -> CommandGive:
+	var dict = JSON.parse_string(json_string)
+	return CommandGive.new(dict["item_uid"])
