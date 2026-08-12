@@ -75,15 +75,18 @@ func save_game_file(path:String) -> void:
 	var packed_bytes = var_to_bytes(json_string)
 	
 	### TESTING COMPRESSION MODES ###
+	## NOTE: I DID IT SO WRONG LAST TIME OOPS. IN MULTIPLE WAYS
 	var modes = ["fastlz", "deflate", "zstd", "gzip", "brotli"]
 	for i in 5:
+		print(i)
 		var start_time = Time.get_ticks_msec()
-		packed_bytes = packed_bytes.compress()
-		var out_string = packed_bytes.hex_encode()
-		var file = FileAccess.open("res://testfile_"+modes[i]+".edamame", FileAccess.WRITE)
+		var compressed_bytes = packed_bytes.compress(i)
+		var out_string = compressed_bytes.hex_encode()
+		var file = FileAccess.open("res://tests/testfile_"+modes[i]+".edamame", FileAccess.WRITE)
 		file.store_string(out_string)
 		file.close()
 		print("time taken for " + modes[i] + ": " + str(Time.get_ticks_msec() - start_time))
 	
+	## Conclusion: zstd slowest but lowest file size. since our file sizes arent that big anyway. let's just go with it.
 	
 	
