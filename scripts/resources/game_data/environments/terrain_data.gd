@@ -82,7 +82,7 @@ func add_tile_to_tileset(texture:Texture2D) -> void:
 
 
 func tileset_to_textures_array() -> Array[Texture2D]:
-	var arr = []
+	var arr : Array[Texture2D] = []
 	for i in tileset.get_source_count():
 		var source : TileSetAtlasSource = tileset.get_source( tileset.get_source_id(i) )
 		arr.append( source.texture )

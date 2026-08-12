@@ -68,3 +68,22 @@ static func from_json_string(json_string : String) -> GameData:
 	gd.environments = environments
 	
 	return gd
+
+
+func save_game_file(path:String) -> void:
+	var json_string = to_json_string()
+	var packed_bytes = var_to_bytes(json_string)
+	
+	### TESTING COMPRESSION MODES ###
+	var modes = ["fastlz", "deflate", "zstd", "gzip", "brotli"]
+	for i in 5:
+		var start_time = Time.get_ticks_msec()
+		packed_bytes = packed_bytes.compress()
+		var out_string = packed_bytes.hex_encode()
+		var file = FileAccess.open("res://testfile_"+modes[i]+".edamame", FileAccess.WRITE)
+		file.store_string(out_string)
+		file.close()
+		print("time taken for " + modes[i] + ": " + str(Time.get_ticks_msec() - start_time))
+	
+	
+	
