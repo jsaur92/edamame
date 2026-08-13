@@ -37,7 +37,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		remove_near_player.emit(self)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and player_in_range:
 		interacted.emit(game_object)
 

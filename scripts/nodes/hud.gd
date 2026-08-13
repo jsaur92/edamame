@@ -42,10 +42,15 @@ func _on_inventory_button_pressed() -> void:
 	get_tree().paused = inventory_control.visible 
 
 
-
 func _on_interact_button_button_down() -> void:
-	Input.action_press("interact")
+	var event = InputEventAction.new()
+	event.action = "interact"
+	event.pressed = true
+	Input.parse_input_event(event)
 
 
 func _on_interact_button_button_up() -> void:
-	Input.action_release("interact")
+	var event = InputEventAction.new()
+	event.action = "interact"
+	event.pressed = false
+	Input.parse_input_event(event)

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bcgovbjf0df12" path="res://icon.svg" id="9_vovv2"]
 [ext_resource type="Script" uid="uid://7rlpr5j5j5ej" path="res://scenes/menu/tilty_rect.gd" id="10_1k4da"]
 [ext_resource type="Theme" uid="uid://g0udi8sjwj0n" path="res://assets/resources/menu_theme.res" id="11_bbqo6"]
+[ext_resource type="Theme" uid="uid://cbdao3sifk57h" path="res://assets/resources/menu_theme_2.tres" id="12_d4hu8"]
 
 [sub_resource type="Gradient" id="Gradient_bbqo6"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0.5647059, 1, 1)
@@ -18,10 +19,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0.5647059, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kjd4h"]
 gradient = SubResource("Gradient_bbqo6")
 fill_to = Vector2(1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbqo6"]
-shader = ExtResource("3_vovv2")
-shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d4hu8"]
 shader = ExtResource("3_vovv2")
@@ -47,7 +44,11 @@ shader_parameter/my_color = Vector4(0, 0, 0, 0)
 shader = ExtResource("3_vovv2")
 shader_parameter/my_color = Vector4(0, 0, 0, 0)
 
-[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41tvm"]
+shader = ExtResource("3_vovv2")
+shader_parameter/my_color = Vector4(0, 0, 0, 0)
+
+[node name="MainMenu" type="Control" unique_id=1368819876 node_paths=PackedStringArray("file_dialog", "welcome_popup")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nl8w3")
 file_dialog = NodePath("FileDialog")
+welcome_popup = NodePath("popup_filter")
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=448826396]
 z_index = -10
@@ -76,88 +78,88 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleChar" parent="Title" unique_id=315842940 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_bbqo6")
+material = SubResource("ShaderMaterial_d4hu8")
 layout_mode = 0
 offset_left = 120.0
 offset_top = 48.0
 offset_right = 408.0
 offset_bottom = 432.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(144, 192)
 texture = ExtResource("4_1k4da")
 character = "E"
 color_name = "Lawn Green"
 
 [node name="TitleChar2" parent="Title" unique_id=1416050564 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_d4hu8")
+material = SubResource("ShaderMaterial_p1nwe")
 layout_mode = 0
 offset_left = 408.0
 offset_top = 64.0
 offset_right = 616.0
 offset_bottom = 416.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(104, 176)
 texture = ExtResource("5_bbqo6")
 character = "d"
 
 [node name="TitleChar3" parent="Title" unique_id=450958192 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_p1nwe")
+material = SubResource("ShaderMaterial_prbor")
 layout_mode = 0
 offset_left = 627.0
 offset_top = 254.0
 offset_right = 819.0
 offset_bottom = 414.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(96, 80)
 texture = ExtResource("6_d4hu8")
 character = "a"
 color_name = "Lawn Green"
 
 [node name="TitleChar4" parent="Title" unique_id=419203262 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_prbor")
+material = SubResource("ShaderMaterial_27h4x")
 layout_mode = 0
 offset_left = 836.0
 offset_top = 245.0
 offset_right = 1076.0
 offset_bottom = 421.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(120, 88)
 texture = ExtResource("7_p1nwe")
 character = "m"
 
 [node name="TitleChar5" parent="Title" unique_id=604308388 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_27h4x")
+material = SubResource("ShaderMaterial_gdhp0")
 layout_mode = 0
 offset_left = 1103.0
 offset_top = 250.0
 offset_right = 1295.0
 offset_bottom = 410.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(96, 80)
 texture = ExtResource("6_d4hu8")
 character = "a"
 color_name = "Lawn Green"
 
 [node name="TitleChar6" parent="Title" unique_id=155295922 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_gdhp0")
+material = SubResource("ShaderMaterial_pstia")
 layout_mode = 0
 offset_left = 1306.0
 offset_top = 236.0
 offset_right = 1546.0
 offset_bottom = 412.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(120, 88)
 texture = ExtResource("7_p1nwe")
 character = "m"
 
 [node name="TitleChar7" parent="Title" unique_id=213229426 instance=ExtResource("2_qgo02")]
-material = SubResource("ShaderMaterial_pstia")
+material = SubResource("ShaderMaterial_41tvm")
 layout_mode = 0
 offset_left = 1560.0
 offset_top = 226.0
 offset_right = 1800.0
 offset_bottom = 418.0
-rotation = -0.05349366
+rotation = -0.02334006
 pivot_offset = Vector2(120, 96)
 texture = ExtResource("8_prbor")
 character = "e"
@@ -238,6 +240,95 @@ theme_override_font_sizes/font_size = 64
 text = "Play a Game"
 autowrap_mode = 2
 
+[node name="popup_filter" type="ColorRect" parent="." unique_id=700118899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_d4hu8")
+color = Color(0, 0, 0, 0.6313726)
+
+[node name="bg2" type="ColorRect" parent="popup_filter" unique_id=696005931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 254.22217
+offset_top = 143.0
+offset_right = -254.22217
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45882353, 0.6431373, 0.25882354, 1)
+
+[node name="bg" type="ColorRect" parent="popup_filter" unique_id=1731099723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 273.6184
+offset_top = 159.0
+offset_right = -273.6184
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84660333, 0.91, 0.7371, 1)
+
+[node name="Label" type="Label" parent="popup_filter/bg" unique_id=1883434601]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_top = 41.0
+offset_right = 133.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Welcome to Edamame (web version)!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="popup_filter/bg" unique_id=162118374]
+custom_maximum_size = Vector2(1192, 368)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -596.0
+offset_top = 149.0
+offset_right = 596.0
+offset_bottom = 517.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "The web version may run slower than the downloaded version.
+
+Also, the ability to save projects in the \"Maker\" section is not fully implemented. While you can access the Maker on the web version and load in projects, your progress will be lost.
+
+The \"Player\" section works fully as intended."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="popup_filter/bg" unique_id=2022906174]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.5
+offset_top = -189.0
+offset_right = 160.5
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_bbqo6")
+theme_override_font_sizes/font_size = 48
+text = "continue"
+
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="MakeButton" to="." method="_on_make_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="popup_filter/bg/ContinueButton" to="." method="_on_continue_button_pressed"]
