@@ -10,6 +10,7 @@ static var first_time_enterred : bool = true
 
 
 func _ready() -> void:
+	
 	if first_time_enterred and OS.get_name() == "Web":
 		welcome_popup.visible = true
 	else:
