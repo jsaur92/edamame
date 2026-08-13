@@ -69,4 +69,4 @@ func get_init_data() -> PlayerInitData:
 
 
 func can_move() -> bool:
-	return Game.get_game() != null
+	return Game.get_game() != null and Game.get_game().player == self

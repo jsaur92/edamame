@@ -23,6 +23,7 @@ extends Control
 @export var line_edit_subject : LineEdit
 @export var popup_filter : ColorRect
 @export var add_object_popup : Popup
+@export var playtest_button : Button
 @export var playtest_parent : Control
 @export var playtest_vp : SubViewport
 var environment : GameEnvironment
@@ -231,13 +232,19 @@ func _on_environment_graph_container_scroll_offset_changed(offset: Vector2) -> v
 
 
 func _on_save_button_pressed() -> void:
-	file_dialog.popup_file_dialog()
 	exit_on_save = false
+	if OS.get_name() == "Web":
+		pass
+	else:
+		file_dialog.popup_file_dialog()
 
 
 func _on_save_exit_button_pressed() -> void:
-	file_dialog.popup_file_dialog()
 	exit_on_save = true
+	if OS.get_name() == "Web":
+		pass
+	else:
+		file_dialog.popup_file_dialog()
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
@@ -318,6 +325,7 @@ func _on_environment_graph_container_switch_modes() -> void:
 
 func _on_playtest_button_pressed() -> void:
 	start_playtest()
+	playtest_button.release_focus()
 
 
 func start_playtest() -> void:

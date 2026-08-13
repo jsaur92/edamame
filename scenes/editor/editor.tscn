@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blsmx88ljel4d" path="res://scenes/editor/obstacle_tab.tscn" id="4_jwsr6"]
 [ext_resource type="PackedScene" uid="uid://coluil2826hys" path="res://scenes/menu/add_object_popup.tscn" id="7_qbwwq"]
 
-[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "popup_filter", "add_object_popup", "playtest_parent", "playtest_vp")]
+[node name="Editor" type="Control" unique_id=302396334 node_paths=PackedStringArray("v_split_root", "h_split", "v_split_left_side", "odpanel", "objects_dock", "inspector_tabs_container", "details_tab", "obstacle_tab", "interactive_tab", "game_viewport", "environment_graph", "dragables_root", "above_left_side", "file_dialog", "line_edit_title", "line_edit_author", "line_edit_subject", "popup_filter", "add_object_popup", "playtest_button", "playtest_parent", "playtest_vp")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +36,7 @@ line_edit_author = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditAuthor")
 line_edit_subject = NodePath("VSplitRoot/FilePanel/HBoxContainer/LineEditSubject")
 popup_filter = NodePath("PopupFilter")
 add_object_popup = NodePath("AddObjectPopup")
+playtest_button = NodePath("VSplitRoot/FilePanel/PlaytestButton")
 playtest_parent = NodePath("PlaytestParent")
 playtest_vp = NodePath("PlaytestParent/PlaytestViewportContainer/PlaytestViewport")
 
