@@ -21,12 +21,12 @@ static func make(node:Node2D, pre_held:bool=false) -> DragableParent:
 	var dgp : DragableParent = _SELF_SCENE.instantiate()
 	dgp.set_global_position(node.global_position)
 	dgp.held = pre_held
-	dgp.set_size(Vector2(node.get_size()) * node.sprite.scale)
 	if node.get_parent() == null:
 		dgp.add_child(node)
 	else:
 		node.reparent(dgp)
 	dgp.child = node
+	dgp.update_transform()
 	
 	#make shadow
 	dgp._update_shadow()
@@ -35,8 +35,7 @@ static func make(node:Node2D, pre_held:bool=false) -> DragableParent:
 
 
 func _ready() -> void:
-	child.global_position += size/2
-	global_position = child.global_position - size
+	pass
 
 
 func _process(delta: float) -> void:
@@ -47,7 +46,7 @@ func _process(delta: float) -> void:
 			held = false
 			released.emit()
 		else:
-			update_position()
+			update_transform()
 			dragged.emit()
 			
 			var rot_range_mod := 1.0
@@ -67,7 +66,10 @@ func get_time_since_clicked() -> float:
 	return (Time.get_ticks_msec()-time_last_clicked) / 1000.
 
 
-func update_position() -> void:
+func update_transform() -> void:
+	set_size(Vector2(child.get_size()) * child.sprite.scale)
+	child.position = size/2
+	global_position = child.global_position - size
 	if child is GameObject:
 		position = child.get_instance_data().position - size/2
 	elif child is Player:

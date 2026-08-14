@@ -46,7 +46,7 @@ text = "Name:"
 custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
-[node name="NameText" type="TextEdit" parent="VBoxContainer/NameContainer" unique_id=1620275179]
+[node name="NameText" type="LineEdit" parent="VBoxContainer/NameContainer" unique_id=2114605398]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "name"

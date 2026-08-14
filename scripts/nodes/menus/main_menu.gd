@@ -10,7 +10,8 @@ static var first_time_enterred : bool = true
 
 
 func _ready() -> void:
-	
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
 	if first_time_enterred and OS.get_name() == "Web":
 		welcome_popup.visible = true
 	else:

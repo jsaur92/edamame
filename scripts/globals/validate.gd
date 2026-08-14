@@ -1,6 +1,8 @@
 class_name Validate
 ## Helper class for the init functions of different resources.
 
+const DEFAULT_IMG = preload("uid://bcgovbjf0df12")
+
 ## For adding a UID to the ResourceUID singleton when loading in an object.
 ## If given less than 0, makes a new UID. Adds and returns the inputted
 ## or new UID.
@@ -15,7 +17,7 @@ static func uid(id:int) -> int:
 ## if inputted null, returns input otherwise.
 static func image(img:Image) -> Image:
 	if img == null:
-		img = Image.create_empty(0, 0, false, Image.FORMAT_RGBAF)
+		img = DEFAULT_IMG.get_image()
 	return img
 
 

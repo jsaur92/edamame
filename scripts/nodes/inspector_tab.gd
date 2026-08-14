@@ -8,7 +8,7 @@ extends Control
 @export var toggles_container : VBoxContainer
 @export_category("Other Nodes")
 @export var object_icon : ObjectIconTexRect
-@export var object_name : TextEdit
+@export var object_name : LineEdit
 @export var width_text : SpinBox
 @export var height_text : SpinBox
 @export var x_text : SpinBox
@@ -118,8 +118,9 @@ func update_image(object:ObjectData) -> void:
 	object_icon.set_texture_with_size_adjustment( ImageTexture.create_from_image( object.get_scaled_image() ) )
 
 
-func _on_name_text_text_changed() -> void:
+func _on_name_text_text_changed(new_text : String) -> void:
 	current_object_data.name = object_name.text
+	edited.emit(current_object_data)
 
 
 func _on_width_text_value_changed(value: float) -> void:

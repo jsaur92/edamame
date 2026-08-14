@@ -70,6 +70,14 @@ func _ready() -> void:
 	dgp.position = p.init_data.init_pos
 	add_dragable(dgp)
 	dragables_root.add_child(dgp)
+	
+	#center the player in the environment graph view.
+	#control sizes are not available onready, so calculate size from the split containers.
+	var env_graph_size = Vector2( h_split.split_offsets[0], v_split_left_side.split_offsets[0] )
+	var o = game_data.player_init_data.init_pos - env_graph_size/2 + Player.SIZE/2
+	await get_tree().create_timer(0.1).timeout
+	environment_graph.scroll_offset = o
+	print(o)
 
 
 static func get_instance() -> Editor:
@@ -195,6 +203,7 @@ func _on_inspector_value_changed(object:Variant) -> void:
 			if dragable.has_game_object():
 				if dragable.get_game_object().get_object_data() == object:
 					dragable.get_game_object().update_image()
+					dragable.update_transform()
 		for child in objects_dock.get_children():
 			if child is ObjectThumbnail:
 				if child.object_data == object:
@@ -204,13 +213,12 @@ func _on_inspector_value_changed(object:Variant) -> void:
 	elif object is ObjectInstanceData:
 		for dragable:DragableParent in dragables_root.get_children():
 			if dragable.has_game_object() and dragable.get_game_object().get_instance_data() == object:
-				dragable.update_position()
-				break
+				dragable.update_transform()
 	
 	elif object is PlayerInitData:
 		for dragable:DragableParent in dragables_root.get_children():
 			if dragable.has_player():
-				dragable.update_position()
+				dragable.update_transform()
 				break
 	
 	

@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var sprite : AnimatedSprite2D
 @export var init_data : PlayerInitData
 const SPEED = 600.0
+const SIZE = Vector2(128, 128)
 var direction : Vector2
 signal open_inventory
 const _SELF_SCENE = preload("uid://dxlyubokb3s33")
